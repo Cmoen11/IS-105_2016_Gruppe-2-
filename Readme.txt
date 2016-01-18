@@ -1,1 +1,1 @@
-Her kommer det tekst
+Her er alle oppgavene gruppe 2 har laget. 
