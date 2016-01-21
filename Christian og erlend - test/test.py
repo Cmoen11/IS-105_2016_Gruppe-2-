@@ -3,7 +3,7 @@ def lols() :
     o = 50
     
     result = i + o
-    print result
+    print result + "lols"
     
 
 def lols2() :
