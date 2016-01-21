@@ -30,12 +30,19 @@ def dele() :
     result = tall1 / tall2
     print "Dele: "
     print result
+    
+# Prosent av ett tall
+def prosent() :
+    result = tall1 / tall2 * 100
+    print "Prosent: "
+    print result
 
 # print ut alle resultatene
 def printResultat() : 
     pluss()
     minus()
     gange()
-    dele()  
+    dele()
+    prosent()
     
 printResultat()    
