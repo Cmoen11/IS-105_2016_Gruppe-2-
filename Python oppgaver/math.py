@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-tall1 = raw_input("Tast inn tall 1: ")
-tall2 = raw_input("Tast inn tall 2: ")
+# 
+tall1 = raw_input("Skriv inn første tall: ")
+tall2 = raw_input("Skriv inn andre tall: ")
+
 
 tall1 = int(tall1)
 tall2 = int(tall2)
