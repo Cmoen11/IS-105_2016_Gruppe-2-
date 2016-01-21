@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-tall1 = 1
-tall2 = 2
+tall1 = raw_input("Tast inn tall 1: ")
+tall2 = raw_input("Tast inn tall 2: ")
 
 # denne tar du Ola
 def pluss() :
