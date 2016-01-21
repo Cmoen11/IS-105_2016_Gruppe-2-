@@ -7,14 +7,20 @@ tall2 = 2
 # denne tar du Ola
 def pluss() :
     
-def minus () :
+def minus() :
 
-def gange () :
+def gange() :
 
 #dele denne tar du Tommy WOA EA
-def dele () : 
+def dele() : 
     
 
-def printResultat () : 
+# print ut alle resultatene
+def printResultat() : 
+    print (pluss())
+    print (minus())
+    print (gange())
+    print (dele())
     
     
+printResultat()    
