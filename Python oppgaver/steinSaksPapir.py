@@ -2,31 +2,66 @@ import random
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-alternativer = [stein, saks, papir]
 
-spiller = raw_input ("stein, saks, eller papir")
+spiller = raw_input ("stein,saks,papir:")
 
-random.data
+data = random.random()
 
-
-while: 
-    if: spiller = "stein" and data = saks
-    print "Du vant"
-    elif spiller = "saks" and data = papir
-    print "Du vant"
-    elif spiller = "papir" and data stein
-    print "Du vant"
-    elif spiller = "stein" and data = papir
-    print "Du tapte"
-    elif spiller = "saks" and data = stein
-    print "Du tapte"
-    elif spiller = "papir" and data = saks
-    print "Du tapte"
-    elif spiller = "stein" == data = stein
-    print "Det ble uavgjort"
-    elif spiller = "saks" == date = saks
-    print "Det ble Uavgjort"
-    elif spiller = "papir" == data = papir
-    print "Det ble uavgjort"
+if data <=0.33:
+    data = "stein"
     
-    #Håper dette er noe som kan brukes videre folkens!! :D GLHF 
+elif data <=0.66:
+    data = "papir"
+    
+else:
+    data = "saks"
+    
+
+def spill(valgEn,valgTo):
+    if valgEn == valgTo:
+        print "Du valgte", valgEn
+        print "Dataen valgte", valgTo
+        print "Det ble likt"
+        
+    elif valgEn == "stein":
+        if valgTo == "saks":
+            print "Du valgt", valgEn
+            print "Dataen valgte", valgTo
+            print "Du vant! Gratulerer"
+        
+        else:
+            print "Du valgt", valgEn
+            print "Dataen valgte", valgTo
+            print "Du tapte, bedre lykke neste gang!"
+            
+    
+    elif valgEn == "papir":
+        if valgTo == "stein":
+            print "Du valgt", valgEn
+            print "Dataen valgte", valgTo
+            print "Du vant! Gratulerer!"
+                    
+        else:
+            print "Du valgt", valgEn
+            print "Dataen valgte", valgTo
+            print "Du tapte, bedre lykke neste gang!"    
+        
+        
+    elif valgEn == "saks":
+        if valgTo == "papir":
+            print "Du valgt", valgEn
+            print "Dataen valgte", valgTo
+            print "Du vant! Gratulerer!"
+                    
+        else:
+            print "Du valgt", valgEn
+            print "Dataen valgte", valgTo
+            print "Du tapte, bedre lykke neste gang!"    
+    
+spill(spiller, data)
+
+    
+#Håper dette er noe som kan brukes videre folkens!! :D GLHF 
+
+# Jeg tok vekk det ola skreiv, og la inn en variant som regner ut ifra desimal 0-0.33 = Stein, 0.34-0.66 = saks og 0.67-1 = Papir. 
+# Nå funker programmet, kanskje ikke optimalt, da det papir har litt ekstra sjans for å bli trukket, men det jeg fikk til. Med litt hjelp fra internett selvfølgelig.
