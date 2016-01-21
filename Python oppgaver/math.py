@@ -4,27 +4,38 @@
 tall1 = raw_input("Tast inn tall 1: ")
 tall2 = raw_input("Tast inn tall 2: ")
 
-# denne tar du Ola
+tall1 = int(tall1)
+tall2 = int(tall2)
+
+# Pluss 
 def pluss() :
-    return tall1 + tall2
-    
+    result = tall1 + tall2
+    print "Pluss: " 
+    print result
+
+# Minus
 def minus() :
-    return tall1 - tall2
+    result = tall1 - tall2
+    print "Minus: " 
+    print result
 
-# Metoden som ganger tallene
+# Gange
 def gange() :
+    result = tall1 * tall2
+    print "Gange: "
+    print result
 
-
-#dele denne tar du Tommy WOA EA
+# Dele 
 def dele() : 
-    
+    result = tall1 / tall2
+    print "Dele: "
+    print result
 
 # print ut alle resultatene
 def printResultat() : 
-    print (pluss())
-    print (minus())
-    print (gange())
-    print (dele())
-    
+    pluss()
+    minus()
+    gange()
+    dele()  
     
 printResultat()    
