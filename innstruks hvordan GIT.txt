@@ -10,3 +10,4 @@
 # 7 - git commit -m "Jeg har gjort masse dritt" (Commite endringene) 
 # 8 - git push origin (Pusher endringene opp mot GIThub)
 
+Christian elsker pannekaker
