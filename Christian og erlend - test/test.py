@@ -4,6 +4,7 @@ def lols() :
     
     result = i + o
     print result + "lols"
+    print "lols"
     
 
 def lols2() :
