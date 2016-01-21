@@ -9,7 +9,9 @@ def pluss() :
     
 def minus() :
 
+# Metoden som ganger tallene
 def gange() :
+
 
 #dele denne tar du Tommy WOA EA
 def dele() : 
