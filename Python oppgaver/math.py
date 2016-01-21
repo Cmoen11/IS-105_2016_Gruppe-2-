@@ -6,6 +6,7 @@ tall2 = 2
 
 # denne tar du Ola
 def pluss() :
+    return tall1 + tall2
     
 def minus() :
 
