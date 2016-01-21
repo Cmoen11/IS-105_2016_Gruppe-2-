@@ -1,0 +1,13 @@
+# 1 - Pull fra develop branch (Henter da endring fra develop branch)
+# 2 - git checkout feature (Bytter mappe til feature)
+# 3 - git merge develop (Slår sammen filene fra develop til feature)
+
+# Ola gjør endring 
+
+# 4 - git add . (Legger til endringene)
+# 5 - git checkout develop (Endringene blir med over til develop)
+# 6 - git pull (Henter da endringer, gjort fra andre <3 Endringen ola gjorde blir da merged med andre sin kode)
+# 7 - git commit -m "Jeg har gjort masse dritt" (Commite endringene) 
+# 8 - git push origin (Pusher endringene opp mot GIThub)
+
+Christian elsker pannekaker
