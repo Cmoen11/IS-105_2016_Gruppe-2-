@@ -9,6 +9,7 @@ def pluss() :
     return tall1 + tall2
     
 def minus() :
+    return tall1 - tall2
 
 # Metoden som ganger tallene
 def gange() :
