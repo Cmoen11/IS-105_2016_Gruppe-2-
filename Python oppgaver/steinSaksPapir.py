@@ -85,7 +85,7 @@ def calculateWinner(userChoosed, gameChoosed) :
 
 # ask the user if he wants to play again    
 def playAgain() :
-    # Give the user able to choose
+    # Give the user ability to choose
     answer = raw_input("Spill igjen, Y or N: ")
     # Set the answer to uppercase
     answer = answer.upper()
