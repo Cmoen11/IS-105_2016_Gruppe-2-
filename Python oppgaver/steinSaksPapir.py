@@ -92,7 +92,7 @@ def calculateWinner(userChoosed, gameChoosed) :
 def playAgain() :
     # Give the user ability to choose
     answer = raw_input("Spill igjen, Y or N: ")
-    possibleYesAnswers = ["Yes", "ok" "yeah", "y"]
+    possibleYesAnswers = ["Yes", "ok", "yeah", "y"]
     possibleNoAnswers = ["No","n","nope"]
     
     # If user has inserted a no answer
