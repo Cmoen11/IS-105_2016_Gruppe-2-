@@ -39,6 +39,7 @@ def lookForSentence(inputChoose) :
     for options in alternativer :
         if (options.upper() == inputChoose.upper()) :
             return i
+        i += 1
     
     # If there are no such word to choose from, alert user and let them try again
     print "Vennligst skriv inn Stein, saks eller papir"
