@@ -34,13 +34,13 @@ def play() :
 # if no numbers is inserted, look for sentence
 def lookForSentence(inputChoose) :
     
-    # Loop trought 
+    # Loop trought options
     i = 0
     for options in alternativer :
         if (options.upper() == inputChoose.upper()) :
             return i
-        
     
+    # If there are no such word to choose from, alert user and let them try again
     print "Vennligst skriv inn Stein, saks eller papir"
     play()
         
@@ -53,7 +53,7 @@ def getStatus(userChoosed, gameChoosed) :
     print breakLine
     
 
-
+#calculate who the winner is
 def calculateWinner(userChoosed, gameChoosed) :
     
     # 0 = Stein
@@ -85,22 +85,35 @@ def calculateWinner(userChoosed, gameChoosed) :
         print tieText
     
     print breakLine
-    
-    # Ask user if he wants to play again    
     playAgain()    
 
 # ask the user if he wants to play again    
 def playAgain() :
     # Give the user ability to choose
     answer = raw_input("Spill igjen, Y or N: ")
-    # Set the answer to uppercase
-    answer = answer.upper()
-    if (answer == "Y") or (answer == "N") :
-        
-        if (answer == "Y") : 
-            play()
+    possibleYesAnswers = ["Yes", "ok" "yeah", "y"]
+    possibleNoAnswers = ["No","n","nope"]
+    
+    validAnswer = False
+    # Check if the user has inserted a valid answer
+    for i in possibleNoAnswers :
+        if (answer.upper() == i.upper()):
+            validAnswer = True
+    for i in possibleYesAnswers :
+        if (answer.upper() == i.upper()):
+            validAnswer = True
+    
+    # Run trough every answer, and look for what the user want to do
+    if (validAnswer) :
+        for i in possibleYesAnswers :
+            if (answer.upper() == i.upper()) :
+                play()
+        for i in possibleNoAnswers :
+            if (answer.upper() == i.upper()) :
+                print "Takk for at du spilte!"
     else :
-        errorMessage(1)
+        print "Prøv på nytt"
+        playAgain()
     
 # display error message
 def errorMessage(errorMessage):
