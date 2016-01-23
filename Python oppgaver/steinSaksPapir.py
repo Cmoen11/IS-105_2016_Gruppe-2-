@@ -35,7 +35,6 @@ def lookForSentence(inputChoose) :
     # Loop trought 
     i = 0
     for options in alternativer :
-        print inputChoose.upper() + " " + options.upper()
         if (options.upper() == inputChoose.upper()) :
             return i
         
