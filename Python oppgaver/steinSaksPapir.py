@@ -64,6 +64,7 @@ def calculateWinner(userChoosed, gameChoosed) :
     # Saks slår papir
     # Stein slår Saks
     # saks slår papir
+    # papir slår stein
     
     playerWonText = "Spiller Vinner"
     computerWonText = "Datamaskinen vinner"
