@@ -10,34 +10,28 @@ tall1 = int(tall1)
 tall2 = int(tall2)
 
 # Pluss 
-def pluss() :
-    result = tall1 + tall2
-    print "Pluss: " 
-    print result
+def pluss(tall1,tall2) :
+    return tall1 + tall2
 
 # Minus
-def minus() :
+def minus(tall1,tall2) :
     result = tall1 - tall2
-    print "Minus: " 
-    print result
+    return result 
 
 # Gange
-def gange() :
+def gange(tall1,tall2) :
     result = tall1 * tall2
-    print "Gange: "
-    print result
+    return result 
 
 # Dele 
-def dele() : 
+def dele(tall1,tall2) : 
     result = tall1 / tall2
-    print "Dele: "
-    print result
+    return result 
     
 # Prosent av ett tall
-def prosent() :
+def prosent(tall1,tall2) :
     result = tall1 / tall2 * 100
-    print "Prosent: "
-    print result
+    return result 
 
 # print ut alle resultatene
 def printResultat() : 
