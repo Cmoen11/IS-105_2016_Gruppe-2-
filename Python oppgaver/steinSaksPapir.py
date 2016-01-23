@@ -3,6 +3,8 @@
 from random import randint
 
 alternativer = ["stein","saks","papir"]
+breakLine = "***************************************************"
+
 
 # Player chooses & Computer randomly choose
 def play() :
@@ -46,9 +48,9 @@ def lookForSentence(inputChoose) :
     
 # get status
 def getStatus(userChoosed, gameChoosed) :
-    print "***************************************************"
+    print breakLine
     print "Spiller kaster "  + alternativer[userChoosed] + " | Maskin kaster " + alternativer[gameChoosed]
-    print "***************************************************"
+    print breakLine
     
 
 
@@ -82,10 +84,7 @@ def calculateWinner(userChoosed, gameChoosed) :
     elif (userChoosed is gameChoosed) :
         print tieText
     
-
-    
-    #print a break line
-    print "***************************************************"
+    print breakLine
     
     # Ask user if he wants to play again    
     playAgain()    
