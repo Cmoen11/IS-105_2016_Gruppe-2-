@@ -2,12 +2,7 @@
 # -*- coding: utf-8 -*-
 from random import randint
 
-alternativer = ["Stein","Saks","Papir"]
-
-def run() :
-    # Player chooses & Computer randomly choose
-    play()
-    
+alternativer = ["stein","saks","papir"]
 
 # Player chooses & Computer randomly choose
 def play() :
@@ -18,24 +13,37 @@ def play() :
     try:
         userChoosed = int(inputChoose)
     except ValueError :
-        print "Vennligst fyll ut med tall."
-        play()
+        userChoosed = lookForSentence(inputChoose)
     
     if (0 > userChoosed) or (userChoosed > 2):  
         print "Vennligst velg et tall mellom 0 - 2"
         play()
         
-
         
-    else :
-        # Computer random choose
-        gameChoosed = randint(0,2)    
+    # Computer random choose
+    gameChoosed = randint(0,2)    
     
-        # Print out game status
-        getStatus(userChoosed, gameChoosed)    
+    # Print out game status
+    getStatus(userChoosed, gameChoosed)    
     
-        # calculate who the winner is
-        calculateWinner(userChoosed, gameChoosed)
+    # calculate who the winner is
+    calculateWinner(userChoosed, gameChoosed)
+
+# if no numbers is inserted, look for sentence
+def lookForSentence(inputChoose) :
+    
+    # Loop trought 
+    i = 0
+    for options in alternativer :
+        print inputChoose.upper() + " " + options.upper()
+        if (options.upper() == inputChoose.upper()) :
+            return i
+        
+    
+    print "Vennligst skriv inn Stein, saks eller papir"
+    play()
+        
+
     
 # get status
 def getStatus(userChoosed, gameChoosed) :
@@ -61,14 +69,14 @@ def calculateWinner(userChoosed, gameChoosed) :
     
     # alle mulige spill der spiller vinner
     if (userChoosed is 0 and gameChoosed is 1) \
-       or (userChoosed is 1 and gameChoosed is 2) \
-       or (userChoosed is 2 and gameChoosed is 0) :
+        or (userChoosed is 1 and gameChoosed is 2) \
+        or (userChoosed is 2 and gameChoosed is 0) :
         print playerWonText
     
     # alle mulige spill der datamaskinen vinner
     elif (userChoosed is 1 and gameChoosed is 0) \
-         or (userChoosed is 2 and gameChoosed is 1) \
-         or (userChoosed is 0 and gameChoosed is 2) :
+        or (userChoosed is 2 and gameChoosed is 1) \
+        or (userChoosed is 0 and gameChoosed is 2) :
         print computerWonText
 
     # alle mulige spill der det kan bli uavgjort
@@ -92,7 +100,7 @@ def playAgain() :
     if (answer == "Y") or (answer == "N") :
         
         if (answer == "Y") : 
-            run()
+            play()
     else :
         errorMessage(1)
     
@@ -107,4 +115,4 @@ def errorMessage(errorMessage):
 
 
 # run the program
-run()
+play()
