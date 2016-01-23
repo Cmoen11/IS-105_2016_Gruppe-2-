@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from random import randint
-
+import sys
 alternativer = ["stein","saks","papir"]
 breakLine = "***************************************************"
 
@@ -95,26 +95,20 @@ def playAgain() :
     possibleYesAnswers = ["Yes", "ok" "yeah", "y"]
     possibleNoAnswers = ["No","n","nope"]
     
-    validAnswer = False
-    # Check if the user has inserted a valid answer
+    # If user has inserted a no answer
     for i in possibleNoAnswers :
         if (answer.upper() == i.upper()):
-            validAnswer = True
+            print "Takk for at du spilte!"
+            sys.exit("Takk for at du spilte!")
+
+    # IF user has inserted a yes answer
     for i in possibleYesAnswers :
         if (answer.upper() == i.upper()):
-            validAnswer = True
-    
-    # Run trough every answer, and look for what the user want to do
-    if (validAnswer) :
-        for i in possibleYesAnswers :
-            if (answer.upper() == i.upper()) :
-                play()
-        for i in possibleNoAnswers :
-            if (answer.upper() == i.upper()) :
-                print "Takk for at du spilte!"
-    else :
-        print "Prøv på nytt"
-        playAgain()
+            play()
+
+    # Answer is not a valid answer
+    print "Prøv på nytt"
+    playAgain()
     
 
 # run the program
