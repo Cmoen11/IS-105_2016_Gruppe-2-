@@ -116,15 +116,6 @@ def playAgain() :
         print "Prøv på nytt"
         playAgain()
     
-# display error message
-def errorMessage(errorMessage):
-    
-    
-    # if user has entered inn wrong under "play again"
-    if (errorMessage is 1) :
-        print "Vennligst tast inn Y eller N"
-        playAgain()    
-
 
 # run the program
 play()
