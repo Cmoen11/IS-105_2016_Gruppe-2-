@@ -149,6 +149,7 @@ def makeBet() :
     else :
         print "You do not have enough money for this bet"
         makeBet()
+        
 def addMoney() :
     global balance
     balance = balance + (bet*2)
