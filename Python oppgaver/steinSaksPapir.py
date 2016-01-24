@@ -144,9 +144,11 @@ def makeBet() :
         print "Enter a number."
         makeBet()
     # Removes money from balance
-    
-    balance = balance - bet
-
+    if (bet < balance) :
+        balance = balance - bet
+    else :
+        print "You do not have enough money for this bet"
+        makeBet()
 def addMoney() :
     global balance
     balance = balance + (bet*2)
