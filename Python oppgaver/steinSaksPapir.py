@@ -44,7 +44,7 @@ def play() :
 # if no numbers is inserted, look for sentence
 def lookForSentence(inputChoose) :
     
-    # Loop trought options
+    # Loop through options
     i = 0
     for options in alternatives :
         if (options.upper() == inputChoose.upper()) :
@@ -110,7 +110,7 @@ def calculateWinner(userChoosed, gameChoosed) :
 # Ask the user if he wants to play again    
 def playAgain() :
     
-    # Give the user ability to choose
+    # Gives the user ability to choose
     answer = raw_input("Play again, Y or N: ")
     possibleYesAnswers = ["Yes", "ok", "yeah", "y"]
     possibleNoAnswers = ["No","n","nope"]
@@ -139,13 +139,17 @@ def makeBet() :
     bet = raw_input("Please insert your bet: ")
     try :
         global bet
-        bet = int(bet)
+        bet = int(bet)    
     except ValueError :
         print "Enter a number."
         makeBet()
+        
     # Removes money from balance
+    if (bet <= 0) :
+        print "You can't enter a negative value."
+        makeBet()
     if (bet < balance) :
-        balance = balance - bet
+        balance = balance - bet   
     else :
         print "You do not have enough money for this bet"
         makeBet()
