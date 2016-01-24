@@ -5,9 +5,13 @@ import sys
 alternativer = ["stein","saks","papir"]
 breakLine = "***************************************************"
 
+balance = 1000
+bet = None
+
 
 # Player chooses & Computer randomly choose
 def play() :
+    makeBet()
     # player choose
     inputChoose = raw_input("Vennligst velg mellom Stein(0), Saks(1) eller Papir(2) : ")
        
@@ -19,6 +23,10 @@ def play() :
     
     if (0 > userChoosed) or (userChoosed > 2):  
         print "Vennligst velg et tall mellom 0 - 2"
+        # Nullstiller bet og legger penger tilbake til balance
+        balance = balance + bet
+        bet = None
+        # Kaller play på nytt
         play()
         
         
@@ -42,9 +50,13 @@ def lookForSentence(inputChoose) :
         i += 1
     
     # If there are no such word to choose from, alert user and let them try again
+    # Nullstiller bet og legger penger tilbake på balance
+    balance = balance + bet
+    bet = None
     print "Vennligst skriv inn Stein, saks eller papir"
+    # Kaller play på nytt
     play()
-        
+            
 
     
 # get status
@@ -75,7 +87,8 @@ def calculateWinner(userChoosed, gameChoosed) :
         or (userChoosed is 1 and gameChoosed is 2) \
         or (userChoosed is 2 and gameChoosed is 0) :
         print playerWonText
-    
+        addMoney()
+        
     # alle mulige spill der datamaskinen vinner
     elif (userChoosed is 1 and gameChoosed is 0) \
         or (userChoosed is 2 and gameChoosed is 1) \
@@ -85,12 +98,16 @@ def calculateWinner(userChoosed, gameChoosed) :
     # alle mulige spill der det kan bli uavgjort
     elif (userChoosed is gameChoosed) :
         print tieText
+        balance = balance + bet
+        
     
     print breakLine
-    playAgain()    
+    playAgain() 
+    
 
 # ask the user if he wants to play again    
 def playAgain() :
+    
     # Give the user ability to choose
     answer = raw_input("Spill igjen, Y or N: ")
     possibleYesAnswers = ["Yes", "ok", "yeah", "y"]
@@ -105,6 +122,7 @@ def playAgain() :
     # IF user has inserted a yes answer
     for i in possibleYesAnswers :
         if (answer.upper() == i.upper()):
+            bet = None
             play()
 
     # Answer is not a valid answer
@@ -112,5 +130,21 @@ def playAgain() :
     playAgain()
     
 
+
+def makeBet() :
+    bet = raw_input("Skriv inn ditt bet ")
+    try :
+        bet = int(bet)
+    except ValueError :
+        print "Tast inn tall"
+        makeBet()
+    # removes money from balance
+    balance = balance - bet
+
+def addMoney() :
+    balance = balance + (bet*2)
+    print "Gevinst har blitt overført til konto "
+    
 # run the program
+
 play()
