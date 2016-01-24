@@ -3,7 +3,7 @@
 from random import randint
 import sys
 
-alternativer = ["stein","saks","papir"]
+alternatives = ["rock","scissor","paper"]
 breakLine = "***************************************************"
 
 balance = 1000
@@ -12,10 +12,10 @@ bet = 0
 # Player chooses & Computer randomly choose
 def play() :
     global balance
-    print "Du har nå kr: %d på din konto!" % balance 
+    print "You have now kr: %d on your account!" % balance 
     makeBet()
     # player choose
-    inputChoose = raw_input("Vennligst velg mellom Stein(0), Saks(1) eller Papir(2) : ")
+    inputChoose = raw_input("Please choose between Rock(0), Scissor(1) or Paper(2) : ")
        
     # Parse the string over to int
     try:
@@ -24,11 +24,11 @@ def play() :
         userChoosed = lookForSentence(inputChoose)
     
     if (0 > userChoosed) or (userChoosed > 2):  
-        print "Vennligst velg et tall mellom 0 - 2"
-        # Nullstiller bet og legger penger tilbake til balance
+        print "Please choose a number between 0 - 2"
+        # Resets the bet and returns money to balance
         balance = balance + bet
         bet = None
-        # Kaller play på nytt
+        # Calls play again
         play()
         
         
@@ -52,11 +52,11 @@ def lookForSentence(inputChoose) :
         i += 1
     
     # If there are no such word to choose from, alert user and let them try again
-    # Nullstiller bet og legger penger tilbake på balance
+    # Resets the bet and returns money to balance
     balance = balance + bet
     bet = None
-    print "Vennligst skriv inn Stein, saks eller papir"
-    # Kaller play på nytt
+    print "Please insert rock, scissor or paper"
+    # Calls Play again
     play()
             
 
@@ -64,7 +64,7 @@ def lookForSentence(inputChoose) :
 # get status
 def getStatus(userChoosed, gameChoosed) :
     print breakLine
-    print "Spiller kaster "  + alternativer[userChoosed] + " | Maskin kaster " + alternativer[gameChoosed]
+    print "Player throws "  + alternatives[userChoosed] + " | Computer throws " + alternatives[gameChoosed]
     print breakLine
     
 
@@ -72,33 +72,32 @@ def getStatus(userChoosed, gameChoosed) :
 def calculateWinner(userChoosed, gameChoosed) :
     global balance
     global bet
-    # 0 = Stein
-    # 1 = Saks
-    # 2 = Papir
+    # 0 = Stone
+    # 1 = Scissor
+    # 2 = Paper
     
-    # Saks slår papir
-    # Stein slår Saks
-    # saks slår papir
-    # papir slår stein
+    # Scissor beats paper
+    # Paper beats stone
+    # Stone beats scissor
     
-    playerWonText = "Spiller Vinner"
-    computerWonText = "Datamaskinen vinner"
-    tieText = "Det ble uavgjort"
+    playerWonText = "Player wins!"
+    computerWonText = "Computer wins!"
+    tieText = "It's a tie!"
     
-    # alle mulige spill der spiller vinner
+    # Every possible games where player wins
     if (userChoosed is 0 and gameChoosed is 1) \
         or (userChoosed is 1 and gameChoosed is 2) \
         or (userChoosed is 2 and gameChoosed is 0) :
         print playerWonText
         addMoney()
         
-    # alle mulige spill der datamaskinen vinner
+    # Every possible games where computer wins
     elif (userChoosed is 1 and gameChoosed is 0) \
         or (userChoosed is 2 and gameChoosed is 1) \
         or (userChoosed is 0 and gameChoosed is 2) :
         print computerWonText
 
-    # alle mulige spill der det kan bli uavgjort
+    # Every possible games where it can be a tie
     elif (userChoosed is gameChoosed) :
         print tieText
         balance = balance + bet
@@ -108,28 +107,28 @@ def calculateWinner(userChoosed, gameChoosed) :
     playAgain() 
     
 
-# ask the user if he wants to play again    
+# Ask the user if he wants to play again    
 def playAgain() :
     
     # Give the user ability to choose
-    answer = raw_input("Spill igjen, Y or N: ")
+    answer = raw_input("Play again, Y or N: ")
     possibleYesAnswers = ["Yes", "ok", "yeah", "y"]
     possibleNoAnswers = ["No","n","nope"]
     
     # If user has inserted a no answer
     for i in possibleNoAnswers :
         if (answer.upper() == i.upper()):
-            print "Takk for at du spilte!"
-            sys.exit("Takk for at du spilte!")
+            print "Thank you for playing!"
+            sys.exit("Thank you for playing!")
 
-    # IF user has inserted a yes answer
+    # If user has inserted a yes answer
     for i in possibleYesAnswers :
         if (answer.upper() == i.upper()):
             bet = None
             play()
 
     # Answer is not a valid answer
-    print "Prøv på nytt"
+    print "Try again!"
     playAgain()
     
 
@@ -137,24 +136,24 @@ def playAgain() :
 def makeBet() :
     
     global balance
-    bet = raw_input("Skriv inn ditt bet: ")
+    bet = raw_input("Please insert your bet: ")
     try :
         global bet
         bet = int(bet)
     except ValueError :
-        print "Tast inn tall"
+        print "Enter a number."
         makeBet()
-    # removes money from balance
+    # Removes money from balance
     
     balance = balance - bet
 
 def addMoney() :
     global balance
     balance = balance + (bet*2)
-    print "Gevinst har blitt overført til konto "
+    print "Profit has been transferred to your account!"
 
 
     
-# run the program
+# Run the program
 
 play()
