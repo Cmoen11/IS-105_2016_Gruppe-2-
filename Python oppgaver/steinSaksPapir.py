@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from random import randint
 import sys
+
 alternativer = ["stein","saks","papir"]
 breakLine = "***************************************************"
 
