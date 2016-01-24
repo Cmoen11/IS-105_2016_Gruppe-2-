@@ -84,20 +84,20 @@ def calculateWinner(userChoosed, gameChoosed) :
     computerWonText = "Computer wins!"
     tieText = "It's a tie!"
     
-    # Every possible games where player wins
+    # All possibilities where player wins
     if (userChoosed is 0 and gameChoosed is 1) \
         or (userChoosed is 1 and gameChoosed is 2) \
         or (userChoosed is 2 and gameChoosed is 0) :
         print playerWonText
         addMoney()
         
-    # Every possible games where computer wins
+    # All possibilities where computer wins
     elif (userChoosed is 1 and gameChoosed is 0) \
         or (userChoosed is 2 and gameChoosed is 1) \
         or (userChoosed is 0 and gameChoosed is 2) :
         print computerWonText
 
-    # Every possible games where it can be a tie
+    # All possibilities where it's a tie
     elif (userChoosed is gameChoosed) :
         print tieText
         balance = balance + bet
@@ -145,14 +145,12 @@ def makeBet() :
         makeBet()
         
     # Removes money from balance
-    if (bet <= 0) :
-        print "You can't enter a negative value."
-        makeBet()
-    if (bet < balance) :
-        balance = balance - bet   
+    if (bet < balance) and (bet > 0) :
+        balance = balance - bet 
     else :
-        print "You do not have enough money for this bet"
+        print "You don't have enough money for this bet or have entered a negative value."
         makeBet()
+        
 def addMoney() :
     global balance
     balance = balance + (bet*2)
