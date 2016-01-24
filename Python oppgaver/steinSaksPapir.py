@@ -6,11 +6,12 @@ alternativer = ["stein","saks","papir"]
 breakLine = "***************************************************"
 
 balance = 1000
-bet = None
-
+bet = 0
 
 # Player chooses & Computer randomly choose
 def play() :
+    global balance
+    print "Du har nå kr: %d på din konto!" % balance 
     makeBet()
     # player choose
     inputChoose = raw_input("Vennligst velg mellom Stein(0), Saks(1) eller Papir(2) : ")
@@ -68,7 +69,8 @@ def getStatus(userChoosed, gameChoosed) :
 
 #calculate who the winner is
 def calculateWinner(userChoosed, gameChoosed) :
-    
+    global balance
+    global bet
     # 0 = Stein
     # 1 = Saks
     # 2 = Papir
@@ -132,18 +134,25 @@ def playAgain() :
 
 
 def makeBet() :
-    bet = raw_input("Skriv inn ditt bet ")
+    
+    global balance
+    bet = raw_input("Skriv inn ditt bet: ")
     try :
+        global bet
         bet = int(bet)
     except ValueError :
         print "Tast inn tall"
         makeBet()
     # removes money from balance
+    
     balance = balance - bet
 
 def addMoney() :
+    global balance
     balance = balance + (bet*2)
     print "Gevinst har blitt overført til konto "
+
+
     
 # run the program
 
