@@ -136,10 +136,10 @@ def playAgain() :
 def makeBet() :
     
     global balance
-    bet = raw_input("Please insert your bet: ")
+    input_bet = raw_input("Please insert your bet: ")
     try :
         global bet
-        bet = int(bet)    
+        input_bet = int(bet)    
     except ValueError :
         print "Enter a number."
         makeBet()
