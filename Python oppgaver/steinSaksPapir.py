@@ -136,16 +136,16 @@ def playAgain() :
 def makeBet() :
     
     global balance
-    input_bet = raw_input("Please insert your bet: ")
+    bet = raw_input("Please insert your bet: ")
     try :
         global bet
-        input_bet = int(bet)    
+        bet = int(bet)    
     except ValueError :
         print "Enter a number."
         makeBet()
         
     # Removes money from balance
-    if (bet < balance) and (bet > 0) :
+    if (bet <= balance) and (bet > 0) :
         balance = balance - bet 
     else :
         print "You don't have enough money for this bet or have entered a negative value."
