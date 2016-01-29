@@ -32,6 +32,23 @@ def toAscii(binary2ascii, binaryCode) :
     return setence
         
 
+def toBinary(binary2ascii, text) :
+    binaryReverse = {}
+    # Reverse the binary map
+    for k, v in binary2ascii.iteritems():
+        binaryReverse[v] = binaryReverse.get(v, [])
+        binaryReverse[v].append(k)    
+    
+    
+    sentence = ""
+    #Create a binary sentence
+    for c in text : 
+        
+        letter = str(binaryReverse[c]).strip("['']")
+        sentence = sentence + letter
+        
+    return sentence
 
 
+print toBinary(createDictionary(),"Hei!")
 print toAscii(createDictionary(), '011101000011101000011101000011101000011101000')
