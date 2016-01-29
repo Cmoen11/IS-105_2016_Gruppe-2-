@@ -145,7 +145,7 @@ def makeBet() :
         makeBet()
         
     # Removes money from balance
-    if (bet < balance) and (bet > 0) :
+    if (bet <= balance) and (bet > 0) :
         balance = balance - bet 
     else :
         print "You don't have enough money for this bet or have entered a negative value."
