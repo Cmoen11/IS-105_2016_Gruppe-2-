@@ -45,7 +45,6 @@ def generateCards():
     pokerCards = random.sample(pokerCards, len(pokerCards))     
     return pokerCards
                
-
 '''
 Each card is a object of pokercard
 '''
