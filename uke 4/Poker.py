@@ -4,42 +4,47 @@
    Poker!
 
 '''
+import random 
+
+def deal() :
+    
 
 
-
-
-def giveCards() :
-    pass
-
-def calculateWinner() :     
-    pass
-
-def generateCards() :
+def generateCards():
+    
     pokerCards = []
     
-    ruter = 13
-    hjerter = 13
-    spar = 13
-    klover = 13
+    i = 0                   # For loop
+    x = 0                   # for loop
+    symbole = 1             # deligere symbole
+    value = 1               # Deligere value
     
-    
-    i = 0
-    x = 0
-    symbole = 1
-    value = 1
     for x in range (0,4) :
-        
         for i in range(0,13) :
-            pokerCards.append(PokerCards(symbole, value))
+            obj = PokerCard(symbole, value)
+            pokerCards.append(obj)
             value += 1
-            
         symbole += 1
-            
+        value = 1
+    
+    pokerCards = random.sample(pokerCards, len(pokerCards))     
     return pokerCards
                
 
+'''
 
-class PokerCards:
+def cardDictionary () :
+    cardsAvailable = {}
+    i = 0
+    
+    for i in range(0,51) :
+        cardsAvailable[i] = True
+
+
+    return cardsAvailable
+'''
+
+class PokerCard:
     '''
     Symbole definasjon: 
     1 = Ruter
@@ -62,8 +67,10 @@ class PokerCards:
     12.  Konge
     13.  Ess
     '''
+    
+    
 
-    def __init__ (symbole, value) :
+    def __init__ (self, symbole, value) :
         '''
         Symbole er da hvilken type kort det er. 
         Value er da hvilken veri kortet har
@@ -72,14 +79,34 @@ class PokerCards:
         self.symbole = symbole
         self.value = value
         
-        pokerCards.counter += 1
             
     def getValue(self) :
         return self.value
     
     def getSymbole(self) :
-        return self.Symbole
+        return self.symbole
     
     
 
-generateCards()
+
+class Player :
+    def __init__ (self, cards) :
+        '''
+        Give the player random name
+        '''
+        
+        names = ["Christian", "Erlend", "Ola", "Tommy Woa", "Merethe<3", "Benny", "Henrik aka ditcher"]
+        self.cards = cards
+        
+        self.name = names[randint(0, 6)]
+        
+        
+    def getName(self):
+        return self.name
+    def getCards(self):
+        return self.cards
+            
+cards = generateCards()
+  
+print cards[1].getSymbole()
+print cards[1].getValue()
