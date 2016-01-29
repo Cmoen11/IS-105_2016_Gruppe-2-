@@ -50,13 +50,13 @@ Each card is a object of pokercard
 '''
 class PokerCard:
 
-    def __init__ (self, symbole, value) :
+    def __init__ (self, symbol, value) :
         '''
         Symbole er da hvilken type kort det er. 
         Value er da hvilken verdi kortet har
         
         '''
-        self.symbole = symbole
+        self.symbol = symbol
         self.value = value
         
     # Return value of the card 
@@ -64,8 +64,8 @@ class PokerCard:
         return self.value
 
     # Return the symboleValue
-    def getSymbole(self) :
-        return self.symbole
+    def getSymbol(self) :
+        return self.symbol
     
     # Set the value over to string for reading
     def getStringValue(self) :
@@ -73,9 +73,9 @@ class PokerCard:
         return value[self.value]
     
     # set the symbole value over to string for reading
-    def getStringSymbole(self) :
-        symbole_name = ['ruter', 'hjerter', 'spar', 'klover']
-        return symbole_name[self.symbole]
+    def getStringSymbol(self) :
+        symbol_name = ['ruter', 'hjerter', 'spar', 'klover']
+        return symbol_name[self.symbol]
 
 
 '''
@@ -117,5 +117,5 @@ for i in range(0,len(players)) :
 
     x = 0
     while len(obj) > x :
-        print obj[x].getStringSymbole() + " " + obj[x].getStringValue()
+        print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
