@@ -4,32 +4,34 @@
 def createDictionary () :
     binary2ascii = {}
     
+    # Add binary code, and associate it with ASCII 
     for i in range(0,128) :
         binary2ascii[format(i,'08b')] = chr(i)
-        
-    toAscii(binary2ascii, '011101000011101000011101000011101000011101000')
+    
+    # return the dictinary 
+    return binary2ascii  
+    
     
         
 # get binary code from string
 def toAscii(binary2ascii, binaryCode) :
     
-    print binaryCode 
-    i = 0
-    setence = ""
-    binaryShortCode = ""
+    setence = "" # The ascii sentence generated
+    binaryShortCode = "" # to store the dividing binary code
+    
+    # Loop trough every number of the binary code, and generate achii char's
     for c in binaryCode :
-        if (i == 8) :
-            i = 0
+        
+        if  len(binaryShortCode) == 8 :
             setence = setence + binary2ascii[binaryShortCode]
             binaryShortCode = "";
             
         else :
             binaryShortCode = binaryShortCode + c
-            print binaryShortCode
-            i = i + 1
-    
-    
-    print setence
+            
+    return setence
         
 
-createDictionary()
+
+
+print toAscii(createDictionary(), '011101000011101000011101000011101000011101000')
