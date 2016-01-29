@@ -1,14 +1,23 @@
-'''
-   1.2.4
-
-   Poker!
-
-'''
+# -*- coding: utf-8 -*-
 import random 
+from random import randint
 
-def deal() :
-    
 
+def deal(pokerCards) :
+    players = []
+    i = 0
+    y = 0 # card number
+    for i in range(0,5) :
+        cardToPlayer = []
+        x = 0
+        
+        for x in range(0,5):
+            cardToPlayer.append(pokerCards[y])
+            y += 1
+            
+        players.append(Player(cardToPlayer))
+        
+    return players
 
 def generateCards():
     
@@ -16,16 +25,16 @@ def generateCards():
     
     i = 0                   # For loop
     x = 0                   # for loop
-    symbole = 1             # deligere symbole
-    value = 1               # Deligere value
+    symbole = 0             # deligere symbole
+    value = 0               # Deligere value
     
     for x in range (0,4) :
-        for i in range(0,13) :
+        for i in range(0,12 ) :
             obj = PokerCard(symbole, value)
             pokerCards.append(obj)
             value += 1
         symbole += 1
-        value = 1
+        value = 0
     
     pokerCards = random.sample(pokerCards, len(pokerCards))     
     return pokerCards
@@ -45,30 +54,6 @@ def cardDictionary () :
 '''
 
 class PokerCard:
-    '''
-    Symbole definasjon: 
-    1 = Ruter
-    2 = Hjerter
-    3 = Spar
-    4 = kløver
-    
-    Value definasjon
-    1.   2
-    2.   3
-    3.   4
-    4.   5
-    5.   6
-    6.   7
-    7.   8
-    8.   9
-    9.   10
-    10.  Knekt
-    11.  Dronning
-    12.  Konge
-    13.  Ess
-    '''
-    
-    
 
     def __init__ (self, symbole, value) :
         '''
@@ -78,7 +63,6 @@ class PokerCard:
         '''
         self.symbole = symbole
         self.value = value
-        
             
     def getValue(self) :
         return self.value
@@ -86,8 +70,12 @@ class PokerCard:
     def getSymbole(self) :
         return self.symbole
     
-    
-
+    def getStringValue(self) :
+        value = ["2","3","4","5","6","7","8","9","10","Knekt","Dronning","Konge","Ess"]
+        return value[self.value]
+    def getStringSymbole(self) :
+        symbole_name = ['ruter', 'hjerter', 'spar', 'klover']
+        return symbole_name[self.symbole]
 
 class Player :
     def __init__ (self, cards) :
@@ -95,7 +83,7 @@ class Player :
         Give the player random name
         '''
         
-        names = ["Christian", "Erlend", "Ola", "Tommy Woa", "Merethe<3", "Benny", "Henrik aka ditcher"]
+        names = ["Christian", "Erlend", "Ola", "Tommy Woa", "Merethe<3", "Benny", "Janis"]
         self.cards = cards
         
         self.name = names[randint(0, 6)]
@@ -105,8 +93,18 @@ class Player :
         return self.name
     def getCards(self):
         return self.cards
+
             
 cards = generateCards()
-  
-print cards[1].getSymbole()
-print cards[1].getValue()
+players = deal(cards)
+
+i = 0
+for i in range(0,len(players)) :
+    print 
+    obj = players[i].getCards()
+    print players[i].getName()
+
+    x = 0
+    while len(obj) > x :
+        print obj[x].getStringSymbole() + " " + obj[x].getStringValue()
+        x += 1
