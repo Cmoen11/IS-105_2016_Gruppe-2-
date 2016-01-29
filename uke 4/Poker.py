@@ -4,6 +4,9 @@ from random import randint
 
 
 def deal(pokerCards) :
+    '''
+    Create 5 player and deal out 5 cards to each player
+    '''
     players = []
     i = 0
     y = 0 # card number
@@ -20,7 +23,10 @@ def deal(pokerCards) :
     return players
 
 def generateCards():
-    
+    '''
+    Generate cards and then shuffle them
+    @return shuffled deck
+    '''
     pokerCards = []
     
     i = 0                   # For loop
@@ -41,59 +47,65 @@ def generateCards():
                
 
 '''
-
-def cardDictionary () :
-    cardsAvailable = {}
-    i = 0
-    
-    for i in range(0,51) :
-        cardsAvailable[i] = True
-
-
-    return cardsAvailable
+Each card is a object of pokercard
 '''
-
 class PokerCard:
 
     def __init__ (self, symbole, value) :
         '''
         Symbole er da hvilken type kort det er. 
-        Value er da hvilken veri kortet har
+        Value er da hvilken verdi kortet har
         
         '''
         self.symbole = symbole
         self.value = value
-            
+        
+    # Return value of the card 
     def getValue(self) :
         return self.value
-    
+
+    # Return the symboleValue
     def getSymbole(self) :
         return self.symbole
     
+    # Set the value over to string for reading
     def getStringValue(self) :
         value = ["2","3","4","5","6","7","8","9","10","Knekt","Dronning","Konge","Ess"]
         return value[self.value]
+    
+    # set the symbole value over to string for reading
     def getStringSymbole(self) :
         symbole_name = ['ruter', 'hjerter', 'spar', 'klover']
         return symbole_name[self.symbole]
 
+
+'''
+Each player is a object og the class
+'''
 class Player :
     def __init__ (self, cards) :
         '''
         Give the player random name
         '''
-        
+        #possible names
         names = ["Christian", "Erlend", "Ola", "Tommy Woa", "Merethe<3", "Benny", "Janis"]
+        
+        # set the deck of the player
         self.cards = cards
         
+        #set the random name
         self.name = names[randint(0, 6)]
         
-        
+    # Return the name of the player    
     def getName(self):
         return self.name
+    
+    # return the cards of the player
     def getCards(self):
         return self.cards
 
+ 
+# Do stuff...  
             
 cards = generateCards()
 players = deal(cards)
