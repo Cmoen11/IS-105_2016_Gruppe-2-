@@ -1,9 +1,17 @@
-import math
-#lol = math.log(2, 2.0/1.0)
+
+binary2ascii = {}
+
+
+for i in range(0,128) :
+    
+    binary2ascii[format(i,'08b')] = chr(i)
 
 
 
 
-print math.log(2,(1.0/1.0) / (5.0/8.0))
 
 
+
+
+
+ print binary2ascii[format(56, '08b')] 
