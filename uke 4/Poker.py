@@ -35,7 +35,7 @@ def generateCards():
     value = 0               # Deligere value
     
     for x in range (0,4) :
-        for i in range(0,13 ) :
+        for i in range(0,13) :
             obj = PokerCard(symbole, value)
             pokerCards.append(obj)
             value += 1
