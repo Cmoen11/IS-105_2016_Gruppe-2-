@@ -10,7 +10,7 @@ def calculatePoints(cards) :
     and return the points
     '''
     # Royal flush check
-    points = checkRoyalFush(cards)          # Value given if found is 500 000
+    points = checkRoyalFlush(cards)          # Value given if found is 500 000
     if (points > 0 ) :
         return points
      
@@ -64,7 +64,11 @@ def checkStraightFlush (cards):
         color = checkIfAllCardsIsRed(cards)
     
     # Check if is a straight flush  
-    if (cards[0].getValue() == 8) and (cards[1].getValue() == 9) and (cards[2].getValue() == 10) and (cards[3].getValue() == 11) and (cards[4].getValue() == 12):
+    if (cards[0].getValue() == 4) \
+       and (cards[1].getValue() == 5) \
+       and (cards[2].getValue() == 6) \
+       and (cards[3].getValue() == 7) \
+       and (cards[4].getValue() == 8) :
         return 480000
     return 0
 def checkFourLike(cards) :
@@ -86,7 +90,7 @@ def checkStraight(cards) :
     return 0
 def checkThreeLike(cards) :
     return 0
-def checkRoyalFush (cards) :
+def checkRoyalFlush (cards) :
     
     #Sort the cards
     cards = sorted(cards)
@@ -100,14 +104,14 @@ def checkRoyalFush (cards) :
     
     if (color) : # if either all of the cards is red or black
         #Check if is royal flush
-        if (cards[0].getValue() == 4) \
-           and (cards[1].getValue() == 5) \
-           and (cards[2].getValue() == 6) \
-           and (cards[3].getValue() == 7) \
-           and (cards[4].getValue() == 8) :
+
+        if (cards[0].getValue() == 8) \
+            and (cards[1].getValue() == 9) \
+            and (cards[2].getValue() == 10) \
+            and (cards[3].getValue() == 11) \
+            and (cards[4].getValue() == 12):            
             print "Hey!"
             return 500000
-
     return 0
 
 def checkIfAllCardsIsBlack(cards) :
