@@ -13,13 +13,18 @@ def calculatePoints(cards) :
     '''
     
     
-    
-    points = checkPair(cards)
-    if (points > 0) :
+    points = checkRoyalFush(cards)
+    if (points > 0 ) :
         return points
     
     
     
+    
+    
+    
+    points = checkPair(cards)
+    if (points > 0) :
+        return points
     
     else :
         return 0
@@ -29,17 +34,45 @@ def calculatePoints(cards) :
 def checkRoyalFush (cards) :
     cards = sorted(cards)
     
-    color = checkColorOnAllCards(cards)
+    color = checkIfAllCardsIsBlack(cards)
     
-
-
-
-def checkColorOnAllCards(cards) :
-    for (i in cards) :
-        if (i.getSymbole() == 0 or i.getSymbole() == 1) :
-            
-            
+    if (color is False) :
+        color = checkIfAllCardsIsRed(cards)
     
+    
+    if (color) :
+        print "alle sorte kort!"
+        if (cards[0].getValue() == 8) and (cards[1].getValue() == 9) and (cards[2].getValue() == 10) and (cards[3].getValue() == 11) and (cards[4].getValue() == 12) :
+            return 200000
+
+    return 0
+
+def checkIfAllCardsIsBlack(cards) :
+    
+    cardsBlack = 0
+    
+    i = 0 
+    for i in cards :
+        if (i.getSymbol() == 0) or (i.getSymbol() == 1) :
+            cardsBlack += 1
+        
+    if (cardsBlack == 5) :
+        return True
+    return False
+ 
+def checkIfAllCardsIsRed(cards) :
+    
+    cardsBlack = 0
+    
+    i = 0 
+    for i in cards :
+        if (i.getSymbol() == 3) or (i.getSymbol() == 4) :
+            cardsBlack += 1
+        
+    if (cardsBlack == 5) :
+        return True
+    return False            
+            
 def checkPair(cards) :
     i = 0
     # For each card
