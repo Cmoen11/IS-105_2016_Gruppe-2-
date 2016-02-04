@@ -15,7 +15,7 @@ def calculatePoints(cards) :
         return points
      
     #Straight Flush check
-    points = checkRoyalFush(cards)          # Value given if found is 480 000
+    points = checkStraightFlush(cards)          # Value given if found is 480 000
     if (points > 0 ) :
         return points    
         
@@ -78,7 +78,7 @@ def checkFourLike(cards) :
             ekstraPoint += 20
             
     return 0
-def checkFullHouse(cards) :
+def checkFullHouse(cards) : 
     return 0
 def checkFlush(cards) :
     return 0
@@ -100,7 +100,12 @@ def checkRoyalFush (cards) :
     
     if (color) : # if either all of the cards is red or black
         #Check if is royal flush
-        if (cards[0].getValue() == 4) and (cards[1].getValue() == 5) and (cards[2].getValue() == 6) and (cards[3].getValue() == 7) and (cards[4].getValue() == 8) :
+        if (cards[0].getValue() == 4) \
+           and (cards[1].getValue() == 5) \
+           and (cards[2].getValue() == 6) \
+           and (cards[3].getValue() == 7) \
+           and (cards[4].getValue() == 8) :
+            print "Hey!"
             return 500000
 
     return 0

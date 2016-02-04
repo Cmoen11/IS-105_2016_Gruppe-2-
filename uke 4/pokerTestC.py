@@ -1,19 +1,24 @@
 import unittest
 import Poker
+import Pointcalc_Poker
 
-class TestAdd(unittest.TestCase):
+class TestCalculatePoints(unittest.TestCase):
+    pokerCards = []
     def setUp(self):
-        pass
-    def test_numbers_5_2(self):
-        self.assertEqual()
+        i = 0
+        startCard = 8
+        global pokerCards
+        pokerCards = []
+        for i in range(0,5) :
+            obj = Poker.PokerCard(0, startCard)
+            print startCard
+            pokerCards.append(obj)
+            startCard += 1
+             
+    def test_testCalculatePoints(self):
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.checkRoyalFush(pokerCards), 500000)
 
-
-class TestAdd(unittest.TestCase):
-    def setUp(self):
-        
-        pass
-    def test_numbers_5_2(self):
-        self.assertEqual()
 
 
 if __name__ == '__main__':

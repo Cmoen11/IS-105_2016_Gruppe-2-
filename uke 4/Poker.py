@@ -2,7 +2,7 @@
 import random 
 from random import randint
 import Pointcalc_Poker
-
+ 
 
 def deal(pokerCards) :
     '''
@@ -46,14 +46,10 @@ def generateCards():
             value += 1
         symbole += 1
         value = 0
-    pokerCards = random.sample(pokerCards, len(pokerCards))     
-    return pokerCards
-               
-
-
-
-                 
     
+    
+    return random.sample(pokerCards,len(pokerCards))    
+   
 
 '''
 Each card is a object of pokercard
