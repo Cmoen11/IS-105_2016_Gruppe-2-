@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import random 
 from random import randint
+import Pointcalc_Poker
 
 
 def deal(pokerCards) :
@@ -49,11 +50,9 @@ def generateCards():
     return pokerCards
                
 
-def calculatePoints(cards) :
-    '''
-    this method will return back a 'score' of the selected score, in order to find the winner.
-    '''
-    
+
+
+                 
     
 
 '''
@@ -102,6 +101,7 @@ class Player :
         
         # set the deck of the player
         self.cards = cards
+        self.points = Pointcalc_Poker.calculatePoints(cards)
         
         #set the random name
         self.name = names[randint(0, 6)]
@@ -114,6 +114,8 @@ class Player :
     def getCards(self):
         return self.cards
 
+    def getPoints(self):
+        return self.points
  
 # Do stuff...  
             
@@ -130,3 +132,6 @@ for i in range(0,len(players)) :
     while len(obj) > x :
         print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
+    
+    point = str(players[i].getPoints())
+    print ("players scores " + point )
