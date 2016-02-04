@@ -68,6 +68,15 @@ def checkStraightFlush (cards):
         return 480000
     return 0
 def checkFourLike(cards) :
+    i = 0
+    ekstraPoint = 0
+    # Go trough each card value and see if any of them are alike. Add also 20 exstra points for each run, so higher card values give higher score
+    for i in range(0,12):
+        if (cards[0].getValue() == i) and (cards[1].getValue() == i) and (cards[2].getValue() == i) and (cards[3].getValue() == i) and (cards[4].getValue() == i):
+            return 460000 + ekstraPoint
+        else:
+            ekstraPoint += 20
+            
     return 0
 def checkFullHouse(cards) :
     return 0
