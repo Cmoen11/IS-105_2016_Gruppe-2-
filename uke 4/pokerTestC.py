@@ -72,19 +72,36 @@ class TestPair(unittest.TestCase):
     def setUp(self):
         global pokerCards
         pokerCards = []
+        
+        # this is a pair of twos
         pokerCards.append(Poker.PokerCard(0,2))
         pokerCards.append(Poker.PokerCard(1,2))
+        
+        # the three remaining cards
         i = 5
         for i in range (5,8) :
             obj = Poker.PokerCard(0,i)
             pokerCards.append(obj)            
                 
 
-    def test_testCalculatePoints2(self):
+    def test_testCalculatePoints4(self):
         global pokerCards
-        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 111)
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 104)
+        
 
+class TestFullHouse(unittest.TestCase):
+    pass
+    
+class TestFlush(unittest.TestCase):
+    pass
 
+class TestStraight(unittest.TestCase):
+    pass
+
+class TestThreeOfaKind(unittest.Testcase):
+    pass
+
+    
 if __name__ == '__main__':
     unittest.main()
     
