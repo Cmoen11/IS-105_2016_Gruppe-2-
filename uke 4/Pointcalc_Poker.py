@@ -19,8 +19,8 @@ def calculatePoints(cards) :
     if (points > 0 ) :
         return points    
         
-    #Four like check
-    points = checkFourLike(cards)           # Depends on value of the cards.. 
+    #Four of a kind check
+    points = checkFourOfaKind(cards)           # Depends on value of the cards.. 
     if (points > 0 ) :                      
         return points       
 
@@ -71,10 +71,10 @@ def checkStraightFlush (cards):
        and (cards[4].getValue() == 8) :
         return 480000
     return 0
-def checkFourLike(cards) :
+def checkFourOfaKind(cards) :
     i = 0
     ekstraPoint = 0
-    # Go trough each card value and see if any of them are alike. Add also 20 exstra points for each run, so higher card values give higher score
+    # Go through each card value and see if any of them are alike. Add also 20 exstra points for each run, so higher card values give higher score
     for i in range(0,12):
         if (cards[0].getValue() == i) and (cards[1].getValue() == i) and (cards[2].getValue() == i) and (cards[3].getValue() == i) and (cards[4].getValue() == i):
             return 460000 + ekstraPoint
