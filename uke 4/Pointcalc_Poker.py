@@ -7,21 +7,16 @@ def calculatePoints(cards) :
     
     
     '''
+    Royalflush == 200k points
+    
     PAIR of 2's give 2 points + 2 for every exstra card /// + 1 point for every number higher than this.
     
     
     '''
-    
-    
     points = checkRoyalFush(cards)
     if (points > 0 ) :
         return points
-    
-    
-    
-    
-    
-    
+
     points = checkPair(cards)
     if (points > 0) :
         return points
@@ -29,8 +24,19 @@ def calculatePoints(cards) :
     else :
         return 0
     
-
-
+    
+def  checkStraightFlush (cards):
+    pass
+def checkFourLike(cards) :
+    pass
+def checkFullHouse(cards) :
+    pass
+def checkFlush(cards) :
+    pass
+def checkStraight(cards) :
+    pass
+def checkThreeLike(cards) :
+    pass
 def checkRoyalFush (cards) :
     cards = sorted(cards)
     
