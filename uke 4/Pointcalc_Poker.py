@@ -6,12 +6,8 @@ def calculatePoints(cards) :
     points = 0;
     
     '''
-    Royalflush == 200k points
-    PAIR of 2's give 2 points + 2 for every exstra card /// + 1 point for every number higher than this.
-    
-    
-    
-    Check all the possible hands, return the highest hand possible.
+    Run trought every "hand" you can get, from the highest to the lowest. Stop when you've reached the higest hand
+    and return the points
     '''
     # Royal flush check
     points = checkRoyalFush(cards)          # Value given if found is 500 000
@@ -19,7 +15,7 @@ def calculatePoints(cards) :
         return points
      
     #Straight Flush check
-    points = checkRoyalFush(cards)         # Value given if found is 480 000
+    points = checkRoyalFush(cards)          # Value given if found is 480 000
     if (points > 0 ) :
         return points    
         
@@ -58,6 +54,18 @@ def calculatePoints(cards) :
     
     
 def checkStraightFlush (cards):
+    #Sort the cards
+    cards = sorted(cards)
+    
+    #Check the colour of the card
+    color = checkIfAllCardsIsBlack(cards) # if all the cards colour is black
+    
+    if (color is False) :   # If the colour is not black, check if all is red 
+        color = checkIfAllCardsIsRed(cards)
+    
+    # Check if is a straight flush  
+    if (cards[0].getValue() == 8) and (cards[1].getValue() == 9) and (cards[2].getValue() == 10) and (cards[3].getValue() == 11) and (cards[4].getValue() == 12):
+        return 480000
     return 0
 def checkFourLike(cards) :
     return 0
@@ -70,18 +78,21 @@ def checkStraight(cards) :
 def checkThreeLike(cards) :
     return 0
 def checkRoyalFush (cards) :
+    
+    #Sort the cards
     cards = sorted(cards)
     
-    color = checkIfAllCardsIsBlack(cards)
+    #Check the colour of the card
+    color = checkIfAllCardsIsBlack(cards) # if all the cards colour is black
     
-    if (color is False) :
+    if (color is False) :   # If the colour is not black, check if all is red 
         color = checkIfAllCardsIsRed(cards)
     
     
-    if (color) :
-        print "alle sorte kort!"
-        if (cards[0].getValue() == 8) and (cards[1].getValue() == 9) and (cards[2].getValue() == 10) and (cards[3].getValue() == 11) and (cards[4].getValue() == 12) :
-            return 200000
+    if (color) : # if either all of the cards is red or black
+        #Check if is royal flush
+        if (cards[0].getValue() == 4) and (cards[1].getValue() == 5) and (cards[2].getValue() == 6) and (cards[3].getValue() == 7) and (cards[4].getValue() == 8) :
+            return 500000
 
     return 0
 
