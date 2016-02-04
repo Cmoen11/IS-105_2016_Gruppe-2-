@@ -10,47 +10,47 @@ def calculatePoints(cards) :
     and return the points
     '''
     # Royal flush check
-    points = checkRoyalFlush(cards)          # Value given if found is 500 000
+    points = checkRoyalFlush(cards)              # Value given if found is 500 000
     if (points > 0 ) :
         return points
      
     #Straight Flush check
-    points = checkStraightFlush(cards)          # Value given if found is 480 000
+    points = checkStraightFlush(cards)           # Value given if found is 480 000
     if (points > 0 ) :
         return points    
         
     #Four of a kind check
-    points = checkFourOfaKind(cards)           # Depends on value of the cards.. 
+    points = checkFourOfaKind(cards)             # Depends on value of the cards.. 
     if (points > 0 ) :                      
         return points       
 
     #Full house check 
-    points = checkFullHouse(cards)          # Depends on value of the cards.. 
+    points = checkFullHouse(cards)               # Depends on value of the cards.. 
     if (points > 0 ) :  
         return points
     
     #Flush check
-    points = checkFlush(cards)              # Value given if found is 120 000
+    points = checkFlush(cards)                   # Value given if found is 120 000
     if (points > 0):
         return points
     
     #Sraight check
-    points = checkStraight(cards)           # Value given if found is 100 000
+    points = checkStraight(cards)                # Value given if found is 100 000
     if (points > 0):
         return points
     
     #three like check
-    points = checkThreeOfaKind(cards)          # Value given if found is 80 000
+    points = checkThreeOfaKind(cards)            # Value given if found is 80 000
     if (points > 0):
         return points    
     
     # pair of 2's check 
-    points = checkPair(cards)               # Depends on value of the cards.. 
+    points = checkPair(cards)                    # Depends on value of the cards.. 
     if (points > 0) :
         return points
     
     else :
-        return 0                            # Player has not got any hand of value
+        return 0                                 # Player has not got any hand of value
     
     
 def checkStraightFlush (cards):
