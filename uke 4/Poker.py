@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import random 
 from random import randint
-
+import Pointcalc_Poker
+ 
 
 def deal(pokerCards) :
     '''
@@ -34,6 +35,10 @@ def generateCards():
     symbole = 0             # deligere symbole
     value = 0               # Deligere value
     
+    
+    '''
+    Generate a deck of cards
+    '''
     for x in range (0,4) :
         for i in range(0,13) :
             obj = PokerCard(symbole, value)
@@ -42,9 +47,10 @@ def generateCards():
         symbole += 1
         value = 0
     
-    pokerCards = random.sample(pokerCards, len(pokerCards))     
-    return pokerCards
-               
+    
+    return random.sample(pokerCards,len(pokerCards))    
+   
+
 '''
 Each card is a object of pokercard
 '''
@@ -74,12 +80,12 @@ class PokerCard:
     
     # set the symbole value over to string for reading
     def getStringSymbol(self) :
-        symbol_name = ['ruter', 'hjerter', 'spar', 'klover']
+        symbol_name = ['Spar', 'klover', 'hjerter', 'ruter']
         return symbol_name[self.symbol]
 
 
 '''
-Each player is a object og the class
+Each player is a object og the clas
 '''
 class Player :
     def __init__ (self, cards) :
@@ -91,6 +97,7 @@ class Player :
         
         # set the deck of the player
         self.cards = cards
+        self.points = Pointcalc_Poker.calculatePoints(cards)
         
         #set the random name
         self.name = names[randint(0, 6)]
@@ -103,9 +110,13 @@ class Player :
     def getCards(self):
         return self.cards
 
+    def getPoints(self):
+        return self.points
  
 # Do stuff...  
             
+
+
 cards = generateCards()
 players = deal(cards)
 
@@ -119,3 +130,6 @@ for i in range(0,len(players)) :
     while len(obj) > x :
         print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
+    
+    point = str(players[i].getPoints())
+    print ("players scores " + point )
