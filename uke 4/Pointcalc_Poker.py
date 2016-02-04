@@ -40,7 +40,7 @@ def calculatePoints(cards) :
         return points
     
     #three like check
-    points = checkThreeLike(cards)          # Value given if found is 80 000
+    points = checkThreeOfaKind(cards)          # Value given if found is 80 000
     if (points > 0):
         return points    
     
@@ -88,7 +88,7 @@ def checkFlush(cards) :
     return 0
 def checkStraight(cards) :
     return 0
-def checkThreeLike(cards) :
+def checkThreeOfaKind(cards) :
     return 0
 def checkRoyalFlush (cards) :
     
