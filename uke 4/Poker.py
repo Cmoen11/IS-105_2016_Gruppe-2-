@@ -34,17 +34,28 @@ def generateCards():
     symbole = 0             # deligere symbole
     value = 0               # Deligere value
     
+    
+    '''
+    Generate a deck of cards
+    '''
     for x in range (0,4) :
-        for i in range(0,13 ) :
+        for i in range(0,13) :
             obj = PokerCard(symbole, value)
             pokerCards.append(obj)
             value += 1
         symbole += 1
         value = 0
-    
     pokerCards = random.sample(pokerCards, len(pokerCards))     
     return pokerCards
                
+
+def calculatePoints(cards) :
+    '''
+    this method will return back a 'score' of the selected score, in order to find the winner.
+    '''
+    
+    
+
 '''
 Each card is a object of pokercard
 '''
@@ -79,7 +90,7 @@ class PokerCard:
 
 
 '''
-Each player is a object og the class
+Each player is a object og the clas
 '''
 class Player :
     def __init__ (self, cards) :
