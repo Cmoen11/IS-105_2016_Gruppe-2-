@@ -5,38 +5,70 @@ def calculatePoints(cards) :
     #Score given:
     points = 0;
     
-    
     '''
     Royalflush == 200k points
-    
     PAIR of 2's give 2 points + 2 for every exstra card /// + 1 point for every number higher than this.
     
     
+    
+    Check all the possible hands, return the highest hand possible.
     '''
-    points = checkRoyalFush(cards)
+    # Royal flush check
+    points = checkRoyalFush(cards)          # Value given if found is 500 000
     if (points > 0 ) :
         return points
+     
+    #Straight Flush check
+    points = checkRoyalFush(cards)         # Value given if found is 480 000
+    if (points > 0 ) :
+        return points    
+        
+    #Four like check
+    points = checkFourLike(cards)           # Depends on value of the cards.. 
+    if (points > 0 ) :                      
+        return points       
 
-    points = checkPair(cards)
+    #Full house check 
+    points = checkFullHouse(cards)          # Depends on value of the cards.. 
+    if (points > 0 ) :  
+        return points
+    
+    #Flush check
+    points = checkFlush(cards)              # Value given if found is 120 000
+    if (points > 0):
+        return points
+    
+    #Sraight check
+    points = checkStraight(cards)           # Value given if found is 100 000
+    if (points > 0):
+        return points
+    
+    #three like check
+    points = checkThreeLike(cards)          # Value given if found is 80 000
+    if (points > 0):
+        return points    
+    
+    # pair of 2's check 
+    points = checkPair(cards)               # Depends on value of the cards.. 
     if (points > 0) :
         return points
     
     else :
-        return 0
+        return 0                            # Player has not got any hand of value
     
     
-def  checkStraightFlush (cards):
-    pass
+def checkStraightFlush (cards):
+    return 0
 def checkFourLike(cards) :
-    pass
+    return 0
 def checkFullHouse(cards) :
-    pass
+    return 0
 def checkFlush(cards) :
-    pass
+    return 0
 def checkStraight(cards) :
-    pass
+    return 0
 def checkThreeLike(cards) :
-    pass
+    return 0
 def checkRoyalFush (cards) :
     cards = sorted(cards)
     
