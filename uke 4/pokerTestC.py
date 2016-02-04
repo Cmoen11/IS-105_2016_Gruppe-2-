@@ -38,7 +38,7 @@ class TestStraightFlush(unittest.TestCase):
         self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 480000)
         
         
-class TestFourLike(unittest.TestCase):
+class TestFourOfaKind(unittest.TestCase):
     pokerCards = []
     cards = []
     def setUp(self):
@@ -65,7 +65,24 @@ class TestFourLike(unittest.TestCase):
     def test_testCalculatePoints3(self):
         global cards
         self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 0)    
+        
 
+class TestPair(unittest.TestCase):
+    pokerCards = []
+    def setUp(self):
+        global pokerCards
+        pokerCards = []
+        pokerCards.append(Poker.PokerCard(0,2))
+        pokerCards.append(Poker.PokerCard(1,2))
+        i = 5
+        for i in range (5,8) :
+            obj = Poker.PokerCard(0,i)
+            pokerCards.append(obj)            
+                
+
+    def test_testCalculatePoints2(self):
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 111)
 
 
 if __name__ == '__main__':
