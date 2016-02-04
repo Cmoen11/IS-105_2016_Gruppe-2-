@@ -11,11 +11,35 @@ def calculatePoints(cards) :
     
     
     '''
-    ekstraPoint = checkPair(cards,pair_point)
     
-    print ekstraPoint
-    return points + ekstraPoint;
+    
+    
+    points = checkPair(cards)
+    if (points > 0) :
+        return points
+    
+    
+    
+    
+    else :
+        return 0
+    
 
+
+def checkRoyalFush (cards) :
+    cards = sorted(cards)
+    
+    color = checkColorOnAllCards(cards)
+    
+
+
+
+def checkColorOnAllCards(cards) :
+    for (i in cards) :
+        if (i.getSymbole() == 0 or i.getSymbole() == 1) :
+            
+            
+    
 def checkPair(cards) :
     i = 0
     # For each card
@@ -28,7 +52,7 @@ def checkPair(cards) :
         x = 0
         for x in range(0, 5):
             #ekstra points
-            ekstraPoint = 0;
+            ekstraPoint = 0
             
             # Jump over current card 
             if (x is not i) :
@@ -48,4 +72,4 @@ def checkPair(cards) :
                                 ekstraPoint += 1
                     
                     # Add points            
-                    return pair_point + ekstraPoint;    
+                    return pair_point + ekstraPoint + 100   
