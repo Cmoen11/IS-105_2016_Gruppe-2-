@@ -12,23 +12,30 @@ class TestCalculatePoints(unittest.TestCase):
         pokerCards = []
         for i in range(0,5) :
             obj = Poker.PokerCard(0, startCard)
-            print startCard
             pokerCards.append(obj)
             startCard += 1
              
     def test_testCalculatePoints(self):
         global pokerCards
-        self.assertEqual(Pointcalc_Poker.checkRoyalFush(pokerCards), 500000)
+        self.assertEqual(Pointcalc_Poker.checkRoyalFlush(pokerCards), 500000)
 
 
 
-
-class TestPair(unittest.TestCase):
+class TestStraightFlush(unittest.TestCase):
+    pokerCards = []
     def setUp(self):
-        pass
+        i = 0
+        startCard = 4
+        global pokerCards
+        pokerCards = []
+        for i in range(0,5) :
+            obj = Poker.PokerCard(0, startCard)
+            pokerCards.append(obj)
+            startCard += 1
              
     def test_testCalculatePoints(self):
-        self.assertEqual()
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 480000)
 
 
 if __name__ == '__main__':
