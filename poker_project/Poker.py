@@ -2,19 +2,21 @@
 import random 
 from random import randint
 import Pointcalc_Poker
- 
+import CalculateWinner
 
 def deal(pokerCards) :
     '''
-    Create 5 player and deal out 5 cards to each player
+    Create 6 player and deal out 5 cards to each player
     '''
     players = []
     i = 0
     y = 0 # card number
-    for i in range(0,5) :
+    
+    # Create 6 players
+    for i in range(0,6) :
         cardToPlayer = []
         x = 0
-        
+        # Give each 6 player 5 cards
         for x in range(0,5):
             cardToPlayer.append(pokerCards[y])
             y += 1
@@ -133,3 +135,6 @@ for i in range(0,len(players)) :
     
     point = str(players[i].getPoints())
     print ("players scores " + point )
+    
+print "winner is:"
+print CalculateWinner.CalculateWinner(players).getName()
