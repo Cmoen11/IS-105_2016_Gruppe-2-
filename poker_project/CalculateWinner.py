@@ -2,11 +2,12 @@
 
 def CalculateWinner(players) :
   
+  # Find 3 candicates
   winner1 = returnHighestObject(players[0], players[1]) 
   winner2 = returnHighestObject(players[2], players[3])
   winner3 = returnHighestObject(players[4], players[5]) 
   
-  
+  # Find the winner
   if (winner1.getPoints() > winner2.getPoints()) \
      and (winner1.getPoints() > winner3.getPoints()) :
     return winner1

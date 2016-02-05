@@ -50,6 +50,7 @@ def generateCards():
         value = 0
     
     
+    #Shufle the deck and return it
     return random.sample(pokerCards,len(pokerCards))    
    
 
