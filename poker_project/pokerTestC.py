@@ -93,13 +93,15 @@ class TestPair(unittest.TestCase):
 class TestFullHouse(unittest.TestCase):
     pass
     
-class TestFlush(unittest.TestCase):
+class TestFlush(unittest.TestCase): #Merthe
     pass
 
 class TestStraight(unittest.TestCase):
     pass
 
 class TestThreeOfaKind(unittest.TestCase):
+    
+    
     pass
 
     
