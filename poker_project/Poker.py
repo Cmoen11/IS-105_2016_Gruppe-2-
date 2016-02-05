@@ -140,8 +140,8 @@ for i in range(0,len(players)) :
 print 
 print "winner is:"
 print CalculateWinner.CalculateWinner(players).getName()
-print "med disse kortene:"
-print
+print 
+print"med disse kortene:"
 x = 0
 obj = CalculateWinner.CalculateWinner(players).getCards()
 while len(obj) > x :

@@ -23,9 +23,6 @@ def CalculateWinner(players) :
     
 #This method take's tho objects, 
 #will return the object with highest value variable back
-
-
-
 def returnHighestObject (obj1, obj2):
     
     if obj1.getPoints() > obj2.getPoints():
