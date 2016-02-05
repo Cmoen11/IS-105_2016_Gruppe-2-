@@ -82,7 +82,7 @@ class PokerCard:
     
     # set the symbole value over to string for reading
     def getStringSymbol(self) :
-        symbol_name = ['Spar', 'klover', 'hjerter', 'ruter']
+        symbol_name = ['Spar', 'kløver', 'hjerter', 'ruter']
         return symbol_name[self.symbol]
 
 
@@ -136,5 +136,14 @@ for i in range(0,len(players)) :
     point = str(players[i].getPoints())
     print ("players scores " + point )
     
+print 
 print "winner is:"
 print CalculateWinner.CalculateWinner(players).getName()
+print "med disse kortene:"
+print
+x = 0
+obj = CalculateWinner.CalculateWinner(players).getCards()
+while len(obj) > x :
+    print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
+    x += 1
+        
