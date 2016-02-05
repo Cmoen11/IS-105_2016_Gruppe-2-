@@ -98,7 +98,7 @@ class TestFlush(unittest.TestCase):
 class TestStraight(unittest.TestCase):
     pass
 
-class TestThreeOfaKind(unittest.Testcase):
+class TestThreeOfaKind(unittest.TestCase):
     pass
 
     
