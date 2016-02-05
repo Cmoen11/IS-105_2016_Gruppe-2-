@@ -2,7 +2,7 @@ import unittest
 import Poker
 import Pointcalc_Poker
 
-class TestCalculatePoints(unittest.TestCase):
+class TestRoyalFlush(unittest.TestCase):
     
     pokerCards = []
     def setUp(self):
@@ -13,11 +13,12 @@ class TestCalculatePoints(unittest.TestCase):
         for i in range(0,5) :
             obj = Poker.PokerCard(0, startCard)
             pokerCards.append(obj)
+            print startCard
             startCard += 1
              
     def test_testCalculatePoints1(self):
         global pokerCards
-        self.assertEqual(Pointcalc_Poker.checkRoyalFlush(pokerCards), 500000)
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 500000)
 
 
 
@@ -98,7 +99,7 @@ class TestFlush(unittest.TestCase):
 class TestStraight(unittest.TestCase):
     pass
 
-class TestThreeOfaKind(unittest.Testcase):
+class TestThreeOfaKind(unittest.TestCase):
     pass
 
     

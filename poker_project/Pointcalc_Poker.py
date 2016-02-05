@@ -110,7 +110,6 @@ def checkRoyalFlush (cards) :
             and (cards[2].getValue() == 10) \
             and (cards[3].getValue() == 11) \
             and (cards[4].getValue() == 12):            
-            print "Hey!"
             return 500000
     return 0
 
