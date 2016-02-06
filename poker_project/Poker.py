@@ -147,34 +147,38 @@ class Player :
             
 
 
-cards = generateCards()
-players = deal(cards)
 
-i = 0
-for i in range(0,len(players)) :
+def run () :
+    
+    cards = generateCards()
+    players = deal(cards)
+    
+    i = 0
+    for i in range(0,len(players)) :
+        
+        print 
+        obj = players[i].getCards()
+        print players[i].getName()
+    
+        x = 0
+        while len(obj) > x :
+            print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
+            x += 1
+        
+        point = str(players[i].getPoints())
+        handname = players[i].getHandName()
+        print ("players scores " + point )
+        print handname
+        
     print 
-    obj = players[i].getCards()
-    print players[i].getName()
-
+    print "winner is:"
+    print CalculateWinner.CalculateWinner(players).getName()
+    print
+    obj = CalculateWinner.CalculateWinner(players).getCards()
+    print"med disse kortene:"
     x = 0
+    
     while len(obj) > x :
         print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
-    
-    point = str(players[i].getPoints())
-    handname = players[i].getHandName()
-    print ("players scores " + point )
-    print handname
-    
-print 
-print "winner is:"
-print CalculateWinner.CalculateWinner(players).getName()
-print
-obj = CalculateWinner.CalculateWinner(players).getCards()
-print"med disse kortene:"
-x = 0
-
-while len(obj) > x :
-    print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
-    x += 1
-        
+run()
