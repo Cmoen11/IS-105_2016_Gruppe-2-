@@ -1,7 +1,0 @@
-﻿
-oppgave uke 4
-#
-# Write a message for tag:
-#   4.1.0
-# Lines starting with '#' will be ignored.
-
