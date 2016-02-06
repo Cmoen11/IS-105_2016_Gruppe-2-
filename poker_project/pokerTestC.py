@@ -100,11 +100,6 @@ class TestStraight(unittest.TestCase):
     pass
 
 class TestThreeOfaKind(unittest.TestCase):
-<<<<<<< HEAD
-    
-    
-    pass
-=======
     pokerCards = []
     cards = []
     def setUp(self):
@@ -122,7 +117,6 @@ class TestThreeOfaKind(unittest.TestCase):
         self.assertEqual(Pointcalc_Poker.checkThreeOfaKind(pokerCards), 80000)
         
         
->>>>>>> 721e2635e367beccfc32e9ac1a2a8dffdc8522e2
 
     
 if __name__ == '__main__':

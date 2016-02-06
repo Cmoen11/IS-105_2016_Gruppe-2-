@@ -220,6 +220,6 @@ def checkPair(cards) :
                 
                 
 def sortList(cards) :
-    return cards.sort(key=lambda x: x.getValue(), reverse=True)
+    return sorted(cards, key=lambda x: x.getValue(), reverse=True)
 
     
