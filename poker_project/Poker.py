@@ -125,7 +125,7 @@ class Player :
  
     def getHandName(self):
         points = self.points
-        if points < 200 :                                        # 2 of a kind
+        if points < 200 and (points >= 100):                                        # 2 of a kind
             return "2 like(Par)"    
         elif (points >= 80000) and (points < 85000) :            # 3 of a kind
             return "3 like(Three of a kind)"
@@ -149,7 +149,9 @@ class Player :
 
 
 def run () :
-    
+    '''
+    This class is just for testing the methods for a 'real' run
+    '''
     cards = generateCards()
     players = deal(cards)
     
