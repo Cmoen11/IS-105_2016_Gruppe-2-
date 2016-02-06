@@ -5,26 +5,21 @@ import Pointcalc_Poker
 import CalculateWinner
 
 def deal(pokerCards) :
-    '''
-    Create 6 player and deal out 5 cards to each player
-    '''
+    # Create 6 players and generate 5 cards each 
     players = []
-    i = 0
+    i = 0 # For loop
     y = 0 # card number
-    
     # Create 6 players
     for i in range(0,6) :
         cardToPlayer = []
-        x = 0
+        x = 0 # for loop
         # Give each 6 player 5 cards
         for x in range(0,5):
             cardToPlayer.append(pokerCards[y])
             y += 1
-            
+        # Append to the player
         players.append(Player(cardToPlayer))
-        
     return players
-
 def generateCards():
     '''
     Generate cards and then shuffle them
@@ -42,10 +37,7 @@ def generateCards():
         symbole = 0             # deligere symbole
         value = 0               # Deligere value
         
-        
-        '''
-        Generate a deck of cards
-        '''
+        # Generate a deck of cards
         for x in range (0,4) :
             for i in range(0,13) :
                 obj = PokerCard(symbole, value)
@@ -53,32 +45,25 @@ def generateCards():
                 value += 1
             symbole += 1
             value = 0
-    
-    
+            
     #Shufle the deck and return it
     return random.sample(pokerCards,len(pokerCards))    
-   
 
-
-'''
-Each card is a object of pokercard
-'''
 class PokerCard:
-
     def __init__ (self, symbol, value) :
         '''
-        Symbole er da hvilken type kort det er. 
+        Symbol er da hvilken type kort det er. 
         Value er da hvilken verdi kortet har
-        
         '''
         self.symbol = symbol
         self.value = value
     def __repr__(self):
             return repr((self.symbol, self.value))        
+    
     # Return value of the card 
     def getValue(self) :
         return self.value
-
+    
     # Return the symboleValue
     def getSymbol(self) :
         return self.symbol
@@ -93,11 +78,8 @@ class PokerCard:
         symbol_name = ['Spar', 'kløver', 'hjerter', 'ruter']
         return symbol_name[self.symbol]
 
-
-'''
-Each player is a object og the clas
-'''
 class Player :
+    # Each player will be an object from this class
     def __init__ (self, cards) :
         '''
         Give the player random name
@@ -124,6 +106,7 @@ class Player :
         return self.points
  
     def getHandName(self):
+        # this method will create a string of what kind of hand the player has
         points = self.points
         if points < 200 and points >= 100:                    # 2 of a kind
             return "2 like(Par)"    
@@ -143,11 +126,7 @@ class Player :
             return "Royal flush"
         else:
             return "Ingen ting"
-# Do stuff...  
             
-
-
-
 def run () :
     '''
     This class is just for testing the methods for a 'real' run

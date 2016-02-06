@@ -153,10 +153,9 @@ def checkRoyalFlush (cards) :
     return 0
 
 def checkIfAllCardsIsBlack(cards) :
+    cardsBlack = 0 # To hold on how many black card that is been found
+    i = 0 # for loop
     
-    cardsBlack = 0
-    
-    i = 0
     # Run trough every card, and increment by one
     for i in cards :
         if (i.getSymbol() == 0) or (i.getSymbol() == 1) :
@@ -167,10 +166,9 @@ def checkIfAllCardsIsBlack(cards) :
     return False
  
 def checkIfAllCardsIsRed(cards) :
+    cardsRed= 0 # To hold on how many red card that is been found
+    i = 0 # For loop
     
-    cardsRed= 0
-    
-    i = 0
     # Run trough every card, and increment by one
     for i in cards :
         if (i.getSymbol() == 3) or (i.getSymbol() == 4) :
@@ -180,22 +178,18 @@ def checkIfAllCardsIsRed(cards) :
     if (cardsRed == 5) :
         return True
     return False            
-            
 
 def checkPair(cards) :
     i = 0
     # For each card
     for i in range(0,5):
-        
         # for et pair + ekstra like kort
         pair_point = 2 
-        
+        #ekstra points
+        ekstraPoint = 0
         # Check each card
         x = 0
         for x in range(0, 5):
-            #ekstra points
-            ekstraPoint = 0
-            
             # Jump over current card 
             if (x is not i) :
                 if (cards[i].getValue() == cards[x].getValue()) :
