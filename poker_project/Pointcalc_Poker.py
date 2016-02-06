@@ -50,8 +50,9 @@ def calculatePoints(cards) :
     if (points > 0) :
         return points
     
+    
     else :
-        return 0                                 # Player has not got any hand of value
+        return checkForHighCard(cards)                                # Player has not got any hand of value
     
     
 def checkStraightFlush (cards):
@@ -190,6 +191,7 @@ def checkPair(cards) :
         # Check each card
         x = 0
         for x in range(0, 5):
+
             # Jump over current card 
             if (x is not i) :
                 if (cards[i].getValue() == cards[x].getValue()) :
@@ -211,6 +213,13 @@ def checkPair(cards) :
                     return pair_point + ekstraPoint + 100   
                 
                 
+def checkForHighCard(cards):
+    # add each cardvalue to the score
+    score = 0
+    for card in cards :
+        score =+ card.getValue()
+    return score
+        
 def sortList(cards) :
     return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
 
