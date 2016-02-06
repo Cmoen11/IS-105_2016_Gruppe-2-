@@ -100,7 +100,23 @@ class TestStraight(unittest.TestCase):
     pass
 
 class TestThreeOfaKind(unittest.TestCase):
-    pass
+    pokerCards = []
+    cards = []
+    def setUp(self):
+        i = 0
+        global pokerCards
+        pokerCards = []
+        pokerCards.append(Poker.PokerCard(0,2))
+        pokerCards.append(Poker.PokerCard(0,3))
+        pokerCards.append(Poker.PokerCard(0,2))
+        pokerCards.append(Poker.PokerCard(0,3))
+        pokerCards.append(Poker.PokerCard(0,2))
+        
+    def test_testCalculatePoints8(self):
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.checkThreeOfaKind(pokerCards), 80000)
+        
+        
 
     
 if __name__ == '__main__':

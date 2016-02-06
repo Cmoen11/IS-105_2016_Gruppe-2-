@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def calculatePoints(cards) :
     '''
     this method will return back a 'score' of the selected score, in order to find the winner.
@@ -74,10 +75,19 @@ def checkStraightFlush (cards):
 def checkFourOfaKind(cards) :
     i = 0
     ekstraPoint = 0
+    cards.sort()
     # Go through each card value and see if any of them are alike. Add also 20 exstra points for each run, so higher card values give higher score
     for i in range(0,12):
-        if (cards[0].getValue() == i) and (cards[1].getValue() == i) and (cards[2].getValue() == i) and (cards[3].getValue() == i) and (cards[4].getValue() == i):
+        if (cards[0].getValue() == i) \
+           and (cards[1].getValue() == i) \
+           and (cards[2].getValue() == i) \
+           and (cards[3].getValue() == i):
             return 460000 + ekstraPoint
+        if (cards[4].getValue() == i) \
+           and (cards[3].getValue() == i) \
+           and (cards[2].getValue() == i) \
+           and (cards[1].getValue() == i) :
+                return 460000 + ekstraPoint        
         else:
             ekstraPoint += 20
             
@@ -89,7 +99,43 @@ def checkFlush(cards) :
 def checkStraight(cards) :
     return 0
 def checkThreeOfaKind(cards) :
+    i = 0
+    ekstraPoint = 0
+    
+    # Sett kortene i stigende rekkefølge
+    cards.sort()
+    print '******'
+    print cards[0].getValue()
+    print cards[1].getValue()
+    print cards[2].getValue()    
+    print '******'
+    for i in range(0,12):
+        #Sjekk om det er 3 like i stigende rekkefølge
+        if(cards[0].getValue() == i) \
+          and (cards[1].getValue() == i) \
+          and (cards[2].getValue() == i) :
+            return 80000 + ekstraPoint
+        
+        #Sjekk om det er 3 like  fra høyt til lavt
+        elif(cards[1].getValue() == i) \
+            and (cards[2].getValue() == i) \
+            and (cards[3].getValue() == i) :
+            return 80000 + ekstraPoint
+        
+        # sjekk i midten av bunken
+        elif (cards[2].getValue() == i) \
+            and (cards[3].getValue() == i) \
+            and (cards[4].getValue() == i) :
+            
+            return 80000 + ekstraPoint
+        
+        
+        else:
+            ekstraPoint += 20
+                
     return 0
+                
+                
 def checkRoyalFlush (cards) :
     
     #Sort the cards
