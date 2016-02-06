@@ -47,13 +47,20 @@ class TestFourOfaKind(unittest.TestCase):
         global cards
         pokerCards = []
         cards = []
+        
+        
         for i in range(0,5) :
             obj = Poker.PokerCard(0,0)
             pokerCards.append(obj)
             
-        for i in range(0,5) :
-            obj = Poker.PokerCard(0,i)
-            cards.append(obj)
+        cards = [
+            Poker.PokerCard(2,5),
+            Poker.PokerCard(2,4),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,9),
+            Poker.PokerCard(2,2),
+      
+        ]
             
             
     # A test where cards are four of a kind.         

@@ -75,7 +75,7 @@ def checkStraightFlush (cards):
 def checkFourOfaKind(cards) :
     i = 0
     ekstraPoint = 0
-    cards.sort()
+    cards = sortList(cards)
     # Go through each card value and see if any of them are alike. Add also 20 exstra points for each run, so higher card values give higher score
     for i in range(0,12):
         if (cards[0].getValue() == i) \
