@@ -174,7 +174,7 @@ def checkIfAllCardsIsRed(cards) :
     # Run trough every card, and increment by one
     for i in cards :
         if (i.getSymbol() == 3) or (i.getSymbol() == 4) :
-            cardsBlack += 1
+            cardsRed += 1
     
     # if all the cards is red, return true, if not return false.    
     if (cardsRed == 5) :
