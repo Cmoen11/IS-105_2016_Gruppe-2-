@@ -55,7 +55,7 @@ def calculatePoints(cards) :
     
 def checkStraightFlush (cards):
     #Sort the cards
-    cards.sort()
+    cards = sortList(cards)
     
     #Check the colour of the card
     color = checkIfAllCardsIsBlack(cards) # if all the cards colour is black
@@ -93,7 +93,7 @@ def checkThreeOfaKind(cards) :
 def checkRoyalFlush (cards) :
     
     #Sort the cards
-    cards.sort()
+    cards = sortList(cards)
     #Check the colour of the card
     color = checkIfAllCardsIsBlack(cards) # if all the cards colour is black
     
@@ -137,6 +137,7 @@ def checkIfAllCardsIsRed(cards) :
         return True
     return False            
             
+
 def checkPair(cards) :
     i = 0
     # For each card
@@ -170,3 +171,9 @@ def checkPair(cards) :
                     
                     # Add points            
                     return pair_point + ekstraPoint + 100   
+                
+                
+def sortList(cards) :
+    return cards.sort(key=lambda x: x.getValue(), reverse=True)
+
+    
