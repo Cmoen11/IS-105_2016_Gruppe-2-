@@ -52,7 +52,8 @@ def calculatePoints(cards) :
     
     
     else :
-        return checkForHighCard(cards)                                # Player has not got any hand of value
+        points = checkForHighCard(cards)
+        return points                              # Player has not got any hand of value
     
     
 def checkStraightFlush (cards):
@@ -217,7 +218,7 @@ def checkForHighCard(cards):
     # add each card value to the score
     score = 0
     for card in cards :
-        score =+ card.getValue()
+        score = score + card.getValue()
     return score
         
 def sortList(cards) :
