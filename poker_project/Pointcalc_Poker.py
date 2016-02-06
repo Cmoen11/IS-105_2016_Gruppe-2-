@@ -103,12 +103,12 @@ def checkThreeOfaKind(cards) :
     ekstraPoint = 0
     
     # Sett kortene i stigende rekkefølge
-    cards.sort()
-    print '******'
+    cards = sortList(cards)
+    print '**1***'
     print cards[0].getValue()
     print cards[1].getValue()
     print cards[2].getValue()    
-    print '******'
+    print '**1***'
     for i in range(0,12):
         #Sjekk om det er 3 like i stigende rekkefølge
         if(cards[0].getValue() == i) \
@@ -220,6 +220,6 @@ def checkPair(cards) :
                 
                 
 def sortList(cards) :
-    return sorted(cards, key=lambda x: x.getValue(), reverse=True)
+    return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
 
     

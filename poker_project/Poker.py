@@ -67,7 +67,8 @@ class PokerCard:
         '''
         self.symbol = symbol
         self.value = value
-        
+    def __repr__(self):
+            return repr((self.symbol, self.value))        
     # Return value of the card 
     def getValue(self) :
         return self.value
