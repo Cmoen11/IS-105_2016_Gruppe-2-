@@ -32,27 +32,33 @@ def generateCards():
     '''
     pokerCards = []
     
-    i = 0                   # For loop
-    x = 0                   # for loop
-    symbole = 0             # deligere symbole
-    value = 0               # Deligere value
-    
-    
-    '''
-    Generate a deck of cards
-    '''
-    for x in range (0,4) :
-        for i in range(0,13) :
-            obj = PokerCard(symbole, value)
-            pokerCards.append(obj)
-            value += 1
-        symbole += 1
-        value = 0
+    # How many deck that is created
+    deck = 2
+    y = 0
+    for y in range(0,deck) :
+        
+        i = 0                   # For loop
+        x = 0                   # for loop
+        symbole = 0             # deligere symbole
+        value = 0               # Deligere value
+        
+        
+        '''
+        Generate a deck of cards
+        '''
+        for x in range (0,4) :
+            for i in range(0,13) :
+                obj = PokerCard(symbole, value)
+                pokerCards.append(obj)
+                value += 1
+            symbole += 1
+            value = 0
     
     
     #Shufle the deck and return it
     return random.sample(pokerCards,len(pokerCards))    
    
+
 
 '''
 Each card is a object of pokercard
