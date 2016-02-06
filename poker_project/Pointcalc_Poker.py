@@ -41,7 +41,7 @@ def calculatePoints(cards) :
         return points
     
     #three like check
-    points = checkThreeOfaKind(cards)            # Value given if found is 80 000
+    points = checkThreeOfaKind(cards)            # Value given if found is 80 000 + 20 for each card higher than 0
     if (points > 0):
         return points    
     
