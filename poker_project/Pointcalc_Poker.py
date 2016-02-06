@@ -104,11 +104,6 @@ def checkThreeOfaKind(cards) :
     
     # Sett kortene i stigende rekkefølge
     cards = sortList(cards)
-    print '**1***'
-    print cards[0].getValue()
-    print cards[1].getValue()
-    print cards[2].getValue()    
-    print '**1***'
     for i in range(0,12):
         #Sjekk om det er 3 like i stigende rekkefølge
         if(cards[0].getValue() == i) \
