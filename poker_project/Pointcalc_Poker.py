@@ -41,7 +41,7 @@ def calculatePoints(cards) :
         return points
     
     #three like check
-    points = checkThreeOfaKind(cards)            # Value given if found is 80 000
+    points = checkThreeOfaKind(cards)            # Value given if found is 80 000 + 20 for each card higher than 0
     if (points > 0):
         return points    
     
@@ -156,25 +156,28 @@ def checkIfAllCardsIsBlack(cards) :
     
     cardsBlack = 0
     
-    i = 0 
+    i = 0
+    # Run trough every card, and increment by one
     for i in cards :
         if (i.getSymbol() == 0) or (i.getSymbol() == 1) :
             cardsBlack += 1
-        
+    # if all the cards is black, return true, if not return false.      
     if (cardsBlack == 5) :
         return True
     return False
  
 def checkIfAllCardsIsRed(cards) :
     
-    cardsBlack = 0
+    cardsRed= 0
     
-    i = 0 
+    i = 0
+    # Run trough every card, and increment by one
     for i in cards :
         if (i.getSymbol() == 3) or (i.getSymbol() == 4) :
-            cardsBlack += 1
-        
-    if (cardsBlack == 5) :
+            cardsRed += 1
+    
+    # if all the cards is red, return true, if not return false.    
+    if (cardsRed == 5) :
         return True
     return False            
             

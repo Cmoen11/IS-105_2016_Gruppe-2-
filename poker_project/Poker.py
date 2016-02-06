@@ -30,29 +30,35 @@ def generateCards():
     Generate cards and then shuffle them
     @return shuffled deck
     '''
-    pokerCards = []
+    pokerCards = [] #The veriable that holds all the cards
+    deck = 20 # How many deck that is created
+    y = 0 # For loop
     
-    i = 0                   # For loop
-    x = 0                   # for loop
-    symbole = 0             # deligere symbole
-    value = 0               # Deligere value
-    
-    
-    '''
-    Generate a deck of cards
-    '''
-    for x in range (0,4) :
-        for i in range(0,13) :
-            obj = PokerCard(symbole, value)
-            pokerCards.append(obj)
-            value += 1
-        symbole += 1
-        value = 0
+    # create deck(s)
+    for y in range(0,deck) :
+        
+        i = 0                   # For loop
+        x = 0                   # for loop
+        symbole = 0             # deligere symbole
+        value = 0               # Deligere value
+        
+        
+        '''
+        Generate a deck of cards
+        '''
+        for x in range (0,4) :
+            for i in range(0,13) :
+                obj = PokerCard(symbole, value)
+                pokerCards.append(obj)
+                value += 1
+            symbole += 1
+            value = 0
     
     
     #Shufle the deck and return it
     return random.sample(pokerCards,len(pokerCards))    
    
+
 
 '''
 Each card is a object of pokercard
@@ -117,35 +123,64 @@ class Player :
     def getPoints(self):
         return self.points
  
+    def getHandName(self):
+        points = self.points
+        if points < 200 and points >= 100:                    # 2 of a kind
+            return "2 like(Par)"    
+        elif (points >= 80000) and (points < 85000) :            # 3 of a kind
+            return "3 like(Three of a kind)"
+        elif (points >= 100000) and (points < 105000) :          # Straight
+            return "Straight"
+        elif (points >= 120000) and (points < 130000) :          # Flush
+            return "Flush"
+        elif (points >= 140000) and (points < 150000) :          # Full house
+            return "Fult hus"
+        elif (points >= 160000) and (points < 170000) :          # 4 of a kind
+            return "Fire like"
+        elif (points >= 480000) and (points < 490000) :          # Straight flush
+            return "Straight flush"
+        elif (points >= 500000) and (points < 520000) :          # Royal flush
+            return "Royal flush"
+        else:
+            return "Ingen ting"
 # Do stuff...  
             
 
 
-cards = generateCards()
-players = deal(cards)
 
-i = 0
-for i in range(0,len(players)) :
+def run () :
+    '''
+    This class is just for testing the methods for a 'real' run
+    '''
+    cards = generateCards()
+    players = deal(cards)
+    
+    i = 0
+    for i in range(0,len(players)) :
+        
+        print 
+        obj = players[i].getCards()
+        print players[i].getName()
+    
+        x = 0
+        while len(obj) > x :
+            print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
+            x += 1
+        
+        point = str(players[i].getPoints())
+        handname = players[i].getHandName()
+        print ("players scores " + point )
+        print handname
+        
     print 
-    obj = players[i].getCards()
-    print players[i].getName()
-
+    print "winner is:"
+    print CalculateWinner.CalculateWinner(players).getName()
+    print
+    obj = CalculateWinner.CalculateWinner(players).getCards()
+    print"med disse kortene:"
     x = 0
+    
     while len(obj) > x :
         print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
-    
-    point = str(players[i].getPoints())
-    print ("players scores " + point )
-    
-print 
-print "winner is:"
-print CalculateWinner.CalculateWinner(players).getName()
-print 
-print"med disse kortene:"
-x = 0
-obj = CalculateWinner.CalculateWinner(players).getCards()
-while len(obj) > x :
-    print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
-    x += 1
-        
+run()
