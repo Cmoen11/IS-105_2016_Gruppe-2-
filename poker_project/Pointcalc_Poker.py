@@ -214,7 +214,7 @@ def checkPair(cards) :
                 
                 
 def checkForHighCard(cards):
-    # add each cardvalue to the score
+    # add each card value to the score
     score = 0
     for card in cards :
         score =+ card.getValue()
