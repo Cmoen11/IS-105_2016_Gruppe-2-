@@ -138,6 +138,7 @@ def run () :
     for i in range(0,len(players)) :
         
         print 
+        
         obj = players[i].getCards()
         print players[i].getName()
     
@@ -162,4 +163,6 @@ def run () :
     while len(obj) > x :
         print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
+        
 run()
+

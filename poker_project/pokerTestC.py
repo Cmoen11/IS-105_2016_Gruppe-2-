@@ -54,11 +54,11 @@ class TestFourOfaKind(unittest.TestCase):
             pokerCards.append(obj)
             
         cards = [
-            Poker.PokerCard(2,5),
-            Poker.PokerCard(2,4),
-            Poker.PokerCard(2,3),
-            Poker.PokerCard(2,9),
+            Poker.PokerCard(0,2),
+            Poker.PokerCard(1,2),
             Poker.PokerCard(2,2),
+            Poker.PokerCard(3,3),
+            Poker.PokerCard(4,3),
       
         ]
             
@@ -97,7 +97,28 @@ class TestPair(unittest.TestCase):
         
 
 class TestFullHouse(unittest.TestCase):
-    pass
+    pokerCards = []
+    cards = []
+    def setUp(self):
+        i = 0
+        global pokerCards
+        global cards
+        pokerCards = []
+        cards = []
+            
+            
+        for i in range(0,5) :
+            obj = Poker.PokerCard(0,0)
+            pokerCards.append(obj)
+                
+        cards = [
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,3),
+          
+            ]    
     
 class TestFlush(unittest.TestCase): 
     pass
@@ -132,4 +153,4 @@ if __name__ == '__main__':
     unittest.main()
     
     
-    
+run (TestFullHouse)
