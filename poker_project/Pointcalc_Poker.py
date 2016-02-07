@@ -189,6 +189,8 @@ def checkFullHouse(cards) :
 
 
 def checkFlush(cards) :
+    if (checkForSameType(cards)) :
+        return 120000
     return 0
 def checkStraight(cards) :
     return 0
@@ -312,6 +314,17 @@ def checkForHighCard(cards):
     for card in cards :
         score = score + card.getValue()
     return score
+        
+def checkForSameType(cards):
+    i = 0
+    for i in range(0,4) :
+        if (cards[0].getSymbol() == i) \
+           and (cards[1].getSymbol() == i) \
+           and (cards[2].getSymbol() == i) \
+           and (cards[3].getSymbol() == i) \
+           and (cards[4].getSymbol() == i) :
+            return True
+    return False
         
 def sortList(cards) :
     return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
