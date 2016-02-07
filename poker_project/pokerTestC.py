@@ -100,7 +100,34 @@ class TestFullHouse(unittest.TestCase):
     pass
     
 class TestFlush(unittest.TestCase): 
-    pass
+    pokerCards = []
+    pokerCards2 = []
+    def setUp(self):
+        global pokerCards
+        global pokerCards2
+        pokerCards = [
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,1),
+      
+        ]
+        pokerCards2 = [
+            Poker.PokerCard(1,9),
+            Poker.PokerCard(2,4),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,12),
+      
+        ]        
+
+    def test_testCalculatePoints_flush(self):
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 120000)
+    def test_testCalculatePoints_flush2(self):
+        global pokerCards2
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards2), 30)    
 
 class TestStraight(unittest.TestCase):
     pass
