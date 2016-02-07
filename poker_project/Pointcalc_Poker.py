@@ -100,8 +100,7 @@ def checkFullHouse(cards) :
     ekstraPoint = 0
     
     cards = sortList(cards)
-    # Go through each card value and see if there is 3 alike and 2 alike. There is alot of
-    # combos for FullHouse, so 
+    # Go through each card value and see if there is 3 alike and 2 alike.
     for i in range(0,12):
         for ii in range (0,12):
             if(cards[0].getValue() == i) \
