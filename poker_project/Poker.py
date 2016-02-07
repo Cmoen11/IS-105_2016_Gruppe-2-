@@ -112,9 +112,7 @@ class Player :
             return "2 like(Par)"    
         elif (points >= 80000) and (points < 85000) :            # 3 of a kind
             return "3 like(Three of a kind)"
-        elif (points >= 100000) and (points < 105000) :          # Straight
-            
-            
+        elif (points >= 100000) and (points < 105000) :          # Straight  
             return "Straight"
         elif (points >= 120000) and (points < 130000) :          # Flush
             return "Flush"
