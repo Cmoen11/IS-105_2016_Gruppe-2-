@@ -101,7 +101,7 @@ def checkFullHouse(cards) :
     
     cards = sortList(cards)
     #
-    for ii in range(0,12):
+    for i in range(0,12):
         if(cards[0].getValue() == i) \
           and (cards[1].getValue() == i) \
           and (cards[2].getValue() == i) \
