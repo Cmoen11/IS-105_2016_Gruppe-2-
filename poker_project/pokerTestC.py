@@ -39,29 +39,8 @@ class TestStraightFlush(unittest.TestCase):
         
         
 class TestFourOfaKind(unittest.TestCase):
-    pokerCards = []
-    cards = []
-    def setUp(self):
-        i = 0
-        global pokerCards
-        global cards
-        pokerCards = []
-        cards = []
-        
-        
-        for i in range(0,5) :
-            obj = Poker.PokerCard(0,0)
-            pokerCards.append(obj)
-            
-        cards = [
-            Poker.PokerCard(0,2),
-            Poker.PokerCard(1,2),
-            Poker.PokerCard(2,2),
-            Poker.PokerCard(3,3),
-            Poker.PokerCard(4,3),
-      
-        ]
-            
+
+       
             
     # A test where cards are four of a kind.         
     def test_testCalculatePoints3(self):
@@ -153,4 +132,3 @@ if __name__ == '__main__':
     unittest.main()
     
     
-run (TestFullHouse)

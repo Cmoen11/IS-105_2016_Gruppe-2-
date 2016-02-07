@@ -75,7 +75,7 @@ class PokerCard:
     
     # set the symbole value over to string for reading
     def getStringSymbol(self) :
-        symbol_name = ['Spar', 'kløver', 'hjerter', 'ruter']
+        symbol_name = ['Spar', 'kloevr', 'hjerter', 'ruter']
         return symbol_name[self.symbol]
 
 class Player :
@@ -113,6 +113,8 @@ class Player :
         elif (points >= 80000) and (points < 85000) :            # 3 of a kind
             return "3 like(Three of a kind)"
         elif (points >= 100000) and (points < 105000) :          # Straight
+            
+            
             return "Straight"
         elif (points >= 120000) and (points < 130000) :          # Flush
             return "Flush"
@@ -149,6 +151,7 @@ def run () :
         
         point = str(players[i].getPoints())
         handname = players[i].getHandName()
+        
         print ("players scores " + point )
         print handname
         
