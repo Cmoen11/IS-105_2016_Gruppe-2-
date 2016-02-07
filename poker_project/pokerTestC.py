@@ -84,21 +84,25 @@ class TestFullHouse(unittest.TestCase):
         global cards
         pokerCards = []
         cards = []
-            
-            
+
+
         for i in range(0,5) :
             obj = Poker.PokerCard(0,0)
             pokerCards.append(obj)
-                
+
         cards = [
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,3),
             Poker.PokerCard(2,3),
-          
-            ]    
-    
+
+            ]       
+        
+    def test_testCalculatePoints8(self):
+            global pokerCards
+            self.assertEqual(Pointcalc_Poker.checkFourOfaKind(pokerCards), 140040)        
+  
 class TestFlush(unittest.TestCase): 
     pokerCards = []
     pokerCards2 = []
