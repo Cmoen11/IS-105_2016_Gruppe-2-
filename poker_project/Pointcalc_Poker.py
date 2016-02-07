@@ -96,7 +96,7 @@ def checkFourOfaKind(cards) :
     return 0
 def checkFullHouse(cards) : 
     i = 0
-    ii = 1
+    ii = 0
     ekstraPoint = 0
     
     cards = sortList(cards)
@@ -105,65 +105,72 @@ def checkFullHouse(cards) :
         if(cards[0].getValue() == i) \
           and (cards[1].getValue() == i) \
           and (cards[2].getValue() == i) \
-          and (cards[3].getValue() == ii) \
-          and (cards[4].getValue() == ii):
+          and (cards[3].getValue() == i+1) \
+          and (cards[4].getValue() == i+1):
             return 140000 + ekstraPoint
         #
         elif (cards[1].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
-            and (cards[0].getValue() == ii) \
-            and (cards[4].getValue() == ii):
+            and (cards[0].getValue() == i+1) \
+            and (cards[4].getValue() == i+1):
             return 140000 + ekstraPoint
         #
         elif (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) \
-            and (cards[0].getValue() == ii) \
-            and (cards[1].getValue() == ii):
+            and (cards[0].getValue() == i+1) \
+            and (cards[1].getValue() == i+1):
             return 140000 + ekstraPoint  
         #
         elif (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) \
             and (cards[0].getValue() == i) \
-            and (cards[1].getValue() == ii) \
-            and (cards[2].getValue() == ii):
+            and (cards[1].getValue() == i+1) \
+            and (cards[2].getValue() == i+1):
             return 140000 + ekstraPoint
         #
         elif (cards[4].getValue() == i) \
             and (cards[0].getValue() == i) \
             and (cards[1].getValue() == i) \
-            and (cards[2].getValue() == ii) \
-            and (cards[3].getValue() == ii):
+            and (cards[2].getValue() == i+1) \
+            and (cards[3].getValue() == i+1):
             return 140000 + ekstraPoint
         
         elif (cards[0].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
-            and (cards[1].getValue() == ii) \
-            and (cards[4].getValue() == ii):
+            and (cards[1].getValue() == i+1) \
+            and (cards[4].getValue() == i+1):
             return 140000 + ekstraPoint  
         
         elif (cards[0].getValue() == i) \
             and (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) \
-            and (cards[1].getValue() == ii) \
-            and (cards[2].getValue() == ii):
+            and (cards[1].getValue() == i+1) \
+            and (cards[2].getValue() == i+1):
             return 140000 + ekstraPoint 
         
         elif (cards[0].getValue() == i) \
             and (cards[4].getValue() == i) \
             and (cards[1].getValue() == i) \
-            and (cards[2].getValue() == ii) \
-            and (cards[3].getValue() == ii):
+            and (cards[2].getValue() == i+1) \
+            and (cards[3].getValue() == i+1):
             return 140000 + ekstraPoint 
         
         elif (cards[0].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[4].getValue() == i) \
-            and (cards[1].getValue() == ii) \
-            and (cards[3].getValue() == ii):
-            return 140000 + ekstraPoint         
+            and (cards[1].getValue() == i+1) \
+            and (cards[3].getValue() == i+1):
+            return 140000 + ekstraPoint 
+        
+        elif (cards[1].getValue() == i) \
+            and (cards[2].getValue() == i) \
+            and (cards[4].getValue() == i) \
+            and (cards[0].getValue() == i+1) \
+            and (cards[3].getValue() == i+1):
+            return 140000 + ekstraPoint            
         
         else: 
             ekstraPoint +=20
