@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+'''
+Denne koden vil kunne kalkulere ulike points 
+'''
+
+
+
 def calculatePoints(cards) :
     '''
     this method will return back a 'score' of the selected score, in order to find the winner.
@@ -26,7 +32,7 @@ def calculatePoints(cards) :
         return points       
 
     #Full house check 
-    points = checkFullHouse(cards)               # Depends on value of the cards.. 
+    points = checkFullHouse(cards)               # Valie given if found is 140 000
     if (points > 0 ) :  
         return points
     
@@ -52,7 +58,8 @@ def calculatePoints(cards) :
     
     
     else :
-        return checkForHighCard(cards)                                # Player has not got any hand of value
+        points = checkForHighCard(cards)
+        return points                              # Player has not got any hand of value
     
     
 def checkStraightFlush (cards):
@@ -83,19 +90,76 @@ def checkFourOfaKind(cards) :
            and (cards[1].getValue() == i) \
            and (cards[2].getValue() == i) \
            and (cards[3].getValue() == i):
-            return 460000 + ekstraPoint
+            return 160000 + ekstraPoint
         if (cards[4].getValue() == i) \
            and (cards[3].getValue() == i) \
            and (cards[2].getValue() == i) \
            and (cards[1].getValue() == i) :
-                return 460000 + ekstraPoint        
+                return 160000 + ekstraPoint        
         else:
             ekstraPoint += 20
             
     return 0
 def checkFullHouse(cards) : 
+    i = 0
+    ii = 0
+    ekstraPoint = 0
+    
+    cards = sortList(cards)
+    # Go through each card value and see if there is 3 alike and 2 alike.
+    for i in range(0,12):
+        for ii in range (0,12):
+            if(cards[0].getValue() == i) \
+              and (cards[1].getValue() == i) \
+              and (cards[2].getValue() == i) \
+              and (cards[3].getValue() == ii) \
+              and (cards[4].getValue() == ii):
+                return 140000 + ekstraPoint   
+            
+            if(cards[1].getValue() == i) \
+              and (cards[2].getValue() == i) \
+              and (cards[3].getValue() == i) \
+              and (cards[4].getValue() == ii) \
+              and (cards[0].getValue() == ii):
+                return 140000 + ekstraPoint            
+
+
+            if(cards[2].getValue() == i) \
+              and (cards[3].getValue() == i) \
+              and (cards[4].getValue() == i) \
+              and (cards[0].getValue() == ii) \
+              and (cards[1].getValue() == ii):
+                return 140000 + ekstraPoint        
+
+
+            if(cards[3].getValue() == i) \
+              and (cards[4].getValue() == i) \
+              and (cards[0].getValue() == i) \
+              and (cards[1].getValue() == ii) \
+              and (cards[2].getValue() == ii):
+                return 140000 + ekstraPoint            
+            
+            if(cards[4].getValue() == i) \
+              and (cards[0].getValue() == i) \
+              and (cards[1].getValue() == i) \
+              and (cards[2].getValue() == ii) \
+              and (cards[3].getValue() == ii):
+                return 140000 + ekstraPoint   
+                      
+
+            
+            else: 
+                ekstraPoint +=20
+        
+            
     return 0
+
+
+
+
 def checkFlush(cards) :
+    if (checkForSameType(cards)) :
+        return 120000
     return 0
 def checkStraight(cards) :
     return 0
@@ -217,10 +281,25 @@ def checkForHighCard(cards):
     # add each card value to the score
     score = 0
     for card in cards :
-        score =+ card.getValue()
+        score = score + card.getValue()
     return score
         
+def checkForSameType(cards):
+    # Check for the same type card. 
+    # @return true or false, based if every card symbol is alike.
+    i = 0
+    for i in range(0,4) :
+        if (cards[0].getSymbol() == i) \
+           and (cards[1].getSymbol() == i) \
+           and (cards[2].getSymbol() == i) \
+           and (cards[3].getSymbol() == i) \
+           and (cards[4].getSymbol() == i) :
+            return True
+    return False
+        
 def sortList(cards) :
+    # Sort list based on card value
+    # @return sorted list
     return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
 
     
