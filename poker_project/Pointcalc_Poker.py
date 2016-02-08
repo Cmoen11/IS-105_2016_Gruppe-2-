@@ -21,7 +21,7 @@ def calculatePoints(cards) :
         return points    
         
     #Four of a kind check
-    points = checkFourOfaKind(cards)             # Depends on value of the cards.. 
+    points = checkFourOfaKind(cards)             # Value given if found is 160 000 
     if (points > 0 ) :                      
         return points       
 
@@ -110,7 +110,7 @@ def checkFullHouse(cards) :
               and (cards[4].getValue() == ii):
                 return 140000 + ekstraPoint   
             
-            if(cards[1].getValue() == i) \
+            elif(cards[1].getValue() == i) \
               and (cards[2].getValue() == i) \
               and (cards[3].getValue() == i) \
               and (cards[4].getValue() == ii) \
@@ -118,7 +118,7 @@ def checkFullHouse(cards) :
                 return 140000 + ekstraPoint            
 
 
-            if(cards[2].getValue() == i) \
+            elif(cards[2].getValue() == i) \
               and (cards[3].getValue() == i) \
               and (cards[4].getValue() == i) \
               and (cards[0].getValue() == ii) \
@@ -126,14 +126,14 @@ def checkFullHouse(cards) :
                 return 140000 + ekstraPoint        
 
 
-            if(cards[3].getValue() == i) \
+            elif(cards[3].getValue() == i) \
               and (cards[4].getValue() == i) \
               and (cards[0].getValue() == i) \
               and (cards[1].getValue() == ii) \
               and (cards[2].getValue() == ii):
                 return 140000 + ekstraPoint            
             
-            if(cards[4].getValue() == i) \
+            elif(cards[4].getValue() == i) \
               and (cards[0].getValue() == i) \
               and (cards[1].getValue() == i) \
               and (cards[2].getValue() == ii) \
