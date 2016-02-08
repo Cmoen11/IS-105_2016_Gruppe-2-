@@ -26,7 +26,7 @@ def calculatePoints(cards) :
         return points       
 
     #Full house check 
-    points = checkFullHouse(cards)               # Valie given if found is 140 000
+    points = checkFullHouse(cards)               # Value given if found is 140 000
     if (points > 0 ) :  
         return points
     
