@@ -39,29 +39,8 @@ class TestStraightFlush(unittest.TestCase):
         
         
 class TestFourOfaKind(unittest.TestCase):
-    pokerCards = []
-    cards = []
-    def setUp(self):
-        i = 0
-        global pokerCards
-        global cards
-        pokerCards = []
-        cards = []
-        
-        
-        for i in range(0,5) :
-            obj = Poker.PokerCard(0,0)
-            pokerCards.append(obj)
-            
-        cards = [
-            Poker.PokerCard(2,5),
-            Poker.PokerCard(2,4),
-            Poker.PokerCard(2,3),
-            Poker.PokerCard(2,9),
-            Poker.PokerCard(2,2),
-      
-        ]
-            
+
+       
             
     # A test where cards are four of a kind.         
     def test_testCalculatePoints3(self):
@@ -97,10 +76,62 @@ class TestPair(unittest.TestCase):
         
 
 class TestFullHouse(unittest.TestCase):
-    pass
-    
+    pokerCards = []
+    cards = []
+    def setUp(self):
+        i = 0
+        global pokerCards
+        global cards
+        pokerCards = []
+        cards = []
+
+
+        for i in range(0,5) :
+            obj = Poker.PokerCard(0,0)
+            pokerCards.append(obj)
+
+        cards = [
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,3),
+
+            ]       
+        
+    def test_testCalculatePoints8(self):
+            global pokerCards
+            self.assertEqual(Pointcalc_Poker.checkFourOfaKind(pokerCards), 140040)        
+  
 class TestFlush(unittest.TestCase): 
-    pass
+    pokerCards = []
+    pokerCards2 = []
+    def setUp(self):
+        global pokerCards
+        global pokerCards2
+        pokerCards = [
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,1),
+      
+        ]
+        pokerCards2 = [
+            Poker.PokerCard(1,9),
+            Poker.PokerCard(2,4),
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,12),
+      
+        ]        
+
+    def test_testCalculatePoints_flush(self):
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 120000)
+    def test_testCalculatePoints_flush2(self):
+        global pokerCards2
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards2), 30)    
 
 class TestStraight(unittest.TestCase):
     pass
@@ -130,6 +161,5 @@ class TestThreeOfaKind(unittest.TestCase):
     
 if __name__ == '__main__':
     unittest.main()
-    
     
     
