@@ -46,10 +46,10 @@ class TestFourOfaKind(unittest.TestCase):
         global pokerCards
         cards = [
             Poker.PokerCard(2,2),
-            Poker.PokerCard(2,2),
-            Poker.PokerCard(2,2),
-            Poker.PokerCard(2,2),
-            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,9),
+            Poker.PokerCard(2,10),
+            Poker.PokerCard(2,0),
+            Poker.PokerCard(2,1),
 
             ]            
         pokerCards = [
@@ -62,7 +62,7 @@ class TestFourOfaKind(unittest.TestCase):
             ]          
             
     # A test where cards are four of a kind.         
-    def test_testCalculatePoints3(self):
+    def test_testCalculatePoints_3(self):
         global pokerCards
         self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 160040)
     
