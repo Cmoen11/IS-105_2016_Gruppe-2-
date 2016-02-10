@@ -18,4 +18,6 @@ def CalculateWinner(players) :
   return players[0]
      
 def sortList(players) :
+  # Sort by points
+  # @return a list were the highest score is displayed first
   return sorted(players, key=lambda PokerCards: PokerCards.points, reverse=True)
