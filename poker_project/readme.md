@@ -36,24 +36,24 @@ kommer mer etter...
 ### Value og symbol definasjoner: 
 
 ####Value
-0 = 2
-1 = 3
-2 = 4
-3 = 5
-4 = 6
-5 = 7
-6 = 8
-7 = 9
-8 = 10
-9 = knekt
-10 = Dronning
-11 = Konge
-12 = Ess (ace)
+0 = 2<br />
+1 = 3<br />
+2 = 4<br />
+3 = 5<br />
+4 = 6<br />
+5 = 7<br />
+6 = 8<br />
+7 = 9<br />
+8 = 10<br />
+9 = knekt<br />
+10 = Dronning<br />
+11 = Konge<br />
+12 = Ess (ace)<br />
 
 ####Symbol
-0 = Kløver
-1 = Spar
-2 = Hjerter
-3 = Ruter
+0 = Kløver<br />
+1 = Spar<br />
+2 = Hjerter<br />
+3 = Ruter<br />
 
 Testing er blitt gjort i modulen PokerTestC.py
