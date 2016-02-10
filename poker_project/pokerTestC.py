@@ -69,7 +69,7 @@ class TestFourOfaKind(unittest.TestCase):
     # A test where no cards are four of a kind.    
     def test_testCalculatePoints_3(self):
         global cards
-        self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 160040)    
+        self.assertEqual(Pointcalc_Poker.checkFourOfaKind(cards), 0)    
         
 
 class TestPair(unittest.TestCase):
