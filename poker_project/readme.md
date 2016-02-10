@@ -35,4 +35,25 @@ kommer mer etter...
 
 ### Value og symbol definasjoner: 
 
+####Value
+0 = 2
+1 = 3
+2 = 4
+3 = 5
+4 = 6
+5 = 7
+6 = 8
+7 = 9
+8 = 10
+9 = knekt
+10 = Dronning
+11 = Konge
+12 = Ess (ace)
+
+####Symbol
+0 = Kløver
+1 = Spar
+2 = Hjerter
+3 = Ruter
+
 Testing er blitt gjort i modulen PokerTestC.py
