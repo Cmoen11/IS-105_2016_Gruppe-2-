@@ -45,26 +45,22 @@ Denne genererer da et x antall bunker med kort(deck), som kommer an på hvilken 
 
 
 ### Value og symbol definasjoner: 
+| Tall          | Value           | Symbol  |
+| ------------- |:-------------:| -----:|
+0 | 2 | ♠ Spar |
+1 | 3 | ♣ Kløver |
+2 | 4 | ♥ Hjerter |
+3 | 5 | ♦ Ruter |
+4 | 6 | ... |
+5 | 7 | ... |
+6 | 8 | ... |
+7 | 9 | ... |
+8 | 10 | ... |
+9 | knekt | ... |
+10 | Dronning | ... |
+11|Konge | ... |
+12|Ess (ace) | ... |
 
-####Value
-0 = 2<br />
-1 = 3<br />
-2 = 4<br />
-3 = 5<br />
-4 = 6<br />
-5 = 7<br />
-6 = 8<br />
-7 = 9<br />
-8 = 10<br />
-9 = knekt<br />
-10 = Dronning<br />
-11 = Konge<br />
-12 = Ess (ace)<br />
 
-####Symbol
-0 = Kløver<br />
-1 = Spar<br />
-2 = Hjerter<br />
-3 = Ruter<br />
 
 Testing er blitt gjort i modulen PokerTestC.py
