@@ -164,6 +164,7 @@ def run () :
     while len(obj) > x :
         print obj[x].getStringSymbol() + " " + obj[x].getStringValue()
         x += 1
-        
-run()
+
+if __name__ == '__main__':      
+    run()
 
