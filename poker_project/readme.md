@@ -39,8 +39,7 @@ En beskrivelse av hvordan hver spiller skal fremstilles og hvilke variabler den 
 <br /><br />
 <b> class PokerCard </b><br />
 En beskrivelse av hvordan et kort skal fremstilles. Et kort krever da 2 parametere for å kunne opprette et objekt. De to parameterene er Value og symbol, value står for hvilken verdi kortet har, mens symbol står for hvilken type kortet er. Under dette innlegget får du en bedre definasjon på bestemmelsene for dette. 
-
-<br /><br />
+<br />
 <b> def generateCards </b><br />
 Denne genererer da et x antall bunker med kort(deck), som kommer an på hvilken informasjon som er gitt til den. Den vil lage 13 av hver symbol(sjanger på kortet) pr deck og returnere da en bunke med kortene som er generert. 
 
