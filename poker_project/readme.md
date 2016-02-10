@@ -39,10 +39,33 @@ En beskrivelse av hvordan hver spiller skal fremstilles og hvilke variabler den 
 <br /><br />
 <b> class PokerCard </b><br />
 En beskrivelse av hvordan et kort skal fremstilles. Et kort krever da 2 parametere for å kunne opprette et objekt. De to parameterene er Value og symbol, value står for hvilken verdi kortet har, mens symbol står for hvilken type kortet er. Under dette innlegget får du en bedre definasjon på bestemmelsene for dette. 
-<br />
+<br /><br />
 <b> def generateCards </b><br />
 Denne genererer da et x antall bunker med kort(deck), som kommer an på hvilken informasjon som er gitt til den. Den vil lage 13 av hver symbol(sjanger på kortet) pr deck og returnere da en bunke med kortene som er generert. 
-
+<br /><br />
+<b> def deal</b><br />
+Oppretter spillerobjektene og deler ut kort fra toppen av bunken til spillerene. Det er kun midlertidig at spillerobjektene blir opprettet fra denne metoden. Dette vil bli endret når det er faktiske spillere som blir med på "bordet". 
+<br /><br />
+<b> def calculatePoints</b><br />
+Denne gå igjennom alle mulighetene for å finne ut hvilken hånd spilleren har fått og den returnerer da tilbake rangeringen hånden har, i dette tilfellet har vi gitt det navnet poeng. Poeng vil ikke bli synlig for spilleren, men brukes mer for å indikere hvilken hånd som er størst. 
+<br /><br />
+<b> def checkIfAllCardsIsBlack</b><br />
+Sjekker om alle kortene har enten symbol 0 (spar) eller 1 (kløver)
+<br /><br />
+<b> def checkIfAllCardsIsRed</b><br />
+Sjekker om alle kortene har enten symbol 2 (Hjerter) eller 3 (Ruter)
+<br /><br />
+<b> def checkForSameType</b><br />
+Sjekker om alle symbolene til kortene er like. f.eks at alle har 0 som symbol.
+<br /><br />
+<b> def checkForSameType</b><br />
+Sjekker om alle symbolene til kortene er like. f.eks at alle har 0 som symbol.
+<br /><br />
+<b> def sortList</b><br />
+Returnerer listen tilbake, rangert lavest til høyest
+<br /><br />
+<b> Resten av metodene</b><br />
+Brukes for å kunne sjekke om kortet faktisk er en godkjent hånd i poker, og returner en 'score' for dette.
 
 ### Value og symbol definasjoner: 
 | Tall          | Value           | Symbol  |
