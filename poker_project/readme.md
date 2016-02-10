@@ -1,3 +1,6 @@
+
+
+## Synopsis
 ::Poker:: 
 Hovedfilen er poker.py
 Utrengningen av poeng ligger i pointcalc_poker
@@ -20,3 +23,9 @@ pointcalc_poker.py
 CalculateWinner.py
 *CalculateWinner* Vil kalkulere vinnerne bassert på hvilken poengsum hånden til spilleren har fått av pointcalc_poker.py.
 
+## En mer detaljert beskrivelse
+
+
+## Tests
+
+Describe and show how to run the tests with code examples.
