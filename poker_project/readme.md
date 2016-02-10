@@ -32,6 +32,13 @@ I deal får man da tildelt 5 kort hver fra bunken som ble geneerert i generateCa
 
 Etter dette, blir da spillerene printet ut med sine kort og en vinner vil bli trukket bassert på poengscoren spilleren har fått. Det gjøres med at spillerprofilene blir sendt inn i en metode i CalculateWinner.py i metoden CalculateWinner der den da samler spillerene i en liste og printer ut høyt til lavt, og returnerer da spilleren med høyest score. Det er ikke lagt opp enda til at spillerene kan får samme score. Da den nå vil konkludere med at spilleren som havner på toppen av listen vil vinne. Dette vil nok bli endret på ganske snart.
 
+## Metode definasjoner / Klasser
+
+<b> class Player </b> <br />
+En beskrivelse av hvordan hver spiller skal fremstilles og hvilke variabler den skal inneholde. Hver spiller får hvert sitt objekt av Player, som da skal holde styr på playerscore og hånden til spilleren. Denne klassen inneholder også metoder som kan gi da navn på f.eks en hånd i poker, som blir brukt til å presentere spillet til brukeren.
+<br />
+<b> class PokerCard </b><br />
+
 
 ### Value og symbol definasjoner: 
 
