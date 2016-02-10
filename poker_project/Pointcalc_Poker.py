@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+'''
+Denne koden vil kunne kalkulere ulike points 
+'''
+
+
+
 def calculatePoints(cards) :
     '''
     this method will return back a 'score' of the selected score, in order to find the winner.
@@ -279,6 +285,8 @@ def checkForHighCard(cards):
     return score
         
 def checkForSameType(cards):
+    # Check for the same type card. 
+    # @return true or false, based if every card symbol is alike.
     i = 0
     for i in range(0,4) :
         if (cards[0].getSymbol() == i) \
@@ -290,6 +298,8 @@ def checkForSameType(cards):
     return False
         
 def sortList(cards) :
+    # Sort list based on card value
+    # @return sorted list
     return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
 
     

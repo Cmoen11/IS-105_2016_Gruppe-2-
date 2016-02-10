@@ -39,18 +39,37 @@ class TestStraightFlush(unittest.TestCase):
         
         
 class TestFourOfaKind(unittest.TestCase):
+    cards = []
+    pokerCards = []
+    def setUp(self) :
+        global cards
+        global pokerCards
+        cards = [
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,9),
+            Poker.PokerCard(2,10),
+            Poker.PokerCard(2,0),
+            Poker.PokerCard(2,1),
 
-       
+            ]            
+        pokerCards = [
+            Poker.PokerCard(1,2),
+            Poker.PokerCard(2,2),
+            Poker.PokerCard(3,2),
+            Poker.PokerCard(4,2),
+            Poker.PokerCard(5,2),
+
+            ]          
             
     # A test where cards are four of a kind.         
-    def test_testCalculatePoints3(self):
+    def test_testCalculatePoints_3(self):
         global pokerCards
-        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 460000)
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 160040)
     
     # A test where no cards are four of a kind.    
-    def test_testCalculatePoints3(self):
+    def test_testCalculatePoints_3(self):
         global cards
-        self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 0)    
+        self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 160040)    
         
 
 class TestPair(unittest.TestCase):
@@ -84,21 +103,20 @@ class TestFullHouse(unittest.TestCase):
         global cards
         pokerCards = []
         cards = []
-            
-            
-        for i in range(0,5) :
-            obj = Poker.PokerCard(0,0)
-            pokerCards.append(obj)
-                
+
         cards = [
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,3),
             Poker.PokerCard(2,3),
-          
-            ]    
-    
+
+            ]       
+        
+    def test_testCalculatePoints8(self):
+            global cards
+            self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 140540)        
+  
 class TestFlush(unittest.TestCase): 
     pokerCards = []
     pokerCards2 = []
