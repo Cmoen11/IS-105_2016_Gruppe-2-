@@ -1,6 +1,6 @@
 
 
-# Kort beskrivelse av poker
+# Kort beskrivelse av poker og litt informasjon
 Hovedfilen er poker.py
 Utrengningen av poeng ligger i pointcalc_poker
 utregningen av vinner skjer i calculate winner.
