@@ -28,9 +28,9 @@ Før jeg begynner å forklare, er det noen nøkkelvariabler man må bemerke seg.
 Det første som skjer er at vi oppretter x antall deck/bunker med kort på 52 kort i generateCards, vært kort blir da et objekt av PokerCard. Vært kort får da 2 ulike variabler som bestemmer hva kortet er. Det ene er Value, som måles fra 0 - 12, da 0 = 2 i kortsammenhenger (mer om dette kan man se i diagrammet under), den andre er symbol som går fra 0 - 3(også definert under).
 
 Når dette er gjort, blir da array'en sendt videre til deal metoden, deal metoden har som hensikt å dele ut kort til spillerene, forløbig blir spillerene også generert her. Men i senere tidspunkt kommer dette til å bli en ting som blir implenetert i deal, da spillerobjektene er ønsket å bli definert allerede tidligere senere, når vi skal koble dette videre mot et virkelig spill.
-I deal får man da tildelt 5 kort hver fra bunken som ble geneerert i generateCards, og blir dermed lagt inn i spillerobjektet til hver av spillerene. Her vil også Pointcalc_Poker tre inn, 
+I deal får man da tildelt 5 kort hver fra bunken som ble geneerert i generateCards, og blir dermed lagt inn i spillerobjektet til hver av spillerene. Her vil også Pointcalc_Poker tre inn. Denne metoden vil da finne ut hvilken poengsum som er for hver hånd. Denne metoden vil da kjøre hvor hver spiller, den returnerer da en poengsum. Denne poengsummen blir ikke synlig for spillerne, det er kun en indikasjon på hvem som vinner. Slik at man enkelt kan definere hvilken hånd man har fått, og hvem som vinner runden bassert på kortene spilleren har fått. 
 
-kommer mer etter...
+Etter dette, blir da spillerene printet ut med sine kort og en vinner vil bli trukket bassert på poengscoren spilleren har fått. Det gjøres med at spillerprofilene blir sendt inn i en metode i CalculateWinner.py i metoden CalculateWinner der den da samler spillerene i en liste og printer ut høyt til lavt, og returnerer da spilleren med høyest score. Det er ikke lagt opp enda til at spillerene kan får samme score. Da den nå vil konkludere med at spilleren som havner på toppen av listen vil vinne. Dette vil nok bli endret på ganske snart.
 
 
 ### Value og symbol definasjoner: 
