@@ -47,9 +47,11 @@ def encode(message):
     
 
 def test():
-    sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver/complete_shakespeare.txt"
+    sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
     f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
-    test_message = f.read()
-    print encode(test_message)
+    
+    test_message = f.read(2000)
+    i = 0
+    encode(test_message)
     
 test()
