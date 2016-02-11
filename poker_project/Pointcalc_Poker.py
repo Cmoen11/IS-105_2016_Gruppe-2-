@@ -162,7 +162,20 @@ def checkFlush(cards) :
         return 120000
     return 0
 def checkStraight(cards) :
+    i = 0
+    extraPoint = 0  
+    cards = sortList(cards)
+    for i in range (0,12):
+        if(cards[0].getValue() == i+1)\
+            and (cards[1].getValue() == i+2)\
+            and (cards[2].getValue() == i+3)\
+            and (cards[3].getValue() == i+4)\
+            and (cards[4].getValue() == i+5):
+            return 100000 + ekstraPoint  
+        else:
+            extraPoint +=20
     return 0
+
 def checkThreeOfaKind(cards) :
     i = 0
     ekstraPoint = 0
