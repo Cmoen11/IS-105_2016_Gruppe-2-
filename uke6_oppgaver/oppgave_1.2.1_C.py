@@ -7,7 +7,7 @@ def code():
     '''
     
     table1 = {}
-    # Generere 128 text elementer
+    # Generere 255 text elementer
     for i in range(0,255) :
         table1[i] = unichr(i)    
     return table1    
