@@ -1,4 +1,4 @@
-: Gruppe2
+# Gruppe2
 Pokerprosjektet er lokalisert i Poker_project<br />
 Andre teamoppgaver er lokalisert i sine egene mapper med ukenavn. 
 
