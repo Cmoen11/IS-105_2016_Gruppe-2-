@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+code_for_string = []
+
+
 def code():
     '''
     Implements an initial table for LZW algorithm 
@@ -8,8 +11,8 @@ def code():
     
     table1 = {}
     # Generere 128 text elementer
-    for i in range(0,255) :
-        table1[i] = unichr(i)    
+    for i in range(0,256) :
+        table1[i] = chr(i)    
     return table1    
 def encode(code_for_string, message):
     table = code()
@@ -26,7 +29,7 @@ def encode(code_for_string, message):
             string = string + symbol
         
         else:
-            # Gå igjennom dictinary og og sjekk om value == String, om dette er riktig, append key til code_for_String
+            # Legg til key til code for string, for å da få "kodene" for å forme teksten.
             for k,v in table.iteritems():
                 if v == string:
                     code_for_string.append(k)
@@ -35,7 +38,7 @@ def encode(code_for_string, message):
             table[max(table.keys())+1] = string + symbol
             string = symbol
             
-    # Gå igjennom listen og og sjekk om value == String, om dette er riktig, append key til code_for_String        
+    # Legg til key til code for string, for å da få "kodene" for å forme teksten.
     for k,v in table.iteritems():
         if v == string:
             code_for_string.append(k)
@@ -46,33 +49,66 @@ def encode(code_for_string, message):
     
     
 
-def writeTo(byte, code_for_string) :
-    # ...
-    table = code()
+def writeTo(string, byte, table) :
+    '''
+    Gå igjennom og se først om den forrige sybomlet + nåværnde symbolet ligger i listen allerede. 
+    Om den gjør det. Legg den til i listen og append nøkkelen til code_for_string, som blir da 
+    den ferdige komprimerte koden vi får utdelt. 
     
-    for k,v in table.iteritems():
-            if v == string:
+    '''
+    global code_for_string
+    symbol = byte
+    
+    if(string + symbol) in table.values():
+        string = string + symbol
+    else :
+        
+        for k,v in table.iteritems():
+            if v == string :
                 code_for_string.append(k)
-    return code_for_string
+                
+        # legge til i tabel
+        table[max(table.keys())+1] = string + symbol
+        string = symbol
+    
+    
+      
+    
+    return {'table':table, 'string':string}
 
 def run():
-    sourcecode = "C:\Users\Erlend\Documents\GitHub\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
-    f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
-    code_for_string = []
+    sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
+    f = open(sourcecode, 'r+') # Open a file with filename <sourcecode>
+    temp_dick = {}
+    table = code()
     byte = ""
-    
+    string = ""
     byte = f.read(1)
+    print byte
+    global code_for_string
+    
     if (byte != "") :
-        code_for_string = encode(code_for_string, byte)
-      
+        temp_dick = writeTo(string, byte, table)
+        
+        string = temp_dick['string']
+        table = temp_dick['table']
+        print string
+        print table
     # Kjør så lenge det er bytes i dokumentet
     while (byte != "") :
         # Hent ut en byte fra dokumentet
         byte = f.read(1)
         # Skriv til dokumentet, så lenge byte ikke er null
         if (byte != "") :
-            code_for_string = encode(code_for_string, byte)
-            
+            temp_dick = writeTo(string, byte, table)
+            string = temp_dick['string']
+            table = temp_dick['table']            
+    
+    # legg til siste 'path' i code_for_string
+    for k,v in table.iteritems():
+        if v == string :
+            code_for_string.append(k)         
+         
     print code_for_string       
     
 run()
