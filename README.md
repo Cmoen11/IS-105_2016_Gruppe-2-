@@ -1,4 +1,5 @@
-::::Pokerprosjektet er lokalisert i Poker_project
+::Pokerprosjektet er lokalisert i Poker_project
+
 Andre teamoppgaver er lokalisert i sine egene mapper med ukenavn. 
 
 
