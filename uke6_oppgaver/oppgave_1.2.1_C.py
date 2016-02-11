@@ -8,10 +8,10 @@ def code():
     
     table1 = {}
     # Generere 128 text elementer
-    for i in range(0,128) :
-        table1[i] = chr(i)    
+    for i in range(0,255) :
+        table1[i] = unichr(i)    
     return table1    
-def encode(message):
+def encode(code_for_string, message):
     table = code()
     
     string = "" 
@@ -40,24 +40,39 @@ def encode(message):
         if v == string:
             code_for_string.append(k)
     
-    print len(table)        
-    print table
-    return code_for_string
+    #print len(table)        
+    #return table
+    #return code_for_string
     
     
 
-def test():
-    sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
-    f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
+def writeTo(byte, code_for_string) :
+    # ...
+    table = code()
     
+    for k,v in table.iteritems():
+            if v == string:
+                code_for_string.append(k)
+    return code_for_string
+
+def run():
+    sourcecode = "C:\Users\Erlend\Documents\GitHub\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
+    f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
+    code_for_string = []
+    byte = ""
+    
+    byte = f.read(1)
+    if (byte != "") :
+        code_for_string = encode(code_for_string, byte)
+      
     # Kjør så lenge det er bytes i dokumentet
     while (byte != "") :
         # Hent ut en byte fra dokumentet
         byte = f.read(1)
         # Skriv til dokumentet, så lenge byte ikke er null
         if (byte != "") :
-            pass # her kommer write kode.
-        
-    encode(test_message)
+            code_for_string = encode(code_for_string, byte)
+            
+    print code_for_string       
     
-test()
+run()
