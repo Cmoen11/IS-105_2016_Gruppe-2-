@@ -82,6 +82,6 @@ def run():
     
     
     print table
-    kuk.write(', '.join(map(str,code_for_string)))    
+    kuk.write(''.join(map(str,code_for_string)))    
     
 run()
