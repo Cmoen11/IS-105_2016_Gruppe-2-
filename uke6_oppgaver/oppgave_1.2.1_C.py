@@ -11,7 +11,7 @@ def code():
     
     table1 = {}
     # Generere 128 text elementer
-    for i in range(0,256) :
+    for i in range(0,128) :
         table1[i] = chr(i)    
     return table1    
 def encode(code_for_string, message):
@@ -62,34 +62,30 @@ def writeTo(string, byte, table) :
     if(string + symbol) in table.values():
         string = string + symbol
     else :
-        
         for k,v in table.iteritems():
             if v == string :
                 code_for_string.append(k)
-                
+                print code_for_string
         # legge til i tabel
         table[max(table.keys())+1] = string + symbol
         string = symbol
-    
-    
-      
     
     return {'table':table, 'string':string}
 
 def run():
     sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
-    f = open(sourcecode, 'r+') # Open a file with filename <sourcecode>
+    f = open(sourcecode, 'r') # Open a file with filename <sourcecode>
     temp_dick = {}
     table = code()
     byte = ""
     string = ""
+    antallByte = 0
     byte = f.read(1)
     print byte
     global code_for_string
     
     if (byte != "") :
         temp_dick = writeTo(string, byte, table)
-        
         string = temp_dick['string']
         table = temp_dick['table']
         print string
@@ -98,11 +94,13 @@ def run():
     while (byte != "") :
         # Hent ut en byte fra dokumentet
         byte = f.read(1)
+        antallByte +=1
+        print byte
         # Skriv til dokumentet, så lenge byte ikke er null
         if (byte != "") :
             temp_dick = writeTo(string, byte, table)
             string = temp_dick['string']
-            table = temp_dick['table']            
+            table = temp_dick['table']
     
     # legg til siste 'path' i code_for_string
     for k,v in table.iteritems():
