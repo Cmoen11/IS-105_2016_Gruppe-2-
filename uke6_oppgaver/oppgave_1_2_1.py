@@ -84,16 +84,12 @@ def run(inputFile, outputFile):
     # write code to output file, and strip it for extra chars, like (space,[]).
     outputFile.write(''.join(map(str,code_for_string)))
     
-<<<<<<< HEAD:uke6_oppgaver/oppgave_1_2_1.py
+
     toString = ''.join(map(str,code_for_string))
     return toString
 
 
 if __name__ == '__main__':
-    run('hamlet2.txt', 'output.txt')
-=======
-    print table
-    kuk.write(''.join(map(str,code_for_string)))    
+    run('hamlet2.txt', 'output.txt') 
     
-run()
->>>>>>> 04af43eb2728b7f5ebc1f7d9b45f1e10bec77b2d:uke6_oppgaver/oppgave_1.2.1.py
+
