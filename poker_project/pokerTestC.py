@@ -106,7 +106,7 @@ class TestFullHouse(unittest.TestCase):
 
         cards = [
             Poker.PokerCard(2,2),
-            Poker.PokerCard(2,2),
+            Poker.PokerCard(2,3),
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,3),
             Poker.PokerCard(2,3),
@@ -115,7 +115,7 @@ class TestFullHouse(unittest.TestCase):
         
     def test_testCalculatePoints_TestFullHouse(self):
             global cards
-            self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 140540)        
+            self.assertEqual(Pointcalc_Poker.calculatePoints(cards), 140000)        
   
 class TestFlush(unittest.TestCase): 
     pokerCards = []

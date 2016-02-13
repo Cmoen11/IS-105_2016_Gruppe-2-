@@ -107,56 +107,24 @@ def checkFullHouse(cards) :
     
     cards = sortList(cards)
     # Go through each card value and see if there is 3 alike and 2 alike.
+
+    if(cards[0].getValue() == cards[0].getValue()) \
+      and (cards[1].getValue() == cards[0].getValue()) \
+      and (cards[2].getValue() == cards[0].getValue()) \
+      and (cards[3].getValue() == cards[3].getValue()) \
+      and (cards[4].getValue() == cards[3].getValue()):
+        return 140000 + ekstraPoint   
     
+    elif(cards[0].getValue() == cards[0].getValue()) \
+      and (cards[1].getValue() == cards[0].getValue()) \
+      and (cards[2].getValue() == cards[2].getValue()) \
+      and (cards[3].getValue() == cards[2].getValue()) \
+      and (cards[4].getValue() == cards[2].getValue()):
+        return 140000 + ekstraPoint            
     
-    
-    '''
-    for i in range(0,12):
-        for ii in range (0,12):
-            if(cards[0].getValue() == i) \
-              and (cards[1].getValue() == i) \
-              and (cards[2].getValue() == i) \
-              and (cards[3].getValue() == ii) \
-              and (cards[4].getValue() == ii):
-                return 140000 + ekstraPoint   
-            
-            elif(cards[1].getValue() == i) \
-              and (cards[2].getValue() == i) \
-              and (cards[3].getValue() == i) \
-              and (cards[4].getValue() == ii) \
-              and (cards[0].getValue() == ii):
-                return 140000 + ekstraPoint            
-
-
-            elif(cards[2].getValue() == i) \
-              and (cards[3].getValue() == i) \
-              and (cards[4].getValue() == i) \
-              and (cards[0].getValue() == ii) \
-              and (cards[1].getValue() == ii):
-                return 140000 + ekstraPoint        
-
-
-            elif(cards[3].getValue() == i) \
-              and (cards[4].getValue() == i) \
-              and (cards[0].getValue() == i) \
-              and (cards[1].getValue() == ii) \
-              and (cards[2].getValue() == ii):
-                return 140000 + ekstraPoint            
-            
-            elif(cards[4].getValue() == i) \
-              and (cards[0].getValue() == i) \
-              and (cards[1].getValue() == i) \
-              and (cards[2].getValue() == ii) \
-              and (cards[3].getValue() == ii):
-                return 140000 + ekstraPoint   
-                      
-            
-            
-            else: 
-                ekstraPoint +=20
-              
-    return 0
-    '''
+    else: 
+        return 0
+        
 
 
 
