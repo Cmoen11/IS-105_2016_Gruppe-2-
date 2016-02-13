@@ -30,7 +30,6 @@ class testEncode(unittest.TestCase):
         print "Filesize input: " + str(os.path.getsize('temp_InputFile.txt'))
         print "Filesize output: " + str(os.path.getsize('temp_OutputFile.txt'))
         
-        
         # Check if the output file  is less than the input file
         self.assertLessEqual(os.path.getsize('temp_OutputFile.txt'), os.path.getsize('temp_InputFile.txt'),)
         
