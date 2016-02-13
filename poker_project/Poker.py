@@ -109,9 +109,9 @@ class Player :
         # this method will create a string of what kind of hand the player has
         points = self.points
         if points < 200 and points >= 100:                    # 2 of a kind
-            return "2 like(Par)"    
+            return "2 like"    
         elif (points >= 80000) and (points < 85000) :            # 3 of a kind
-            return "3 like(Three of a kind)"
+            return "3 like"
         elif (points >= 100000) and (points < 105000) :          # Straight  
             return "Straight"
         elif (points >= 120000) and (points < 130000) :          # Flush
