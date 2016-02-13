@@ -43,11 +43,10 @@ def encode(string, byte, table) :
     
     return {'table':table, 'string':string}
 
-def run():
-    sourcecode = "hamlet.txt"
-    sourcecode2 = "output.txt"
-    f = open(sourcecode, 'r') # Open a file that are beeing compressed.
-    outputFile = open(sourcecode2, 'w') # Open output file. 
+def run(inputFile, outputFile):
+
+    f = open(inputFile, 'r') # Open a file that are beeing compressed.
+    outputFile = open(outputFile, 'w') # Open output file. 
     temp_holder = {}
     table = code() #add text-elements to our table.
     byte = "" # String to hold our current byte.
@@ -83,6 +82,11 @@ def run():
             code_for_string.append(k)         
     
     # write code to output file, and strip it for extra chars, like (space,[]).
-    outputFile.write(''.join(map(str,code_for_string)))    
+    outputFile.write(''.join(map(str,code_for_string)))
     
-run()
+    toString = ''.join(map(str,code_for_string))
+    return toString
+
+
+if __name__ == '__main__':
+    run('hamlet2.txt', 'output.txt')
