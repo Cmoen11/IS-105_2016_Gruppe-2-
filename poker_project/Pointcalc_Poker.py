@@ -107,6 +107,10 @@ def checkFullHouse(cards) :
     
     cards = sortList(cards)
     # Go through each card value and see if there is 3 alike and 2 alike.
+    
+    
+    
+    '''
     for i in range(0,12):
         for ii in range (0,12):
             if(cards[0].getValue() == i) \
@@ -146,14 +150,13 @@ def checkFullHouse(cards) :
               and (cards[3].getValue() == ii):
                 return 140000 + ekstraPoint   
                       
-
+            
             
             else: 
                 ekstraPoint +=20
-        
-            
+              
     return 0
-
+    '''
 
 
 
@@ -190,19 +193,21 @@ def checkThreeOfaKind(cards) :
         if(cards[0].getValue() == i) \
           and (cards[1].getValue() == i) \
           and (cards[2].getValue() == i) :
+            cards.remove(0,1,2)
             return 80000 + ekstraPoint
         
         #Sjekk om det er 3 like  fra høyt til lavt
         elif(cards[1].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) :
+            cards.remove(1,2,3)
             return 80000 + ekstraPoint
         
         # sjekk i midten av bunken
         elif (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) :
-            
+            cards.remove(2,3,4)
             return 80000 + ekstraPoint
         
         
