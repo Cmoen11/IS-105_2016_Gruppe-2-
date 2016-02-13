@@ -154,7 +154,7 @@ def run () :
         print handname
         
     print 
-    print "winner is:"
+    print "Vinner is:"
     print CalculateWinner.CalculateWinner(players).getName()
     print
     obj = CalculateWinner.CalculateWinner(players).getCards()
