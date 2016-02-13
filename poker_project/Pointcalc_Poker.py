@@ -222,37 +222,15 @@ def checkIfAllCardsIsRed(cards) :
 
 def checkPair(cards) :
     i = 0
-    # For each card
-    for i in range(0,5):
-        # for et pair + ekstra like kort
-        pair_point = 2 
-        #ekstra points
-        ekstraPoint = 0
-        # Check each card
-        x = 0
-        for x in range(0, 5):
-
-            # Jump over current card 
-            if (x is not i) :
-                if (cards[i].getValue() == cards[x].getValue()) :
-                    #print "match found!"
-                    
-                    # Check if the pair is higher than 0 (pair in 2's)
-                    if (cards[i].getValue() > 0) : 
-                        
-                        y = 0    
-                        
-                        for y in range (0,14) :
-                            if (cards[i].getValue() == y) :
-                                break
-                            else :
-                                # Add exstra point
-                                ekstraPoint += 1
-                    
-                    # Add points            
-                    return pair_point + ekstraPoint + 100   
-                
-                
+    cards = sortList(cards)
+    if (cards[0].getValue() == cards[1].getValue()) \
+        or(cards[1].getValue() == cards[2].getValue())\
+        or(cards[2].getValue() == cards[3].getValue()) \
+        or(cards[3].getValue() == cards[4].getValue()) :
+            return cards[0].getValue() + 100
+    else :
+        return 0
+          
 def checkForHighCard(cards):
     # add each card value to the score
     score = 0
