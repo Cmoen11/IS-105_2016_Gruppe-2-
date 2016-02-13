@@ -162,7 +162,19 @@ def checkFlush(cards) :
         return 120000
     return 0
 def checkStraight(cards) :
-    return 0
+    
+    cards = sortList(cards)
+    
+    if (cards[1].getValue()) == (cards[0]).getValue() + 1 \
+       and (cards[2].getValue()) == (cards[0]).getValue() + 2 \
+       and (cards[3].getValue()) == (cards[0]).getValue() + 3 \
+       and (cards[4].getValue()) == (cards[0]).getValue() + 4 :
+    elif cards[0].getValue() == 12 \
+         and cards[1].getValue() == 0 \
+         and cards[2].getValue() == 1 \
+         and cards[3].getValue() == 2 \
+         and cards[4].getValue() == 3 :
+        return 100000
 def checkThreeOfaKind(cards) :
     i = 0
     ekstraPoint = 0
@@ -218,10 +230,10 @@ def checkRoyalFlush (cards) :
     return 0
 
 def checkIfAllCardsIsBlack(cards) :
-    cardsBlack = 0 # To hold on how many black card that is been found
+    cardsBlack = 0 # To hold on how many black card that has been found
     i = 0 # for loop
     
-    # Run trough every card, and increment by one
+    # Run through every card, and increment by one
     for i in cards :
         if (i.getSymbol() == 0) or (i.getSymbol() == 1) :
             cardsBlack += 1
