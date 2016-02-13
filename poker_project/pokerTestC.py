@@ -79,10 +79,20 @@ class TestPair(unittest.TestCase):
             obj = Poker.PokerCard(0,i)
             self.pokerCards.append(obj)            
                 
-
+            
+        self.cards = [
+                    Poker.PokerCard(2,1),
+                    Poker.PokerCard(2,4),
+                    Poker.PokerCard(2,9),
+                    Poker.PokerCard(2,3),
+                    Poker.PokerCard(2,9),
+        
+                    ]        
     def test_testCalculatePoints_testPair(self):
         self.assertEqual(Pointcalc_Poker.calculatePoints(self.pokerCards), 102)
-        
+    def test_testCalculatePoints_testPair(self):
+            self.assertEqual(Pointcalc_Poker.checkPair(self.cards), 102)
+    
 
 class TestFullHouse(unittest.TestCase):
     pokerCards = []
@@ -92,16 +102,16 @@ class TestFullHouse(unittest.TestCase):
         self.cards = []
 
         self.cards = [
+            Poker.PokerCard(2,3),
+            Poker.PokerCard(2,3),
             Poker.PokerCard(2,2),
             Poker.PokerCard(2,3),
             Poker.PokerCard(2,2),
-            Poker.PokerCard(2,3),
-            Poker.PokerCard(2,3),
 
             ]       
         
     def test_testCalculatePoints_TestFullHouse(self):
-            self.assertEqual(Pointcalc_Poker.calculatePoints(self.cards), 140000)        
+            self.assertEqual(Pointcalc_Poker.checkFullHouse(self.cards), 140000)        
   
 class TestFlush(unittest.TestCase): 
     pokerCards = []

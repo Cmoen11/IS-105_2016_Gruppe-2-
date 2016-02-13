@@ -221,15 +221,11 @@ def checkIfAllCardsIsRed(cards) :
     return False            
 
 def checkPair(cards) :
-    i = 0
-    cards = sortList(cards)
-    if (cards[0].getValue() == cards[1].getValue()) \
-        or(cards[1].getValue() == cards[2].getValue())\
-        or(cards[2].getValue() == cards[3].getValue()) \
-        or(cards[3].getValue() == cards[4].getValue()) :
-            return cards[0].getValue() + 100
-    else :
-        return 0
+    
+    for i in range(0,3):
+        if (cards[i].getValue() == cards[i+1].getValue()) :
+            return cards[i].getValue() + 100
+    return 0
           
 def checkForHighCard(cards):
     # add each card value to the score
