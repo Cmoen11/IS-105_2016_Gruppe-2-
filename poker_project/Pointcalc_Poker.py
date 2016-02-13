@@ -164,17 +164,21 @@ def checkFlush(cards) :
 def checkStraight(cards) :
     
     cards = sortList(cards)
-    
+    ekstraPoint = 0
     if (cards[1].getValue()) == (cards[0]).getValue() + 1 \
        and (cards[2].getValue()) == (cards[0]).getValue() + 2 \
        and (cards[3].getValue()) == (cards[0]).getValue() + 3 \
        and (cards[4].getValue()) == (cards[0]).getValue() + 4 :
+        ekstraPoint = cards[4].getValue()
+        return 100000 + ekstraPoint
     elif cards[0].getValue() == 12 \
-         and cards[1].getValue() == 0 \
-         and cards[2].getValue() == 1 \
-         and cards[3].getValue() == 2 \
-         and cards[4].getValue() == 3 :
-        return 100000
+       and cards[1].getValue() == 0 \
+       and cards[2].getValue() == 1 \
+       and cards[3].getValue() == 2 \
+       and cards[4].getValue() == 3 :
+        ekstraPoint = cards[4].getValue()
+        return 100000 + ekstraPoint
+    
 def checkThreeOfaKind(cards) :
     i = 0
     ekstraPoint = 0
