@@ -107,6 +107,10 @@ def checkFullHouse(cards) :
     
     cards = sortList(cards)
     # Go through each card value and see if there is 3 alike and 2 alike.
+    
+    
+    
+    '''
     for i in range(0,12):
         for ii in range (0,12):
             if(cards[0].getValue() == i) \
@@ -146,14 +150,13 @@ def checkFullHouse(cards) :
               and (cards[3].getValue() == ii):
                 return 140000 + ekstraPoint   
                       
-
+            
             
             else: 
                 ekstraPoint +=20
-        
-            
+              
     return 0
-
+    '''
 
 
 
@@ -162,19 +165,40 @@ def checkFlush(cards) :
         return 120000
     return 0
 def checkStraight(cards) :
+<<<<<<< HEAD
+    i = 0
+    extraPoint = 0  
+    cards = sortList(cards)
+    for i in range (0,12):
+        if(cards[0].getValue() == i+1)\
+            and (cards[1].getValue() == i+2)\
+            and (cards[2].getValue() == i+3)\
+            and (cards[3].getValue() == i+4)\
+            and (cards[4].getValue() == i+5):
+            return 100000 + ekstraPoint  
+        else:
+            extraPoint +=20
+    return 0
+
+=======
     
     cards = sortList(cards)
-    
+    ekstraPoint = 0
     if (cards[1].getValue()) == (cards[0]).getValue() + 1 \
        and (cards[2].getValue()) == (cards[0]).getValue() + 2 \
        and (cards[3].getValue()) == (cards[0]).getValue() + 3 \
        and (cards[4].getValue()) == (cards[0]).getValue() + 4 :
+        ekstraPoint = cards[4].getValue()
+        return 100000 + ekstraPoint
     elif cards[0].getValue() == 12 \
-         and cards[1].getValue() == 0 \
-         and cards[2].getValue() == 1 \
-         and cards[3].getValue() == 2 \
-         and cards[4].getValue() == 3 :
-        return 100000
+       and cards[1].getValue() == 0 \
+       and cards[2].getValue() == 1 \
+       and cards[3].getValue() == 2 \
+       and cards[4].getValue() == 3 :
+        ekstraPoint = cards[4].getValue()
+        return 100000 + ekstraPoint
+    
+>>>>>>> develop
 def checkThreeOfaKind(cards) :
     i = 0
     ekstraPoint = 0
@@ -186,19 +210,21 @@ def checkThreeOfaKind(cards) :
         if(cards[0].getValue() == i) \
           and (cards[1].getValue() == i) \
           and (cards[2].getValue() == i) :
+            cards.remove(0,1,2)
             return 80000 + ekstraPoint
         
         #Sjekk om det er 3 like  fra høyt til lavt
         elif(cards[1].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) :
+            cards.remove(1,2,3)
             return 80000 + ekstraPoint
         
         # sjekk i midten av bunken
         elif (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) :
-            
+            cards.remove(2,3,4)
             return 80000 + ekstraPoint
         
         
