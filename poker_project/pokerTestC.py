@@ -15,7 +15,7 @@ class TestRoyalFlush(unittest.TestCase):
             startCard += 1
              
     def test_testCalculatePoints_royalFLush(self):
-        self.assertEqual(Pointcalc_Poker.calculatePoints(self.pokerCards), 500000)
+        self.assertEqual(Pointcalc_Poker.checkRoyalFlush(self.pokerCards), 500000)
 
 
 
@@ -31,7 +31,7 @@ class TestStraightFlush(unittest.TestCase):
             startCard += 1
              
     def test_testCalculatePoints_StraightFlush(self):
-        self.assertEqual(Pointcalc_Poker.calculatePoints(self.pokerCards), 480000)
+        self.assertEqual(Pointcalc_Poker.checkStraightFlush(self.pokerCards), 480000)
         
         
 class TestFourOfaKind(unittest.TestCase):
@@ -58,7 +58,7 @@ class TestFourOfaKind(unittest.TestCase):
     # A test where cards are four of a kind.         
     def test_testCalculatePoints_FourOfAKind(self):
         global pokerCards
-        self.assertEqual(Pointcalc_Poker.calculatePoints(self.pokerCards), 160002)
+        self.assertEqual(Pointcalc_Poker.checkFourOfaKind(self.pokerCards), 160002)
     
     # A test where no cards are four of a kind.    
     def test_testCalculatePoints_FourOfAKind_2(self):
@@ -70,7 +70,7 @@ class TestPair(unittest.TestCase):
     def setUp(self):
         self.pokerCards = []
         
-        # this is a pair of twos
+        # this is a pair of fours
         self.pokerCards.append(Poker.PokerCard(0,2))
         self.pokerCards.append(Poker.PokerCard(1,2))
         
@@ -81,17 +81,17 @@ class TestPair(unittest.TestCase):
                 
             
         self.cards = [
-                    Poker.PokerCard(2,1),
-                    Poker.PokerCard(2,4),
-                    Poker.PokerCard(2,9),
+                    Poker.PokerCard(2,6),
+                    Poker.PokerCard(2,7),
+                    Poker.PokerCard(2,12),
                     Poker.PokerCard(2,3),
-                    Poker.PokerCard(2,9),
+                    Poker.PokerCard(2,12),
         
                     ]        
     def test_testCalculatePoints_testPair(self):
-        self.assertEqual(Pointcalc_Poker.calculatePoints(self.pokerCards), 102)
+        self.assertEqual(Pointcalc_Poker.checkPair(self.pokerCards), 102)
     def test_testCalculatePoints_testPair(self):
-            self.assertEqual(Pointcalc_Poker.checkPair(self.cards), 102)
+            self.assertEqual(Pointcalc_Poker.checkPair(self.cards), 112)
     
 
 class TestFullHouse(unittest.TestCase):

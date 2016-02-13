@@ -222,7 +222,8 @@ def checkIfAllCardsIsRed(cards) :
 
 def checkPair(cards) :
     
-    for i in range(0,3):
+    cards = sortList(cards)
+    for i in range(0,4):
         if (cards[i].getValue() == cards[i+1].getValue()) :
             return cards[i].getValue() + 100
     return 0
