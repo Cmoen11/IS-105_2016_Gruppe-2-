@@ -152,19 +152,16 @@ class TestStraight(unittest.TestCase):
     cards = []
     def setUp(self):
         i = 0 
-        global pokerCards
-        pokerCards[
-             Poker.PokerCard(1,1),
-             Poker.PokerCard(3,2),
+        self.pokerCards[
+             Poker.PokerCard(1,0),
+             Poker.PokerCard(3,1),
+             Poker.PokerCard(2,2),
              Poker.PokerCard(2,3),
-             Poker.PokerCard(2,4),
-             Poker.PokerCard(0,5),
-
-        ]
+             Poker.PokerCard(0,4)
+            ]
         
     def test_testCalcualtePoints7(self):
-        global pokerCards
-        self.assertEqual(Pointcalc_Poker.checkStraight(pokerCards), 100000)
+        self.assertEqual(Pointcalc_Poker.checkStraight(self.pokerCards), 100000)
     
 
 class TestThreeOfaKind(unittest.TestCase):
