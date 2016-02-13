@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 # Create a dictinary
 def createDictionary () :
