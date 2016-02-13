@@ -10,7 +10,7 @@ def deal(pokerCards) :
     i = 0 # For loop
     y = 0 # card number
     # Create 6 players
-    for i in range(0,2) :
+    for i in range(0,10) :
         cardToPlayer = []
         x = 0 # for loop
         # Give each 6 player 5 cards
@@ -26,7 +26,7 @@ def generateCards():
     @return shuffled deck
     '''
     pokerCards = [] #The veriable that holds all the cards
-    deck = 20 # How many deck that is created
+    deck = 5 # How many deck that is created
     y = 0 # For loop
     
     # create deck(s)
@@ -158,7 +158,8 @@ def run () :
     print CalculateWinner.CalculateWinner(players).getName()
     print
     obj = CalculateWinner.CalculateWinner(players).getCards()
-    print"med disse kortene:"
+    handname = CalculateWinner.CalculateWinner(players).getHandName()
+    print"med disse kortene("+handname+"):"
     x = 0
     
     while len(obj) > x :

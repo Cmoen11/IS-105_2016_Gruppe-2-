@@ -195,7 +195,6 @@ def checkRoyalFlush (cards) :
 
 def checkIfAllCardsIsBlack(cards) :
     cardsBlack = 0 # To hold on how many black card that has been found
-    i = 0 # for loop
     
     # Run through every card, and increment by one
     for i in cards :
