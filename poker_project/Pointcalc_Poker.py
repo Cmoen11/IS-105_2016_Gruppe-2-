@@ -89,6 +89,8 @@ def checkFourOfaKind(cards) :
         and (cards[3].getValue() == cards[0].getValue()) \
         and (cards[4].getValue()) == (cards[0].getValue())) :
         return 160000 + cards[4].getValue()
+    else :
+        return 0
     
 def checkFullHouse(cards) : 
     i = 0
