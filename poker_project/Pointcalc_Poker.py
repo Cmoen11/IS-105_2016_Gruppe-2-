@@ -263,18 +263,16 @@ def checkForHighCard(cards):
 def checkForSameType(cards):
     # Check for the same type card. 
     # @return true or false, based if every card symbol is alike.
-    i = 0
-    for i in range(0,4) :
-        if (cards[0].getSymbol() == i) \
-           and (cards[1].getSymbol() == i) \
-           and (cards[2].getSymbol() == i) \
-           and (cards[3].getSymbol() == i) \
-           and (cards[4].getSymbol() == i) :
-            return True
+    if (cards[0].getSymbol() == cards[0].getSymbol()) \
+        and (cards[1].getSymbol() == cards[0].getSymbol()) \
+        and (cards[2].getSymbol() == cards[0].getSymbol()) \
+        and (cards[3].getSymbol() == cards[0].getSymbol()) \
+        and (cards[4].getSymbol() == cards[0].getSymbol()) :
+        return True
     return False
-        
+
 def sortList(cards) :
-    # Sort list based on card value
+    # Sort list based on card value from low to high
     # @return sorted list
     return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
 
