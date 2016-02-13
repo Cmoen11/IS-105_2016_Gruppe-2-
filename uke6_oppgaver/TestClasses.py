@@ -11,8 +11,11 @@ class testEncode(unittest.TestCase):
         
         # Create a test input file
         self.inputFile = open('temp_InputFile.txt', 'w+')
+        
+        # write to input testfile
         self.inputFile.write(self.testText)
         self.inputFile.close()
+        
         # Create a test output file
         self.outputFile = open('temp_OutputFile.txt', 'w+')    
         self.outputFile.close()
