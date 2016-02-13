@@ -159,21 +159,18 @@ def checkThreeOfaKind(cards) :
         if(cards[0].getValue() == i) \
           and (cards[1].getValue() == i) \
           and (cards[2].getValue() == i) :
-            cards.remove(0,1,2)
             return 80000 + ekstraPoint
         
         #Sjekk om det er 3 like  fra høyt til lavt
         elif(cards[1].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) :
-            cards.remove(1,2,3)
             return 80000 + ekstraPoint
         
         # sjekk i midten av bunken
         elif (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) :
-            cards.remove(2,3,4)
             return 80000 + ekstraPoint
         
         
