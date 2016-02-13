@@ -81,25 +81,17 @@ def checkStraightFlush (cards):
         return 480000
     return 0
 def checkFourOfaKind(cards) :
-    i = 0
-    ekstraPoint = 0
     cards = sortList(cards)
     # Go through each card value and see if any of them are alike. Add also 20 exstra points for each run, so higher card values give higher score
-    for i in range(0,12):
-        if (cards[0].getValue() == i) \
-           and (cards[1].getValue() == i) \
-           and (cards[2].getValue() == i) \
-           and (cards[3].getValue() == i):
-            return 160000 + ekstraPoint
-        if (cards[4].getValue() == i) \
-           and (cards[3].getValue() == i) \
-           and (cards[2].getValue() == i) \
-           and (cards[1].getValue() == i) :
-                return 160000 + ekstraPoint        
-        else:
-            ekstraPoint += 20
-            
-    return 0
+    if (cards[0].getValue() == cards[0].getValue() \
+        and (cards[1].getValue() == cards[0].getValue()) \
+        and (cards[2].getValue() == cards[0].getValue()) \
+        and (cards[3].getValue() == cards[0].getValue()) \
+        and (cards[4].getValue()) == (cards[0].getValue())) :
+        return 160000 + cards[4].getValue()
+    else :
+        return 0
+    
 def checkFullHouse(cards) : 
     i = 0
     ii = 0
@@ -107,56 +99,24 @@ def checkFullHouse(cards) :
     
     cards = sortList(cards)
     # Go through each card value and see if there is 3 alike and 2 alike.
+
+    if(cards[0].getValue() == cards[0].getValue()) \
+      and (cards[1].getValue() == cards[0].getValue()) \
+      and (cards[2].getValue() == cards[0].getValue()) \
+      and (cards[3].getValue() == cards[3].getValue()) \
+      and (cards[4].getValue() == cards[3].getValue()):
+        return 140000 + ekstraPoint   
     
+    elif(cards[0].getValue() == cards[0].getValue()) \
+      and (cards[1].getValue() == cards[0].getValue()) \
+      and (cards[2].getValue() == cards[2].getValue()) \
+      and (cards[3].getValue() == cards[2].getValue()) \
+      and (cards[4].getValue() == cards[2].getValue()):
+        return 140000 + ekstraPoint            
     
-    
-    '''
-    for i in range(0,12):
-        for ii in range (0,12):
-            if(cards[0].getValue() == i) \
-              and (cards[1].getValue() == i) \
-              and (cards[2].getValue() == i) \
-              and (cards[3].getValue() == ii) \
-              and (cards[4].getValue() == ii):
-                return 140000 + ekstraPoint   
-            
-            elif(cards[1].getValue() == i) \
-              and (cards[2].getValue() == i) \
-              and (cards[3].getValue() == i) \
-              and (cards[4].getValue() == ii) \
-              and (cards[0].getValue() == ii):
-                return 140000 + ekstraPoint            
-
-
-            elif(cards[2].getValue() == i) \
-              and (cards[3].getValue() == i) \
-              and (cards[4].getValue() == i) \
-              and (cards[0].getValue() == ii) \
-              and (cards[1].getValue() == ii):
-                return 140000 + ekstraPoint        
-
-
-            elif(cards[3].getValue() == i) \
-              and (cards[4].getValue() == i) \
-              and (cards[0].getValue() == i) \
-              and (cards[1].getValue() == ii) \
-              and (cards[2].getValue() == ii):
-                return 140000 + ekstraPoint            
-            
-            elif(cards[4].getValue() == i) \
-              and (cards[0].getValue() == i) \
-              and (cards[1].getValue() == i) \
-              and (cards[2].getValue() == ii) \
-              and (cards[3].getValue() == ii):
-                return 140000 + ekstraPoint   
-                      
-            
-            
-            else: 
-                ekstraPoint +=20
-              
-    return 0
-    '''
+    else: 
+        return 0
+        
 
 
 
@@ -191,21 +151,18 @@ def checkThreeOfaKind(cards) :
         if(cards[0].getValue() == i) \
           and (cards[1].getValue() == i) \
           and (cards[2].getValue() == i) :
-            cards.remove(0,1,2)
             return 80000 + ekstraPoint
         
         #Sjekk om det er 3 like  fra høyt til lavt
         elif(cards[1].getValue() == i) \
             and (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) :
-            cards.remove(1,2,3)
             return 80000 + ekstraPoint
         
         # sjekk i midten av bunken
         elif (cards[2].getValue() == i) \
             and (cards[3].getValue() == i) \
             and (cards[4].getValue() == i) :
-            cards.remove(2,3,4)
             return 80000 + ekstraPoint
         
         
@@ -238,7 +195,6 @@ def checkRoyalFlush (cards) :
 
 def checkIfAllCardsIsBlack(cards) :
     cardsBlack = 0 # To hold on how many black card that has been found
-    i = 0 # for loop
     
     # Run through every card, and increment by one
     for i in cards :
@@ -264,38 +220,13 @@ def checkIfAllCardsIsRed(cards) :
     return False            
 
 def checkPair(cards) :
-    i = 0
-    # For each card
-    for i in range(0,5):
-        # for et pair + ekstra like kort
-        pair_point = 2 
-        #ekstra points
-        ekstraPoint = 0
-        # Check each card
-        x = 0
-        for x in range(0, 5):
-
-            # Jump over current card 
-            if (x is not i) :
-                if (cards[i].getValue() == cards[x].getValue()) :
-                    #print "match found!"
-                    
-                    # Check if the pair is higher than 0 (pair in 2's)
-                    if (cards[i].getValue() > 0) : 
-                        
-                        y = 0    
-                        
-                        for y in range (0,14) :
-                            if (cards[i].getValue() == y) :
-                                break
-                            else :
-                                # Add exstra point
-                                ekstraPoint += 1
-                    
-                    # Add points            
-                    return pair_point + ekstraPoint + 100   
-                
-                
+    
+    cards = sortList(cards)
+    for i in range(0,4):
+        if (cards[i].getValue() == cards[i+1].getValue()) :
+            return cards[i].getValue() + 100
+    return 0
+          
 def checkForHighCard(cards):
     # add each card value to the score
     score = 0
@@ -306,18 +237,16 @@ def checkForHighCard(cards):
 def checkForSameType(cards):
     # Check for the same type card. 
     # @return true or false, based if every card symbol is alike.
-    i = 0
-    for i in range(0,4) :
-        if (cards[0].getSymbol() == i) \
-           and (cards[1].getSymbol() == i) \
-           and (cards[2].getSymbol() == i) \
-           and (cards[3].getSymbol() == i) \
-           and (cards[4].getSymbol() == i) :
-            return True
+    if (cards[0].getSymbol() == cards[0].getSymbol()) \
+        and (cards[1].getSymbol() == cards[0].getSymbol()) \
+        and (cards[2].getSymbol() == cards[0].getSymbol()) \
+        and (cards[3].getSymbol() == cards[0].getSymbol()) \
+        and (cards[4].getSymbol() == cards[0].getSymbol()) :
+        return True
     return False
-        
+
 def sortList(cards) :
-    # Sort list based on card value
+    # Sort list based on card value from low to high
     # @return sorted list
     return sorted(cards, key=lambda PokerCards: PokerCards.value, reverse=False)
 
