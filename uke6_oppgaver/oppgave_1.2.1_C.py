@@ -44,20 +44,31 @@ def encode(message):
     print table
     return code_for_string
     
+
+def writeTo(Code_for_string) :
+    # ...
+    for k,v in table.iteritems():
+            if v == string:
+                code_for_string.append(k)
+    return code_for_string                
+    
     
 
 def test():
     sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
     f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
-    
+    code_for_string
+    byte = f.read(1)
+    if (byte != "")  :
+        writeTo(Code_for_string)
     # Kjør så lenge det er bytes i dokumentet
     while (byte != "") :
         # Hent ut en byte fra dokumentet
         byte = f.read(1)
         # Skriv til dokumentet, så lenge byte ikke er null
         if (byte != "") :
-            pass # her kommer write kode.
-        
-    encode(test_message)
+            code_fort_string = writeTo(Code_for_string)
+          
+    print code_for_string     
     
 test()
