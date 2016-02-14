@@ -69,8 +69,12 @@ Sjekker om alle symbolene til kortene er like. f.eks at alle har 0 som symbol.
 <b> def sortList</b><br />
 Returnerer listen tilbake, rangert lavest til høyest
 <br /><br />
-<b> Resten av metodene</b><br />
+<b> Resten av check-metodene</b><br />
 Sjekker om kortetene utgjør en godkjent hånd i poker, og returner en 'score' for dette.
+<br /><br />
+<b> def CalculateWinner</b><br />
+Denne metoden er lokalisert i CalculateWinner.py, og sorterer listen etter høyest poengscore og returnerer da det vinnende spillerobjektet.
+<br /><br />
 
 ### Value og symbol definisjoner: 
 | Tall          | Value           | Symbol  |
