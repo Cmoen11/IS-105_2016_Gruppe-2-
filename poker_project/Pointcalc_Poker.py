@@ -93,8 +93,6 @@ def checkFourOfaKind(cards) :
         return 0
     
 def checkFullHouse(cards) : 
-    i = 0
-    ii = 0
     ekstraPoint = 0
     
     cards = sortList(cards)
