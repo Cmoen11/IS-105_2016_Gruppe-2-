@@ -136,7 +136,7 @@ def checkStraight(cards) :
        and cards[2].getValue() == 1 \
        and cards[3].getValue() == 2 \
        and cards[4].getValue() == 3 :
-        ekstraPoint = cards[4].getValue()
+        ekstraPoint = cards[0].getValue()
         return 100000 + ekstraPoint
 def checkThreeOfaKind(cards) :
     i = 0
