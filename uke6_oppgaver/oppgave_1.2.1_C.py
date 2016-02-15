@@ -47,9 +47,17 @@ def encode(message):
     
 
 def test():
-    sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver/complete_shakespeare.txt"
+    sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver\hamlet.txt"
     f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
-    test_message = f.read()
-    print encode(test_message)
+    
+    # Kjør så lenge det er bytes i dokumentet
+    while (byte != "") :
+        # Hent ut en byte fra dokumentet
+        byte = f.read(1)
+        # Skriv til dokumentet, så lenge byte ikke er null
+        if (byte != "") :
+            pass # her kommer write kode.
+        
+    encode(test_message)
     
 test()

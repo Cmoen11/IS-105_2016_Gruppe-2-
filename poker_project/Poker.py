@@ -75,7 +75,7 @@ class PokerCard:
     
     # set the symbole value over to string for reading
     def getStringSymbol(self) :
-        symbol_name = ['Spar', 'kløver', 'hjerter', 'ruter']
+        symbol_name = ['♠', '♣', '♥', '♦']
         return symbol_name[self.symbol]
 
 class Player :
