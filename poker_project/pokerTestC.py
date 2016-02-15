@@ -148,7 +148,21 @@ class TestFlush(unittest.TestCase):
         self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards2), 30)    
 
 class TestStraight(unittest.TestCase):
-    pass
+    pokerCards = []
+    def setUp(self):
+        i = 0
+        startCard = 4
+        global pokerCards
+        pokerCards = []
+        for i in range(0,5) :
+            obj = Poker.PokerCard(0, startCard)
+            pokerCards.append(obj)
+            startCard += 1
+             
+    def test_testCalculatePoints2(self):
+        global pokerCards
+        self.assertEqual(Pointcalc_Poker.calculatePoints(pokerCards), 480000)
+        
 
 class TestThreeOfaKind(unittest.TestCase):
     pokerCards = []

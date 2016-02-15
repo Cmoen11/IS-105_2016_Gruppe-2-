@@ -10,7 +10,7 @@ def deal(pokerCards) :
     i = 0 # For loop
     y = 0 # card number
     # Create 6 players
-    for i in range(0,2) :
+    for i in range(0,3) :
         cardToPlayer = []
         x = 0 # for loop
         # Give each 6 player 5 cards
@@ -39,6 +39,8 @@ def generateCards():
         
         # Generate a deck of cards
         for x in range (0,4) :
+            
+            
             for i in range(0,13) :
                 obj = PokerCard(symbole, value)
                 pokerCards.append(obj)

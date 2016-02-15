@@ -161,7 +161,16 @@ def checkFlush(cards) :
     if (checkForSameType(cards)) :
         return 120000
     return 0
-def checkStraight(cards) :
+def checkStraight (cards):
+    #Sort the cards
+    cards = sortList(cards)
+    
+    # Check if is a straight 
+    if (cards[1].getValue() == cards[0].getValue() + 1) \
+       and (cards[2].getValue() == cards[0].getValue() + 2) \
+       and (cards[3].getValue() == cards[0].getValue() + 3) \
+       and (cards[4].getValue() == cards[0].getValue() + 4) : 
+        return 100000
     return 0
 def checkThreeOfaKind(cards) :
     i = 0
