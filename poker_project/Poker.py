@@ -64,7 +64,7 @@ class PokerCard:
     def getValue(self) :
         return self.value
     
-    # Return the symboleValue
+    # Return the symbolValue
     def getSymbol(self) :
         return self.symbol
     
@@ -73,9 +73,9 @@ class PokerCard:
         value = ["2","3","4","5","6","7","8","9","10","Knekt","Dronning","Konge","Ess"]
         return value[self.value]
     
-    # set the symbole value over to string for reading
+    # set the symbol value over to string for reading
     def getStringSymbol(self) :
-        symbol_name = ['Spar', 'kløver', 'hjerter', 'ruter']
+        symbol_name = ['♠', '♣', '♥', '♦']
         return symbol_name[self.symbol]
 
 class Player :
