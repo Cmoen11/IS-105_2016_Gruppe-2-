@@ -8,12 +8,12 @@ def code():
     
     table1 = {}
     # Generere 128 text elementer
-    for i in range(0,128) :
+    for i in range(0,255) :
         table1[i] = chr(i)    
     return table1    
 def encode(message):
     table = code()
-    
+    print [97]
     string = "" 
     code_for_string = []
     
@@ -47,9 +47,12 @@ def encode(message):
     
 
 def test():
+    '''
     sourcecode = "D:\is-110\IS-105_2016_Gruppe-2-\uke6_oppgaver/complete_shakespeare.txt"
     f = open(sourcecode, mode='rb') # Open a file with filename <sourcecode>
     test_message = f.read()
     print encode(test_message)
-    
+    '''
+    sourcecode = "bbaabbaabb"
+    print encode(sourcecode)
 test()
