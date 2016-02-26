@@ -1,48 +1,114 @@
-# kilde: http://stackoverflow.com/questions/6963236/python-string-search-efficiency 
-
-# -*- coding: utf-8 -*-
-
 import timeit
+'''
+This python document include two classes, one is for checking each symbol in a file, and another one for checking each
+word in the selected file.
+
+To call each class, you need to give it a number on how many test i
+
+'''
 
 
-prepare = """++
-with open('shakespare.txt') as fh:
-    text = fh.read()
-"""
+class EachLetter:
+    def __init__(self, filename, needle):
+        self.needle = needle                                    # the word we're looking for
+        self.fileName = filename                                # The file we're searching trough
+        self.prepare = open(self.fileName, 'r').read()          # Open file
+        pass
 
-presplit_prepare = """
-with open('shakespare.txt') as fh:
-    text = fh.read()
-lines = text.splitlines()
-"""
+    # Go trough every letter, and look for match, return True back when match is found
+    def search_fast(self):
+        for item in self.prepare:                               # Go trough every symbol in the list
+            if item == self.needle:                             # check if the symbol match the needle
+                return True                                     # Return true if the needle is founded
+        return False                                            # Return false if the needle is not found
 
-longsearch = """
-'hello' in text
-"""
+    # Go trough every letter, look for match, set Return_value to true and return after running trough every letter
+    def search_slow(self):
+        return_value = False                                    # If results is found
+        for item in self.prepare:                               # go trough every symbol in prepare
+            if item == self.needle:                             # check if the symbol match the needle
+                return_value = True                             # set the boolean to true if found
+        return return_value                                     # return the boolean
 
-search_slow = """
-for line in text.splitlines():
-    if 'hello' in line:
-        break
-"""
+    # Run test and print out time taken for running the tests
+    # @param n      The number on how many runs it will run through
+    def run_test(self, n):
 
-search_fast = """
-for line in lines:
-    if 'hello' in line:
-        break
-"""
+        # Search Slow
+        benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
+        time = benchmark.timeit(n)                              # run trough the test n times
+        average = average(time)                                 # The average time
+
+        print("Search-slow :", time, "seconds to go trough " + str(n) + " times")
+        print("That's an average of " + average)
+
+        # Search Fast
+        benchmark = timeit.Timer(self.search_fast)              # set up the timer for search_fast
+        time = benchmark.timeit(n)                              # run trough the test n times
+        average = average(time)                                 # The average time
+
+        print("Search-fast :", time, "seconds to go trough " + str(n) + " times")
+        print("That's an average of " + average)
+        pass
+
+    def average(self, time):
+        return time / self.n
 
 
+class EachWord:
+    def __init__(self, filename, needle):
+        self.needle = needle                                    # the word we're looking for
+        self.fileName = filename                                # The file we're searching trough
+        self.words = open(self.fileName, 'r').read().split()    # Open file, and split words
+        pass
+
+    # Go trough every word, and look if they match, return True back when match is found
+    def search_fast(self):
+        for word in self.words:                                 # Go trough every word in the list
+            if word == self.needle:                             # check if the word match the needle
+                return True                                     # Return true if the needle is founded
+        return False                                            # Return false if the needle is not found
+
+    # Go trough every word, and look if they match, set Return_value to true and return after running trough every word
+    def search_slow(self):
+        return_value = False                                    # If results is found
+        for word in self.words:                                 # go trough every word in the list
+            if word == self.needle:                             # check if the word match the needle
+                return_value = True                             # set the boolean to true if found
+        return return_value                                     # return the boolean
+
+    # Run test and print out time taken for running the tests
+    # @param n      The number on how many runs it will run trough
+    def run_test(self, n):
+
+        # Search Slow
+        benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
+        time = benchmark.timeit(n)                              # run trough the test n times
+        average = average(time)                                 # The average time
+
+        print("Search-slow :", time, "seconds to go trough " + str(n) + " times")
+        print("That's an average of " + average)
+
+        # Search Fast
+        benchmark = timeit.Timer(self.search_fast)              # set up the timer for search_fast
+        time = benchmark.timeit(n)                              # run trough the test n times
+        average = average(time)                                 # The average time
+
+        print("Search-fast :", time, "seconds to go trough " + str(n) + " times")
+        print("That's an average of " + average)
+        pass
+
+    def average(self, time):
+        return time / self.n
 
 
-#Leter etter et definert ord i teksten og retunerer dette tiden pcen brukte p� � finne dette ordet. 
-benchmark = timeit.Timer(longsearch, prepare)
-print ("Finne f�rste ord derfinert i kode:", benchmark.timeit(1000), "seconds")
+# For each word
+print("For hvert ord")
+eachWords = EachWord('shakespare.txt', 'The')
+eachWords.run_test(10)
 
-# Splitter hvert ord opp, hvis ordet er 'hello' s� stopper den. 
-benchmark = timeit.Timer(search_slow, prepare)
-print ("Search-slow :", benchmark.timeit(1000), "seconds")
+print("For hver bokstav(byte)")
 
-# Splitter alt opp f�r den begynner � se etter ordet 'hello'. 
-benchmark = timeit.Timer(search_fast, presplit_prepare)
-print ("Search-fast :", benchmark.timeit(1000), "seconds")
+# For each letter
+eachLetters = EachLetter('shakespare.txt', 'T')
+eachLetters.run_test(1)
