@@ -4,7 +4,8 @@
 
 import timeit
 
-prepare = """
+
+prepare = """++
 with open('shakespare.txt') as fh:
     text = fh.read()
 """
@@ -34,14 +35,14 @@ for line in lines:
 
 
 
-#Leter etter et definert ord i teksten og retunerer dette tiden pcen brukte på å finne dette ordet. 
+#Leter etter et definert ord i teksten og retunerer dette tiden pcen brukte pï¿½ ï¿½ finne dette ordet. 
 benchmark = timeit.Timer(longsearch, prepare)
-print "Finne første ord derfinert i kode:", benchmark.timeit(1000), "seconds"
+print ("Finne fï¿½rste ord derfinert i kode:", benchmark.timeit(1000), "seconds")
 
-# Splitter hvert ord opp, hvis ordet er 'hello' så stopper den. 
+# Splitter hvert ord opp, hvis ordet er 'hello' sï¿½ stopper den. 
 benchmark = timeit.Timer(search_slow, prepare)
-print "Search-slow :", benchmark.timeit(1000), "seconds"
+print ("Search-slow :", benchmark.timeit(1000), "seconds")
 
-# Splitter alt opp før den begynner å se etter ordet 'hello'. 
+# Splitter alt opp fï¿½r den begynner ï¿½ se etter ordet 'hello'. 
 benchmark = timeit.Timer(search_fast, presplit_prepare)
-print "Search-fast :", benchmark.timeit(1000), "seconds"
+print ("Search-fast :", benchmark.timeit(1000), "seconds")
