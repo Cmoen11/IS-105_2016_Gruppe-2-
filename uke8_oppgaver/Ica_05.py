@@ -32,27 +32,26 @@ class EachLetter:
 
     # Run test and print out time taken for running the tests
     # @param n      The number on how many runs it will run through
+
     def run_test(self, n):
 
         # Search Slow
         benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
         time = benchmark.timeit(n)                              # run trough the test n times
-        average = average(time)                                 # The average time
+        average = float(time) / n                               # The average time
 
         print("Search-slow :", time, "seconds to go trough " + str(n) + " times")
-        print("That's an average of " + average)
+        print("That's an average of " + str(average))
 
         # Search Fast
         benchmark = timeit.Timer(self.search_fast)              # set up the timer for search_fast
         time = benchmark.timeit(n)                              # run trough the test n times
-        average = average(time)                                 # The average time
+        average = float(time) / n                               # The average time
 
         print("Search-fast :", time, "seconds to go trough " + str(n) + " times")
-        print("That's an average of " + average)
+        print("That's an average of " + str(average))
         pass
 
-    def average(self, time):
-        return time / self.n
 
 
 class EachWord:
@@ -84,29 +83,27 @@ class EachWord:
         # Search Slow
         benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
         time = benchmark.timeit(n)                              # run trough the test n times
-        average = average(time)                                 # The average time
+        average = float(time) / n                               # The average time
 
         print("Search-slow :", time, "seconds to go trough " + str(n) + " times")
-        print("That's an average of " + average)
+        print("That's an average of " + str(average))
 
         # Search Fast
         benchmark = timeit.Timer(self.search_fast)              # set up the timer for search_fast
         time = benchmark.timeit(n)                              # run trough the test n times
-        average = average(time)                                 # The average time
+        average = float(time) / n                               # The average time
 
         print("Search-fast :", time, "seconds to go trough " + str(n) + " times")
-        print("That's an average of " + average)
+        print("That's an average of " + str(average))
         pass
 
-    def average(self, time):
-        return time / self.n
 
 
 # For each word
 print("For hvert ord")
 eachWords = EachWord('shakespare.txt', 'The')
 eachWords.run_test(10)
-
+print()
 print("For hver bokstav(byte)")
 
 # For each letter
