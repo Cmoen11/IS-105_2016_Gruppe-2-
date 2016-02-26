@@ -1,4 +1,3 @@
-import timeit
 import Search
 
 
@@ -19,7 +18,6 @@ class EachLetter(Search.Search):
         input_file = open(self.fileName, 'r')                   # Open file
         self.prepare = input_file.read()                        # read file
         input_file.close()                                      # close file
-
         pass
 
 

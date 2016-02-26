@@ -24,7 +24,6 @@ class Search:
         return return_value                                     # return the boolean
 
     def run_test(self, n):
-
         # Search Slow
         benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
         time = benchmark.timeit(n)                              # run trough the test n times
