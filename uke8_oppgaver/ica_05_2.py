@@ -31,7 +31,7 @@ class EachLetter:
         return return_value                                     # return the boolean
 
     # Run test and print out time taken for running the tests
-    # @param n      The number on how many runs it will run trough
+    # @param n      The number on how many runs it will run through
     def run_test(self, n):
 
         # Search Slow
@@ -51,8 +51,8 @@ class EachLetter:
         print("That's an average of " + average)
         pass
 
-    def average(self, n1):
-        return n1 / self.n
+    def average(self, time):
+        return time / self.n
 
 
 class EachWord:
@@ -97,8 +97,8 @@ class EachWord:
         print("That's an average of " + average)
         pass
 
-    def average(self, n1):
-        return n1 / self.n
+    def average(self, time):
+        return time / self.n
 
 
 # For each word
