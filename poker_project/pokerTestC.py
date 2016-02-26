@@ -17,8 +17,6 @@ class TestRoyalFlush(unittest.TestCase):
     def test_testCalculatePoints_royalFLush(self):
         self.assertEqual(Pointcalc_Poker.checkRoyalFlush(self.pokerCards), 500000)
 
-
-
 class TestStraightFlush(unittest.TestCase):
     pokerCards = []
     def setUp(self):
@@ -78,7 +76,6 @@ class TestPair(unittest.TestCase):
         for i in range (5,8) :
             obj = Poker.PokerCard(0,i)
             self.pokerCards.append(obj)            
-                
             
         self.cards = [
                     Poker.PokerCard(2,6),
