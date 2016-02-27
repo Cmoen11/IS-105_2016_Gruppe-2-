@@ -1,5 +1,5 @@
 import timeit
-
+# -*- coding: utf-8 -*-
 '''
 This class will hold every search method
 '''
@@ -23,14 +23,7 @@ class Search:
                 return_value = True                             # set the boolean to true if found
         return return_value                                     # return the boolean
 
-    def run_test(self, n):
-        # Search Slow
-        benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
-        time = benchmark.timeit(n)                              # run trough the test n times
-        average = float(time) / n                               # The average time
-
-        print("Search-slow :", time, "seconds to go trough " + str(n) + " times")
-        print("That's an average of " + str(average))
+    def run_test_fast(self, n):
 
         # Search Fast
         benchmark = timeit.Timer(self.search_fast)              # set up the timer for search_fast
@@ -39,4 +32,21 @@ class Search:
 
         print("Search-fast :", time, "seconds to go trough " + str(n) + " times")
         print("That's an average of " + str(average))
-        pass
+
+        return average
+
+    def run_test_slow(self, n):
+        # Search Slow
+        benchmark = timeit.Timer(self.search_slow)              # set up the timer for search_slow
+        time = benchmark.timeit(n)                              # run trough the test n times
+        average = float(time) / n                               # The average time
+
+        print("Search-slow :", time, "seconds to go trough " + str(n) + " times")
+        print("That's an average of " + str(average))
+
+        return average
+
+    def run_test(self,n):
+
+        self.run_test_fast(n)
+        self.run_test_fast(n)
