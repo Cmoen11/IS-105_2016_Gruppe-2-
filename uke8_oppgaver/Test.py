@@ -2,6 +2,7 @@
 import unittest
 import os
 import Ica_05
+import File
 from loremipsum import get_sentences
 from random import randint
 
@@ -11,20 +12,14 @@ class TestFile(unittest.TestCase):
     Check that slow uses longer time than fast search.
     '''
     def setUp(self) :
-        needle = " Hello "                                  # The needle that is to be placed randomly inside the file
-        self.inputFile = open('temp_InputFile.txt', 'w+')   # Create a test input file
-        needle_pos = randint(1, 150)                        # Randomly set the position to the needle from 1,150
-        sentences_list = get_sentences(4000)                # Create 4000 placeholder sentences
 
-        pos = 0                                             # To keep track on where to put the needle
-        for item in sentences_list:                         # Go trough sentence in the list
-            if pos == needle_pos:                           # Check the pos, if pos = needle -> write needle.
-                self.inputFile.write(needle)                # Write needle
-            else:
-                self.inputFile.write(item)                  # Write Sentence
-            pos += 1                                        # plus the pos with 1 for each run
-
-        self.inputFile.close()
+        # Generate a File
+        self.gen_file = File.CreateFile(
+            200,                                  # How many sentences that are to be generated
+            "Hello",                              # The needle that are to be added
+            20,                                   # Where the needle is to be added(can't be higher than sentences)
+            "temp_InputFile.txt")                 # The filename
+        self.gen_file.close_file()                # close file.
 
     def testSlowAndFastEachWord(self):
         print 'test 1: \n'
@@ -36,9 +31,10 @@ class TestFile(unittest.TestCase):
             each_word.run_test_slow(100),                   # Run the slow test 100 times
             each_word.run_test_fast(100))                   # run the fast test 100 times
 
-        print "File size: " + str(os.path.getsize('temp_InputFile.txt'))
+        print "File size: " + str(self.gen_file.get_filesize())
 
-        os.remove('temp_InputFile.txt')                     # Delete the temp file 
+        # Delete the testfile
+        self.gen_file.delete_file()
 
 
 
