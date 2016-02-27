@@ -40,7 +40,7 @@ class CreateFile:
         return self.filename                                # return filename
 
     def get_filesize(self):
-        return os.path.getsize('temp_InputFile.txt')        # get size of the file
+        return os.path.getsize(self.filename)        # get size of the file
 
     def delete_file(self):
         os.remove(self.get_filename())
