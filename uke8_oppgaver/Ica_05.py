@@ -1,48 +1,54 @@
-# kilde: http://stackoverflow.com/questions/6963236/python-string-search-efficiency 
-
+import Search
 # -*- coding: utf-8 -*-
 
-import timeit
+'''
+This python document include two classes, one is for checking each symbol in a file, and another one for checking each
+word in the selected file.
+
+To call each class, you need to give it a number on how many test i
+
+'''
 
 
-prepare = """++
-with open('shakespare.txt') as fh:
-    text = fh.read()
-"""
+class EachLetter(Search.Search):
 
-presplit_prepare = """
-with open('shakespare.txt') as fh:
-    text = fh.read()
-lines = text.splitlines()
-"""
-
-longsearch = """
-'hello' in text
-"""
-
-search_slow = """
-for line in text.splitlines():
-    if 'hello' in line:
-        break
-"""
-
-search_fast = """
-for line in lines:
-    if 'hello' in line:
-        break
-"""
+    def __init__(self, filename, needle):
+        self.needle = needle                                    # the word we're looking for
+        self.fileName = filename                                # The file we're searching trough
+        input_file = open(self.fileName, 'r')                   # Open file
+        self.prepare = input_file.read()                        # read file
+        input_file.close()                                      # close file
+        pass
 
 
+class EachWord (Search.Search):
+    def __init__(self, filename, needle):
+        self.needle = needle                                    # the word we're looking for
+        self.fileName = filename                                # The file we're searching trough
+        input_file = open(self.fileName, 'r')                   # Open file
+        self.prepare = input_file.read().split()                # read file and split each word
+        input_file.close()                                      # close file
+        pass
 
 
-#Leter etter et definert ord i teksten og retunerer dette tiden pcen brukte p� � finne dette ordet. 
-benchmark = timeit.Timer(longsearch, prepare)
-print ("Finne f�rste ord derfinert i kode:", benchmark.timeit(1000), "seconds")
+# For each word
+def run():
+    print("For hvert ord")
+    each_words = EachWord(
+        'shakespare.txt',                                       # Test file
+        'The')                                                  # Needle
 
-# Splitter hvert ord opp, hvis ordet er 'hello' s� stopper den. 
-benchmark = timeit.Timer(search_slow, prepare)
-print ("Search-slow :", benchmark.timeit(1000), "seconds")
+    each_words.run_test(10)                                     # run test 10 times
 
-# Splitter alt opp f�r den begynner � se etter ordet 'hello'. 
-benchmark = timeit.Timer(search_fast, presplit_prepare)
-print ("Search-fast :", benchmark.timeit(1000), "seconds")
+    print
+
+    print("For hver bokstav(byte)")
+    # For each letter
+    each_letters = EachLetter(
+        'shakespare.txt',                                       # Test file
+        'The')                                                  # Needle
+
+    each_letters.run_test(1)                                    # run test 10 times
+
+if __name__ == '__main__':
+    run()
