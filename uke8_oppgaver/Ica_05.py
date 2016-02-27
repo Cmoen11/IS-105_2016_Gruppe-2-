@@ -1,5 +1,5 @@
 import Search
-
+# -*- coding: utf-8 -*-
 
 '''
 This python document include two classes, one is for checking each symbol in a file, and another one for checking each
@@ -36,11 +36,12 @@ def run():
     print("For hvert ord")
     each_words = EachWord('shakespare.txt', 'The')
     each_words.run_test(10)
-    print()
+    print
     print("For hver bokstav(byte)")
 
     # For each letter
     each_letters = EachLetter('shakespare.txt', 'T')
     each_letters.run_test(1)
 
-run()
+if __name__ == '__main__':
+    run()
