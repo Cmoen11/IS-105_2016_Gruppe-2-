@@ -46,7 +46,10 @@ class Search:
 
         return average
 
-    def run_test(self,n):
-
-        self.run_test_fast(n)
-        self.run_test_fast(n)
+    def run_test(self, n):
+        '''
+            Run both test metods
+            :param n:   How many times to run the same test
+        '''
+        self.run_test_fast(n)                                   # fast run
+        self.run_test_slow(n)                                   # Slow run
