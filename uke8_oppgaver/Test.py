@@ -27,7 +27,7 @@ class TestFile(unittest.TestCase):
         self.inputFile.close()
 
     def testSlowAndFastEachWord(self):
-
+        print 'test 1: \n'
         each_word = Ica_05.EachWord(                        # Create a object to test from
                 'temp_InputFile.txt',                       # the temp file created earlier
                 "Hello")                                    # The needle to look for
@@ -78,7 +78,7 @@ class testTwoFiles(unittest.TestCase):
         input_file2.close()
 
     def test_two_files_words(self):
-
+        print '\n test 2: \n'
         file1 = Ica_05.EachWord(                            # Create a object to test from
             'temp_InputFile1.txt',                          # the temp file created earlier
             "Hello")                                        # The needle to look for
@@ -88,8 +88,8 @@ class testTwoFiles(unittest.TestCase):
             "Hello")
 
         self.assertLessEqual(                               # Check if the biggest file used longer time.
-        file1.run_test_slow(100),                           # Run the slow test 100 times
-        file2.run_test_slow(100))                           # run the fast test 100 times
+            file1.run_test_slow(100),                           # Run the slow test 100 times
+            file2.run_test_slow(100))                           # run the fast test 100 times
 
         print "File1 size: " + str(os.path.getsize('temp_InputFile1.txt'))
         print "File2 size: " + str(os.path.getsize('temp_InputFile2.txt'))
