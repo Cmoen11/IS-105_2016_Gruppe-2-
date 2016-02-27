@@ -15,7 +15,6 @@ class Search:
                 return True                                     # Return true if the needle is founded
         return False                                            # Return false if the needle is not found
 
-    # Go trough every letter, look for match, set Return_value to true and return after running trough every letter
     def search_slow(self):
         return_value = False                                    # If results is found
         for item in self.prepare:                               # go trough every symbol in prepare
