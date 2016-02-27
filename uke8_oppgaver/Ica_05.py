@@ -34,14 +34,21 @@ class EachWord (Search.Search):
 # For each word
 def run():
     print("For hvert ord")
-    each_words = EachWord('shakespare.txt', 'The')
-    each_words.run_test(10)
-    print
-    print("For hver bokstav(byte)")
+    each_words = EachWord(
+        'shakespare.txt',                                       # Test file
+        'The')                                                  # Needle
 
+    each_words.run_test(10)                                     # run test 10 times
+
+    print
+
+    print("For hver bokstav(byte)")
     # For each letter
-    each_letters = EachLetter('shakespare.txt', 'T')
-    each_letters.run_test(1)
+    each_letters = EachLetter(
+        'shakespare.txt',                                       # Test file
+        'The')                                                  # Needle
+
+    each_letters.run_test(1)                                    # run test 10 times
 
 if __name__ == '__main__':
     run()
