@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
-import os
 import Ica_05
-from loremipsum import get_sentences
-from random import randint
+import File
 
 
 class TestFile(unittest.TestCase):
@@ -11,23 +9,17 @@ class TestFile(unittest.TestCase):
     Check that slow uses longer time than fast search.
     '''
     def setUp(self) :
-        needle = " Hello "                                  # The needle that is to be placed randomly inside the file
-        self.inputFile = open('temp_InputFile.txt', 'w+')   # Create a test input file
-        needle_pos = randint(1, 150)                        # Randomly set the position to the needle from 1,150
-        sentences_list = get_sentences(4000)                # Create 4000 placeholder sentences
 
-        pos = 0                                             # To keep track on where to put the needle
-        for item in sentences_list:                         # Go trough sentence in the list
-            if pos == needle_pos:                           # Check the pos, if pos = needle -> write needle.
-                self.inputFile.write(needle)                # Write needle
-            else:
-                self.inputFile.write(item)                  # Write Sentence
-            pos += 1                                        # plus the pos with 1 for each run
-
-        self.inputFile.close()
+        # Generate a File
+        self.gen_file = File.CreateFile(
+            200,                                  # How many sentences that are to be generated
+            "Hello",                              # The needle that are to be added
+            20,                                   # Where the needle is to be added(can't be higher than sentences)
+            "temp_InputFile.txt")                 # The filename
+        self.gen_file.close_file()                # close file.
 
     def testSlowAndFastEachWord(self):
-        print 'test 1: \n'
+        print 'test 1 (Denne sjekker om fast er raskere enn slow): \n'
         each_word = Ica_05.EachWord(                        # Create a object to test from
                 'temp_InputFile.txt',                       # the temp file created earlier
                 "Hello")                                    # The needle to look for
@@ -36,9 +28,10 @@ class TestFile(unittest.TestCase):
             each_word.run_test_slow(100),                   # Run the slow test 100 times
             each_word.run_test_fast(100))                   # run the fast test 100 times
 
-        print "File size: " + str(os.path.getsize('temp_InputFile.txt'))
+        print "File size: " + str(self.gen_file.get_filesize())
 
-        os.remove('temp_InputFile.txt')                     # Delete the temp file 
+        # Delete the testfile
+        self.gen_file.delete_file()
 
 
 
@@ -48,37 +41,23 @@ class testTwoFiles(unittest.TestCase):
     Check slow search, with two files. One bigger than the other
     '''
     def setUp(self) :
-        needle = " Hello "                                  # The needle that is to be placed randomly inside the file
+        # Generate a File
+        self.gen_file1 = File.CreateFile(
+            200,                                  # How many sentences that are to be generated
+            "Hello",                              # The needle that are to be added
+            20,                                   # Where the needle is to be added(can't be higher than sentences)
+            "temp_InputFile1.txt")                # The filename
+        self.gen_file1.close_file()               # close file.
 
-        input_file1 = open('temp_InputFile1.txt', 'w+')  # Create a test input1 file
-        input_file2 = open('temp_InputFile2.txt', 'w+')  # Create a test input2 file
-
-        needle_pos = randint(1, 150)                        # Randomly set the position to the needle from 1,150
-        sentences_list_1 = get_sentences(4000)              # Create 4000 placeholder sentences
-        sentences_list_2 = get_sentences(8000)              # Create 4000 placeholder sentences
-
-        # For the file 1
-        pos = 0                                             # To keep track on where to put the needle
-        for item in sentences_list_1:                       # Go trough sentence in the list
-            if pos == needle_pos:                           # Check the pos, if pos = needle -> write needle.
-                input_file1.write(needle)                   # Write needle
-            else:
-                input_file1.write(item)                     # Write Sentence
-            pos += 1                                        # plus the pos with 1 for each run
-        input_file1.close()
-
-        # For the file 2
-        pos = 0                                             # To keep track on where to put the needle
-        for item in sentences_list_2:                       # Go trough sentence in the list
-            if pos == needle_pos:                           # Check the pos, if pos = needle -> write needle.
-                input_file2.write(needle)                   # Write needle
-            else:
-                input_file2.write(item)                     # Write Sentence
-            pos += 1                                        # plus the pos with 1 for each run
-        input_file2.close()
+        self.gen_file2 = File.CreateFile(
+            400,                                  # How many sentences that are to be generated
+            "Hello",                              # The needle that are to be added
+            20,                                   # Where the needle is to be added(can't be higher than sentences)
+            "temp_InputFile2.txt")                # The filename
+        self.gen_file2.close_file()               # close file.
 
     def test_two_files_words(self):
-        print '\n test 2: \n'
+        print '\ntest 2 (2 filer, der den ene er større enn den andre, her er det kun test_slow som blir kjørt.): \n'
         file1 = Ica_05.EachWord(                            # Create a object to test from
             'temp_InputFile1.txt',                          # the temp file created earlier
             "Hello")                                        # The needle to look for
@@ -88,11 +67,12 @@ class testTwoFiles(unittest.TestCase):
             "Hello")
 
         self.assertLessEqual(                               # Check if the biggest file used longer time.
-            file1.run_test_slow(100),                           # Run the slow test 100 times
-            file2.run_test_slow(100))                           # run the fast test 100 times
+            file1.run_test_slow(100),                       # Run the slow test 100 times
+            file2.run_test_slow(100))                       # run the fast test 100 times
 
-        print "File1 size: " + str(os.path.getsize('temp_InputFile1.txt'))
-        print "File2 size: " + str(os.path.getsize('temp_InputFile2.txt'))
+        print "File size: " + str(self.gen_file1.get_filesize())
+        print "File size: " + str(self.gen_file2.get_filesize())
 
-        os.remove('temp_InputFile1.txt')                    # Delete the temp1 file
-        os.remove('temp_InputFile2.txt')                    # Delete the temp2 file
+        self.gen_file1.delete_file()                        # Delete file 1
+        self.gen_file2.delete_file()                        # delete file 2
+
