@@ -87,7 +87,7 @@ class testTwoFiles(unittest.TestCase):
             'temp_InputFile2.txt',                          # the temp file created earlier
             "Hello")
 
-        self.assertLessEqual(                               # Check if the slow test is greater than the fast one
+        self.assertLessEqual(                               # Check if the biggest file used longer time.
         file1.run_test_slow(100),                           # Run the slow test 100 times
         file2.run_test_slow(100))                           # run the fast test 100 times
 
