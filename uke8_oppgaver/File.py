@@ -4,31 +4,28 @@ import os
 
 class CreateFile:
 
-    def __init__(self, sentences, needle, pos, filename):
-        self.needle = " " + needle + " "                           # needle, so the program has something to look for
+    def __init__(self, symbols, pos, filename):
+        self.needle = '1'                                          # needle, so the program has something to look for
         self.pos = pos                                             # where the needle is going to be placed
-        self.filename = filename
-        self.sentences = sentences
+        self.filename = filename                                   # the name of the file that are to be created.
+        self.symbol = symbols                                      # the amount of char's inside the document
 
         # Create file
-        self.sentences_list = self.generate_sentences()             # Generate the sentences
         self.temp_file = self.create_temp_file()                    # Create temp file
-        self.write_to_file()                                        # Write the sentences to file
+        self.write_to_file()                                        # Write the characters to file
 
     def create_temp_file(self):
-        return open(self.filename, 'w+')                    # Create file with the selected filename
+        return open(self.filename, 'w+')                            # Create file with the selected filename
 
     def generate_sentences(self):
-        return get_sentences(self.sentences)                # Create x placeholder sentences
+        return get_sentences(self.symbol)                           # Create x symbols
 
     def write_to_file(self):
-        pos = 0                                             # To keep track on where to put the needle
-        for item in self.sentences_list:                    # Go trough sentence in the list
-            if pos == self.pos:                             # Check the pos, if pos = needle -> write needle.
-                self.temp_file.write(self.needle)           # Write needle
+        for i in range(0, self.symbol):                           # run for the amount of symbol's that are requested
+            if i == self.pos:                                     # if pos is at the point of needle pos, write 1
+                self.temp_file.write(self.needle)                   # write 1
             else:
-                self.temp_file.write(item)                  # Write Sentence
-            pos += 1
+                self.temp_file.write('0')                           # Write 0
 
     def close_file(self):
         self.temp_file.close()                              # Close file
