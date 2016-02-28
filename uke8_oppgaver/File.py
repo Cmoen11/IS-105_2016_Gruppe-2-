@@ -1,4 +1,3 @@
-from loremipsum import get_sentences
 import os
 
 
@@ -17,15 +16,12 @@ class CreateFile:
     def create_temp_file(self):
         return open(self.filename, 'w+')                            # Create file with the selected filename
 
-    def generate_sentences(self):
-        return get_sentences(self.symbol)                           # Create x symbols
-
     def write_to_file(self):
         for i in range(0, self.symbol):                           # run for the amount of symbol's that are requested
             if i == self.pos:                                     # if pos is at the point of needle pos, write 1
-                self.temp_file.write(self.needle)                   # write 1
+                self.temp_file.write(self.needle)                 # write 1
             else:
-                self.temp_file.write('0')                           # Write 0
+                self.temp_file.write('0')                         # Write 0
 
     def close_file(self):
         self.temp_file.close()                              # Close file
