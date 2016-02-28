@@ -55,11 +55,11 @@ class testTwoFiles(unittest.TestCase):
 
     def test_two_files_words(self):
         print '\ntest 2 (2 filer, der den ene er større enn den andre, her er det kun test_slow som blir kjørt.): \n'
-        file1 = Ica_05.EachLetter(                            # Create a object to test from
+        file1 = Ica_05.EachLetter(                          # Create a object to test from
             'temp_InputFile1.txt',                          # the temp file created earlier
-            "1")                                        # The needle to look for
+            "1")                                            # The needle to look for
 
-        file2 = Ica_05.EachLetter(                            # Create a object to test from
+        file2 = Ica_05.EachLetter(                          # Create a object to test from
             'temp_InputFile2.txt',                          # the temp file created earlier
             "1")
 
@@ -114,9 +114,9 @@ class TestNeedlePlacement(unittest.TestCase):
 
         # File 2
         print '\n test 2 (Check when the needle is in the very last of the document): \n'
-        file2 = Ica_05.EachLetter(                                # Create a object to test from
+        file2 = Ica_05.EachLetter(                              # Create a object to test from
                 'temp_InputFile1.txt',                          # the temp file created earlier
-                "1")                                        # The needle to look for
+                "1")                                            # The needle to look for
         self.assertGreaterEqual(                                # Check if the slow test is greater than the fast one
             file1.run_test_slow(1000),                          # Run the slow test 100 times
             file2.run_test_fast(1000))                          # run the fast test 100 times
