@@ -1,6 +1,5 @@
 import os
 
-
 class CreateFile:
 
     def __init__(self, symbols, pos, filename):
