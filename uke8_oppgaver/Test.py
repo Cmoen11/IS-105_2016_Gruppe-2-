@@ -19,7 +19,7 @@ class TestFile(unittest.TestCase):
         self.gen_file.close_file()                # close file.
 
     def testSlowAndFastEachWord(self):
-        print 'test 1 (Denne sjekker om fast er raskere enn slow): \n'
+        print ('test 1 (Denne sjekker om fast er raskere enn slow): \n')
         each_word = Ica_05.EachWord(                        # Create a object to test from
                 'temp_InputFile.txt',                       # the temp file created earlier
                 "Hello")                                    # The needle to look for
@@ -55,6 +55,7 @@ class testTwoFiles(unittest.TestCase):
             20,                                   # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile2.txt")                # The filename
         self.gen_file2.close_file()               # close file.
+
     def test_two_files_words(self):
         print '\ntest 2 (2 filer, der den ene er større enn den andre, her er det kun test_slow som blir kjørt.): \n'
         file1 = Ica_05.EachWord(                            # Create a object to test from
@@ -75,6 +76,7 @@ class testTwoFiles(unittest.TestCase):
         self.gen_file1.delete_file()                        # Delete file 1
         self.gen_file2.delete_file()                        # delete file 2
 
+
 class TestNeedlePlacement(unittest.TestCase):
     '''
     This test function will find out if there will take any longer time if the needle is placed either early in the
@@ -87,15 +89,15 @@ class TestNeedlePlacement(unittest.TestCase):
             200,                                  # How many sentences that are to be generated and added
             "Hello",                              # The needle that are to be added
             0,                                    # Where the needle is to be added(can't be higher than sentences)
-            "temp_InputFile1.txt")                 # The filename
-        self.gen_file1.close_file()                # close file.
+            "temp_InputFile1.txt")                # The filename
+        self.gen_file1.close_file()               # close file.
 
 
         # Generate a file, place the needle in the end of the file.
         self.gen_file2 = File.CreateFile(
             200,                                  # How many sentences that are to be generated and added
             "Hello",                              # The needle that are to be added
-            200,                                  # Where the needle is to be added(can't be higher than sentences)
+            201,                                  # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile2.txt")                # The filename
         self.gen_file2.close_file()               # close file.
 
@@ -104,25 +106,25 @@ class TestNeedlePlacement(unittest.TestCase):
         # File 1
 
         print 'test 1 (Check when the needle is in the very beginning of the document): \n'
-        file1 = Ica_05.EachWord(                            # Create a object to test from
-                'temp_InputFile1.txt',                      # the temp file created earlier
-                "Hello")                                    # The needle to look for
+        file1 = Ica_05.EachWord(                                # Create a object to test from
+                'temp_InputFile1.txt',                          # the temp file created earlier
+                "Hello")                                        # The needle to look for
 
-        self.assertGreaterEqual(                            # Check if the slow test is greater than the fast one
-            file1.run_test_slow(1000),                       # Run the slow test 100 times
-            file1.run_test_fast(1000))                       # run the fast test 100 times
+        self.assertGreaterEqual(                                # Check if the slow test is greater than the fast one
+            file1.run_test_slow(1000),                          # Run the slow test 100 times
+            file1.run_test_fast(1000))                          # run the fast test 100 times
 
         print "File size: " + str(self.gen_file1.get_filesize())
 
 
         # File 2
         print '\n test 2 (Check when the needle is in the very last of the document): \n'
-        file2 = Ica_05.EachWord(                            # Create a object to test from
-                'temp_InputFile1.txt',                      # the temp file created earlier
-                "Hello")                                    # The needle to look for
-        self.assertGreaterEqual(                            # Check if the slow test is greater than the fast one
-            file1.run_test_slow(1000),                       # Run the slow test 100 times
-            file2.run_test_fast(1000))                       # run the fast test 100 times
+        file2 = Ica_05.EachWord(                                # Create a object to test from
+                'temp_InputFile1.txt',                          # the temp file created earlier
+                "Hello")                                        # The needle to look for
+        self.assertGreaterEqual(                                # Check if the slow test is greater than the fast one
+            file1.run_test_slow(1000),                          # Run the slow test 100 times
+            file2.run_test_fast(1000))                          # run the fast test 100 times
 
         print "File size2: " + str(self.gen_file2.get_filesize())
 
