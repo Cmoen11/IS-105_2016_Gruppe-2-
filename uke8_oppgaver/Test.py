@@ -12,7 +12,7 @@ class TestFile(unittest.TestCase):
 
         # Generate a File
         self.gen_file = File.CreateFile(
-            200,                                  # How many sentences that are to be generated and added
+            200,                                  # How many symbols that are to be generated and added
             20,                                   # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile.txt")                 # The filename
         self.gen_file.close_file()                # close file.
@@ -42,7 +42,7 @@ class testTwoFiles(unittest.TestCase):
     def setUp(self) :
         # Generate a File
         self.gen_file1 = File.CreateFile(
-            200,                                  # How many sentences that are to be generated and added
+            200,                                  # How many symbols that are to be generated and added
             20,                                   # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile1.txt")                # The filename
         self.gen_file1.close_file()               # close file.
@@ -83,7 +83,7 @@ class TestNeedlePlacement(unittest.TestCase):
 
         # Generate file, place needle in the beginning of the file
         self.gen_file1 = File.CreateFile(
-            200,                                  # How many sentences that are to be generated and added
+            200,                                  # How many symbols that are to be generated and added
             0,                                    # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile1.txt")                # The filename
         self.gen_file1.close_file()               # close file.
@@ -91,7 +91,7 @@ class TestNeedlePlacement(unittest.TestCase):
 
         # Generate a file, place the needle in the end of the file.
         self.gen_file2 = File.CreateFile(
-            200,                                  # How many sentences that are to be generated and added
+            200,                                  # How many symbols that are to be generated and added
             201,                                  # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile2.txt")                # The filename
         self.gen_file2.close_file()               # close file.
