@@ -1,21 +1,35 @@
 class Position :
     def __init__(self):
-        self.position_A = ["Corn", "Fox", "Chicken"]
-        self.position_B = []
+        self.position_A = ["Corn", "Fox", "Chicken"]                # The items / animals the selected position has
+        self.position_B = []                                        # The items / animals the selected position has
 
-    def position_a_add(self, passenger):
-        self.position_A.append(passenger)
+    '''
+        Append passenger to the position A or B
+        :return: True if he either appended to A or B | False if pos was 3, because 3 is in the middle of sea.
+    '''
+    def position_add(self, passenger, boat_pos):
+        if boat_pos == 1:                                           # if the boat is at position A
+            self.position_A.append(passenger)                       # Append selected passenger to pos A
+            return True
 
-    def position_a_remove(self, passenger, boat_pos):
-        if not self.check_boat_position_a(boat_pos):
+        elif boat_pos == 3:                                         # if the boat is at position B
+            self.position_B.append(passenger)                       # Append the passenger to position B
+            return True
+
+        else:
             return False
 
-        if passenger in self.position_A:
-            self.position_A.remove(passenger)
-            return passenger
+    '''
+        remove a passenger from position A.
+        :return: return passenger if the passenger is at the position
+    '''
+    def position_a_remove(self, passenger, boat_pos):
 
-    def position_b_add(self, passenger):
-        self.position_B.append(passenger)
+        # If the passenger is at position a, and the boat is at position a.
+        if (passenger in self.position_A) and (self.check_boat_position_a(boat_pos)):
+            self.position_A.remove(passenger)                       # remove the passenger from the position
+            return passenger                                        # return the passenger that has been removed
+        return False                                                # boat or passenger are not at A.
 
     def position_b_remove(self, passenger, boat_pos):
         if not self.check_boat_position_b(boat_pos) :

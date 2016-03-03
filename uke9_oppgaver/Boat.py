@@ -56,6 +56,8 @@ class Boat:
     def move_right(self):
         if self.position < 3:                       # if the position is not all the way to the right
             self.position += 1                      # move the boat by 1 to the right
+            return True
+        return False
 
     '''
         Move the boat to the left
@@ -64,6 +66,8 @@ class Boat:
     def move_left(self):
         if self.position > 1:                       # if the position is not all the way to the left
             self.position -= 1                      # move the boat by 1 to the left
+            return True
+        return False
 
     '''
         Get the position of where the boat is now.
