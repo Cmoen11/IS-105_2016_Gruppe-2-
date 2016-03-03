@@ -19,7 +19,6 @@ class Position :
         else:
             return False
 
-
     '''
         remove a passenger from position A.
         :return: return passenger if the passenger is at the position
@@ -31,10 +30,6 @@ class Position :
             self.position_A.remove(passenger)                       # remove the passenger from the position
             return passenger                                        # return the passenger that has been removed
         return False                                                # boat or passenger are not at A.
-
-
-    def position_b_add(self, passenger):
-        self.position_B.append(passenger)
 
     def position_b_remove(self, passenger, boat_pos):
         if not self.check_boat_position_b(boat_pos) :
