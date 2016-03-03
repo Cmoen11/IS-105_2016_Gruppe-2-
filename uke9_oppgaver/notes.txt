@@ -1,0 +1,5 @@
+## Boat project ##
+
+- micro world
+- Internal semantics of the program
+    - strukturer og programmer
