@@ -24,28 +24,28 @@ class Database:
             return False
 
     def set_man(self, new_pos):
-        if new_pos is 'left' or 'right' or 'boat':
+        if new_pos in ('left','right','boat'):
             self.man = new_pos
             return True
         else:
             return False
 
     def set_chicken(self, new_pos):
-        if new_pos is 'left' or 'right' or 'boat':
+        if new_pos in ('left','right','boat'):
             self.chicken = new_pos
             return True
         else:
             return False
 
     def set_fox(self, new_pos):
-        if new_pos is 'left' or 'right' or 'boat':
+        if new_pos in ('left','right','boat'):
             self.fox = new_pos
             return True
         else:
             return False
 
     def set_corn(self, new_pos):
-        if new_pos is 'left' or 'right' or 'boat':
+        if new_pos in ('left','right','boat'):
             self.corn = new_pos
             return True
         else:
