@@ -17,6 +17,7 @@ class State:
         if self.check_lose_combo():                  # if the player left chicken and corn alone or fox and chicken
             print("player is dead")                  # print art to the player NB: not created art for it yet.
             return None                              # break the state check
+        
 
         self.man_no_items_boat()
         self.man_in_boat()                           # if man is inside the boat options is delivered
@@ -38,13 +39,13 @@ class State:
 
     def man_in_boat(self):
         if self.tape.man in 'boat':
-            answer = raw_input("Do you want to go outside of the bout? or do you want to travel?: type 1, to go out "
+            answer = raw_input("Do you want to go outside of the boat? or do you want to travel?: type 1, to go out "
                                "type 2 to travel: ")
             if self.tape.boat in 'left':
-                if answer == 1: self.tape.set_man('left')
+                if answer == '1': self.tape.set_man('left')
                 else: self.tape.set_boat('right')
             elif self.tape.boat in 'right':
-                if answer == 1: self.tape.set_man('right')
+                if answer == '1': self.tape.set_man('right')
                 else: self.tape.set_boat('left')
 
     def man_on_left(self):
@@ -180,7 +181,9 @@ class State:
         :return:
         '''
         if self.items_on_boat() != None : return None
-        if self.tape.man in (self.tape.chicken, self.tape.corn, self.tape.fox) :
+        if self.tape.man in self.tape.chicken\
+                and self.tape.man in self.tape.corn\
+                and self.tape.man in self.tape.fox:
             answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
                       "Put corn inside the boat, type 3. Put fox inside the boat type 4: ")
 
@@ -190,7 +193,8 @@ class State:
             elif answer == '4': self.tape.set_fox('boat')
             else : pass
 
-        elif self.tape.man in (self.tape.chicken, self.tape.corn):
+        elif self.tape.man in self.tape.chicken \
+                and self.tape.man in self.tape.corn:
             answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2."
                                "Put corn inside the boat, type 3.")
 
@@ -198,6 +202,25 @@ class State:
             elif answer == '2': self.tape.set_chicken('boat')
             elif answer == '3': self.tape.set_corn('boat')
             else : pass
+
+
+        elif self.tape.man in self.tape.fox \
+                and self.tape.man in self.tape.corn:
+            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
+                               "Put corn inside the boat, type 3.")
+            if answer == '1': self.tape.set_man('boat')
+            elif answer == '2': self.tape.set_fox('boat')
+            elif answer == '3': self.tape.set_corn('boat')
+            else: pass
+
+        elif self.tape.man in self.tape.fox \
+                and self.tape.man in self.tape.chicken:
+            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
+                               "Put chicken inside the boat, type 3.")
+            if answer == '1': self.tape.set_man('boat')
+            elif answer == '2': self.tape.set_fox('boat')
+            elif answer == '3': self.tape.set_chicken('boat')
+            else: pass
 
         elif self.tape.man in self.tape.chicken :
             answer = raw_input("Choose one: Go inside the boat type 1. Put chicken inside the boat type 2.")
@@ -216,23 +239,6 @@ class State:
             if answer == '1': self.tape.set_man('boat')
             elif answer == '2': self.tape.set_corn('boat')
             else: pass
-
-        elif self.tape.man in (self.tape.fox, self.tape.corn):
-            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
-                               "Put corn inside the boat, type 3.")
-            if answer == '1': self.tape.set_man('boat')
-            elif answer == '2': self.tape.set_fox('boat')
-            elif answer == '3': self.tape.set_corn('boat')
-            else: pass
-
-        elif self.tape.man in (self.tape.fox, self.tape.chicken):
-            answer = raw_input("Choose one: Go inside the boat type 1. Put fox inside the boat type 2."
-                               "Put chicken inside the boat, type 3.")
-            if answer == '1': self.tape.set_man('boat')
-            elif answer == '2': self.tape.set_fox('boat')
-            elif answer == '3': self.tape.set_chicken('boat')
-            else: pass
-
 
     def redefine_answer(self, answer):
             if answer == 'y': answer = True
