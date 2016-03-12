@@ -9,7 +9,7 @@ class State:
 
     def check_state(self):                                # if everything is left, as it would in the start of the game.
 
-        if self.check_lose_combo():                     # check if the player has hit any death traps.
+        if self.check_lose_combo():                       # check if the player has hit any death traps.
             print("player is dead")                       # print art to the player NB: not created art for yet.
             return None                                   # break the check
 
@@ -22,14 +22,12 @@ class State:
         :return: True if the player is 'dead' | False if the user is not 'dead'
         '''
 
-        # for ever condition where the man has left A wrong.
         # where either chicken and corn is left alone, or fox and chicken is left alone.
-        if 'left' in (self.tape.boat, self.tape.chicken, self.tape.corn) and \
-            'boat' in (self.tape.man, self.tape.fox) or \
-                'left' in (self.tape.boat, self.tape.chicken, self.tape.fox) and \
-                'boat' in (self.tape.man, self.tape.corn):
+        if (self.tape.chicken in self.tape.fox) and (self.tape.man not in self.tape.chicken) or \
+                (self.tape.chicken in self.tape.corn) and (self.tape.man not in self.tape.chicken):
             return True
-        pass
+        return False
+
 
 
 def test():
