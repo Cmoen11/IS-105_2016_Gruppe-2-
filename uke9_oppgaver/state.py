@@ -8,6 +8,9 @@ class State:
         self.art = art.Art()                         # create an art object, to show us some graphics
         self.tape.set_corn('boat')
 
+    def show_state(self):
+        pass
+
     def check_state(self):                           # if everything is left, as it would in the start of the game.
 
         if self.check_lose_combo():                  # if the player left chicken and corn alone or fox and chicken
@@ -123,7 +126,9 @@ class State:
             answer = raw_input("Do you want to take the fox out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
             if answer: take_out_boat = 3
-        else :
+
+        # if the user has answered no on the previous question
+        if take_out_boat is None:
             answer = raw_input("Do you want to go inside the boat? Y/N : ")
             answer = self.redefine_answer(answer)
             if answer: take_out_boat = 4
