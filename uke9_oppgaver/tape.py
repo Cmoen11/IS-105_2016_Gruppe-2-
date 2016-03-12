@@ -9,7 +9,7 @@ class Database:
             Keep in mind, this is only the position of the current elements of the 'game'
             not actually the figures in the game.
         '''
-        self.boat, self.man, self.chicken, self.fox, self.corn = "left"
+        self.boat = self.man = self.chicken = self.fox = self.corn = "left"
         pass
 
     '''

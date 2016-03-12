@@ -15,6 +15,3 @@ class Art :
         self.art_boat = {    # everything that includes boat
 
         }
-
-print (art_a['a_with_items_noPerson'])
-print (art_a['a_with_items_person'])
