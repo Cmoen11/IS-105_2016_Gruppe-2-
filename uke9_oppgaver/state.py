@@ -4,17 +4,18 @@ import art
 
 class State:
     def __init__(self):
-        self.tape = t.Database()                          # create new tape for the boat project
-        self.art = art.Art()                              # create an art object, to show us some graphics
+        self.tape = t.Database()                     # create new tape for the boat project
+        self.art = art.Art()                         # create an art object, to show us some graphics
 
-    def check_state(self):                                # if everything is left, as it would in the start of the game.
+    def check_state(self):                           # if everything is left, as it would in the start of the game.
 
-        if self.check_lose_combo():                       # if the player left chicken and corn alone or fox and chicken
-            print("player is dead")                       # print art to the player NB: not created art for it yet.
-            return None                                   # break the state check
+        if self.check_lose_combo():                  # if the player left chicken and corn alone or fox and chicken
+            print("player is dead")                  # print art to the player NB: not created art for it yet.
+            return None                              # break the state check
 
-        if 'left' in (self.tape.man, self.tape.chicken, self.tape.fox, self.tape.corn, self.tape.boat):
-            print(self.art.art_a['a_with_items_person'])  # print the art for the position.
+        self.man_in_boat()                           # if man is inside the boat options is delivered
+        self.man_on_left()                           # if the man is at left, give options
+        self.man_on_right()                          # if the man is at right, give options.
 
     def check_lose_combo(self):
         '''
@@ -31,8 +32,24 @@ class State:
 
     def man_in_boat(self):
         if self.tape.man in 'boat':
-            if self.tape.boat in ('left','right'):
+            if 'boat' in 'left':        # man can go out of boat to left side (a) or can travel to right side (b)
+                pass
+            if 'boat' in 'right':       # man can go out of boat to the right side (b) or can travel to the left side.
+                pass
 
+    def man_on_left(self):
+        if self.tape.man in 'left':
+
+            # check if the statement is at the beginning of the game.
+            if 'left' in (self.tape.man, self.tape.chicken, self.tape.fox, self.tape.corn, self.tape.boat):
+                print(self.art.art_a['a_with_items_person'])  # print the art for the position.
+
+            # start to sort of items on the selected position
+            pass
+
+    def man_on_right(self):
+        if self.tape.man in 'right' :
+            pass
 
 
 def test():
