@@ -1,4 +1,6 @@
-
+'''
+    This class will tell what 'state' the program is at.
+'''
 class Database:
     # this class will hold the "tape".
     def __init__(self):

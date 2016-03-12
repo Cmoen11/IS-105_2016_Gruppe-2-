@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # OBS! Dårlig kodingstil! For eksempel, kommentarer skal høre til funksjoner og være mellom '''disse'''
 
-from sm import SM
+from janis_sin_version.sm import SM
 
 class River(SM):
 
@@ -24,7 +24,8 @@ class River(SM):
     def putin(self, item):
         pass
 
-    # Osv., - definer alle kommandoen som virker på "verden" her ...
+    # Osv., - definer alle kommandoen som virker på "verden" herWhat language do you want the regrex to work for?
+ ...
 
     def view(self):
         # Her implementeres logikken for "vakker" utskrift
