@@ -5,7 +5,7 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/Test.py" line="87" />
-    <bookmark url="file://$PROJECT_DIR$/File.py" line="19" />
+    <bookmark url="file://$PROJECT_DIR$/File.py" line="18" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="075d130a-7134-4dce-a102-76f26f3dada3" name="Default" comment="" />
@@ -21,14 +21,14 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_Test.coverage" NAME="Unittests in Test Coverage Results" MODIFIED="1456671419043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_Test.coverage" NAME="Unittests in Test Coverage Results" MODIFIED="1456674049989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittest_TestFile_testEachWord.coverage" NAME="Unittest TestFile.testEachWord Coverage Results" MODIFIED="1456586225605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_TestFile.coverage" NAME="Unittests in TestFile Coverage Results" MODIFIED="1456615405064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittest_TestFile_testSlowAndFastEachWord.coverage" NAME="Unittest TestFile.testSlowAndFastEachWord Coverage Results" MODIFIED="1456587032597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_TestFile__1_.coverage" NAME="Unittests in TestFile (1) Coverage Results" MODIFIED="1456615418345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_TestFile__2_.coverage" NAME="Unittests in TestFile (2) Coverage Results" MODIFIED="1456587678854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_TestFile__4_.coverage" NAME="Unittests in TestFile (4) Coverage Results" MODIFIED="1456587671717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/uke8_oppgaver$Ica_05.coverage" NAME="Ica_05 Coverage Results" MODIFIED="1456601155257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/uke8_oppgaver$Ica_05.coverage" NAME="Ica_05 Coverage Results" MODIFIED="1456673505920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittest_TestFile_testSlowAndFastEachWord__1_.coverage" NAME="Unittest TestFile.testSlowAndFastEachWord (1) Coverage Results" MODIFIED="1456587171781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_TestFile__3_.coverage" NAME="Unittests in TestFile (3) Coverage Results" MODIFIED="1456590239179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/uke8_oppgaver$Unittests_in_testTwoFiles__1_.coverage" NAME="Unittests in testTwoFiles (1) Coverage Results" MODIFIED="1456593544145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -50,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/Ica_05.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="39" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="39" />
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="e#1336#1954#0" expanded="false" />
               </folding>
@@ -79,12 +79,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="File.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="File.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/File.py">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+            <state vertical-scroll-proportion="-5.275862">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+>>>>>>> rework
               <folding />
 =======
 <<<<<<< HEAD
@@ -102,9 +107,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state vertical-scroll-proportion="-22.275862">
               <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
@@ -117,6 +123,10 @@
               <caret line="16" column="27" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="27" />
 >>>>>>> c1ed17a569923cdee0695919710159a2bf3739f8
 >>>>>>> 715075c8535755a188d074a2c0ad1aa4666bb0ed
+=======
+            <state vertical-scroll-proportion="0.89876264">
+              <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+>>>>>>> rework
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
@@ -138,8 +148,8 @@
       <list>
         <option value="$PROJECT_DIR$/Search.py" />
         <option value="$PROJECT_DIR$/Ica_05.py" />
-        <option value="$PROJECT_DIR$/Test.py" />
         <option value="$PROJECT_DIR$/File.py" />
+        <option value="$PROJECT_DIR$/Test.py" />
       </list>
     </option>
   </component>
@@ -233,29 +243,6 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in Test (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="uke8_oppgaver" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittests in TestFile" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -323,6 +310,24 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Ica_05" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="uke8_oppgaver" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Ica_05.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -455,18 +460,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in Test" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in Test (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in testTwoFiles" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in testTwoFiles" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Ica_05" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in Test" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in testTwoFiles" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in Test (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Ica_05" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in testTwoFiles" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestFile" />
       </list>
     </recent_temporary>
   </component>
@@ -484,15 +489,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_Test - 2016.02.28 at 12h 54m 06s.xml">
-      <configuration name="Unittests in Test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_Test - 2016.02.28 at 12h 54m 23s.xml">
-      <configuration name="Unittests in Test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_Test - 2016.02.28 at 12h 55m 40s.xml">
-      <configuration name="Unittests in Test" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_Test - 2016.02.28 at 13h 09m 47s.xml">
       <configuration name="Unittests in Test" configurationId="tests" />
     </history-entry>
@@ -512,6 +508,15 @@
       <configuration name="Unittests in Test" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_Test - 2016.02.28 at 15h 56m 59s.xml">
+      <configuration name="Unittests in Test" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_Test - 2016.02.28 at 16h 06m 12s.xml">
+      <configuration name="Unittests in Test" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_Test - 2016.02.28 at 16h 31m 49s.xml">
+      <configuration name="Unittests in Test" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_Test - 2016.02.28 at 16h 40m 50s.xml">
       <configuration name="Unittests in Test" configurationId="tests" />
     </history-entry>
   </component>
@@ -722,7 +727,19 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Test.pyc">
+=======
+    <entry file="file://$PROJECT_DIR$/File.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.275862">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Search.py">
+>>>>>>> rework
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
 <<<<<<< HEAD
@@ -754,8 +771,12 @@
     <entry file="file://$PROJECT_DIR$/Ica_05.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="14" column="39" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="39" />
 >>>>>>> c1ed17a569923cdee0695919710159a2bf3739f8
+=======
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+>>>>>>> rework
           <folding>
             <element signature="e#1336#1954#0" expanded="false" />
           </folding>
@@ -764,6 +785,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ica_05.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state vertical-scroll-proportion="-22.275862">
           <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
@@ -777,12 +799,17 @@
         <state vertical-scroll-proportion="-9.379311">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="27" />
 >>>>>>> 715075c8535755a188d074a2c0ad1aa4666bb0ed
+=======
+        <state vertical-scroll-proportion="0.89876264">
+          <caret line="47" column="63" selection-start-line="47" selection-start-column="63" selection-end-line="47" selection-end-column="63" />
+>>>>>>> rework
           <folding>
             <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/File.py">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -800,5 +827,7 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> rework
   </component>
 </project>

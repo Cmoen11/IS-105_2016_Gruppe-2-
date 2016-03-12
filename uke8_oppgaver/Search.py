@@ -1,7 +1,7 @@
 import timeit
 # -*- coding: utf-8 -*-
 '''
-This class will hold every search method
+This class will hold every search method yeah
 '''
 
 
