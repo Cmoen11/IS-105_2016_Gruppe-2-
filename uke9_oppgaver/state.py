@@ -60,7 +60,20 @@ class State:
                 pass                                # no items inside the boat.
     def man_on_right(self):
         if self.tape.man in 'right':
-            pass
+            # check if the statement is at the beginning of the game.
+            if 'right' in (self.tape.man, self.tape.chicken, self.tape.fox, self.tape.corn, self.tape.boat):
+                print(self.art.art_a['a_with_items_person'])  # print the art for the position.
+
+
+            # Check if there is any items inside the boat
+            if self.items_on_boat() is self.tape.chicken:
+                self.man_left_item_boat(self.tape.chicken)
+            elif self.items_on_boat() is self.tape.corn:
+                self.man_left_item_boat(self.tape.corn)
+            elif self.items_on_boat() is self.tape.fox:
+                self.man_left_item_boat(self.tape.fox)
+            else :
+                pass                                # no items inside the boat.
 
 
     def items_on_boat(self):
