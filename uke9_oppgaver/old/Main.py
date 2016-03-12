@@ -2,7 +2,7 @@
 
 import Boat
 import Position
-import Art
+import art
 
 def start() :
     boat = Boat.Boat()                  # Create a new boat object
