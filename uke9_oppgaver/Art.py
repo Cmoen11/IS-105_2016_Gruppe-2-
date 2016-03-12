@@ -19,11 +19,17 @@ class Art :
             'a_boat_items_left' : "    O\n   /|\\\n `\/_\_@_/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
             'a_boat_items_right' : "                                            O\n                                           /|\\\n  `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`\/_\_@_/`",
             
+            
+            'a_boat_all_left' : "            O\n           /|\\\n     F-C-G /-\`\_______/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
+            'a_boat_all_right' : "                                                      O\n                                                     /|\\\n  `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`\_______/` /-\ F-C-G ",
+              
         }
 
 
 art = Art()
 print art.art_boat['a_boat_empty']
+print art.art_boat['a_boat_all_left']
+print art.art_boat['a_boat_all_right']
 print art.art_boat['a_boat_onlyman_right']
 print art.art_boat['a_boat_onlyman_left']
 print art.art_boat['a_boat_items_left']
