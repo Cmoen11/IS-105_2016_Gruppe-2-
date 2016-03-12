@@ -19,7 +19,7 @@ class Database:
         :return: False if the edit was invalid. | return True if the edit was valid
     '''
     def set_boat(self, new_pos):
-        if new_pos in ('left','right','boat'):
+        if new_pos in ('left','right'):
             self.boat = new_pos
             return True
         else:
