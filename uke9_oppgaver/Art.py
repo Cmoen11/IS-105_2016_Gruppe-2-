@@ -13,7 +13,8 @@ class Art :
         }
 
         self.art_boat = {    # everything that includes boat
-            'a_boat_empty' : " `\_______/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",                
+            'a_boat_empty' : " `\_______/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
+            'a_boat_noPerson_item' : " `\____@__/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
             'a_boat_onlyman_left' : "      O\n     /|\\\n  `\_/_\__/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
             'a_boat_onlyman_right' : "                                             O\n                                            /|\\\n  `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`\_/_\__/`",
             'a_boat_items_left' : "    O\n   /|\\\n `\/_\_@_/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
@@ -26,11 +27,12 @@ class Art :
         }
 
 
-art = Art()
-print art.art_boat['a_boat_empty']
-print art.art_boat['a_boat_all_left']
-print art.art_boat['a_boat_all_right']
-print art.art_boat['a_boat_onlyman_right']
-print art.art_boat['a_boat_onlyman_left']
-print art.art_boat['a_boat_items_left']
-print art.art_boat['a_boat_items_right']
+if __name__ == '__main__':
+    art = Art()
+    print art.art_boat['a_boat_empty']
+    print art.art_boat['a_boat_all_left']
+    print art.art_boat['a_boat_all_right']
+    print art.art_boat['a_boat_onlyman_right']
+    print art.art_boat['a_boat_onlyman_left']
+    print art.art_boat['a_boat_items_left']
+    print art.art_boat['a_boat_items_right']
