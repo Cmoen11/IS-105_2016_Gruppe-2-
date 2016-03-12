@@ -104,8 +104,8 @@ class State:
     def man_left_item_boat(self, item):
         '''
         If the man is at left, and there is items inside the boat, give the user the ability to take the item out
-        or go inside the bout himself.
-        :param item: the item that are inside the bout, the veriable(!)
+        or go inside the boat himself.
+        :param item: the item that are inside the boat, the veriable(!)
 
         Also, he will write the new command that user has given the the program.
         '''
@@ -124,8 +124,8 @@ class State:
     def man_right_item_boat(self, item):
         '''
         If the man is at right, and there is items inside the boat, give the user the ability to take the item out
-        or go inside the bout himself.
-        :param item: the item that are inside the bout, the veriable(!)
+        or go inside the boat himself.
+        :param item: the item that are inside the boat, the veriable(!)
 
         Also, he will write the new command that user has given the the program.
 
