@@ -91,13 +91,13 @@ class State:
 
         '''
         take_out_boat = self.man_answer_left_right(item)            # give the user ability to choose what he wants
-        if take_out_boat in 1:
+        if take_out_boat == 1:
             self.tape.set_chicken('left')
-        elif take_out_boat in 2:
+        elif take_out_boat == 2:
             self.tape.set_corn('left')
-        elif take_out_boat in 3:
+        elif take_out_boat == 3:
             self.tape.set_fox('left')
-        elif take_out_boat in 4:
+        elif take_out_boat == 4:
             self.tape.set_man('boat')
 
     def man_answer_left_right(self, item) :
@@ -135,7 +135,7 @@ class State:
         return take_out_boat
 
     def redefine_answer(self, answer):
-            if answer == 'y'.upper(): answer = True
+            if answer == 'y': answer = True
             else: answer = False
             return answer
 
