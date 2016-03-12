@@ -80,21 +80,21 @@ class State:
 
     def man_left_item_boat(self, item):
         '''
-        If the man is at left, and there is items inside the bout, give the user the ability to take the item out
+        If the man is at left, and there is items inside the boat, give the user the ability to take the item out
         or go inside the bout himself.
         :param item: the item that are inside the bout, the veriable(!)
 
         Also, he will write the new command that user has given the the program.
 
         '''
-        take_out_bout = self.man_answer_left_right(item)            # give the user ability to choose what he wants
-        if take_out_bout in 1:
+        take_out_boat = self.man_answer_left_right(item)            # give the user ability to choose what he wants
+        if take_out_boat in 1:
             self.tape.set_chicken('left')
-        elif take_out_bout in 2:
+        elif take_out_boat in 2:
             self.tape.set_corn('left')
-        elif take_out_bout in 3:
+        elif take_out_boat in 3:
             self.tape.set_fox('left')
-        elif take_out_bout in 4:
+        elif take_out_boat in 4:
             self.tape.set_man('boat')
 
     def man_answer_left_right(self, item) :
@@ -105,29 +105,29 @@ class State:
         This will hold the veribale that is inside the boat, and check if the veriable 'is' some of the veriables on the
         tape. and will ask the user for his next move based on his current state.
 
-        :param item: the veriable that is inside the bout.
+        :param item: the veriable that is inside the boat.
         :return: return the answer, for what the user wants to do. Return None, if the user was not able to answer any
         of the given question. if the program return null, it would be a bug. :-(
         '''
-        take_out_bout = None
+        take_out_boat = None
 
         if item is self.tape.chicken :
             answer = raw_input("Do you want to take the chicken out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
-            if answer: take_out_bout = 1
+            if answer: take_out_boat = 1
         elif item is self.tape.corn :
             answer = raw_input("Do you want to take the corn out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
-            if answer: take_out_bout = 2
+            if answer: take_out_boat = 2
         elif item is self.tape.fox :
             answer = raw_input("Do you want to take the fox out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
-            if answer: take_out_bout = 3
+            if answer: take_out_boat = 3
         else :
             answer = raw_input("Do you want to go inside the boat? Y/N : ")
             answer = self.redefine_answer(answer)
-            if answer: take_out_bout = 4
-        return take_out_bout
+            if answer: take_out_boat = 4
+        return take_out_boat
 
     def redefine_answer(self, answer):
             if answer == 'y'.upper(): answer = True
