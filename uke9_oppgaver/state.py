@@ -8,6 +8,9 @@ class State:
         self.art = art.Art()                         # create an art object, to show us some graphics
         self.tape.set_corn('boat')
 
+    def show_state(self):
+        pass
+
     def check_state(self):                           # if everything is left, as it would in the start of the game.
 
         if self.check_lose_combo():                  # if the player left chicken and corn alone or fox and chicken
@@ -57,7 +60,20 @@ class State:
                 pass                                # no items inside the boat.
     def man_on_right(self):
         if self.tape.man in 'right':
-            pass
+            # check if the statement is at the beginning of the game.
+            if 'right' in (self.tape.man, self.tape.chicken, self.tape.fox, self.tape.corn, self.tape.boat):
+                print(self.art.art_a['a_with_items_person'])  # print the art for the position.
+
+
+            # Check if there is any items inside the boat
+            if self.items_on_boat() is self.tape.chicken:
+                self.man_left_item_boat(self.tape.chicken)
+            elif self.items_on_boat() is self.tape.corn:
+                self.man_left_item_boat(self.tape.corn)
+            elif self.items_on_boat() is self.tape.fox:
+                self.man_left_item_boat(self.tape.fox)
+            else :
+                pass                                # no items inside the boat.
 
 
     def items_on_boat(self):
@@ -88,13 +104,13 @@ class State:
 
         '''
         take_out_boat = self.man_answer_left_right(item)            # give the user ability to choose what he wants
-        if take_out_boat in 1:
+        if take_out_boat == 1:
             self.tape.set_chicken('left')
-        elif take_out_boat in 2:
+        elif take_out_boat == 2:
             self.tape.set_corn('left')
-        elif take_out_boat in 3:
+        elif take_out_boat == 3:
             self.tape.set_fox('left')
-        elif take_out_boat in 4:
+        elif take_out_boat == 4:
             self.tape.set_man('boat')
 
     def man_answer_left_right(self, item) :
@@ -123,14 +139,16 @@ class State:
             answer = raw_input("Do you want to take the fox out of the boat? Y/N : ")
             answer = self.redefine_answer(answer)
             if answer: take_out_boat = 3
-        else :
+
+        # if the user has answered no on the previous question
+        if take_out_boat is None:
             answer = raw_input("Do you want to go inside the boat? Y/N : ")
             answer = self.redefine_answer(answer)
             if answer: take_out_boat = 4
         return take_out_boat
 
     def redefine_answer(self, answer):
-            if answer == 'y'.upper(): answer = True
+            if answer == 'y': answer = True
             else: answer = False
             return answer
 

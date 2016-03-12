@@ -13,5 +13,11 @@ class Art :
         }
 
         self.art_boat = {    # everything that includes boat
-
+            'a_boat_noItems' : "      O\n     /|\\\n  `\_/_\__/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
+            'a_boat_items' : "    O\n   /|\\\n `\/_\_@_/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`"
         }
+
+
+art = Art()
+print art.art_boat['a_boat_noItems']
+print art.art_boat['a_boat_items']
