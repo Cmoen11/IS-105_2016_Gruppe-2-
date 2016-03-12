@@ -1,12 +1,13 @@
 import tape as t
-import art
+import Art
 
 
 class State:
     def __init__(self):
         self.tape = t.Database()                     # create new tape for the boat project
-        self.art = art.Art()                         # create an art object, to show us some graphics
-        self.tape.set_corn('boat')
+        self.art = Art.Art()                         # create an art object, to show us some graphics
+        #self.tape.set_chicken('boat')
+        #self.tape.set_man('right')
 
     def show_state(self):
         pass
@@ -36,10 +37,14 @@ class State:
 
     def man_in_boat(self):
         if self.tape.man in 'boat':
-            if 'boat' in 'left':        # man can go out of boat to left side (a) or can travel to right side (b)
-                pass
-            if 'boat' in 'right':       # man can go out of boat to the right side (b) or can travel to the left side.
-                pass
+            answer = raw_input("Do you want to go outside of the bout? or do you want to travel?: type 1, to go out "
+                               "type 2 to travel: ")
+            if self.tape.boat in 'left':
+                if answer == 1: self.tape.set_man('left')
+                else: self.tape.set_boat('right')
+            elif self.tape.boat in 'right':
+                if answer == 1: self.tape.set_man('right')
+                else: self.tape.set_boat('left')
 
     def man_on_left(self):
         # NB: to my self, i need to check if there is any items inside the boat already. The boat can only hold 1!!
@@ -58,6 +63,7 @@ class State:
                 self.man_left_item_boat(self.tape.fox)
             else :
                 pass                                # no items inside the boat.
+
     def man_on_right(self):
         if self.tape.man in 'right':
             # check if the statement is at the beginning of the game.
@@ -67,14 +73,13 @@ class State:
 
             # Check if there is any items inside the boat
             if self.items_on_boat() is self.tape.chicken:
-                self.man_left_item_boat(self.tape.chicken)
+                self.man_right_item_boat(self.tape.chicken)
             elif self.items_on_boat() is self.tape.corn:
-                self.man_left_item_boat(self.tape.corn)
+                self.man_right_item_boat(self.tape.corn)
             elif self.items_on_boat() is self.tape.fox:
-                self.man_left_item_boat(self.tape.fox)
+                self.man_right_item_boat(self.tape.fox)
             else :
                 pass                                # no items inside the boat.
-
 
     def items_on_boat(self):
         '''
@@ -101,9 +106,8 @@ class State:
         :param item: the item that are inside the bout, the veriable(!)
 
         Also, he will write the new command that user has given the the program.
-
         '''
-        take_out_boat = self.man_answer_left_right(item)            # give the user ability to choose what he wants
+        take_out_boat = self.man_answer_items_boat_left_right(item)     # give the user ability to choose what he wants
         if take_out_boat == 1:
             self.tape.set_chicken('left')
         elif take_out_boat == 2:
@@ -113,7 +117,28 @@ class State:
         elif take_out_boat == 4:
             self.tape.set_man('boat')
 
-    def man_answer_left_right(self, item) :
+        print take_out_boat
+
+    def man_right_item_boat(self, item):
+        '''
+        If the man is at right, and there is items inside the boat, give the user the ability to take the item out
+        or go inside the bout himself.
+        :param item: the item that are inside the bout, the veriable(!)
+
+        Also, he will write the new command that user has given the the program.
+
+        '''
+        take_out_boat = self.man_answer_items_boat_left_right(item)     # give the user ability to choose what he wants
+        if take_out_boat == 1:
+            self.tape.set_chicken('right')
+        elif take_out_boat == 2:
+            self.tape.set_corn('right')
+        elif take_out_boat == 3:
+            self.tape.set_fox('right')
+        elif take_out_boat == 4:
+            self.tape.set_man('boat')
+
+    def man_answer_items_boat_left_right(self, item) :
         '''
         This is a universal function for either left side or right side. This is the underfucntion to man_left_item_boat
         and man_right_item_boat.
