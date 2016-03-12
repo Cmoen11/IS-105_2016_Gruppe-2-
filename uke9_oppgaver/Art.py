@@ -13,11 +13,18 @@ class Art :
         }
 
         self.art_boat = {    # everything that includes boat
-            'a_boat_noItems' : "      O\n     /|\\\n  `\_/_\__/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
-            'a_boat_items' : "    O\n   /|\\\n `\/_\_@_/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`"
+            'a_boat_empty' : " `\_______/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",                
+            'a_boat_onlyman_left' : "      O\n     /|\\\n  `\_/_\__/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
+            'a_boat_onlyman_right' : "                                             O\n                                            /|\\\n  `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`\_/_\__/`",
+            'a_boat_items_left' : "    O\n   /|\\\n `\/_\_@_/`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`",
+            'a_boat_items_right' : "                                            O\n                                           /|\\\n  `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`\/_\_@_/`",
+            
         }
 
 
 art = Art()
-print art.art_boat['a_boat_noItems']
-print art.art_boat['a_boat_items']
+print art.art_boat['a_boat_empty']
+print art.art_boat['a_boat_onlyman_right']
+print art.art_boat['a_boat_onlyman_left']
+print art.art_boat['a_boat_items_left']
+print art.art_boat['a_boat_items_right']
