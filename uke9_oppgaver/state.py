@@ -18,6 +18,14 @@ class State:
         This will check if the current state will lead to the player to lose
         :return:
         '''
+
+        # for ever condition where the man has left A wrong.
+        # where either chicken and corn is left alone, or fox or chicken is left alone.
+        if 'left' in (self.tape.boat, self.tape.chicken, self.tape.corn) and \
+            'boat' in (self.tape.man, self.tape.fox) or \
+                'left' in (self.tape.boat, self.tape.chicken, self.tape.fox) and \
+                'boat' in (self.tape.man, self.tape.corn):
+            return True
         pass
 
 
