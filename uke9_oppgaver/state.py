@@ -12,26 +12,45 @@ class State:
     def show_state(self):
         t = self.tape
 
+        # if the man is at left, and at least 1 item are at left as well. And boat do not include any items
         if self.tape.man in 'left' and 'left' in (t.fox, t.corn, t.chicken) and 'boat' not in (
                     t.fox, t.corn, t.chicken):
             print self.art.art_boat['a_boat_all_left']
 
+        # man left and boat has one item
         elif self.tape.man in 'left' and 'boat' in (t.fox, t.corn, t.chicken):
             print self.art.art_boat['a_boat_noPerson_item']
 
+        # man in boat, and boat left, and 1 item inside the boat
         elif self.tape.man in 'boat' and 'boat' in (t.fox, t.corn, t.chicken) and 'left' in t.boat:
             print self.art.art_boat['a_boat_items_left']
 
+        # man in boat, 1 item inside the boat, and the boat is right
         elif self.tape.man in 'boat' and 'boat' in (t.fox, t.corn, t.chicken) and 'right' in t.boat:
             print self.art.art_boat['a_boat_items_right']
 
+        # man right and atleast one item right and boat has no items
         elif self.tape.man in 'right' and 'right' in (t.fox, t.corn, t.chicken) and 'boat' not in (
                     t.fox, t.corn, t.chicken):
             print self.art.art_boat['a_boat_all_right']
 
+        # man right, and boat has one item and the right has no items
+        elif self.tape.man in 'right' and 'boat' in (t.fox, t.corn, t.chicken) and 'right' not in ((t.fox, t.corn, t.chicken)):
+            print self.art.art_b['b_with_items_person_noItems']
+
+        # man right and boat has one item and right has atleast one item
+        elif self.tape.man in 'right' and 'boat' in (t.fox, t.corn, t.chicken) and 'right' in ((t.fox, t.corn, t.chicken)):
+            print self.art.art_b['b_with_items_person']
+
+        # only man in boat and he is right, no items
+        elif self.tape.man in 'boat' and 'right' in t.boat:
+            print self.art.art_boat['b_boat_onlyman_right']
+
+        # only man in boat and he is left, no items
+        elif self.tape.man in 'boat' and 'left' in t.boat:
+            print self.art.art_boat['a_boat_onlyman_left']
+
     def check_state(self):  # if everything is left, as it would in the start of the game.
-
-
         self.show_state()
 
         if self.check_lose_combo():                     # if the player left chicken and corn alone or fox and chicken
@@ -87,9 +106,6 @@ class State:
 
     def man_on_right(self):
         if self.tape.man in 'right':
-            # check if the statement is at the beginning of the game.
-            if 'right' in (self.tape.man, self.tape.chicken, self.tape.fox, self.tape.corn, self.tape.boat):
-                print(self.art.art_a['a_with_items_person'])  # print the art for the position.
 
             # Check if there is any items inside the boat
             if self.items_on_boat() is self.tape.chicken:
