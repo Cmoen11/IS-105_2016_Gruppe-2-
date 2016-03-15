@@ -20,6 +20,7 @@ class SSD:
         :param content: What the file includes
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
+        self.get_available_block()                                   #  fills the AVAILABLE_BLOCKS list free index's
         size = len(content) / 8                                      # find out the input block number
         blocks_free = self.AVAILABLE_BLOCKS                          # find out how much free blocks left
 
@@ -32,15 +33,15 @@ class SSD:
                     block_content = block_content + bit              # add to block_content
                 else:
                     version = version + 1
-                    self.write(version -1, filename, block_content, version, localisation)  # Write to block
+                    self.write(0, filename, block_content, version, localisation)  # Write to block
                     block_content = bit                              # reset block_content
 
             version = version + 1
-            self.write(version -1, filename, block_content, version, localisation)         # add the last block.
-            return True
+            self.write(0, filename, block_content, version, localisation)         # add the last block.
         else:
             print "Ikke nok ledig plass til å skrive inn dette."
-            return False
+
+
 
     def create_empty_blocks(self):
         self.file_space = []                                        # reset filespace
@@ -52,9 +53,15 @@ class SSD:
         Go trough every block, and add every available block index to a seperat list to write on.
         :return:
         '''
-        for block in self.file_space :
+        count = 0
+        self.AVAILABLE_BLOCKS = []
+        for block in self.file_space:
             if block['available'] is True:
-                self.AVAILABLE_BLOCKS.append(self.file_space.index(block))      # add index to our available list
+                self.AVAILABLE_BLOCKS.append(count)      # add index to our available list
+
+
+            count = count + 1
+
 
 
     def deleteFile(self, filename, localisation):
@@ -82,18 +89,20 @@ class SSD:
 
     def write(self, index, filename, content, version, localisation):
 
-        self.file_space[index]['filename'] = filename
-        self.file_space[index]['content'] = content
-        self.file_space[index]['version'] = version
-        self.file_space[index]['localisation'] = self.FILE_SPACE_ROOT + localisation
-        self.file_space[index]['available'] = False
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['filename'] = filename
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['content'] = content
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['version'] = version
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['localisation'] = self.FILE_SPACE_ROOT + localisation
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
+        self.AVAILABLE_BLOCKS.pop(index)
+
 
 
 
 lol = SSD()
 lol.add('erlends_nude_pic.png', '01001000011001010110110001110000','test/')
-#print (lol.file_space)
+lol.add('tommy_nude_pic.png', '01001000011001010110110001110000','test/')
 lol.deleteFile('erlends_nude_pic.png', 'C:/test/')
+lol.add('Christian_nude_pic.png', '01001000011001010110110001110000','test/')
 for block in lol.file_space :
-    if block['available'] == True :
         print block
