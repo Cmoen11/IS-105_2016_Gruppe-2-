@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 
+
 class SSD:
     def __init__(self):
-        self.file_space = []                                # This will actually be the place to store our data
-        self.SPACE_EACH_BLOCK = 8                           # Sets the block limit to 8 bits. (2^3)
-        self.TOTAL_BLOCK_SPACE = 32                         # Sets the limit for blocks 32 / 256 bits(2^8)
-        self.FILE_SPACE_ROOT = "C://"                       # the filestructer root
+        self.file_space = []                             # This will actually be the place to store our data
+        self.SPACE_EACH_BLOCK = 8                        # Sets the block limit to 8 bits. (2^3)
+        self.TOTAL_BLOCK_SPACE = 32                      # Sets the limit for blocks 32 / 256 bits(2^8)
+        self.FILE_SPACE_ROOT = "C:/"                     # the filestructer root
+        self.AVAILABLE_BLOCKS = []
 
-    def add(self, filename, content):
+        self.create_empty_blocks()                       # Set up potions
+        self.get_available_block()                       # fills the AVAILABLE_BLOCKS list with index's of free potions
+
+
+    def add(self, filename, content, localisation):
         '''
         Add a file to our SSD disk
         :param filename: The name of the file
@@ -15,7 +21,7 @@ class SSD:
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
         size = len(content) / 8                                      # find out the input block number
-        blocks_free = self.TOTAL_BLOCK_SPACE - len(self.file_space)  # find out how much free blocks left
+        blocks_free = self.AVAILABLE_BLOCKS                          # find out how much free blocks left
 
         if size <= blocks_free:                                      # check if there is enough free blocks to write
             block_content = ""                                       # string to hold the bits while added
@@ -26,25 +32,68 @@ class SSD:
                     block_content = block_content + bit              # add to block_content
                 else:
                     version = version + 1
-                    self.add_block(filename, block_content, version)
+                    self.write(version -1, filename, block_content, version, localisation)  # Write to block
                     block_content = bit                              # reset block_content
 
             version = version + 1
-            self.add_block(filename, block_content, version)         # add the last block.
+            self.write(version -1, filename, block_content, version, localisation)         # add the last block.
             return True
         else:
             print "Ikke nok ledig plass til å skrive inn dette."
             return False
 
-    def add_block(self, filename, block_content, version):
+    def create_empty_blocks(self):
+        self.file_space = []                                        # reset filespace
+        for i in range(0, self.TOTAL_BLOCK_SPACE):                  # create x slots to save bits
+            self.add_block("", "", "", True)                        # -> set 'em as empty and available
+
+    def get_available_block(self):
+        '''
+        Go trough every block, and add every available block index to a seperat list to write on.
+        :return:
+        '''
+        for block in self.file_space :
+            if block['available'] is True:
+                self.AVAILABLE_BLOCKS.append(self.file_space.index(block))      # add index to our available list
+
+
+    def deleteFile(self, filename, localisation):
+        '''
+        Delete blocks where filename and localisation is the same.
+        :param filename: The filename of the file you wish to delete
+        :param localisation: the localisation of the file you wish to delete
+        :return: True if the file was deleted, False if the file was not deleted or was found.
+        '''
+        for block in self.file_space:                               # Go trough every block inside the file_space
+
+            if block['filename'] == filename and \
+                    block['localisation'] == localisation:      # if filename and localisation match
+                        block['available'] = True               # set the portion to true as at this can be overwritten
+
+    def add_block(self, filename, block_content, version, available):
         self.file_space.append({                                    # add to our space
             'filename': filename,                                   # filename for file
             'content': block_content,                               # block_content
             'version': version,                                     # what version of the file it is.
-            'localisation' : self.FILE_SPACE_ROOT + '/test/'        # where the file is 'located'
+            'localisation': "",                                     # where the file is 'located'
+            'available': available                                  # if other files can overwrite
             }
         )
 
+    def write(self, index, filename, content, version, localisation):
+
+        self.file_space[index]['filename'] = filename
+        self.file_space[index]['content'] = content
+        self.file_space[index]['version'] = version
+        self.file_space[index]['localisation'] = self.FILE_SPACE_ROOT + localisation
+        self.file_space[index]['available'] = False
+
+
+
 lol = SSD()
-lol.add('lol','01001000011001010110110001110000')
-print lol.file_space
+lol.add('erlends_nude_pic.png', '01001000011001010110110001110000','test/')
+#print (lol.file_space)
+lol.deleteFile('erlends_nude_pic.png', 'C:/test/')
+for block in lol.file_space :
+    if block['available'] == True :
+        print block
