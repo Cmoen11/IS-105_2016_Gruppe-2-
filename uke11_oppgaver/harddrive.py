@@ -12,7 +12,6 @@ class SSD:
         self.create_empty_blocks()                       # Set up potions
         self.get_available_block()                       # fills the AVAILABLE_BLOCKS list with index's of free potions
 
-
     def add(self, filename, content, localisation):
         '''
         Add a file to our SSD disk
@@ -21,32 +20,30 @@ class SSD:
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
         self.get_available_block()                                   #  fills the AVAILABLE_BLOCKS list free index's
-        size = len(content) / 8                                      # find out the input block number
+        size = len(content) / self.SPACE_EACH_BLOCK                  # find out the input block number
         blocks_free = self.AVAILABLE_BLOCKS                          # find out how much free blocks left
 
         if size <= blocks_free:                                      # check if there is enough free blocks to write
             block_content = ""                                       # string to hold the bits while added
-            version = 0                                              # sector related blocks together
+            chunk = 0                                              # sector related blocks together
 
             for bit in content:                                      # for each bit in content
                 if len(block_content) < self.SPACE_EACH_BLOCK:       # block_content is less than 8
                     block_content = block_content + bit              # add to block_content
                 else:
-                    version = version + 1
-                    self.write(0, filename, block_content, version, localisation)  # Write to block
+                    chunk = chunk + 1
+                    self.write(0, filename, block_content, chunk, localisation, size)  # Write to block
                     block_content = bit                              # reset block_content
 
-            version = version + 1
-            self.write(0, filename, block_content, version, localisation)         # add the last block.
+            chunk = chunk + 1
+            self.write(0, filename, block_content, chunk, localisation, size)         # add the last block.
         else:
             print "Ikke nok ledig plass til å skrive inn dette."
-
-
 
     def create_empty_blocks(self):
         self.file_space = []                                        # reset filespace
         for i in range(0, self.TOTAL_BLOCK_SPACE):                  # create x slots to save bits
-            self.add_block("", "", "", True)                        # -> set 'em as empty and available
+            self.add_block("", "", "", True, 0)                     # -> set 'em as empty and available
 
     def get_available_block(self):
         '''
@@ -62,8 +59,6 @@ class SSD:
 
             count = count + 1
 
-
-
     def deleteFile(self, filename, localisation):
         '''
         Delete blocks where filename and localisation is the same.
@@ -77,32 +72,41 @@ class SSD:
                     block['localisation'] == localisation:      # if filename and localisation match
                         block['available'] = True               # set the portion to true as at this can be overwritten
 
-    def add_block(self, filename, block_content, version, available):
+    def add_block(self, filename, block_content, chunk, available, size):
         self.file_space.append({                                    # add to our space
             'filename': filename,                                   # filename for file
             'content': block_content,                               # block_content
-            'version': version,                                     # what version of the file it is.
+            'chuck': chunk,                                         # what version of the file it is.
             'localisation': "",                                     # where the file is 'located'
-            'available': available                                  # if other files can overwrite
+            'available': available,                                 # if other files can overwrite
+            'blocks_used': size                                     # the amount of blocks used to write file
             }
         )
 
-    def write(self, index, filename, content, version, localisation):
-
+    def write(self, index, filename, content, chunk, localisation, size):
+        '''
+        Write to first available block
+        :param index: select 0 for taking the first block
+        :param filename: the filename of the file that are to be saved
+        :param content: content of the file
+        :param version: version of the file
+        :param localisation: the tree for where the file are to be saved.
+        :return:
+        '''
         self.file_space[self.AVAILABLE_BLOCKS[index]]['filename'] = filename
         self.file_space[self.AVAILABLE_BLOCKS[index]]['content'] = content
-        self.file_space[self.AVAILABLE_BLOCKS[index]]['version'] = version
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['chuck'] = chunk
         self.file_space[self.AVAILABLE_BLOCKS[index]]['localisation'] = self.FILE_SPACE_ROOT + localisation
         self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['blocks_used'] = size
         self.AVAILABLE_BLOCKS.pop(index)
 
 
 
-
 lol = SSD()
-lol.add('erlends_nude_pic.png', '01001000011001010110110001110000','test/')
-lol.add('tommy_nude_pic.png', '01001000011001010110110001110000','test/')
-lol.deleteFile('erlends_nude_pic.png', 'C:/test/')
-lol.add('Christian_nude_pic.png', '01001000011001010110110001110000','test/')
+lol.add('erlends_pic.png', '0100100001100101011011000111000001001000011001010110110001110000','test/')
+lol.add('tommy_pic.png', '01001000011001010110110001110000','test/')
+lol.deleteFile('erlends_pic.png', 'C:/test/')
+lol.add('Christian_pic.png', '01001000011001010110110001110000','test/')
 for block in lol.file_space :
         print block
