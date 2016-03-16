@@ -19,23 +19,23 @@ class SSD:
         :param content: What the file includes
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
-        self.get_available_block()                                   #  fills the AVAILABLE_BLOCKS list free index's
+        self.get_available_block()                                   # fills the AVAILABLE_BLOCKS list free index's
         size = len(content) / self.SPACE_EACH_BLOCK                  # find out the input block number
         blocks_free = self.AVAILABLE_BLOCKS                          # find out how much free blocks left
 
         if size <= blocks_free:                                      # check if there is enough free blocks to write
             block_content = ""                                       # string to hold the bits while added
-            chunk = 0                                              # sector related blocks together
+            chunk = 0                                                # sector related blocks together
 
             for bit in content:                                      # for each bit in content
                 if len(block_content) < self.SPACE_EACH_BLOCK:       # block_content is less than 8
-                    block_content = block_content + bit              # add to block_content
+                    block_content += bit                             # add to block_content
                 else:
-                    chunk = chunk + 1
+                    chunk += 1
                     self.write(0, filename, block_content, chunk, localisation, size)  # Write to block
                     block_content = bit                              # reset block_content
 
-            chunk = chunk + 1
+            chunk += 1
             self.write(0, filename, block_content, chunk, localisation, size)         # add the last block.
         else:
             print "Ikke nok ledig plass til å skrive inn dette."
@@ -51,13 +51,12 @@ class SSD:
         :return:
         '''
         count = 0
-        self.AVAILABLE_BLOCKS = []
-        for block in self.file_space:
-            if block['available'] is True:
+        self.AVAILABLE_BLOCKS = []                       # clear the available list
+        for block in self.file_space:                    # for each block space
+            if block['available'] is True:               # if the block space is available
                 self.AVAILABLE_BLOCKS.append(count)      # add index to our available list
 
-
-            count = count + 1
+            count += 1                                   # to know what address the loop is at
 
     def deleteFile(self, filename, localisation):
         '''
@@ -68,15 +67,17 @@ class SSD:
         '''
         deleted_blocks = 0
         blocks_used = ""
-        for block in self.file_space:                               # Go trough every block inside the file_space
+        for block in self.file_space:                           # Go trough every block inside the file_space
 
             if block['filename'] == filename and \
                     block['localisation'] == localisation:      # if filename and localisation match
                         block['available'] = True               # set the portion to true as at this can be overwritten
-                        if blocks_used is "": blocks_used = block['blocks_used']
+                        if blocks_used is "":
+                            blocks_used = block['blocks_used']  # so we know how many blocks we need to delete
                         deleted_blocks += 1
 
-            if blocks_used is deleted_blocks:                    # if all the files are deleted, break the loop
+            if blocks_used is deleted_blocks:                   # if all the files are deleted, break the loop
+                print 'deleted ' + str(deleted_blocks) + ' blocks of data'
                 break
 
 
@@ -87,7 +88,7 @@ class SSD:
             'chuck': chunk,                                         # what version of the file it is.
             'localisation': "",                                     # where the file is 'located'
             'available': available,                                 # if other files can overwrite
-            'blocks_used': size                                     # the amount of blocks used to write file
+            'blocks_used': size                                     # the amount of blocks needed to write file
             }
         )
 
@@ -107,6 +108,8 @@ class SSD:
         self.file_space[self.AVAILABLE_BLOCKS[index]]['localisation'] = self.FILE_SPACE_ROOT + localisation
         self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
         self.file_space[self.AVAILABLE_BLOCKS[index]]['blocks_used'] = size
+
+        # Pop out the first list item of the available blocks as it is not available anymore.
         self.AVAILABLE_BLOCKS.pop(index)
 
 
