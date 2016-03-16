@@ -66,11 +66,19 @@ class SSD:
         :param localisation: the localisation of the file you wish to delete
         :return: True if the file was deleted, False if the file was not deleted or was found.
         '''
+        deleted_blocks = 0
+        blocks_used = ""
         for block in self.file_space:                               # Go trough every block inside the file_space
 
             if block['filename'] == filename and \
                     block['localisation'] == localisation:      # if filename and localisation match
                         block['available'] = True               # set the portion to true as at this can be overwritten
+                        if blocks_used is "": blocks_used = block['blocks_used']
+                        deleted_blocks += 1
+
+            if blocks_used is deleted_blocks:                    # if all the files are deleted, break the loop
+                break
+
 
     def add_block(self, filename, block_content, chunk, available, size):
         self.file_space.append({                                    # add to our space
