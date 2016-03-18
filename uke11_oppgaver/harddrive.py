@@ -88,13 +88,36 @@ class SSD:
         self.file_space.append({                                    # add to our space
             'filename': filename,                                   # filename for file
             'content': block_content,                               # block_content
-            'chuck': chunk,                                         # what version of the file it is.
+            'chunk': chunk,                                         # what version of the file it is.
             'localisation': "",                                     # where the file is 'located'
             'available': available,                                 # if other files can overwrite
-            'blocks_used': size,                                     # the amount of blocks needed to write file
-            'is_dir' : False
+            'blocks_used': size,                                    # the amount of blocks needed to write file
+            'is_dir': False                                         # if the chuck is a directory.
             }
         )
+
+    def openDirectory(self):
+        '''
+        This function will display the content of the map the user is at
+        '''
+        print 'I mappen: ' + self.file_space[self.ON_POSITION]['DirectoryName']
+
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:  # For every chunk the dir is in charge of
+            print self.file_space[i]                               # print out every information it has.
+
+    def openFile(self, filename):
+        '''
+
+        :return:
+        '''
+        file = self.file_space[self.ON_POSITION]
+        file_content = []
+        for i in file['has_blocks']:
+            if filename in self.file_space[i]['filename']:
+                x = self.file_space[i]['chuck'] - 1
+                file_content.insert(x, self.file_space[i]['content'])
+
+        print file_content
 
     def write(self, index, filename, content, chunk, localisation, size):
         '''
@@ -108,7 +131,7 @@ class SSD:
         '''
         self.file_space[self.AVAILABLE_BLOCKS[index]]['filename'] = filename
         self.file_space[self.AVAILABLE_BLOCKS[index]]['content'] = content
-        self.file_space[self.AVAILABLE_BLOCKS[index]]['chuck'] = chunk
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['chunk'] = chunk
         self.file_space[self.AVAILABLE_BLOCKS[index]]['localisation'] = self.FILE_SPACE_ROOT + localisation
         self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
         self.file_space[self.AVAILABLE_BLOCKS[index]]['blocks_used'] = size
@@ -130,30 +153,32 @@ class SSD:
         '''
         index = 0
         self.file_space[self.AVAILABLE_BLOCKS[index]] = {
-            'DirectoryName': dir_name+'/',
-            'has_blocks': [],
-            'available' : False,
-            'is_dir' : True
+            'DirectoryName': dir_name+'/',                      # what the direction is beeing called
+            'has_blocks': [],                                   # what blocks it is in charge of
+            'available': False,                                 # if the block can be written over
+            'is_dir': True                                      # if the chunk is a directory.
         }
-        if self.ON_POSITION != 0 :
-            self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])
 
-        directory_adress = self.AVAILABLE_BLOCKS[index]
-        self.AVAILABLE_BLOCKS.pop(index)
-        return directory_adress
+        if self.ON_POSITION != 0 :                              # if there is any directory in charge of this
+            self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])    # add it.
+
+        directory_address = self.AVAILABLE_BLOCKS[index]        # save the directory address, so we can move to it
+        self.AVAILABLE_BLOCKS.pop(index)                        # remove the free block index from our list
+        return directory_address                                # return the directory adress.
 
 
 
 def dirTest():
     disk = SSD()
-
+    disk.openDirectory()
     disk.ON_POSITION = disk.createDir('lol')
     disk.add("test.png",'01001000011001010110110001110000','lol/')
+    disk.openDirectory()
     disk.ON_POSITION = disk.createDir('christian_sine_bilder')
-    disk.add("christian.png",'01001000011001010110110001110000','lol/')
-
-    for block in disk.file_space :
-            print block
-
+    disk.add("christian.png",'01001000011001010110110001110000','lol/christian_sine_bilder/')
+    disk.openFile('christian.png')
+    disk.openDirectory()
+    disk.ON_POSITION = 1
+    disk.openDirectory()
 
 dirTest()
