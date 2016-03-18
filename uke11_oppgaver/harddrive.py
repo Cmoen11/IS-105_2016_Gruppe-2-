@@ -11,6 +11,9 @@ class SSD:
 
         self.create_empty_blocks()                       # Set up potions
         self.get_available_block()                       # fills the AVAILABLE_BLOCKS list with index's of free potions
+        self.ON_POSITION = 0                             # index of the map block
+        self.createDir('C:/')                            # Create root.
+
 
     def add(self, filename, content, localisation):
         '''
@@ -88,7 +91,8 @@ class SSD:
             'chuck': chunk,                                         # what version of the file it is.
             'localisation': "",                                     # where the file is 'located'
             'available': available,                                 # if other files can overwrite
-            'blocks_used': size                                     # the amount of blocks needed to write file
+            'blocks_used': size,                                     # the amount of blocks needed to write file
+            'is_dir' : False
             }
         )
 
@@ -108,16 +112,48 @@ class SSD:
         self.file_space[self.AVAILABLE_BLOCKS[index]]['localisation'] = self.FILE_SPACE_ROOT + localisation
         self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
         self.file_space[self.AVAILABLE_BLOCKS[index]]['blocks_used'] = size
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['is_dir'] = False
+
+
+        self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])
 
         # Pop out the first list item of the available blocks as it is not available anymore.
         self.AVAILABLE_BLOCKS.pop(index)
 
+    def createDir(self, dir_name):
+        '''
+        Rewrite first available, and make it to a directory.
+        :param dir_name:
+        :param under_dir:
+        :return:
+
+        '''
+        index = 0
+        self.file_space[self.AVAILABLE_BLOCKS[index]] = {
+            'DirectoryName': dir_name+'/',
+            'has_blocks': [],
+            'available' : False,
+            'is_dir' : True
+        }
+        if self.ON_POSITION != 0 :
+            self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])
+
+        directory_adress = self.AVAILABLE_BLOCKS[index]
+        self.AVAILABLE_BLOCKS.pop(index)
+        return directory_adress
 
 
-lol = SSD()
-lol.add('erlends_pic.png', '0100100001100101011011000111000001001000011001010110110001110000','test/')
-lol.add('tommy_pic.png', '01001000011001010110110001110000','test/')
-lol.deleteFile('erlends_pic.png', 'C:/test/')
-lol.add('Christian_pic.png', '01001000011001010110110001110000','test/')
-for block in lol.file_space :
-        print block
+
+def dirTest():
+    disk = SSD()
+
+    disk.ON_POSITION = disk.createDir('lol')
+    disk.add("test.png",'01001000011001010110110001110000','lol/')
+    disk.ON_POSITION = disk.createDir('christian_sine_bilder')
+    disk.add("christian.png",'01001000011001010110110001110000','lol/')
+
+    for block in disk.file_space :
+            print block
+
+
+dirTest()
