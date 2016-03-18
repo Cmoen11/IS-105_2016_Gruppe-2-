@@ -114,7 +114,7 @@ class SSD:
         file_content = []
         for i in file['has_blocks']:
             if filename in self.file_space[i]['filename']:
-                x = self.file_space[i]['chuck'] - 1
+                x = self.file_space[i]['chunk'] - 1
                 file_content.insert(x, self.file_space[i]['content'])
 
         print file_content
