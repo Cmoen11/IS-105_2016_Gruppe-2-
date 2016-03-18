@@ -117,7 +117,9 @@ class SSD:
                 x = self.file_space[i]['chunk'] - 1
                 file_content.insert(x, self.file_space[i]['content'])
 
-        print file_content
+
+
+        print ''.join(file_content)
 
     def write(self, index, filename, content, chunk, localisation, size):
         '''
