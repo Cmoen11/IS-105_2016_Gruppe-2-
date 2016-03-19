@@ -12,14 +12,14 @@ class SSD:
         self.create_empty_blocks()                       # Set up potions
         self.get_available_block()                       # fills the AVAILABLE_BLOCKS list with index's of free potions
         self.ON_POSITION = 0                             # index of the map block
-        self.createDir('C:/')                            # Create root.
-
+        self.create_dir('C:/')                            # Create root.
 
     def add(self, filename, content, localisation):
         '''
         Add a file to our SSD disk
         :param filename: The name of the file
         :param content: What the file includes
+        :param localisation: Where to save the file
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
         self.get_available_block()                                   # fills the AVAILABLE_BLOCKS list free index's
@@ -61,7 +61,7 @@ class SSD:
 
             count += 1                                   # to know what address the loop is at
 
-    def deleteFile(self, filename, localisation):
+    def delete_file(self, filename, localisation):
         '''
         Delete blocks where filename and localisation is the same.
         :param filename: The filename of the file you wish to delete
@@ -83,7 +83,6 @@ class SSD:
                 print 'deleted ' + str(deleted_blocks) + ' blocks of data'
                 break
 
-
     def add_block(self, filename, block_content, chunk, available, size):
         self.file_space.append({                                    # add to our space
             'filename': filename,                                   # filename for file
@@ -96,7 +95,7 @@ class SSD:
             }
         )
 
-    def openDirectory(self):
+    def open_directory(self):
         '''
         This function will display the content of the map the user is at
         '''
@@ -105,11 +104,13 @@ class SSD:
         for i in self.file_space[self.ON_POSITION]['has_blocks']:  # For every chunk the dir is in charge of
             print self.file_space[i]                               # print out every information it has.
 
-    def openFile(self, filename):
+    def open_file(self, filename):
         '''
         Open file by filename
+        :param filename: name of the file you want to open
         :return: Content of the selected file | None if there was no file named that.
         '''
+        file = self.file_space[self.ON_POSITION]
         file_content = []                                               # to hold the content from the file
         for i in file['has_blocks']:                                    # for each block in current map
             if not self.file_space[i]['is_dir']:                            # if the chunk is a file.
@@ -128,7 +129,7 @@ class SSD:
         :param index: select 0 for taking the first block
         :param filename: the filename of the file that are to be saved
         :param content: content of the file
-        :param version: version of the file
+        :param chunk: what chunk of the content it is.
         :param localisation: the tree for where the file are to be saved.
         :return:
         '''
@@ -146,7 +147,7 @@ class SSD:
         # Pop out the first list item of the available blocks as it is not available anymore.
         self.AVAILABLE_BLOCKS.pop(index)
 
-    def createDir(self, dir_name):
+    def create_dir(self, dir_name):
         '''
         Rewrite first available, and make it to a directory.
         :param dir_name:
@@ -169,19 +170,21 @@ class SSD:
         self.AVAILABLE_BLOCKS.pop(index)                        # remove the free block index from our list
         return directory_address                                # return the directory adress.
 
+    def delete_dir(self, dir_name):
+        pass
 
 
 def dirTest():
     disk = SSD()
-    disk.openDirectory()
-    disk.ON_POSITION = disk.createDir('lol')
+    disk.open_directory()
+    disk.ON_POSITION = disk.create_dir('lol')
     disk.add("test.png",'01001000011001010110110001110000','lol/')
-    disk.openDirectory()
-    disk.ON_POSITION = disk.createDir('christian_sine_bilder')
+    disk.open_directory()
+    disk.ON_POSITION = disk.create_dir('christian_sine_bilder')
     disk.add("christian.png",'01001000011001010110110001110000','lol/christian_sine_bilder/')
-    disk.openFile('christian.png')
-    disk.openDirectory()
+    disk.open_file('christian.png')
+    disk.open_directory()
     disk.ON_POSITION = 1
-    disk.openDirectory()
+    disk.open_directory()
 
 dirTest()
