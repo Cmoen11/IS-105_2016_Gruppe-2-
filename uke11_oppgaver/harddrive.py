@@ -184,22 +184,26 @@ class SSD:
             block = self.file_space[i]
             if block['is_dir']:                                         # if it is a directory
                 if block['DirectoryName'] in dir_name:                  # if the directory name match with dir_name.
-                    self.file_space[self.ON_POSITION]['has_blocks'].remove(i)
-                    deleteList = block['has_blocks']
-                    self.clean_block(i)
-                    self.del_block(deleteList)
-                    self.file_space
+                    self.file_space[self.ON_POSITION]['has_blocks'].remove(i)   # Remove block from the mother dir
+                    deleteList = block['has_blocks']                    # Create a delete list for every file inside dir
+                    self.clean_block(i)                                 # Clean the block, so we can write to it
+                    self.del_block(deleteList)                          # delete files inside the previous div
                     break
 
     def del_block(self, deleteList):
-        for i in deleteList:
-            if not self.file_space[i]['is_dir']:
-                self.file_space[i]['available'] = True
+        for i in deleteList:                                            # For every block inside the dellist
+            if not self.file_space[i]['is_dir']:                        # if not it is another directory
+                self.file_space[i]['available'] = True                # set so we're able to write over the block again
             else:
-                deleteList.append(self.file_space[i]['blocks_used'])
-                self.clean_block(i)
+                # if there is another directory, we need to fill up our deletelist once again
+                deleteList.append(self.file_space[i]['blocks_used'])    # get the blocks from the directory
+                self.clean_block(i)                                     # delete the directory.
 
     def clean_block(self, index):
+        '''
+        This will set the block to 'normal' state, that means that the program can write to it without haveing problems.
+        :param index: the index of the directory block.
+        '''
         self.file_space[index] = {
             'filename': '',                                         # filename for file
             'content': '',                                          # block_content
