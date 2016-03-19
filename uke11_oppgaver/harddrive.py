@@ -14,7 +14,6 @@ class SSD:
         self.ON_POSITION = 0                             # index of the map block
         self.create_dir('C:/')                            # Create root.
 
-
     def add(self, filename, content, localisation):
         '''
         Add a file to our SSD disk
@@ -111,6 +110,7 @@ class SSD:
         :param filename: name of the file you want to open
         :return: Content of the selected file | None if there was no file named that.
         '''
+        file = self.file_space[self.ON_POSITION]
         file_content = []                                               # to hold the content from the file
         for i in file['has_blocks']:                                    # for each block in current map
             if not self.file_space[i]['is_dir']:                            # if the chunk is a file.
@@ -169,6 +169,9 @@ class SSD:
         directory_address = self.AVAILABLE_BLOCKS[index]        # save the directory address, so we can move to it
         self.AVAILABLE_BLOCKS.pop(index)                        # remove the free block index from our list
         return directory_address                                # return the directory adress.
+
+    def delete_dir(self, dir_name):
+        pass
 
 
 def dirTest():
