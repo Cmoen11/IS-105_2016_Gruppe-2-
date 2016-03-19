@@ -91,7 +91,8 @@ class SSD:
             'localisation': "",                                     # where the file is 'located'
             'available': available,                                 # if other files can overwrite
             'blocks_used': size,                                    # the amount of blocks needed to write file
-            'is_dir': False                                         # if the chuck is a directory.
+            'is_dir': False,                                        # if the chuck is a directory.
+            'head_dir': 0                                           # set it to root directory.
             }
         )
 
@@ -112,7 +113,7 @@ class SSD:
         '''
         file = self.file_space[self.ON_POSITION]
         file_content = []                                               # to hold the content from the file
-        for i in file['has_blocks']:                                    # for each block in current map
+        for i in file['has_blocks']:                                    # for each block in current directory
             if not self.file_space[i]['is_dir']:                            # if the chunk is a file.
                 if filename in self.file_space[i]['filename']:              # if filename match the file we're looking for
                     x = self.file_space[i]['chunk'] - 1                     # get the chunk
@@ -140,7 +141,7 @@ class SSD:
         self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
         self.file_space[self.AVAILABLE_BLOCKS[index]]['blocks_used'] = size
         self.file_space[self.AVAILABLE_BLOCKS[index]]['is_dir'] = False
-
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['head_dir'] = self.ON_POSITION
 
         self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])
 
@@ -160,7 +161,8 @@ class SSD:
             'DirectoryName': dir_name+'/',                      # what the direction is beeing called
             'has_blocks': [],                                   # what blocks it is in charge of
             'available': False,                                 # if the block can be written over
-            'is_dir': True                                      # if the chunk is a directory.
+            'is_dir': True,                                     # if the chunk is a directory.
+            'head_dir': self.ON_POSITION                        # set the head directory
         }
 
         if self.ON_POSITION != 0 :                              # if there is any directory in charge of this
@@ -171,14 +173,50 @@ class SSD:
         return directory_address                                # return the directory adress.
 
     def delete_dir(self, dir_name):
-        pass
+        '''
+        Delete a directory, inside the directory the user are. And also delete all the files inside the directory.
+        :param dir_name: The directory name
+        :return:
+        '''
+        file = self.file_space[self.ON_POSITION]
+        file_content = []                                               # to hold the content from the file
+        for i in file['has_blocks']:                                    # for each block in current directory
+            block = self.file_space[i]
+            if block['is_dir']:                                         # if it is a directory
+                if block['DirectoryName'] in dir_name:                  # if the directory name match with dir_name.
+                    self.file_space[self.ON_POSITION]['has_blocks'].remove(i)
+                    deleteList = block['has_blocks']
+                    self.clean_block(i)
+                    self.del_block(deleteList)
+                    self.file_space
+                    break
 
+    def del_block(self, deleteList):
+        for i in deleteList:
+            if not self.file_space[i]['is_dir']:
+                self.file_space[i]['available'] = True
+            else:
+                deleteList.append(self.file_space[i]['blocks_used'])
+                self.clean_block(i)
+
+    def clean_block(self, index):
+        self.file_space[index] = {
+            'filename': '',                                         # filename for file
+            'content': '',                                          # block_content
+            'chunk': '',                                            # what version of the file it is.
+            'localisation': "",                                     # where the file is 'located'
+            'available': True,                                      # if other files can overwrite
+            'blocks_used': '',                                      # the amount of blocks needed to write file
+            'is_dir': False,                                        # if the chuck is a directory.
+            'head_dir': 0                                           # set it to root directory.
+        }
 
 def dirTest():
     disk = SSD()
     disk.open_directory()
     disk.ON_POSITION = disk.create_dir('lol')
     disk.add("test.png",'01001000011001010110110001110000','lol/')
+
     disk.open_directory()
     disk.ON_POSITION = disk.create_dir('christian_sine_bilder')
     disk.add("christian.png",'01001000011001010110110001110000','lol/christian_sine_bilder/')
@@ -186,5 +224,17 @@ def dirTest():
     disk.open_directory()
     disk.ON_POSITION = 1
     disk.open_directory()
-
-dirTest()
+def delete_dir():
+    disk = SSD()
+    disk.open_directory()
+    disk.ON_POSITION = disk.create_dir('test')
+    disk.open_directory()
+    disk.ON_POSITION = disk.create_dir('yoo')
+    disk.add('fileName', '1001010101010101001010101010', '/')
+    disk.open_directory()
+    disk.ON_POSITION -= 1
+    disk.add('mongo.png', '1001010101010101001010101010', '/')
+    disk.open_directory()
+    disk.delete_dir('yoo/')
+    disk.open_directory()
+delete_dir()
