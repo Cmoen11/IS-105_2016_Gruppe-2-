@@ -107,17 +107,20 @@ class SSD:
 
     def openFile(self, filename):
         '''
-
-        :return:
+        Open file by filename
+        :return: Content of the selected file | None if there was no file named that.
         '''
-        file = self.file_space[self.ON_POSITION]
-        file_content = []
-        for i in file['has_blocks']:
-            if filename in self.file_space[i]['filename']:
-                x = self.file_space[i]['chuck'] - 1
-                file_content.insert(x, self.file_space[i]['content'])
+        file_content = []                                               # to hold the content from the file
+        for i in file['has_blocks']:                                    # for each block in current map
+            if not self.file_space[i]['is_dir']:                            # if the chunk is a file.
+                if filename in self.file_space[i]['filename']:              # if filename match the file we're looking for
+                    x = self.file_space[i]['chunk'] - 1                     # get the chunk
+                    file_content.insert(x, self.file_space[i]['content'])   # add the chunktogheter
 
-        print file_content
+        if len(file_content) > 0:                                       # if we have gotten data
+            return ''.join(file_content)                                # -> Return the data
+        else:
+            return None                                                 # if we've not any data, return nothing.
 
     def write(self, index, filename, content, chunk, localisation, size):
         '''
