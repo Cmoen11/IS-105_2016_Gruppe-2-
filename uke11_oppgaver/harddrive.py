@@ -61,27 +61,30 @@ class SSD:
 
             count += 1                                   # to know what address the loop is at
 
-    def delete_file(self, filename, localisation):
+    def delete_file(self, filename):
         '''
-        Delete blocks where filename and localisation is the same.
+        Delete blocks where filename
         :param filename: The filename of the file you wish to delete
-        :param localisation: the localisation of the file you wish to delete
         :return: True if the file was deleted, False if the file was not deleted or was found.
         '''
-        deleted_blocks = 0
-        blocks_used = ""
-        for block in self.file_space:                           # Go trough every block inside the file_space
+        file_deleted = 0
+        file = self.file_space[self.ON_POSITION]
+        blocks = []
 
-            if block['filename'] == filename and \
-                    block['localisation'] == localisation:      # if filename and localisation match
-                        block['available'] = True               # set the portion to true as at this can be overwritten
-                        if blocks_used is "":
-                            blocks_used = block['blocks_used']  # so we know how many blocks we need to delete
-                        deleted_blocks += 1
+        for i in file['has_blocks']:                # for each block inside the directory
+            blocks.append(i)                        # add block to que list
 
-            if blocks_used is deleted_blocks:                   # if all the files are deleted, break the loop
-                print 'deleted ' + str(deleted_blocks) + ' blocks of data'
-                break
+        for i in blocks:                                                        # for each block in que
+            block = self.file_space[i]                                          # set the block value
+            if not block['is_dir']:                                             # if the block is not a directory
+                if block['filename'] in filename:                               # if the filename match with block file
+                    total_blocks = block['blocks_used']                         # how many chunks the file have used
+                    self.file_space[i]['available'] = True                      # delete the file
+                    self.file_space[self.ON_POSITION]['has_blocks'].remove(i)   # remove it from directory blocks
+                    file_deleted += 1                                           # count the deleted file
+                    if total_blocks < file_deleted:                             # if all the files are deleted
+                        print 'file deleted: ' + str(file_deleted) + ' bytes'   # print out how much that was deleted
+                        break                                                   # break the loop.
 
     def add_block(self, filename, block_content, chunk, available, size):
         self.file_space.append({                                    # add to our space
@@ -240,5 +243,8 @@ def delete_dir():
     disk.add('mongo.png', '1001010101010101001010101010', '/')
     disk.open_directory()
     disk.delete_dir('yoo/')
+    disk.open_directory()
+    disk.delete_file('mongo.png')
+
     disk.open_directory()
 delete_dir()
