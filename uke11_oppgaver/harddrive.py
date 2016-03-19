@@ -141,7 +141,7 @@ class SSD:
         self.file_space[self.AVAILABLE_BLOCKS[index]]['available'] = False
         self.file_space[self.AVAILABLE_BLOCKS[index]]['blocks_used'] = size
         self.file_space[self.AVAILABLE_BLOCKS[index]]['is_dir'] = False
-
+        self.file_space[self.AVAILABLE_BLOCKS[index]]['head_dir'] = self.ON_POSITION
 
         self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])
 
