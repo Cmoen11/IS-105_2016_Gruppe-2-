@@ -91,7 +91,8 @@ class SSD:
             'localisation': "",                                     # where the file is 'located'
             'available': available,                                 # if other files can overwrite
             'blocks_used': size,                                    # the amount of blocks needed to write file
-            'is_dir': False                                         # if the chuck is a directory.
+            'is_dir': False,                                        # if the chuck is a directory.
+            'head_dir': 0                                           # set it to root directory.
             }
         )
 
@@ -160,7 +161,8 @@ class SSD:
             'DirectoryName': dir_name+'/',                      # what the direction is beeing called
             'has_blocks': [],                                   # what blocks it is in charge of
             'available': False,                                 # if the block can be written over
-            'is_dir': True                                      # if the chunk is a directory.
+            'is_dir': True,                                     # if the chunk is a directory.
+            'head_dir': self.ON_POSITION                        # set the head directory
         }
 
         if self.ON_POSITION != 0 :                              # if there is any directory in charge of this
