@@ -168,8 +168,8 @@ class SSD:
             'head_dir': self.ON_POSITION                        # set the head directory
         }
 
-        if self.ON_POSITION != 0 :                              # if there is any directory in charge of this
-            self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])    # add it.
+
+        self.file_space[self.ON_POSITION]['has_blocks'].append(self.AVAILABLE_BLOCKS[index])    # add it.
 
         directory_address = self.AVAILABLE_BLOCKS[index]        # save the directory address, so we can move to it
         self.AVAILABLE_BLOCKS.pop(index)                        # remove the free block index from our list
@@ -218,6 +218,18 @@ class SSD:
             'head_dir': 0                                           # set it to root directory.
         }
 
+    def go_inside_directory(self, name):
+        name += '/'
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:
+            if self.file_space[i]['is_dir']:
+                if self.file_space[i]['DirectoryName'] == name:
+                    self.ON_POSITION = i
+                    print 'moved into directory: '+self.file_space[i]['DirectoryName']
+                    break
+
+    def go_outside_directory(self):
+        self.ON_POSITION = self.file_space[self.ON_POSITION]['head_dir']
+
 def dirTest():
     disk = SSD()
     disk.open_directory()
@@ -247,4 +259,6 @@ def delete_dir():
     disk.delete_file('mongo.png')
 
     disk.open_directory()
-delete_dir()
+
+
+#delete_dir()
