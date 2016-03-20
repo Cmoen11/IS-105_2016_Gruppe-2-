@@ -25,6 +25,19 @@ class Commands:
         elif command == 'cd ..':
             self.disk.go_outside_directory()
             self.disk.open_directory()
+        elif command == 'dir delete':
+            dir_name = raw_input("What directory do you want to delete? # :")
+            dir_name += '/'
+            self.disk.delete_dir(dir_name)
+        elif command == 'file delete':
+            file_name = raw_input("what file do you want to delete? # :")
+            file_name += '/'
+            print file_name
+            self.disk.delete_file(file_name)
+        elif command == 'file open':
+            file_name = raw_input("filename: #")
+            file_name += '/'
+            self.disk.open_file(file_name)
     def dir(self, pos):
         pass
 
