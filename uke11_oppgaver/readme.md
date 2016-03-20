@@ -10,6 +10,12 @@ Blokker har ikke blitt tilegnet en mappe før de først er skrevet på. Det som 
 ##Sletting: 
 Når man sletter en fil fra systemet, blir ikke filen fysisk fjernet. Men blokkenes availability blir satt fra False til True. Og fjerner blokk visability fra mappestrukturen, slik at filen ikke lenger blir synlig.<br/>
 Dette gjør det mulig å overskrive innholdet i blokkene. Vi har ikke laget en gjenopprettingsfunksjon i dette systemet, da vi anser dette å være “ekspert” kunnskap.<br/>
+
+##Skriving
+Når man legger til en mappe eller filer, blir det skrevet inn til ledige blokker. Ledige blokker blir funnet bed at man benytter seg av get_available_block til å søke igjennom blokkene og lager da en array med adresser(indexer) som man kan skrive til. Dette blir regelmessig sjekket. <br>
+
+Er det ikke plass på disken vil den ikke starte å skrive, den sjekker først om det er plass til å skrive, er det ikke plass vil den gi brukeren beskjed. 
+
 ##Bash(Commands.py):
 Vi har laget en bash for systemet. <br/>
 Dette fungerer nesten som “command prompt” i Windows, men med litt annerledes kommandoer. <br/>
