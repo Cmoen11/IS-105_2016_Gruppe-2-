@@ -32,6 +32,7 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 **file delete:** Sletter en fil på den posisjonen du er på.<br/>
 **file open:** Åpner en fil fra den posisjonen du er på. <br/>
 **file move:** Flytter filen til en annen posisjon på disken (enda ikke implementert.)<br/>
+**file rename:** Endrer filnavnet på oppgitt fil.<br>
 
 ##Metoder i Python programmet(harddrive.py): 
 **add**<br/>
@@ -64,3 +65,5 @@ Går inn i directory. Men må følge stien. Kan ikke hoppe til annet directory.<
 Går tilbake på stien.<br/>
 **move_file**<br/>
 Flytter fil til annen plass.<br/>
+**rename_file**<br>
+Endrer navnet på filen. <br>
