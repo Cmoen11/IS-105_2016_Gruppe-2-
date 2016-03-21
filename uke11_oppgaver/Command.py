@@ -42,8 +42,15 @@ class Commands:
             file_name = raw_input('Filename # :')
             new_file_name = raw_input('new filename # :')
             self.disk.rename_file(file_name, new_file_name)
+        elif command == 'dir rename':
+            dir_name = raw_input('Directory name # :')
+            new_dir_name = raw_input('new Directory name # :')
+            dir_name += '/'
+            new_dir_name += '/'
+            self.disk.rename_dir(dir_name, new_dir_name)
         elif command == 'clear':
             os.system('cls' if os.name=='nt' else 'clear')
+
 
     def dir(self, pos):
         pass
