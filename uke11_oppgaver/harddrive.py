@@ -250,6 +250,13 @@ class SSD:
                 #if blocks_renamed == blocks_to_rename:
                     #break
 
+    def rename_dir(self, dir_name, new_dir_name):
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
+            if self.file_space[i]['is_dir']:                                           # if block is a directory
+                if self.file_space[i]['DirectoryName'] == dir_name :                   # if directory nmae == dir_name
+                    self.file_space[i]['DirectoryName'] = new_dir_name                 # set new dirname
+                    break                                                              # break loop.
+
 
 
     def move_file(self, filename, new_destination):
