@@ -35,6 +35,7 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 |file open|Åpner en fil fra den posisjonen du er på.|
 |file move|Åpner en fil fra den posisjonen du er på.|
 |file rename|Endrer filnavnet på oppgitt fil.|
+|dir rename| Endrer navnet på mappen|
 
 
 ##Metoder i Python programmet(harddrive.py): 
@@ -55,5 +56,6 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 |go_inside_directory|Går inn i directory. Men må følge stien. Kan ikke hoppe til annet directory.|
 |go_outside_directory| Går tilbake på stien.|
 |move_file|Flytter fil til annen plass.|
-rename_file|Endrer navnet på filen. |
+|rename_file|Endrer navnet på filen. |
+|rename_dir| endrer navnet på mappen.|
 
