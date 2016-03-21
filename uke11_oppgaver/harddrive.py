@@ -239,6 +239,8 @@ class SSD:
         self.ON_POSITION = self.file_space[self.ON_POSITION]['head_dir']
 
     def rename_file(self, file_name, newName):
+        if self.filename_exist(newName):                  # check if there is a file with that name already.
+            return False
         blocks_renamed = 0
         for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
             if not self.file_space[i]['is_dir']:                                       # and is not a directory
@@ -257,7 +259,28 @@ class SSD:
                     self.file_space[i]['DirectoryName'] = new_dir_name                 # set new dirname
                     break                                                              # break loop.
 
-
+    def filename_exist(self, filename):
+        '''
+        Check if the filename already exist
+        :param filename: filename you want to check
+        :return: return true if the file exist, and false if not.
+        '''
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
+            if not self.file_space[i]['is_dir']:                            # if block is not a directory
+                if self.file_space[i]['filename'] == filename:              # if filename is equals with our filename
+                    return True                                             # -> return true
+        return False                                                        # no filename was equal our filename.
+    def dirname_exist(self, dirname):
+        '''
+        Check if the dirname already exist
+        :param dirname: dirname you want to check
+        :return: return true if the dir exist, and false if not.
+        '''
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
+            if self.file_space[i]['is_dir']:                                # if block is  a directory
+                if self.file_space[i]['filename'] == dirname:               # if dir is equals with our dirname
+                    return True                                             # -> return true
+        return False                                                        # no dirname was equal our dirname.
 
     def move_file(self, filename, new_destination):
         pass

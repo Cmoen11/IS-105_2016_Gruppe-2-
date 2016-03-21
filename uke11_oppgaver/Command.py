@@ -41,7 +41,9 @@ class Commands:
         elif command == 'file rename':
             file_name = raw_input('Filename # :')
             new_file_name = raw_input('new filename # :')
-            self.disk.rename_file(file_name, new_file_name)
+            answer = self.disk.rename_file(file_name, new_file_name)
+            if answer is False :
+                print 'Operation cancelled: A file with that name already exist.'
         elif command == 'dir rename':
             dir_name = raw_input('Directory name # :')
             new_dir_name = raw_input('new Directory name # :')
