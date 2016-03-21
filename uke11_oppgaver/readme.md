@@ -3,8 +3,10 @@ Vi har brukt Array for å holde på alle blokkene. Arrayen inneholder 32 block s
 Hver block kan inneholde 8 bits (1 byte).<br/>
 Selv om en fil kun inneholder 4 bits tar den i denne modellen hele block space på 8 bits. <br/>
 ![alt text](https://i.gyazo.com/fe389632d324034f4e7f85c8b8b5f039.png "Lite screenshot fra bash")
-
 Dette er fordi man tilegner hver blokk metadata. Om man fyller halvfylte blokker med ny informasjon for å fylle blokken, vil da metadataen ikke fungere og man vil få problemer med å hente filen etterpå. 
+
+<br> Vi har også laget python illustrasjon av hvordan vi tenker oss at filsystemet fungerer, samt en måte å kunne kontrollere filsystemet på via vår bash(Commands.py). Om man høyreklikker på denne og kjører den i python, kan man kontrollere og manipulere dataen i filsystemet. Se kommandoene nedenfor. 
+
 ##Mappestruktur: 
 Blokker har ikke blitt tilegnet en mappe før de først er skrevet på. Det som kartlegger hvilken blokk som tilhører hvilken mappe er at de har metadata som head_dir. Head_dir oppgir da adressen (index) til mappeblokken, altså den mappen blokken tilhører. Mappen har også en metadata som sier hvilke blokker som den har kontroll over. Mappe blokker har igjen en metadata “head_dir”, som forteller hvilken mappe som kontrollerer den neste mappen. Denne head_dir fungerer som ett “directory-tre”. Som viser hvor i mappestrukturen man befinner seg.<br/>
 ##Sletting: 
