@@ -253,6 +253,8 @@ class SSD:
                     #break
 
     def rename_dir(self, dir_name, new_dir_name):
+        if self.dirname_exist(new_dir_name):
+            return False
         for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
             if self.file_space[i]['is_dir']:                                           # if block is a directory
                 if self.file_space[i]['DirectoryName'] == dir_name :                   # if directory nmae == dir_name
@@ -278,7 +280,7 @@ class SSD:
         '''
         for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
             if self.file_space[i]['is_dir']:                                # if block is  a directory
-                if self.file_space[i]['filename'] == dirname:               # if dir is equals with our dirname
+                if self.file_space[i]['DirectoryName'] == dirname:               # if dir is equals with our dirname
                     return True                                             # -> return true
         return False                                                        # no dirname was equal our dirname.
 

@@ -49,7 +49,9 @@ class Commands:
             new_dir_name = raw_input('new Directory name # :')
             dir_name += '/'
             new_dir_name += '/'
-            self.disk.rename_dir(dir_name, new_dir_name)
+            answer = self.disk.rename_dir(dir_name, new_dir_name)
+            if answer is False:
+                print 'Operation cancelled: A directory with that name already exist.'
         elif command == 'clear':
             os.system('cls' if os.name=='nt' else 'clear')
 
