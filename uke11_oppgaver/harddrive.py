@@ -22,9 +22,6 @@ class SSD:
         :param localisation: Where to save the file
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
-        if self.filename_exist(filename):
-            return False
-
 
         self.get_available_block()                                   # fills the AVAILABLE_BLOCKS list free index's
         size = len(content) / self.SPACE_EACH_BLOCK                  # find out the input block number
@@ -163,8 +160,6 @@ class SSD:
         :return:
 
         '''
-        if self.dirname_exist(dir_name):
-            return False
         index = 0
         self.file_space[self.AVAILABLE_BLOCKS[index]] = {
             'DirectoryName': dir_name+'/',                      # what the direction is beeing called
@@ -281,6 +276,7 @@ class SSD:
                 if self.file_space[i]['filename'] == filename:              # if filename is equals with our filename
                     return True                                             # -> return true
         return False                                                        # no filename was equal our filename.
+
     def dirname_exist(self, dirname):
         '''
         Check if the dirname already exist
@@ -296,35 +292,3 @@ class SSD:
     def move_file(self, filename, new_destination):
         pass
 
-def dirTest():
-    disk = SSD()
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('lol')
-    disk.add("test.png",'01001000011001010110110001110000','lol/')
-
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('christian_sine_bilder')
-    disk.add("christian.png",'01001000011001010110110001110000','lol/christian_sine_bilder/')
-    disk.open_file('christian.png')
-    disk.open_directory()
-    disk.ON_POSITION = 1
-    disk.open_directory()
-def delete_dir():
-    disk = SSD()
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('test')
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('yoo')
-    disk.add('fileName', '1001010101010101001010101010', '/')
-    disk.open_directory()
-    disk.ON_POSITION -= 1
-    disk.add('mongo.png', '1001010101010101001010101010', '/')
-    disk.open_directory()
-    disk.delete_dir('yoo/')
-    disk.open_directory()
-    disk.delete_file('mongo.png')
-
-    disk.open_directory()
-
-
-#delete_dir()
