@@ -60,4 +60,6 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 |move_file|Flytter fil til annen plass.|
 |rename_file|Endrer navnet på filen. |
 |rename_dir| endrer navnet på mappen.|
+|filename_exist| Sjekker om filnavnet finnes allerede i mappen|
+|dirname_exist| sjekker om mappenavnet finnes allerede i mappen|
 
