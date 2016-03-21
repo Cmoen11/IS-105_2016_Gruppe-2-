@@ -8,7 +8,7 @@ class Commands:
         command = raw_input('# :')
         if command == 'dir':
             self.disk.open_directory()
-        elif command == 'create file':
+        elif command == 'file create':
             filename = raw_input('filename # :')
             content = raw_input('content # :')
             self.disk.add(filename, content, '/')
@@ -35,9 +35,14 @@ class Commands:
             print file_name
             self.disk.delete_file(file_name)
         elif command == 'file open':
-            file_name = raw_input("filename: #")
+            file_name = raw_input("filename # :")
             file_name += '/'
-            self.disk.open_file(file_name)
+            print self.disk.open_file(file_name)
+        elif command == 'file rename':
+            file_name = raw_input('Filename # :')
+            new_file_name = raw_input('new filename # :')
+            self.disk.rename_file(file_name, new_file_name)
+
     def dir(self, pos):
         pass
 

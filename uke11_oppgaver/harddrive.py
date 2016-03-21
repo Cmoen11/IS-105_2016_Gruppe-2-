@@ -219,16 +219,41 @@ class SSD:
         }
 
     def go_inside_directory(self, name):
+        '''
+        Go inside the directory of choice, by looking at the directory name.
+        :param name: name of the directory you wish to enter.
+        :return:
+        '''
         name += '/'
-        for i in self.file_space[self.ON_POSITION]['has_blocks']:
-            if self.file_space[i]['is_dir']:
-                if self.file_space[i]['DirectoryName'] == name:
-                    self.ON_POSITION = i
-                    print 'moved into directory: '+self.file_space[i]['DirectoryName']
-                    break
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:                       # for each block in the dir
+            if self.file_space[i]['is_dir']:                                            # if dir
+                if self.file_space[i]['DirectoryName'] == name:                         # if dir name == name
+                    self.ON_POSITION = i                                                # set the pos to the dir
+                    print 'moved into directory: '+self.file_space[i]['DirectoryName']  # print out status msg.
+                    break                                                               # break out of loop
 
     def go_outside_directory(self):
+        '''
+            go out of the directory by looking at the head_dir of that position you're at.
+        '''
         self.ON_POSITION = self.file_space[self.ON_POSITION]['head_dir']
+
+    def rename_file(self, file_name, newName):
+        blocks_renamed = 0
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
+            if not self.file_space[i]['is_dir']:                                       # and is not a directory
+                if self.file_space[i]['filename'] == file_name:                        # if filename == file_name
+                    self.file_space[i]['filename'] = newName                           # change name
+                    blocks_to_rename = self.file_space[i]['blocks_used']               
+                    blocks_renamed += 1
+
+                #if blocks_renamed == blocks_to_rename:
+                    #break
+
+
+
+    def move_file(self, filename, new_destination):
+        pass
 
 def dirTest():
     disk = SSD()
