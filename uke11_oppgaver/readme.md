@@ -38,35 +38,22 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 
 
 ##Metoder i Python programmet(harddrive.py): 
-**add**<br/>
-Legger til ny fil<br/>
-**create_empty_blocks**<br/>
-lager tomme blokker før de blir skrevet til<br/>
-**get_available_block**<br/>
-Gir oversikt over ledige blokker<br/>
-**delete_file**<br/>
-Sletter fil<br/>
-**add_block**<br/>
-Legger inn tomme blokker<br/>
-**open_directory**<br/>
-Viser hva som er i en mappe<br/>
-**open_file**<br/>
-Åpner en fil. Returnerer det som er inni filen.<br/>
-**write**<br/>
-Skriver ny informasjon til block<br/>
-**create_dir**<br/>
-Oppretter directory<br/>
-**delete_dir**<br/>
-Sletter directory<br/>
-**del_block**<br/>
-Sletter innhold i blokk. Setter “available” fra False til True. Gjør det mulig å overskrive innhold.<br/>
-**clean_block**<br/>
-Fjerner alt innhold i blokken. Utføres kun ved sletting av mapper<br/>
-**go_inside_directory**<br/>
-Går inn i directory. Men må følge stien. Kan ikke hoppe til annet directory.<br/>
-**go_outside_directory**<br/>
-Går tilbake på stien.<br/>
-**move_file**<br/>
-Flytter fil til annen plass.<br/>
-**rename_file**<br>
-Endrer navnet på filen. <br>
+| metodenavn          | Beskrivelse     |
+| ------------- |:-------------:|
+|add|Legger til ny fil|
+|create_empty_blocks|lager tomme blokker før de blir skrevet til|
+|get_available_block|Gir oversikt over ledige blokker som programmet bruker til å skrive nye blokker til|
+|delete_file|Sletter fil fra systemet dvs. setter blokken til ledig, slik at den kan bli skrevet over igjen.|
+|add_block|Legger inn tomme blokker, altså - slik at programmet har noen blokker å skrive til.|
+|open_directory| Gir en oversikt over alle blokker som mappen du er inni i har kontroll over|
+|open_file|Åpner en fil. Returnerer det som er inni filen.|
+|write|Skriver ny informasjon til block|
+|create_dir| Oppretter en ny mappe i den mappen du er i.|
+|delete_dir| Sletter en mappe som ligger i samme mappe du er i|
+|del_block| Sletter innhold i blokk. Setter “available” fra False til True. Gjør det mulig å overskrive innhold.|
+|clean_block|Fjerner alt innhold i blokken. Utføres kun ved sletting av mapper, dette fordi metadataen er forksjellig fra filer til mapper|
+|go_inside_directory|Går inn i directory. Men må følge stien. Kan ikke hoppe til annet directory.|
+|go_outside_directory| Går tilbake på stien.|
+|move_file|Flytter fil til annen plass.|
+rename_file|Endrer navnet på filen. |
+
