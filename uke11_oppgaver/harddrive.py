@@ -22,6 +22,10 @@ class SSD:
         :param localisation: Where to save the file
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
+        if self.filename_exist(filename):
+            return False
+
+
         self.get_available_block()                                   # fills the AVAILABLE_BLOCKS list free index's
         size = len(content) / self.SPACE_EACH_BLOCK                  # find out the input block number
         blocks_free = self.AVAILABLE_BLOCKS                          # find out how much free blocks left
@@ -159,6 +163,8 @@ class SSD:
         :return:
 
         '''
+        if self.dirname_exist(dir_name):
+            return False
         index = 0
         self.file_space[self.AVAILABLE_BLOCKS[index]] = {
             'DirectoryName': dir_name+'/',                      # what the direction is beeing called
@@ -225,6 +231,9 @@ class SSD:
         :return:
         '''
         name += '/'
+        if self.dirname_exist(name) :
+            return False
+
         for i in self.file_space[self.ON_POSITION]['has_blocks']:                       # for each block in the dir
             if self.file_space[i]['is_dir']:                                            # if dir
                 if self.file_space[i]['DirectoryName'] == name:                         # if dir name == name
@@ -253,6 +262,8 @@ class SSD:
                     #break
 
     def rename_dir(self, dir_name, new_dir_name):
+        if self.dirname_exist(new_dir_name):
+            return False
         for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
             if self.file_space[i]['is_dir']:                                           # if block is a directory
                 if self.file_space[i]['DirectoryName'] == dir_name :                   # if directory nmae == dir_name
@@ -278,7 +289,7 @@ class SSD:
         '''
         for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
             if self.file_space[i]['is_dir']:                                # if block is  a directory
-                if self.file_space[i]['filename'] == dirname:               # if dir is equals with our dirname
+                if self.file_space[i]['DirectoryName'] == dirname:               # if dir is equals with our dirname
                     return True                                             # -> return true
         return False                                                        # no dirname was equal our dirname.
 
