@@ -22,17 +22,20 @@ Dette fungerer nesten som “command prompt” i Windows, men med litt annerlede
 Dette har vi gjort for å demonstrere hva som er mulig å gjøre med vårt filsystem.<br/>
 I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet, slette og flytter filer og mapper.<br/>
 ###Kommandoer i Bash:
-**dir:** Liste opp alle filer og mapper i mappen man er i, pr nå lister den alle blokker i mappen, dette for å vise mer hvordan det blir lagret på hardisken.<br/>
-**-a dir:** Lister opp alle blokkene på hele hardisken, uavhengig av hvilken mappe man er i.<br/>
-**cd:** Gå inn i mapper fra posisjonen du er i nå. <br/>
-**cd .. :** Gå tilbake i den mappen du var i.<br/>
-**file create:** Skriv inn en ny fil til den posisjonen du er i.<br/>
-**dir create:** Oppretter en mappe på den posisjonen du er i.<br/>
-**dir delete:** Sletter en mappe på den posisjonen du er på.<br/>
-**file delete:** Sletter en fil på den posisjonen du er på.<br/>
-**file open:** Åpner en fil fra den posisjonen du er på. <br/>
-**file move:** Flytter filen til en annen posisjon på disken (enda ikke implementert.)<br/>
-**file rename:** Endrer filnavnet på oppgitt fil.<br>
+| Kommando          | Beskrivelse     |
+| ------------- |:-------------:|
+|dir | Liste opp alle filer og mapper i mappen man er i, pr nå lister den alle blokker i mappen, dette for å vise mer hvordan det blir lagret på hardisken.|
+|-a dir|Lister opp alle blokkene på hele hardisken, uavhengig av hvilken mappe man er i.|
+|cd|Gå inn i mapper fra posisjonen du er i nå.|
+|cd ..|Gå tilbake i den mappen du var i.|
+|file create|Skriv inn en ny fil til den posisjonen du er i.|
+|dir create|Oppretter en mappe på den posisjonen du er i.|
+|dir delete|Sletter en mappe på den posisjonen du er på.|
+|file delete|Sletter en fil på den posisjonen du er på.|
+|file open|Åpner en fil fra den posisjonen du er på.|
+|file move|Åpner en fil fra den posisjonen du er på.|
+|file rename|Endrer filnavnet på oppgitt fil.|
+
 
 ##Metoder i Python programmet(harddrive.py): 
 **add**<br/>
