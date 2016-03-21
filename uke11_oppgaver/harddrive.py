@@ -244,7 +244,7 @@ class SSD:
             if not self.file_space[i]['is_dir']:                                       # and is not a directory
                 if self.file_space[i]['filename'] == file_name:                        # if filename == file_name
                     self.file_space[i]['filename'] = newName                           # change name
-                    blocks_to_rename = self.file_space[i]['blocks_used']               
+                    blocks_to_rename = self.file_space[i]['blocks_used']
                     blocks_renamed += 1
 
                 #if blocks_renamed == blocks_to_rename:

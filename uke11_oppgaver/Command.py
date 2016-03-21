@@ -1,5 +1,5 @@
 import harddrive
-
+import os
 class Commands:
     def __init__(self):
         self.disk = harddrive.SSD()
@@ -42,6 +42,8 @@ class Commands:
             file_name = raw_input('Filename # :')
             new_file_name = raw_input('new filename # :')
             self.disk.rename_file(file_name, new_file_name)
+        elif command == 'clear':
+            os.system('cls' if os.name=='nt' else 'clear')
 
     def dir(self, pos):
         pass
