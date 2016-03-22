@@ -22,6 +22,7 @@ class SSD:
         :param localisation: Where to save the file
         :return: True if the file was saved into the SSD, false if there was not any room for it.
         '''
+
         self.get_available_block()                                   # fills the AVAILABLE_BLOCKS list free index's
         size = len(content) / self.SPACE_EACH_BLOCK                  # find out the input block number
         blocks_free = self.AVAILABLE_BLOCKS                          # find out how much free blocks left
@@ -219,46 +220,75 @@ class SSD:
         }
 
     def go_inside_directory(self, name):
+        '''
+        Go inside the directory of choice, by looking at the directory name.
+        :param name: name of the directory you wish to enter.
+        :return:
+        '''
         name += '/'
-        for i in self.file_space[self.ON_POSITION]['has_blocks']:
-            if self.file_space[i]['is_dir']:
-                if self.file_space[i]['DirectoryName'] == name:
-                    self.ON_POSITION = i
-                    print 'moved into directory: '+self.file_space[i]['DirectoryName']
-                    break
+        if self.dirname_exist(name) :
+            return False
+
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:                       # for each block in the dir
+            if self.file_space[i]['is_dir']:                                            # if dir
+                if self.file_space[i]['DirectoryName'] == name:                         # if dir name == name
+                    self.ON_POSITION = i                                                # set the pos to the dir
+                    print 'moved into directory: '+self.file_space[i]['DirectoryName']  # print out status msg.
+                    break                                                               # break out of loop
 
     def go_outside_directory(self):
+        '''
+            go out of the directory by looking at the head_dir of that position you're at.
+        '''
         self.ON_POSITION = self.file_space[self.ON_POSITION]['head_dir']
 
-def dirTest():
-    disk = SSD()
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('lol')
-    disk.add("test.png",'01001000011001010110110001110000','lol/')
+    def rename_file(self, file_name, newName):
+        if self.filename_exist(newName):                  # check if there is a file with that name already.
+            return False
+        blocks_renamed = 0
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
+            if not self.file_space[i]['is_dir']:                                       # and is not a directory
+                if self.file_space[i]['filename'] == file_name:                        # if filename == file_name
+                    self.file_space[i]['filename'] = newName                           # change name
+                    blocks_to_rename = self.file_space[i]['blocks_used']
+                    blocks_renamed += 1
 
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('christian_sine_bilder')
-    disk.add("christian.png",'01001000011001010110110001110000','lol/christian_sine_bilder/')
-    disk.open_file('christian.png')
-    disk.open_directory()
-    disk.ON_POSITION = 1
-    disk.open_directory()
-def delete_dir():
-    disk = SSD()
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('test')
-    disk.open_directory()
-    disk.ON_POSITION = disk.create_dir('yoo')
-    disk.add('fileName', '1001010101010101001010101010', '/')
-    disk.open_directory()
-    disk.ON_POSITION -= 1
-    disk.add('mongo.png', '1001010101010101001010101010', '/')
-    disk.open_directory()
-    disk.delete_dir('yoo/')
-    disk.open_directory()
-    disk.delete_file('mongo.png')
+                #if blocks_renamed == blocks_to_rename:
+                    #break
 
-    disk.open_directory()
+    def rename_dir(self, dir_name, new_dir_name):
+        if self.dirname_exist(new_dir_name):
+            return False
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:                      # for each block inside directory
+            if self.file_space[i]['is_dir']:                                           # if block is a directory
+                if self.file_space[i]['DirectoryName'] == dir_name :                   # if directory nmae == dir_name
+                    self.file_space[i]['DirectoryName'] = new_dir_name                 # set new dirname
+                    break                                                              # break loop.
 
+    def filename_exist(self, filename):
+        '''
+        Check if the filename already exist
+        :param filename: filename you want to check
+        :return: return true if the file exist, and false if not.
+        '''
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
+            if not self.file_space[i]['is_dir']:                            # if block is not a directory
+                if self.file_space[i]['filename'] == filename:              # if filename is equals with our filename
+                    return True                                             # -> return true
+        return False                                                        # no filename was equal our filename.
 
-#delete_dir()
+    def dirname_exist(self, dirname):
+        '''
+        Check if the dirname already exist
+        :param dirname: dirname you want to check
+        :return: return true if the dir exist, and false if not.
+        '''
+        for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
+            if self.file_space[i]['is_dir']:                                # if block is  a directory
+                if self.file_space[i]['DirectoryName'] == dirname:               # if dir is equals with our dirname
+                    return True                                             # -> return true
+        return False                                                        # no dirname was equal our dirname.
+
+    def move_file(self, filename, new_destination):
+        pass
+
