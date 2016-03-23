@@ -78,6 +78,13 @@ class Commands:
         elif command == 'stat':
             self.disk.stats()
 
+        elif command == 'file copy':
+            filename = raw_input('Filename #:')
+            copyname = raw_input('Name of the copy #:')
+
+            if self.disk.file_copy(filename,copyname) == False:
+                print 'There are no files with that filename or copyname is already beeing used.'
+
     def dir(self, pos):
         pass
 

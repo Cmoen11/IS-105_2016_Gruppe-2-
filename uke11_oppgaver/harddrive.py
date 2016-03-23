@@ -291,6 +291,16 @@ class SSD:
     def stats(self):
         print str(len(self.AVAILABLE_BLOCKS)) + ' byte ledig av ' + str(len(self.file_space)) + ' byte'
 
+    def file_copy(self, filename, copyname):
+        '''this method will copy the file by his filename, and add it into the same folder.'''
+
+        # if either copyname already exist, or there are no file with that filename.
+        if self.filename_exist(copyname) or not self.filename_exist(filename):
+            return False
+
+        self.add(copyname, self.open_file(filename), self.file_space[self.ON_POSITION]['DirectoryName']+'/')
+
+
     def move_file(self, filename, new_destination):
         pass
 
