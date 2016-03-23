@@ -39,6 +39,7 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 |file rename|Endrer filnavnet på oppgitt fil.|
 |dir rename| Endrer navnet på mappen|
 |stat| Gir en oversikt på størrelsen på disken|
+|file copy| Kopierer en valgfri fil|
 
 
 ##Metoder i Python programmet(harddrive.py): 
@@ -64,4 +65,5 @@ I Bash kan man f.eks opprette filer og mapper, navigere rundt i mappehierarkiet,
 |filename_exist| Sjekker om filnavnet finnes allerede i mappen|
 |dirname_exist| sjekker om mappenavnet finnes allerede i mappen|
 |stat| Gir en oversikt over hvor mye som er brukt og hvor mye som er ledig|
+|file_copy| Kopierer en fil |
 
