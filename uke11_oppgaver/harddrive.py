@@ -225,8 +225,7 @@ class SSD:
         :param name: name of the directory you wish to enter.
         :return:
         '''
-        name += '/'
-        if self.dirname_exist(name) :
+        if not self.dirname_exist(name):
             return False
 
         for i in self.file_space[self.ON_POSITION]['has_blocks']:                       # for each block in the dir
@@ -285,7 +284,7 @@ class SSD:
         '''
         for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
             if self.file_space[i]['is_dir']:                                # if block is  a directory
-                if self.file_space[i]['DirectoryName'] == dirname:               # if dir is equals with our dirname
+                if self.file_space[i]['DirectoryName'] == dirname:          # if dir is equals with our dirname
                     return True                                             # -> return true
         return False                                                        # no dirname was equal our dirname.
 
