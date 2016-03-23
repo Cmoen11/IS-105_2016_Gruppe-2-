@@ -289,6 +289,9 @@ class SSD:
                     return True                                             # -> return true
         return False                                                        # no dirname was equal our dirname.
 
+    def stats(self):
+        print str(len(self.AVAILABLE_BLOCKS)) + ' byte ledig av ' + str(len(self.file_space)) + ' byte'
+
     def move_file(self, filename, new_destination):
         pass
 
