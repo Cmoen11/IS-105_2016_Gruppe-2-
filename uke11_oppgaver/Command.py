@@ -82,7 +82,7 @@ class Commands:
             filename = raw_input('Filename #:')
             copyname = raw_input('Name of the copy #:')
 
-            if self.disk.copy(filename,copyname) == False:
+            if self.disk.file_copy(filename,copyname) == False:
                 print 'There are no files with that filename or copyname is already beeing used.'
 
     def dir(self, pos):
