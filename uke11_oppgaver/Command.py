@@ -12,7 +12,7 @@ class Commands:
         elif command == 'file create':
             filename = raw_input('filename # :')
             content = raw_input('content # :')
-            if not self.disk.filename_exist(temp_filename):
+            if not self.disk.filename_exist(filename):
                 self.disk.add(filename, content, '/')
             else:
                 print 'Operation cancelled: A file with that name already exist.'
@@ -29,10 +29,11 @@ class Commands:
                 print i
 
         elif command == 'cd':
-            answer = dir_name = raw_input('What directory do you want to enter? # :')
+            dir_name = raw_input('What directory do you want to enter? # :')
+            answer = self.disk.go_inside_directory(dir_name)
             if answer == False :
                 print 'Operation cancelled: No directory is called by that name.'
-            self.disk.go_inside_directory(dir_name)
+
             self.disk.open_directory()
 
         elif command == 'cd ..':
@@ -74,6 +75,8 @@ class Commands:
         elif command == 'clear':
             os.system('cls' if os.name=='nt' else 'clear')
 
+        elif command == 'stat':
+            self.disk.stats()
 
     def dir(self, pos):
         pass
