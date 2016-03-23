@@ -30,11 +30,11 @@ class Commands:
 
         elif command == 'cd':
             dir_name = raw_input('What directory do you want to enter? # :')
+            dir_name += '/'
+            print dir_name
             answer = self.disk.go_inside_directory(dir_name)
             if answer == False :
                 print 'Operation cancelled: No directory is called by that name.'
-
-            self.disk.open_directory()
 
         elif command == 'cd ..':
             self.disk.go_outside_directory()
