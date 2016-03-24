@@ -31,7 +31,7 @@ class Commands:
         elif command == 'cd':
             dir_name = raw_input('What directory do you want to enter? # :')
             dir_name += '/'
-            print dir_name
+            #print dir_name
             answer = self.disk.go_inside_directory(dir_name)
             if answer == False :
                 print 'Operation cancelled: No directory is called by that name.'
@@ -48,12 +48,12 @@ class Commands:
         elif command == 'file delete':
             file_name = raw_input("what file do you want to delete? # :")
             file_name += '/'
-            print file_name
+            #print file_name
             self.disk.delete_file(file_name)
 
         elif command == 'file open':
             file_name = raw_input("filename # :")
-            file_name += '/'
+            #file_name += '/'
             print self.disk.open_file(file_name)
 
         elif command == 'file rename':
