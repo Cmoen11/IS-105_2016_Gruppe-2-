@@ -225,8 +225,7 @@ class SSD:
         :param name: name of the directory you wish to enter.
         :return:
         '''
-        name += '/'
-        if self.dirname_exist(name) :
+        if not self.dirname_exist(name):
             return False
 
         for i in self.file_space[self.ON_POSITION]['has_blocks']:                       # for each block in the dir
@@ -285,9 +284,22 @@ class SSD:
         '''
         for i in self.file_space[self.ON_POSITION]['has_blocks']:           # for each block in directory
             if self.file_space[i]['is_dir']:                                # if block is  a directory
-                if self.file_space[i]['DirectoryName'] == dirname:               # if dir is equals with our dirname
+                if self.file_space[i]['DirectoryName'] == dirname:          # if dir is equals with our dirname
                     return True                                             # -> return true
         return False                                                        # no dirname was equal our dirname.
+
+    def stats(self):
+        print str(len(self.AVAILABLE_BLOCKS)) + ' byte ledig av ' + str(len(self.file_space)) + ' byte'
+
+    def file_copy(self, filename, copyname):
+        '''this method will copy the file by his filename, and add it into the same folder.'''
+
+        # if either copyname already exist, or there are no file with that filename.
+        if self.filename_exist(copyname) or not self.filename_exist(filename):
+            return False
+
+        self.add(copyname, self.open_file(filename), self.file_space[self.ON_POSITION]['DirectoryName']+'/')
+
 
     def move_file(self, filename, new_destination):
         pass

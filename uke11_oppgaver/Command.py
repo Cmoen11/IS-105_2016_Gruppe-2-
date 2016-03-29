@@ -12,7 +12,7 @@ class Commands:
         elif command == 'file create':
             filename = raw_input('filename # :')
             content = raw_input('content # :')
-            if not self.disk.filename_exist(temp_filename):
+            if not self.disk.filename_exist(filename):
                 self.disk.add(filename, content, '/')
             else:
                 print 'Operation cancelled: A file with that name already exist.'
@@ -29,11 +29,12 @@ class Commands:
                 print i
 
         elif command == 'cd':
-            answer = dir_name = raw_input('What directory do you want to enter? # :')
+            dir_name = raw_input('What directory do you want to enter? # :')
+            dir_name += '/'
+            #print dir_name
+            answer = self.disk.go_inside_directory(dir_name)
             if answer == False :
                 print 'Operation cancelled: No directory is called by that name.'
-            self.disk.go_inside_directory(dir_name)
-            self.disk.open_directory()
 
         elif command == 'cd ..':
             self.disk.go_outside_directory()
@@ -47,12 +48,12 @@ class Commands:
         elif command == 'file delete':
             file_name = raw_input("what file do you want to delete? # :")
             file_name += '/'
-            print file_name
+            #print file_name
             self.disk.delete_file(file_name)
 
         elif command == 'file open':
             file_name = raw_input("filename # :")
-            file_name += '/'
+            #file_name += '/'
             print self.disk.open_file(file_name)
 
         elif command == 'file rename':
@@ -74,6 +75,15 @@ class Commands:
         elif command == 'clear':
             os.system('cls' if os.name=='nt' else 'clear')
 
+        elif command == 'stat':
+            self.disk.stats()
+
+        elif command == 'file copy':
+            filename = raw_input('Filename #:')
+            copyname = raw_input('Name of the copy #:')
+
+            if self.disk.file_copy(filename,copyname) == False:
+                print 'There are no files with that filename or copyname is already beeing used.'
 
     def dir(self, pos):
         pass
