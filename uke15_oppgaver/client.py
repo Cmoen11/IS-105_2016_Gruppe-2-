@@ -10,15 +10,13 @@ def client(command) :
     s.connect(server_address)
 
     try:
-
         # Send data
         message = command
-        #print >>sys.stderr, 'sending "%s"' % message
-        s.sendall(message)
+        s.sendall(command)
 
         # Look for the response
         amount_received = 0
-        amount_expected = len(message)
+        amount_expected = len(command )
 
         while amount_received < amount_expected:
             data = s.recv(60)
