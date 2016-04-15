@@ -1,4 +1,4 @@
 # River crossing spillet
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-2 klienter som er koblet til samme server.
+[alt text](https://i.gyazo.com/cd7066d9f10e0443f774723437c44a11.gif "Bilde av 2 klienter koblet til samme server")
+2 klienter som er koblet til samme server. 
