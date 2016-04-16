@@ -1,11 +1,11 @@
 ##ICA09 - Kommunikasjonsnettverk</br>
 ### River crossing spillet
 
-For å kjøre programmet: 
-1. Start serveren
-2. Kjør filen server_launch.py
-3. tart Client, kan være flere av denne
-4. kjør filen Controlls.py
+For å kjøre programmet: </br>
+1. Start serveren</br>
+2. Kjør filen server_launch.py</br>
+3. tart Client, kan være flere av denne</br>
+4. kjør filen Controlls.py</br>
 
 ![Gif som demonstrerer bruk av programmet](https://i.gyazo.com/cd7066d9f10e0443f774723437c44a11.gif "Bilde av 2 klienter koblet til samme server")</br>
 2 klienter som er koblet til samme server. 
