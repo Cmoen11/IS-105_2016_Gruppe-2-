@@ -11,4 +11,4 @@
 ######Gif: 2 klienter som er koblet til samme server. 
 
 Serveren sin oppgave i programmet er å holde tilstanden systemet er i. Klienten skal endre tilstand og holde seg oppdatert på tilstanden i programmet. Dette gjelder når det er flere klienter og en klient gjør en endring. Da må de andre klientene sørge for at de har informasjon om nåværende tilstand i programmet slik at de kan gjøre endringer basert på den tilstanden.</br>
-I vår i kode så er det vanskelig for nodene å skille tilstanden. Det vil si at når en klient gjør en endring, så vil de andre klientene oppdateres med tilstand fra server, som dermed setter klienten i nåværende tilstand
+I vår i kode er det vanskelig for nodene å skille tilstanden. Det vil si at når en klient gjør en endring, så vil de andre klientene oppdateres med tilstand fra server, som dermed setter klienten i gjeldende tilstand.
