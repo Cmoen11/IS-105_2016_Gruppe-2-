@@ -264,6 +264,11 @@ class Art:
         return new_state
 
     def check_server(self):
+        '''
+        Send request to the server, and check if current state match server state.
+        if not, run the necessary commands to get the state to the server state.
+        :return:
+        '''
         while True:
             time.sleep(0.10)
             server_state = self.get_state()
@@ -273,10 +278,8 @@ class Art:
             #print 'local chicken is at : ' + tape.chicken
 
             if server_tape.chicken != tape.chicken:
-                print 'chicken'
                 self.chicken_inorout()
             elif server_tape.man != tape.man:
-                print 'hey'
                 self.man_go_inside_boat()
             elif server_tape.corn != tape.corn:
                 self.corn_inorout()
@@ -289,6 +292,12 @@ class Art:
 
 
     def move_item(self, item, pos):
+        '''
+        This will change the current state of the selected item to the server.
+        :param item:
+        :param pos:
+        :return:
+        '''
         request = 'move '+item+' '+pos
         print request
         s.client(request)

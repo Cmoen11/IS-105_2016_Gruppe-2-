@@ -11,13 +11,13 @@ def client(command) :
 
     try:
         # Send data
-        message = command
         s.sendall(command)
 
         # Look for the response
         amount_received = 0
-        amount_expected = len(command )
+        amount_expected = len(command)
 
+        # while there is data that are to be proceeded
         while amount_received < amount_expected:
             data = s.recv(60)
             amount_received += len(data)

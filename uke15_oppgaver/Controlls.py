@@ -9,11 +9,13 @@ from state import State
 
 
 def queue_river_GUI(state) :
+    'start the whole art system'
     root = Tk()
     Art(root, state)
     root.mainloop()
 
 def send_update(command):
+    'this is used to send update to the server, example man in boat.. '
     s.client(command)
 
 def get_state(state):

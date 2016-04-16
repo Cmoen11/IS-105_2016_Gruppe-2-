@@ -1,8 +1,7 @@
 import socket
 import sys
 
-import socket
-import sys
+
 class Server :
     def __init__(self, state):
         self.state = state
@@ -31,8 +30,8 @@ class Server :
                 while True:
                     data = connection.recv(60)
                     print data
-                    respons = self.decode(data)                                 # decode the response
-                    respons = str(respons)                                      # convert it over to a reponse
+                    respons = str(self.decode(data))                              # decode the response
+
                     if data:
                         print >>sys.stderr, 'sending data back to the client'   # send it back to the client.
                         connection.sendall(respons)
