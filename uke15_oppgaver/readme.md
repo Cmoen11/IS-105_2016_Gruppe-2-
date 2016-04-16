@@ -15,5 +15,5 @@ I vår i kode er det vanskelig for nodene å skille tilstanden. Det vil si at n�
 
 ![Gif som viser serveren som opprettholder tilstanden til clientene](https://i.gyazo.com/25c25f3de9e73e72733a1c30f7fed326.gif "Bilde av 2 klienter koblet til samme server")</br>######Gif som viser serveren som opprettholder tilstanden til klientene
 
-Programmet ser ut til å ha en grense på 5 klienter. Vi kjørte programmet med 6 klienter, og da klarte ikke den ene klienten å oppdatere seg på riktig tilstand. Vi merket også at responstiden på serveren ble betydelig dårligere når flere enn to klienter er involvert.
+Serveren ser ikke ut til å håndtere  mange henvendelser samtidig og responstiden på serveren ble betydelig lenger allerede når flere enn 2 klienter var involvert.Programmet ser ut til å ha en max grense på 5 klienter. Vi kjørte programmet med 6 klienter, og da klarte ikke den ene klienten å oppdatere seg på riktig tilstand. 
 
