@@ -2,10 +2,9 @@
 ### River crossing spillet
 
 **For å kjøre programmet: </br>**
-#### start serveren
-1. Kjør filen server_launch.py
-#### start Client, kan være flere av denne
-1. kjør filen Controlls.py
+#### Start serveren
+1. Kjør filen server_launch.py - (Starter Client, kan være flere av denne)
+1. Kjør filen Controlls.py
 
 ![Gif som demonstrerer bruk av programmet](https://i.gyazo.com/cd7066d9f10e0443f774723437c44a11.gif "Bilde av 2 klienter koblet til samme server")</br>
 ######Gif: 2 klienter som er koblet til samme server. 
