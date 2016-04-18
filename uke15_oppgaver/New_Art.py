@@ -255,11 +255,11 @@ class Art:
         this will update the state with servers version of state.
         '''
         new_state = State()
-        new_state.tape.set_man(s.client('get_man'))
-        new_state.tape.set_boat(s.client('get_boat'))
-        new_state.tape.set_chicken(s.client('get_chicken'))
-        new_state.tape.set_fox(s.client('get_fox'))
-        new_state.tape.set_corn(s.client('get_corn'))
+        new_state.tape.set_man(s.client('get man'))
+        new_state.tape.set_boat(s.client('get boat'))
+        new_state.tape.set_chicken(s.client('get chicken'))
+        new_state.tape.set_fox(s.client('get fox'))
+        new_state.tape.set_corn(s.client('get corn'))
 
         return new_state
 
@@ -299,7 +299,7 @@ class Art:
         :return:
         '''
         request = 'move '+item+' '+pos
-        print request
+        #print request
         s.client(request)
 
 

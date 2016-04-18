@@ -23,11 +23,18 @@ def get_state(state):
     '''
     this will update the state with servers version of state.
     '''
-    state.tape.set_man(s.client('get_man'))
-    state.tape.set_boat(s.client('get_boat'))
-    state.tape.set_chicken(s.client('get_chicken'))
-    state.tape.set_fox(s.client('get_fox'))
-    state.tape.set_corn(s.client('get_corn'))
+    state.tape.set_man(s.client('get man'))
+    state.tape.set_boat(s.client('get boat'))
+    state.tape.set_chicken(s.client('get chicken'))
+    state.tape.set_fox(s.client('get fox'))
+    state.tape.set_corn(s.client('get corn'))
+
+    print state.tape.man
+    print state.tape.boat
+    print state.tape.chicken
+    print state.tape.fox
+    print state.tape.corn
+
     return state
 
 def move_item(item, pos):

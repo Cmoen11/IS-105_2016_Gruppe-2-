@@ -39,8 +39,9 @@ class Database:
     def set_chicken(self, new_pos):
         if new_pos in ('left', 'right', 'boat'):
             self.chicken = new_pos
-            return True
+            return self.chicken
         else:
+            print 'oh no!'
             return False
 
     def set_fox(self, new_pos):
@@ -57,6 +58,21 @@ class Database:
         else:
             return False
 
+
+    def get_man(self):
+        return self.man
+
+    def get_boat(self):
+        return self.boat
+
+    def get_corn(self):
+        return self.corn
+
+    def get_chicken(self):
+        return self.chicken
+
+    def get_fox(self):
+        return self.fox
 
 
 

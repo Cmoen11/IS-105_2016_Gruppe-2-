@@ -20,7 +20,7 @@ def client(command) :
 
         # while there is data that are to be proceeded
         while amount_received < amount_expected:
-            data = s.recv(60)
+            data = s.recv(1000)
             amount_received += len(data)
             #print >>sys.stderr, 'received "%s"' % data
             return data
