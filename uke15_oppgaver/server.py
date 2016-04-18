@@ -1,12 +1,36 @@
 # some code from https://pymotw.com/2/socket/tcp.html
 import socket
 import sys
-
+from functools import partial
 
 class Server :
     def __init__(self, state):
         self.state = state
+        self.tape = self.state.tape
+        self.getters = {
+            'get man':              self.tape.get_man,
+            'get boat':             self.tape.get_boat,
+            'get corn':             self.tape.get_corn,
+            'get fox':              self.tape.get_fox,
+            'get chicken':          self.tape.get_chicken
+        }
+        self.editState = {
+            'move man left':        self.tape.set_man,
+            'move man right':       self.tape.set_man,
+            'move man boat':        self.tape.set_man,
+            'move boat left':       self.tape.set_boat,
+            'move boat right':      self.tape.set_boat,
+            'move corn left':       self.tape.set_corn,
+            'move corn boat':       self.tape.set_corn,
+            'move corn right':      self.tape.set_corn,
+            'move chicken left':    self.tape.set_chicken,
+            'move chicken right':   self.tape.set_chicken,
+            'move chicken boat':    self.tape.set_chicken,
+            'move fox left':        self.tape.set_fox,
+            'move fox right':       self.tape.set_fox,
+            'move fox boat':        self.tape.set_fox,
 
+        }
     def start_server(self):
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -29,9 +53,15 @@ class Server :
 
                 # Receive the data in small chunks and retransmit it
                 while True:
-                    data = connection.recv(60)
+                    data = connection.recv(1000)
                     print data
-                    respons = str(self.decode(data))                              # decode the response
+                    if self.editState.has_key(data):
+                        array = data.split()
+                        self.editState[data](array[2])
+                        print (self.getters['get chicken']())
+
+                    elif self.getters.has_key(data):
+                        respons = str(self.getters[data]())                      # get position
 
                     if data:
                         print >>sys.stderr, 'sending data back to the client'   # send it back to the client.
@@ -44,72 +74,3 @@ class Server :
             finally:
                 # Clean up the connection
                 connection.close()
-
-    def decode(self, msg):
-        if 'get' in msg:
-            if 'man' in msg :
-                return self.state.tape.man
-            elif 'boat' in msg:
-                return self.state.tape.boat
-            elif 'corn' in msg:
-                return self.state.tape.corn
-            elif 'fox' in msg:
-                return self.state.tape.fox
-            elif 'chicken' in msg:
-                return self.state.tape.chicken
-
-        elif 'move' in msg:
-            move = self.state.tape
-            if 'man' in msg:
-                if 'left' in msg:
-                    move.set_man('left')
-                    return 'ok, moved'
-                elif 'boat' in msg:
-                    move.set_man('boat')
-                    return 'ok, moved'
-                elif 'right' in msg:
-                    move.set_man('right')
-                    return 'ok, moved'
-
-            elif 'corn' in msg:
-                if 'left' in msg:
-                    move.set_corn('left')
-                    return 'ok, moved'
-                elif 'right' in msg:
-                    move.set_corn('right')
-                    return 'ok, moved'
-                elif 'boat' in msg:
-                    move.set_corn('boat')
-                    return 'ok, moved'
-
-            elif 'chicken' in msg:
-                if 'left' in msg:
-                    move.set_chicken('left')
-                    return 'ok, moved'
-                elif 'right' in msg:
-                    move.set_chicken('right')
-                    return 'ok, moved'
-                elif 'boat' in msg:
-                    move.set_chicken('boat')
-                    return 'ok, moved'
-
-            elif 'fox' in msg :
-                if 'left' in msg :
-                    move.set_fox('left')
-                    return 'ok, moved'
-                elif 'right' in msg:
-                    move.set_fox('right')
-                    return 'ok, moved'
-                elif 'boat' in msg:
-                    move.set_fox('boat')
-                    return 'ok, moved'
-
-            elif 'boat' in msg :
-                if 'left' in msg:
-                    move.set_boat('left')
-                    return 'ok, moved'
-                elif 'right' in msg:
-                    move.set_boat('right')
-                    return 'ok, moved'
-        else :
-            return 'lol'
