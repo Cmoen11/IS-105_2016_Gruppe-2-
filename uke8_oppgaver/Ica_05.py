@@ -55,7 +55,15 @@ class needlePlacement20():
         self.gen_file.delete_file()
         return each_letter
 
+
 def createBar(fast, slow, title, name):
+    '''
+        Create a barchart that show the performance of slow and fast speed.S
+    :param fast:    the time the fast speed tok.
+    :param slow:    The time the slow speed tok
+    :param title:   The title on the chart.
+    :param name:    Name of the file
+    '''
     plotly.offline.init_notebook_mode() # run at the start of every notebook
     plotly.offline.plot({
     "data" : [
