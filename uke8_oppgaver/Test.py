@@ -28,7 +28,7 @@ class TestFile(unittest.TestCase):
             each_word.run_test_fast(100))                   # run the fast test 100 times
 
         print "File size: " + str(self.gen_file.get_filesize())
-
+        print '______________________________________________________'
         # Delete the testfile
         self.gen_file.delete_file()
 
@@ -69,7 +69,7 @@ class testTwoFiles(unittest.TestCase):
 
         print "File size: " + str(self.gen_file1.get_filesize())
         print "File size: " + str(self.gen_file2.get_filesize())
-
+        print '______________________________________________________'
         self.gen_file1.delete_file()                        # Delete file 1
         self.gen_file2.delete_file()                        # delete file 2
 
@@ -94,6 +94,7 @@ class TestNeedlePlacement(unittest.TestCase):
             200,                                  # How many symbols that are to be generated and added
             201,                                  # Where the needle is to be added(can't be higher than sentences)
             "temp_InputFile2.txt")                # The filename
+
         self.gen_file2.close_file()               # close file.
 
     def testSlowAndFastEachLetter(self):
@@ -122,6 +123,7 @@ class TestNeedlePlacement(unittest.TestCase):
             file2.run_test_fast(1000))                          # run the fast test 100 times
 
         print "File size2: " + str(self.gen_file2.get_filesize())
+        print '______________________________________________________'
 
         # Delete the testfile
         self.gen_file1.delete_file()
