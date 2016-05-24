@@ -6,7 +6,7 @@ def client(command) :
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Connect the socket to the port where the server is listening
-    server_address = ('localhost', 10000)
+    server_address = ('moenutvikling.no', 10000)
 
     s.connect(server_address)
 
