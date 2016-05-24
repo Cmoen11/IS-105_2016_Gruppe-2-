@@ -6,8 +6,7 @@ class State:
     def __init__(self):
         self.tape = t.Database()  # create new tape for the boat project
         self.art = Art.Art()  # create an art object, to show us some graphics
-        # self.tape.set_chicken('boat')
-        # self.tape.set_man('right')
+            
 
     def show_state(self):
         t = self.tape

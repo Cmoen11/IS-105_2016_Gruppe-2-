@@ -1,6 +1,6 @@
 # Beskrivelse
 ######Ica_05.py
-Denne er main filen, den vil kjøre shakespare.txt igjennom fast og slow og gi tilbake tidene det tok for å kjøre testen
+Kjører needle plassering test, og viser da en graf over de ulke testene som ble gått. Når needle plasseringen er like stor som filen. Kan man se en forskjell uansett. Men dette er fordi man aldri vil få en helt gjevn fordeling, altså en rett strek fordi det vil alltid være litt tid som skiller dem begge. Det er derfor så og si tilfeldig hvilken av dem som bruker mer tid. 
 ######Search.py
 Denne inneholder en superklasse til EachLetter og EachWord fra Ica_05.py, dette er for å forbedre litt modulariasjon.
 ######Test.py
