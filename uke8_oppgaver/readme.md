@@ -24,7 +24,7 @@ def search_slow(self):
                 return_value = True                             # set the boolean to true if found
         return return_value                                     # return the boolean
 ```
-Her returnerer vi kun resultatet når vi gått igjennom hele prosjektet. 
+Her returnerer vi kun resultatet når vi gått igjennom hele listen. 
 
 ######Ica_05.py
 Kjører needle plassering test, og viser da en graf over de ulke testene som ble gått. Når needle plasseringen er like stor som filen. Kan man se en forskjell uansett. Men dette er fordi man aldri vil få en helt gjevn fordeling, altså en rett strek fordi det vil alltid være litt tid som skiller dem begge. Det er derfor så og si tilfeldig hvilken av dem som bruker mer tid. 
