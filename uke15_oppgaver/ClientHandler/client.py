@@ -5,8 +5,10 @@ import sys
 def client(command) :
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+    client_id = None                    # the ID the server will handle.
+
     # Connect the socket to the port where the server is listening
-    server_address = ('moenutvikling.no', 10000)
+    server_address = ('localhost', 10000)
 
     s.connect(server_address)
 

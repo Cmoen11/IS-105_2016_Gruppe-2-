@@ -2,11 +2,13 @@
 '''
 this will hold the controlls for the client
 '''
-import client as s
 import threading
-from New_Art import Art
 from Tkinter import *
-from state import State
+
+from uke15_oppgaver.core.New_Art import Art
+
+from uke15_oppgaver.ClientHandler import client as s
+from uke15_oppgaver.core.state import State
 
 
 def queue_river_GUI(state) :
@@ -42,12 +44,31 @@ def move_item(item, pos):
     print request
     print s.client(request)
 
+def create_lobby():
+    pass
 
-state = get_state(State())
-#move_item('chicken', 'boat')
-#state = get_state(state)
+def join_lobby():
+    pass
 
-art = threading.Thread(target=queue_river_GUI, args=(state,))
+def get_id():
+    request = 'XX ID REQUEST'
+    return s.client(request)
 
-print state.tape.chicken
-art.start()
+def start() :
+    print '||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
+    print 'Please type "create lobby" in order to create a new lobby,' \
+          '\nor "join lobby" to join a lobby.'
+    print '||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
+    raw_input("please enter your command: ")
+
+    id = get_id()
+
+    print id
+    #state = get_state(State())
+
+    #art = threading.Thread(target=queue_river_GUI, args=(state,))
+
+    #print state.tape.chicken
+    #art.start()
+
+start()

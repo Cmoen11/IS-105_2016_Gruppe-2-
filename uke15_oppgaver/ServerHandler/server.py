@@ -7,6 +7,21 @@ class Server :
     def __init__(self, state):
         self.state = state
         self.tape = self.state.tape
+        self.next_id = 1
+        self.clients = {
+
+        }
+
+
+        self.client_data = {
+            'ID REQUEST':           self.new_id,
+        }
+
+        self.lobby = {
+
+
+        }
+
         self.getters = {
             'get man':              self.tape.get_man,
             'get boat':             self.tape.get_boat,
@@ -31,12 +46,20 @@ class Server :
             'move fox boat':        self.tape.set_fox,
 
         }
+    def new_id(self):
+        self.client_data.update({
+            'ID' : self.new_id,
+            'lobby' : None,
+        })
+        self.next_id = self.next_id + 1
+
+
     def start_server(self):
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Bind the socket to the port
-        server_address = ('moenutvikling.no', 10000)
+        server_address = ('localhost', 10000)
         print >>sys.stderr, 'starting up on %s port %s' % server_address
         sock.bind(server_address)
 
@@ -54,11 +77,22 @@ class Server :
                 # Receive the data in small chunks and retransmit it
                 while True:
                     data = connection.recv(1000)
-                    print data
-                    if self.editState.has_key(data):
+                    array = data.split()
+                    client_id = array[0]
+                    print client_id
+                    array[0].remove()
+
+                    if self.client_data.has_key(data):
+                        self.client_data[data]()
+                        respons = str(int(self.next_id - 1))
+                        break
+
+                    elif self.lobby.has_key(data):
+                        pass
+
+                    elif self.editState.has_key(data):
                         array = data.split()
                         self.editState[data](array[2])
-                        print (self.getters['get chicken']())
 
                     elif self.getters.has_key(data):
                         respons = str(self.getters[data]())                      # get position

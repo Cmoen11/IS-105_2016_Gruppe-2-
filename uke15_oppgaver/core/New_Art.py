@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-import time
-from Tkinter import *
-import client as s
 import threading
 import time
+from Tkinter import *
+
 from state import State
+from uke15_oppgaver.ClientHandler import client as s
+
 
 class Art:
     def __init__(self, master, state):

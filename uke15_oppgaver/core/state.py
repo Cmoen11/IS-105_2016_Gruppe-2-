@@ -1,5 +1,5 @@
-import tape as t
 import Art
+import tape as t
 
 
 class State:
