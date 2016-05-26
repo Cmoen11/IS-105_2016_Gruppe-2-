@@ -8,9 +8,9 @@ Vi ser også at dersom needlen er plassert helt på slutten i listen, vil man br
 ```python
 # Search fast method
  def search_fast(self):
-        for item in self.prepare:                               # Go trough every symbol in the list
-            if item == self.needle:                             # check if the symbol match the needle
-                return True                                     # Return true if the needle is founded
+        for item in self.prepare:                               # Go through every symbol in the list
+            if item == self.needle:                             # Check if the symbol match the needle
+                return True                                     # Return true if the needle is found
         return False                                            # Return false if the needle is not found
 ```
 Koden viser at vi returnere funn med en gang programmet finner needlen.
@@ -18,11 +18,11 @@ Koden viser at vi returnere funn med en gang programmet finner needlen.
 ```python
 #search slow method    
 def search_slow(self):
-        return_value = False                                    # If results is found
-        for item in self.prepare:                               # go trough every symbol in prepare
-            if item == self.needle:                             # check if the symbol match the needle
-                return_value = True                             # set the boolean to true if found
-        return return_value                                     # return the boolean
+        return_value = False                                    # If result is found
+        for item in self.prepare:                               # Go through every symbol in prepare
+            if item == self.needle:                             # Check if the symbol match the needle
+                return_value = True                             # Set the boolean to true if found
+        return return_value                                     # Return the boolean
 ```
 Her returneres resultatet når programmet har kjørt gjennom hele listen. 
 
@@ -31,6 +31,6 @@ Kjører needle-plasserings test og viser en graf over de ulike testene som ble g
 ######Search.py
 Inneholder en superklasse for EachLetter og EachWord fra Ica_05.py, dette er for å forbedre modularisering.
 ######Test.py
-Inneholder en test. Her vil den generere en temp fil og sjekke om tidene faktisk er bedre på fast enn fra slow. Her kan man også generere så stor fil som man ønsker. Den vil også putte needle en random posisjon fra 1, 150. 
+Inneholder en test. Her vil det genereres en temp fil og sjekke om tidene faktisk er bedre på "fast" enn "slow". Her kan man også generere så stor fil som man måtte ønske. Metoden vil også plassere needle på en random posisjon fra 1 - 150. 
 ######File.py
-Denne generere filer og legger inn tekst inni dem samt en needle som programmet søker etter. Denne blir foreløbig kun brukt av testklassen. 
+Genererer filer og legger inn tekst i filen, samt en needle som programmet søker etter. Denne blir foreløpig kun brukt av testklassen. 
