@@ -5,6 +5,24 @@ En skjermdump av grafen vi fikk når vi kjørte igjennom Ica_05.py, vi kan se he
 
 Vi ser også at om needlen er plassert helt på slutten, vil man bruke så og si samme tid, fordi da er begge metodene nødt til å søke igjennom hele listen for å finne needlen. 
 
+```python
+# Search fast method
+ def search_fast(self):
+        for item in self.prepare:                               # Go trough every symbol in the list
+            if item == self.needle:                             # check if the symbol match the needle
+                return True                                     # Return true if the needle is founded
+        return False                                            # Return false if the needle is not found
+
+#search slow method    
+def search_slow(self):
+        return_value = False                                    # If results is found
+        for item in self.prepare:                               # go trough every symbol in prepare
+            if item == self.needle:                             # check if the symbol match the needle
+                return_value = True                             # set the boolean to true if found
+        return return_value                                     # return the boolean
+```
+
+
 ######Ica_05.py
 Kjører needle plassering test, og viser da en graf over de ulke testene som ble gått. Når needle plasseringen er like stor som filen. Kan man se en forskjell uansett. Men dette er fordi man aldri vil få en helt gjevn fordeling, altså en rett strek fordi det vil alltid være litt tid som skiller dem begge. Det er derfor så og si tilfeldig hvilken av dem som bruker mer tid. 
 ######Search.py
