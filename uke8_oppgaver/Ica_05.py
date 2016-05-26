@@ -56,7 +56,7 @@ class needlePlacement20():
         return each_letter
 
 
-def createBar(fast, slow, title, name):
+def createBar(data1, data2, title, name):
     '''
         Create a barchart that show the performance of slow and fast speed.S
     :param fast:    the time the fast speed tok.
@@ -68,8 +68,8 @@ def createBar(fast, slow, title, name):
     plotly.offline.plot({
     "data" : [
         Scatter(
-            x=['Fast', 'Slow'],
-            y=[fast, slow]
+            x=['Fast needleplacement pos 50', 'slow needleplacement pos 50', 'fast needleplacement pos 19999', 'slow needleplacement pos 19999'],
+            y=[data1['fast'], data1['slow'], data2['fast'], data2['fast']]
         )
 
     ],
@@ -78,7 +78,7 @@ def createBar(fast, slow, title, name):
 },
     filename=name+'.html')
 
-def run_NeedlePlacement(needle, total, times, name):
+def run_NeedlePlacement(needle, total, times):
     file = File.CreateFile(
             total,                                # How many symbols that are to be generated and added
             needle,                               # Where the needle is to be added(can't be higher than sentences)
@@ -90,20 +90,21 @@ def run_NeedlePlacement(needle, total, times, name):
 
     fast = each_letter.run_test_fast(times)
     slow = each_letter.run_test_slow(times)
-    createBar(fast, slow, "For hvert tegn, hvor needle plassering er satt til pos " + str(needle) + " av " + str(total) + " tegn..", name)
     file.close_file()
     file.delete_file()                        # Delete file 1
+
+    return {'fast': fast, 'slow':slow}
 
 # For each word
 def run():
 
     # needle placement on pos 1 of 200.
-    run_NeedlePlacement(1, 200, 1000, 'test1')
+    data1 = run_NeedlePlacement(20, 10000, 1000)
 
     # needle placement on pos 200 of 200.
-    run_NeedlePlacement(200, 200, 200, 'test2')
+    data2 = run_NeedlePlacement(19999, 10000, 1000)
 
-
+    createBar(data1, data2, 'going through 10000 symbols', 'test1')
 
 
 
