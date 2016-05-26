@@ -1,4 +1,8 @@
 # Beskrivelse
+
+![En skjermdump av grafen vi fikk når vi kjørte Ica_05.py](https://i.gyazo.com/0881897bcf4aafa71670a754753dbd98.png "En skjermdump av grafen vi fikk når vi kjørte Ica_05.py")
+
+
 ######Ica_05.py
 Kjører needle plassering test, og viser da en graf over de ulke testene som ble gått. Når needle plasseringen er like stor som filen. Kan man se en forskjell uansett. Men dette er fordi man aldri vil få en helt gjevn fordeling, altså en rett strek fordi det vil alltid være litt tid som skiller dem begge. Det er derfor så og si tilfeldig hvilken av dem som bruker mer tid. 
 ######Search.py
