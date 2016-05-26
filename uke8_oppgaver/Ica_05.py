@@ -8,6 +8,7 @@ import File
 
 
 
+
 class EachLetter(Search.Search):
 
     def __init__(self, filename, needle):
