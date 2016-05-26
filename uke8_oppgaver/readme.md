@@ -1,7 +1,8 @@
 # Beskrivelse
 
 ![En skjermdump av grafen vi fikk når vi kjørte Ica_05.py](https://i.gyazo.com/0881897bcf4aafa71670a754753dbd98.png "En skjermdump av grafen vi fikk når vi kjørte Ica_05.py")
-En skjermdump av grafen vi fikk når vi kjørte igjennom Ica_05.py, vi kan se her at fast er raskere enn slow på 'nesten' alle punkter. Utifra koden, slow. Må man kjøre igjennom hele løkka før man vet om needlen er i listen. Men i fast metoden, så vil den stoppe når den har funnet needlen. Det ser på digrammet også. Her ser vi at om needlen er plassert på et punkt i lista, så tar denne mindre tid enn slow metoden.
+En skjermdump av grafen vi fikk når vi kjørte igjennom Ica_05.py. </br>
+Vi kan se her at "fast" er raskere enn "slow" på nesten alle punkter. Utifra koden for "slow", må man kjøre gjennom hele løkka før man vet om needlen er i listen. Mens i "fast" metoden vil den stoppe når den har funnet needlen. Dette vises på på digrammet også. Her ser vi at om needelen er plassert på et punkt i lista, så tar det mindre tid enn slow metoden.
 
 Vi ser også at om needlen er plassert helt på slutten, vil man bruke så og si samme tid, fordi da er begge metodene nødt til å søke igjennom hele listen for å finne needlen. 
 
