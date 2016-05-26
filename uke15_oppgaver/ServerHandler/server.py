@@ -77,15 +77,17 @@ class Server :
                 # Receive the data in small chunks and retransmit it
                 while True:
                     data = connection.recv(1000)
-                    array = data.split()
-                    client_id = array[0]
-                    print client_id
-                    array[0].remove()
+                    if data :
+                        array = data.split()                    # split data..
+                        client_id = array[0]                    # get ID out and store it under client ID
+                        array.remove(client_id)                 # remove ID from the data.
+                        data = " ".join(array)
+                        print data
 
                     if self.client_data.has_key(data):
                         self.client_data[data]()
                         respons = str(int(self.next_id - 1))
-                        break
+                        break;
 
                     elif self.lobby.has_key(data):
                         pass
