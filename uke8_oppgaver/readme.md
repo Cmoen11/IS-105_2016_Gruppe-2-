@@ -12,7 +12,10 @@ Vi ser også at om needlen er plassert helt på slutten, vil man bruke så og si
             if item == self.needle:                             # check if the symbol match the needle
                 return True                                     # Return true if the needle is founded
         return False                                            # Return false if the needle is not found
+```
+Her ser vi at vi returnerer funn med engang vi finner resultatet.
 
+```python
 #search slow method    
 def search_slow(self):
         return_value = False                                    # If results is found
@@ -21,7 +24,7 @@ def search_slow(self):
                 return_value = True                             # set the boolean to true if found
         return return_value                                     # return the boolean
 ```
-
+Her returnerer vi kun resultatet når vi gått igjennom hele prosjektet. 
 
 ######Ica_05.py
 Kjører needle plassering test, og viser da en graf over de ulke testene som ble gått. Når needle plasseringen er like stor som filen. Kan man se en forskjell uansett. Men dette er fordi man aldri vil få en helt gjevn fordeling, altså en rett strek fordi det vil alltid være litt tid som skiller dem begge. Det er derfor så og si tilfeldig hvilken av dem som bruker mer tid. 
