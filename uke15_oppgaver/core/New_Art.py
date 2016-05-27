@@ -8,11 +8,12 @@ from uke15_oppgaver.ClientHandler import client as s
 
 
 class Art:
-    def __init__(self, master, state):
+    def __init__(self, master, state, id):
 
         self.state = state
-
         self.master = master
+        self.id = id
+
 
         tape = state.tape
 
@@ -140,7 +141,7 @@ class Art:
         if self.state.tape.man in 'boat':                           # if man is inside of the boat
             if self.state.tape.boat in 'left':                      # if boat is left
                 self.state.tape.set_boat('right')                   # update the tape with the information
-                self.move_item('boat', self.state.tape.boat)                # update the server with new information
+                self.move_item('boat', 'right')        # update the server with new information
                 # move the boat
                 for x in range(0, 90):                              # move 90 times
                     self.boat_canvas.move(1, 5, 0)                  # move 1 px
@@ -149,7 +150,7 @@ class Art:
 
             elif self.state.tape.boat in 'right':                   # if the boat is right
                 self.state.tape.set_boat('left')                    # update the tape
-                self.move_item('boat', self.state.tape.boat)                # update the server with new information
+                self.move_item('boat', 'left')                      # update the server with new information
                 for x in range(0,90):                               # move 90 times
                     self.boat_canvas.move(1,-5,0)                   # move -1 px
                     self.boat_canvas.update()                       # update the canvas
@@ -251,18 +252,18 @@ class Art:
                 print('game Over')
                 self.master.destroy()
 
-    def get_state(self):
+
+    def get_state(self, state):
         '''
         this will update the state with servers version of state.
         '''
-        new_state = State()
-        new_state.tape.set_man(s.client('get man'))
-        new_state.tape.set_boat(s.client('get boat'))
-        new_state.tape.set_chicken(s.client('get chicken'))
-        new_state.tape.set_fox(s.client('get fox'))
-        new_state.tape.set_corn(s.client('get corn'))
+        state.tape.set_man(s.client('(%s) get man' % self.id))
+        state.tape.set_boat(s.client('(%s) get boat' % self.id))
+        state.tape.set_chicken(s.client('(%s) get chicken' % self.id))
+        state.tape.set_fox(s.client('(%s) get fox' % self.id))
+        state.tape.set_corn(s.client('(%s) get corn' % self.id))
 
-        return new_state
+        return state
 
     def check_server(self):
         '''
@@ -272,11 +273,9 @@ class Art:
         '''
         while True:
             time.sleep(0.10)
-            server_state = self.get_state()
+            server_state = self.get_state(self.state)
             server_tape = server_state.tape
             tape = self.state.tape
-            #print 'server chicken is at : ' + server_tape.chicken
-            #print 'local chicken is at : ' + tape.chicken
 
             if server_tape.chicken != tape.chicken:
                 self.chicken_inorout()
@@ -288,8 +287,6 @@ class Art:
                 self.boat_move()
             elif server_tape.fox != tape.fox:
                 self.fox_inorout()
-            else:
-                print ''
 
 
     def move_item(self, item, pos):
@@ -299,8 +296,8 @@ class Art:
         :param pos:
         :return:
         '''
-        request = 'move '+item+' '+pos
-        #print request
+        request = self.id+' move '+item+' '+pos
+        print 'request sent: ' +request
         s.client(request)
 
 

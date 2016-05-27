@@ -3,11 +3,8 @@ from uke15_oppgaver.core.tape import Database
 
 def state_protocol(tape, request):
     request_fragment = request.split()
-    print '...'
-    print request_fragment
-    print '...'
     if request_fragment[0] == 'move':
-
+        print request_fragment
         if request_fragment[1] == 'man':
             if request_fragment[2] == 'left':
                 if tape.boat == 'left' and tape.man == 'boat':
@@ -81,11 +78,18 @@ def state_protocol(tape, request):
             else :
                 return False
 
+        elif request_fragment[1] == 'boat':
+            if request_fragment[2] in ('left','right') and tape.man == 'boat':
+                return True
+            else:
+                return False
 
     elif request_fragment[0] == 'ID':
         return True
+
     elif request_fragment[0] == 'get':
         return True
+
     else:
         return False
 

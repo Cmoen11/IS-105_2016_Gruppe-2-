@@ -314,6 +314,8 @@ class State:
             answer = False
         return answer
 
+    def getTape(self):
+        return self.tape
 
 def test():
     state = State()

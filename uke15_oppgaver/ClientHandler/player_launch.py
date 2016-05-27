@@ -11,15 +11,16 @@ from uke15_oppgaver.ClientHandler import client as s
 from uke15_oppgaver.core.state import State
 
 
-def queue_river_GUI(state) :
+def queue_river_GUI(state, id) :
     'start the whole art system'
     root = Tk()
-    Art(root, state)
+    Art(root, state, id)
     root.mainloop()
 
 def send_update(command):
     'this is used to send update to the server, example man in boat.. '
     s.client(command)
+
 
 def get_state(id, state):
     '''
@@ -39,8 +40,8 @@ def get_state(id, state):
 
     return state
 
-def move_item(item, pos):
-    request = 'move '+item+' '+pos
+def move_item(item, pos, id):
+    request = id+' move '+item+' '+pos
     print request
     print s.client(request)
 
@@ -66,9 +67,9 @@ def start() :
     print id
     state = get_state(id, State())
 
-    #art = threading.Thread(target=queue_river_GUI, args=(state,))
+    art = threading.Thread(target=queue_river_GUI, args=(state,id))
 
     #print state.tape.chicken
-    #art.start()
+    art.start()
 
 start()

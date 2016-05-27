@@ -69,11 +69,11 @@ class Server :
 
         while True:
             # Wait for a connection
-            print >>sys.stderr, 'waiting for a connection'
+            #print >>sys.stderr, 'waiting for a connection'
             connection, client_address = sock.accept()
 
             try:
-                print >>sys.stderr, 'connection from', client_address
+                #print >>sys.stderr, 'connection from', client_address
 
                 # Receive the data in small chunks and retransmit it
                 while True:
@@ -83,7 +83,6 @@ class Server :
                         self.client_id = array[0]               # get ID out and store it under client ID
                         array.remove(self.client_id)            # remove ID from the data.
                         data = " ".join(array)
-                        print 'data: ' + data
                     if len(data) > 1:
                         if state_protocol.state_protocol(self.tape, data):
                             if self.client_data.has_key(data):
@@ -94,6 +93,7 @@ class Server :
                                 pass
 
                             elif self.editState.has_key(data):
+                                print data
                                 array = data.split()
                                 self.editState[data](array[2])
 
@@ -101,15 +101,14 @@ class Server :
                                 respons = str(self.getters[data]())                      # get position
 
                         else:
-                            print 'fuck'
                             respons = 'Not acceptable'
 
                     if data:
-                        print >>sys.stderr, 'sending data back to the client'   # send it back to the client.
+                        #print >>sys.stderr, 'sending data back to the client'   # send it back to the client.
                         connection.sendall(respons)
 
                     else:
-                        print >>sys.stderr, 'no more data from', client_address
+                        #print >>sys.stderr, 'no more data from', client_address
                         break
 
             finally:
