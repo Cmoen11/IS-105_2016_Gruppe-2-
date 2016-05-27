@@ -8,10 +8,10 @@ class Server :
         self.state = state
         self.tape = self.state.tape
         self.next_id = 1
+        self.client_id = None
         self.clients = {
 
         }
-
 
         self.client_data = {
             'ID REQUEST':           self.new_id,
@@ -79,15 +79,13 @@ class Server :
                     data = connection.recv(1000)
                     if data :
                         array = data.split()                    # split data..
-                        client_id = array[0]                    # get ID out and store it under client ID
-                        array.remove(client_id)                 # remove ID from the data.
+                        self.client_id = array[0]               # get ID out and store it under client ID
+                        array.remove(self.client_id)            # remove ID from the data.
                         data = " ".join(array)
-                        print data
 
                     if self.client_data.has_key(data):
                         self.client_data[data]()
                         respons = str(int(self.next_id - 1))
-                        break;
 
                     elif self.lobby.has_key(data):
                         pass
