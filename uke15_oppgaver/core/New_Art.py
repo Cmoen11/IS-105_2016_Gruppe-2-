@@ -92,18 +92,18 @@ class Art:
         # controll buttons
 
         t = self.state.tape
-        button1 = Button(controll_frame, text="Gå inn/ut i båten", fg="red", command=self.man_go_inside_boat)
-        button2 = Button(controll_frame, text="Sett kylling inn/ut ", fg="red", command=self.chicken_inorout)
-        button3 = Button(controll_frame, text="Sett Korn inn/ut ", fg="red", command=self.corn_inorout)
-        button4 = Button(controll_frame, text="Sett Rev inn/ut ", fg="red", command=self.fox_inorout)
-        button5 = Button(controll_frame, text="Kryss elven ", fg="red", command=self.boat_move)
+        self.button1 = Button(controll_frame, text="Gå inn/ut i båten", fg="red", command=self.man_go_inside_boat)
+        self.button2 = Button(controll_frame, text="Sett kylling inn/ut ", fg="red", command=self.chicken_inorout)
+        self.button3 = Button(controll_frame, text="Sett Korn inn/ut ", fg="red", command=self.corn_inorout)
+        self.button4 = Button(controll_frame, text="Sett Rev inn/ut ", fg="red", command=self.fox_inorout)
+        self.button5 = Button(controll_frame, text="Kryss elven ", fg="red", command=self.boat_move)
 
         # add buttons to our master
-        button1.pack(side=LEFT)
-        button2.pack(side=LEFT)
-        button3.pack(side=LEFT)
-        button4.pack(side=LEFT)
-        button5.pack(side=LEFT)
+        self.button1.pack(side=LEFT)
+        self.button2.pack(side=LEFT)
+        self.button3.pack(side=LEFT)
+        self.button4.pack(side=LEFT)
+        self.button5.pack(side=LEFT)
 
         server_check = threading.Thread(target=self.check_server)
         server_check.start()
@@ -253,17 +253,42 @@ class Art:
                 self.master.destroy()
 
 
-    def get_state(self, state):
+    def get_state(self):
         '''
         this will update the state with servers version of state.
         '''
-        state.tape.set_man(s.client('(%s) get man' % self.id))
-        state.tape.set_boat(s.client('(%s) get boat' % self.id))
-        state.tape.set_chicken(s.client('(%s) get chicken' % self.id))
-        state.tape.set_fox(s.client('(%s) get fox' % self.id))
-        state.tape.set_corn(s.client('(%s) get corn' % self.id))
+        new_state = State()
+        new_state.tape.set_man(s.client('(%s) get man' % self.id))
+        new_state.tape.set_boat(s.client('(%s) get boat' % self.id))
+        new_state.tape.set_chicken(s.client('(%s) get chicken' % self.id))
+        new_state.tape.set_fox(s.client('(%s) get fox' % self.id))
+        new_state.tape.set_corn(s.client('(%s) get corn' % self.id))
 
-        return state
+        #print 'server: ' + state.tape.chicken
+
+
+        return new_state
+
+    def isAllowedToMove(self):
+        request = '%s is allowed' % self.id
+        isAllowed = s.client(request)
+        #print isAllowed
+        if isAllowed == 'True' : isAllowed = True
+        elif isAllowed == 'False': isAllowed = False
+
+        if (not isAllowed) :
+            self.button1['state'] = 'disabled'
+            self.button2['state'] = 'disabled'
+            self.button3['state'] = 'disabled'
+            self.button4['state'] = 'disabled'
+            self.button5['state'] = 'disabled'
+        else :
+            self.button1['state'] = 'normal'
+            self.button2['state'] = 'normal'
+            self.button3['state'] = 'normal'
+            self.button4['state'] = 'normal'
+            self.button5['state'] = 'normal'
+
 
     def check_server(self):
         '''
@@ -273,11 +298,15 @@ class Art:
         '''
         while True:
             time.sleep(0.10)
-            server_state = self.get_state(self.state)
+            self.isAllowedToMove()                      # Check if user is allowed to move items/person
+
+            server_state = self.get_state()
             server_tape = server_state.tape
             tape = self.state.tape
 
+            #print 'client: ' + tape.chicken
             if server_tape.chicken != tape.chicken:
+                print 'loool'
                 self.chicken_inorout()
             elif server_tape.man != tape.man:
                 self.man_go_inside_boat()

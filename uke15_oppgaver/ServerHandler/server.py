@@ -10,6 +10,7 @@ class Server :
         self.tape = self.state.tape
         self.next_id = 1
         self.client_id = None
+        self.current_id = 1                              # The one that are allowed to move.
         self.clients = {
 
         }
@@ -54,6 +55,16 @@ class Server :
         })
         self.next_id = self.next_id + 1
 
+    def next_person(self):
+        for x in self.client_data :
+            if x['ID'] != self.current_id:
+                self.current_id = x['ID']
+                break;
+
+    def isAllowed(self, id):
+        if id == self.current_id:
+            return True;
+        return False
 
     def start_server(self):
         # Create a TCP/IP socket
@@ -83,7 +94,8 @@ class Server :
                         self.client_id = array[0]               # get ID out and store it under client ID
                         array.remove(self.client_id)            # remove ID from the data.
                         data = " ".join(array)
-                    if len(data) > 1:
+
+                    if len(data) > 1 and state_protocol.state_protocol(self.tape, data):       # if there is any data to look for
                         if state_protocol.state_protocol(self.tape, data):
                             if self.client_data.has_key(data):
                                 self.client_data[data]()
@@ -93,15 +105,18 @@ class Server :
                                 pass
 
                             elif self.editState.has_key(data):
-                                print data
                                 array = data.split()
                                 self.editState[data](array[2])
+                                self.current_id = self.current_id + 1
 
                             elif self.getters.has_key(data):
                                 respons = str(self.getters[data]())                      # get position
 
+                            elif data == 'is allowed':
+                                respons = str(str(self.current_id) == str(self.client_id))
                         else:
-                            respons = 'Not acceptable'
+                            print data
+                            respons = str(False)
 
                     if data:
                         #print >>sys.stderr, 'sending data back to the client'   # send it back to the client.

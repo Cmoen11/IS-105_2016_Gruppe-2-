@@ -2,9 +2,9 @@ from uke15_oppgaver.core.tape import Database
 
 
 def state_protocol(tape, request):
-    request_fragment = request.split()
+    request_fragment = request.split()          # split request to fragments.
+    # for moving items/ person / boat ...
     if request_fragment[0] == 'move':
-        print request_fragment
 
         # for moving the man, no need to check.
         if request_fragment[1] == 'man':
@@ -55,6 +55,10 @@ def state_protocol(tape, request):
     elif request_fragment[0] == 'get':
         return True
 
+    elif request_fragment[0] == 'is':
+        return True
+
+    # request not valid.
     else:
         return False
 
