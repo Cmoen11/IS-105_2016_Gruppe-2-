@@ -21,15 +21,15 @@ def send_update(command):
     'this is used to send update to the server, example man in boat.. '
     s.client(command)
 
-def get_state(state):
+def get_state(id, state):
     '''
     this will update the state with servers version of state.
     '''
-    state.tape.set_man(s.client('get man'))
-    state.tape.set_boat(s.client('get boat'))
-    state.tape.set_chicken(s.client('get chicken'))
-    state.tape.set_fox(s.client('get fox'))
-    state.tape.set_corn(s.client('get corn'))
+    state.tape.set_man(s.client('(%s) get man' % id))
+    state.tape.set_boat(s.client('(%s) get boat' % id))
+    state.tape.set_chicken(s.client('(%s) get chicken' % id))
+    state.tape.set_fox(s.client('(%s) get fox' % id))
+    state.tape.set_corn(s.client('(%s) get corn' % id))
 
     print state.tape.man
     print state.tape.boat
@@ -64,7 +64,7 @@ def start() :
     id = get_id()
 
     print id
-    #state = get_state(State())
+    state = get_state(id, State())
 
     #art = threading.Thread(target=queue_river_GUI, args=(state,))
 

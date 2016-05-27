@@ -2,6 +2,7 @@
 import socket
 import sys
 from functools import partial
+import state_protocol
 
 class Server :
     def __init__(self, state):
@@ -82,20 +83,26 @@ class Server :
                         self.client_id = array[0]               # get ID out and store it under client ID
                         array.remove(self.client_id)            # remove ID from the data.
                         data = " ".join(array)
+                        print 'data: ' + data
+                    if len(data) > 1:
+                        if state_protocol.state_protocol(self.tape, data):
+                            if self.client_data.has_key(data):
+                                self.client_data[data]()
+                                respons = str(int(self.next_id - 1))
 
-                    if self.client_data.has_key(data):
-                        self.client_data[data]()
-                        respons = str(int(self.next_id - 1))
+                            elif self.lobby.has_key(data):
+                                pass
 
-                    elif self.lobby.has_key(data):
-                        pass
+                            elif self.editState.has_key(data):
+                                array = data.split()
+                                self.editState[data](array[2])
 
-                    elif self.editState.has_key(data):
-                        array = data.split()
-                        self.editState[data](array[2])
+                            elif self.getters.has_key(data):
+                                respons = str(self.getters[data]())                      # get position
 
-                    elif self.getters.has_key(data):
-                        respons = str(self.getters[data]())                      # get position
+                        else:
+                            print 'fuck'
+                            respons = 'Not acceptable'
 
                     if data:
                         print >>sys.stderr, 'sending data back to the client'   # send it back to the client.
