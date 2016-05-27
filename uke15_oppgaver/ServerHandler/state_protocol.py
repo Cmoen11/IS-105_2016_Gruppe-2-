@@ -40,15 +40,18 @@ def state_protocol(tape, request):
             else:
                 return False
 
+        # for moving the boat
         elif request_fragment[1] == 'boat':
             if request_fragment[2] in ('left','right') and tape.man == 'boat':
                 return True
             else:
                 return False
 
+    # for requesting ID, no need for checking here -> allowed.
     elif request_fragment[0] == 'ID':
         return True
 
+    # requesting position, no need for checking here -> allowed.
     elif request_fragment[0] == 'get':
         return True
 
