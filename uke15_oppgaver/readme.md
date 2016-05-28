@@ -12,7 +12,7 @@ Vårt program er laget med en server og kan betjene forespørsler fra flere klie
 Serveren sin oppgave er å holde tilstanden systemet er i. Så lenge man ikke lukker serveren i programmet, vil klienten starte med programmet i den tilstanden som det ble avsluttet i.</br> Klienten endrer tilstand og holde seg oppdatert på tilstanden i programmet. At klienten er oppdatert på tilstanden viktig når det er flere klienter og en klient gjør en endring. Da må de andre klientene sørge for at de har informasjon om nåværende tilstand i programmet slik at de kan gjøre endringer basert på den.</br>
 I vår i kode er det vanskelig for nodene å skille tilstanden. Det vil si at når en klient gjør en endring, så vil de andre klientene oppdateres med tilstand fra server, som dermed setter klienten i gjeldende tilstand. Det er derfor liten sannsynlighet for kollisjoner når tilstanden endres.
 
-####Protocoll
+#####Protocoll
 Vi har også laget en protokoll(ServerHandler/state_protocol) som sjekker om kommandoene som serveren får, er gyldige. Det som skjer er at clienten sender en forespørsel om å endre tilstanden. Den blir da kontrollert igjennom en protokoll som sjekker om det er et 'gyldig' trekk for brukeren, før den faktisk endrer tilstanden. Om ikke tilstanden er korrekt, blir det returnert tilbake informasjon til cliententen at det ikke var en gyldig forespørsel.
 
 
@@ -21,7 +21,8 @@ I spillet vil kun en client ha mulighet til å endre tilstanden. Når brukeren h
 
 
 ### 3-way handshake
-<kommer>
+Kommer...
+
 
 ![Gif som viser serveren som opprettholder tilstanden til clientene](https://i.gyazo.com/25c25f3de9e73e72733a1c30f7fed326.gif "Bilde av 2 klienter koblet til samme server")</br>
 ######Gif som viser serveren som opprettholder tilstanden til klientene
