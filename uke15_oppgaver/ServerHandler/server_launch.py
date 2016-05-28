@@ -2,9 +2,11 @@
 This module will give orders based on server and client.
 '''
 
-from server import Server
 import threading
-from state import State
+
+from uke15_oppgaver.ServerHandler.server import Server
+from uke15_oppgaver.core.state import State
+
 
 def queue_server(state) :
     s = Server(state)

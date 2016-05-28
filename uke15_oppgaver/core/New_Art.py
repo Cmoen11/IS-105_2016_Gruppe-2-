@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
-import time
-from Tkinter import *
-import client as s
 import threading
 import time
+from Tkinter import *
+
 from state import State
+from uke15_oppgaver.ClientHandler import client as s
+
 
 class Art:
-    def __init__(self, master, state):
+    def __init__(self, master, state, id):
 
         self.state = state
-
         self.master = master
+        self.id = id
+
 
         tape = state.tape
 
@@ -90,18 +92,18 @@ class Art:
         # controll buttons
 
         t = self.state.tape
-        button1 = Button(controll_frame, text="Gå inn/ut i båten", fg="red", command=self.man_go_inside_boat)
-        button2 = Button(controll_frame, text="Sett kylling inn/ut ", fg="red", command=self.chicken_inorout)
-        button3 = Button(controll_frame, text="Sett Korn inn/ut ", fg="red", command=self.corn_inorout)
-        button4 = Button(controll_frame, text="Sett Rev inn/ut ", fg="red", command=self.fox_inorout)
-        button5 = Button(controll_frame, text="Kryss elven ", fg="red", command=self.boat_move)
+        self.button1 = Button(controll_frame, text="Gå inn/ut i båten", fg="red", command=self.man_go_inside_boat)
+        self.button2 = Button(controll_frame, text="Sett kylling inn/ut ", fg="red", command=self.chicken_inorout)
+        self.button3 = Button(controll_frame, text="Sett Korn inn/ut ", fg="red", command=self.corn_inorout)
+        self.button4 = Button(controll_frame, text="Sett Rev inn/ut ", fg="red", command=self.fox_inorout)
+        self.button5 = Button(controll_frame, text="Kryss elven ", fg="red", command=self.boat_move)
 
         # add buttons to our master
-        button1.pack(side=LEFT)
-        button2.pack(side=LEFT)
-        button3.pack(side=LEFT)
-        button4.pack(side=LEFT)
-        button5.pack(side=LEFT)
+        self.button1.pack(side=LEFT)
+        self.button2.pack(side=LEFT)
+        self.button3.pack(side=LEFT)
+        self.button4.pack(side=LEFT)
+        self.button5.pack(side=LEFT)
 
         server_check = threading.Thread(target=self.check_server)
         server_check.start()
@@ -132,14 +134,16 @@ class Art:
         elif self.state.tape.man in 'boat' and self.state.tape.boat in 'right':
             self.man = self.items_b_canvas.create_rectangle(100,100,85,50, fill="black")    # add man to the right side
             self.state.tape.set_man('right')                                                # update the tape
-        self.move_item('man', self.state.tape.man)                            # update the server with new information
+        if (self.state.tape.man != s.client('(%s) get man' % self.id)):
+            self.move_item('man', self.state.tape.man)                            # update the server with new information
         self.check_death()                                                      # Check death
 
     def boat_move(self):
         if self.state.tape.man in 'boat':                           # if man is inside of the boat
             if self.state.tape.boat in 'left':                      # if boat is left
                 self.state.tape.set_boat('right')                   # update the tape with the information
-                self.move_item('boat', self.state.tape.boat)                # update the server with new information
+                if (self.state.tape.boat != s.client('(%s) get boat' % self.id)):
+                    self.move_item('boat', 'right')        # update the server with new information
                 # move the boat
                 for x in range(0, 90):                              # move 90 times
                     self.boat_canvas.move(1, 5, 0)                  # move 1 px
@@ -148,7 +152,8 @@ class Art:
 
             elif self.state.tape.boat in 'right':                   # if the boat is right
                 self.state.tape.set_boat('left')                    # update the tape
-                self.move_item('boat', self.state.tape.boat)                # update the server with new information
+                if (self.state.tape.boat != s.client('(%s) get boat' % self.id)):
+                    self.move_item('boat', 'left')                      # update the server with new information
                 for x in range(0,90):                               # move 90 times
                     self.boat_canvas.move(1,-5,0)                   # move -1 px
                     self.boat_canvas.update()                       # update the canvas
@@ -182,7 +187,8 @@ class Art:
 
                 self.items_b_canvas.delete(self.chicken)    # remove the chicken from the right
 
-        self.move_item('chicken', self.state.tape.chicken)
+        if (self.state.tape.chicken != s.client('(%s) get chicken' % self.id)):
+            self.move_item('chicken', self.state.tape.chicken)
         self.check_death()
 
     def corn_inorout(self):
@@ -210,7 +216,8 @@ class Art:
             elif self.state.tape.boat in 'right':
                 self.items_b_canvas.delete(self.corn)
 
-        self.move_item('corn', self.state.tape.corn)                # update the server with new information
+        if (self.state.tape.corn != s.client('(%s) get corn' % self.id)):
+            self.move_item('corn', self.state.tape.corn)                # update the server with new information
         self.check_death()
 
     def fox_inorout(self):
@@ -239,7 +246,8 @@ class Art:
             elif self.state.tape.boat in 'right':
                 self.items_b_canvas.delete(self.fox)
 
-        self.move_item('fox', self.state.tape.fox)                # update the server with new information
+        if (self.state.tape.fox != s.client('(%s) get fox' % self.id)):
+            self.move_item('fox', self.state.tape.fox)                # update the server with new information
         self.check_death()
 
     def check_death(self):
@@ -250,18 +258,43 @@ class Art:
                 print('game Over')
                 self.master.destroy()
 
+
     def get_state(self):
         '''
         this will update the state with servers version of state.
         '''
         new_state = State()
-        new_state.tape.set_man(s.client('get man'))
-        new_state.tape.set_boat(s.client('get boat'))
-        new_state.tape.set_chicken(s.client('get chicken'))
-        new_state.tape.set_fox(s.client('get fox'))
-        new_state.tape.set_corn(s.client('get corn'))
+        new_state.tape.set_man(s.client('(%s) get man' % self.id))
+        new_state.tape.set_boat(s.client('(%s) get boat' % self.id))
+        new_state.tape.set_chicken(s.client('(%s) get chicken' % self.id))
+        new_state.tape.set_fox(s.client('(%s) get fox' % self.id))
+        new_state.tape.set_corn(s.client('(%s) get corn' % self.id))
+
+        #print 'server: ' + state.tape.chicken
+
 
         return new_state
+
+    def isAllowedToMove(self):
+        request = '%s is allowed' % self.id
+        isAllowed = s.client(request)
+        #print isAllowed
+        if isAllowed == 'True' : isAllowed = True
+        elif isAllowed == 'False': isAllowed = False
+
+        if (not isAllowed) :
+            self.button1['state'] = 'disabled'
+            self.button2['state'] = 'disabled'
+            self.button3['state'] = 'disabled'
+            self.button4['state'] = 'disabled'
+            self.button5['state'] = 'disabled'
+        else :
+            self.button1['state'] = 'normal'
+            self.button2['state'] = 'normal'
+            self.button3['state'] = 'normal'
+            self.button4['state'] = 'normal'
+            self.button5['state'] = 'normal'
+
 
     def check_server(self):
         '''
@@ -271,12 +304,13 @@ class Art:
         '''
         while True:
             time.sleep(0.10)
+            self.isAllowedToMove()                      # Check if user is allowed to move items/person
+
             server_state = self.get_state()
             server_tape = server_state.tape
             tape = self.state.tape
-            #print 'server chicken is at : ' + server_tape.chicken
-            #print 'local chicken is at : ' + tape.chicken
 
+            #print 'client: ' + tape.chicken
             if server_tape.chicken != tape.chicken:
                 self.chicken_inorout()
             elif server_tape.man != tape.man:
@@ -287,8 +321,6 @@ class Art:
                 self.boat_move()
             elif server_tape.fox != tape.fox:
                 self.fox_inorout()
-            else:
-                print ''
 
 
     def move_item(self, item, pos):
@@ -298,8 +330,8 @@ class Art:
         :param pos:
         :return:
         '''
-        request = 'move '+item+' '+pos
-        #print request
+        request = self.id+' move '+item+' '+pos
+        print 'request sent: ' +request
         s.client(request)
 
 

@@ -1,5 +1,5 @@
-import tape as t
 import Art
+import tape as t
 
 
 class State:
@@ -314,6 +314,8 @@ class State:
             answer = False
         return answer
 
+    def getTape(self):
+        return self.tape
 
 def test():
     state = State()
