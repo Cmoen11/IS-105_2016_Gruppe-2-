@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80e109e4-b176-47cc-bd11-4b92c5a414e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uke15_oppgaver/ServerHandler/server.py" afterPath="$PROJECT_DIR$/uke15_oppgaver/ServerHandler/server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/uke15_oppgaver/core/New_Art.py" afterPath="$PROJECT_DIR$/uke15_oppgaver/core/New_Art.py" />
-    </list>
+    <list default="true" id="80e109e4-b176-47cc-bd11-4b92c5a414e7" name="Default" comment="" />
     <ignored path="IS-105_2016_Gruppe-2-.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -125,8 +121,8 @@
       <file leaf-file-name="New_Art.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/uke15_oppgaver/core/New_Art.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.093819">
-              <caret line="308" column="43" selection-start-line="308" selection-start-column="43" selection-end-line="308" selection-end-column="43" />
+            <state vertical-scroll-proportion="5.0708156">
+              <caret line="310" column="34" selection-start-line="310" selection-start-column="34" selection-end-line="310" selection-end-column="34" />
               <folding>
                 <element signature="e#24#40#0" expanded="true" />
                 <element signature="e#4114#4142#0" expanded="false" />
@@ -669,7 +665,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1859375" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -677,7 +673,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31354168" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31354168" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -1150,8 +1146,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uke15_oppgaver/core/New_Art.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.093819">
-          <caret line="308" column="43" selection-start-line="308" selection-start-column="43" selection-end-line="308" selection-end-column="43" />
+        <state vertical-scroll-proportion="5.0708156">
+          <caret line="310" column="34" selection-start-line="310" selection-start-column="34" selection-end-line="310" selection-end-column="34" />
           <folding>
             <element signature="e#24#40#0" expanded="true" />
             <element signature="e#4114#4142#0" expanded="false" />
