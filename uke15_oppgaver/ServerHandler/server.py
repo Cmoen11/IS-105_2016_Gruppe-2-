@@ -11,9 +11,9 @@ class Server :
         self.next_id = 1
         self.client_id = None
         self.current_id = 1                              # The one that are allowed to move.
-        self.clients = {
+        self.clients = [
 
-        }
+        ]
 
         self.client_data = {
             'ID REQUEST':           self.new_id,
@@ -48,23 +48,26 @@ class Server :
             'move fox boat':        self.tape.set_fox,
 
         }
+
     def new_id(self):
-        self.client_data.update({
-            'ID' : self.new_id,
-            'lobby' : None,
-        })
+        self.clients.append(
+            self.next_id
+        )
         self.next_id = self.next_id + 1
 
     def next_person(self):
-        for x in self.client_data :
-            if x['ID'] != self.current_id:
-                self.current_id = x['ID']
-                break;
+        try:
+            self.current_id = self.clients[self.next_id]
+            self.next_id = self.next_id + 1
+        except IndexError :
+            self.next_id = 0
+            self.current_id = self.clients[self.next_id]
+            self.next_id = self.next_id + 1
 
     def isAllowed(self, id):
-        if id == self.current_id:
-            return True;
-        return False
+        if str(self.client_id) == str(self.current_id):
+            return str(True);
+        return str(False)
 
     def start_server(self):
         # Create a TCP/IP socket
@@ -77,7 +80,6 @@ class Server :
 
         # Listen for incoming connections
         sock.listen(1)
-
         while True:
             # Wait for a connection
             #print >>sys.stderr, 'waiting for a connection'
@@ -95,6 +97,7 @@ class Server :
                         array.remove(self.client_id)            # remove ID from the data.
                         data = " ".join(array)
 
+
                     if len(data) > 1 and state_protocol.state_protocol(self.tape, data):       # if there is any data to look for
                         if state_protocol.state_protocol(self.tape, data):
                             if self.client_data.has_key(data):
@@ -107,13 +110,15 @@ class Server :
                             elif self.editState.has_key(data):
                                 array = data.split()
                                 self.editState[data](array[2])
-                                self.current_id = self.current_id + 1
+                                self.next_person()
+                                print 'next_person allowed: ' + str(self.current_id)
 
                             elif self.getters.has_key(data):
                                 respons = str(self.getters[data]())                      # get position
 
                             elif data == 'is allowed':
-                                respons = str(str(self.current_id) == str(self.client_id))
+                                respons = self.isAllowed(self.client_id)
+                                #print str(self.client_id) + respons
                         else:
                             print data
                             respons = str(False)

@@ -134,14 +134,16 @@ class Art:
         elif self.state.tape.man in 'boat' and self.state.tape.boat in 'right':
             self.man = self.items_b_canvas.create_rectangle(100,100,85,50, fill="black")    # add man to the right side
             self.state.tape.set_man('right')                                                # update the tape
-        self.move_item('man', self.state.tape.man)                            # update the server with new information
+        if (self.state.tape.man != s.client('(%s) get man' % self.id)):
+            self.move_item('man', self.state.tape.man)                            # update the server with new information
         self.check_death()                                                      # Check death
 
     def boat_move(self):
         if self.state.tape.man in 'boat':                           # if man is inside of the boat
             if self.state.tape.boat in 'left':                      # if boat is left
                 self.state.tape.set_boat('right')                   # update the tape with the information
-                self.move_item('boat', 'right')        # update the server with new information
+                if (self.state.tape.boat != s.client('(%s) get boat' % self.id)):
+                    self.move_item('boat', 'right')        # update the server with new information
                 # move the boat
                 for x in range(0, 90):                              # move 90 times
                     self.boat_canvas.move(1, 5, 0)                  # move 1 px
@@ -150,7 +152,8 @@ class Art:
 
             elif self.state.tape.boat in 'right':                   # if the boat is right
                 self.state.tape.set_boat('left')                    # update the tape
-                self.move_item('boat', 'left')                      # update the server with new information
+                if (self.state.tape.boat != s.client('(%s) get boat' % self.id)):
+                    self.move_item('boat', 'left')                      # update the server with new information
                 for x in range(0,90):                               # move 90 times
                     self.boat_canvas.move(1,-5,0)                   # move -1 px
                     self.boat_canvas.update()                       # update the canvas
@@ -184,7 +187,8 @@ class Art:
 
                 self.items_b_canvas.delete(self.chicken)    # remove the chicken from the right
 
-        self.move_item('chicken', self.state.tape.chicken)
+        if (self.state.tape.chicken != s.client('(%s) get chicken' % self.id)):
+            self.move_item('chicken', self.state.tape.chicken)
         self.check_death()
 
     def corn_inorout(self):
@@ -212,7 +216,8 @@ class Art:
             elif self.state.tape.boat in 'right':
                 self.items_b_canvas.delete(self.corn)
 
-        self.move_item('corn', self.state.tape.corn)                # update the server with new information
+        if (self.state.tape.corn != s.client('(%s) get corn' % self.id)):
+            self.move_item('corn', self.state.tape.corn)                # update the server with new information
         self.check_death()
 
     def fox_inorout(self):
@@ -241,7 +246,8 @@ class Art:
             elif self.state.tape.boat in 'right':
                 self.items_b_canvas.delete(self.fox)
 
-        self.move_item('fox', self.state.tape.fox)                # update the server with new information
+        if (self.state.tape.fox != s.client('(%s) get fox' % self.id)):
+            self.move_item('fox', self.state.tape.fox)                # update the server with new information
         self.check_death()
 
     def check_death(self):
@@ -306,7 +312,6 @@ class Art:
 
             #print 'client: ' + tape.chicken
             if server_tape.chicken != tape.chicken:
-                print 'loool'
                 self.chicken_inorout()
             elif server_tape.man != tape.man:
                 self.man_go_inside_boat()
