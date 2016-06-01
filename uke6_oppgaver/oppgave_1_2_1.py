@@ -45,15 +45,16 @@ def encode(string, byte, table) :
 
 def run(inputFile, outputFile):
 
-    f = open(inputFile, 'r') # Open a file that are beeing compressed.
-    outputFile = open(outputFile, 'w') # Open output file. 
+    f = open(inputFile, 'r')                            # Open a file that are beeing compressed.
+    outputFile = open(outputFile, 'w')                  # Open output file.
     temp_holder = {}
-    table = code() #add text-elements to our table.
-    byte = "" # String to hold our current byte.
-    string = "" # String to hold the last byte, for adding it later to the table
-    byte = f.read(1) # read the first byte.
+    table = code()                                      #add text-elements to our table.
+    byte = ""                                           # String to hold our current byte.
+    string = ""                                         # String to hold the last byte, for adding it later to the table
+    file = f.read()
+    byte = file[0]                                      # read the first byte.
     
-    global code_for_string # Call the global code_for_string, so it can be edited.
+    global code_for_string                              # Call the global code_for_string, so it can be edited.
     
     # First run of the first byte we read earlier.
     if (byte != "") :
@@ -62,17 +63,16 @@ def run(inputFile, outputFile):
         # add the return values to our local strings.
         string = temp_holder['string']
         table = temp_holder['table']
-        
+
     # Kjør så lenge det er bytes i dokumentet
-    while (byte != "") :
-        # Hent ut en byte fra dokumentet
-        byte = f.read(1)
-        # Skriv til dokumentet, så lenge byte ikke er null
-        if (byte != "") :
-            # Encode the byte
-            temp_holder = encode(string, byte, table)
-            # Add the return values to the local verables.
-            string = temp_holder['string']
+    for i in range (len(file)):
+
+        byte = file[i]
+
+        if (byte != "") :                               # Skriv til dokumentet, så lenge byte ikke er null
+            temp_holder = encode(string, byte, table)   # Encode the byte
+
+            string = temp_holder['string']              # Add the return values to the local verables.
             table = temp_holder['table']
     
     # legg til siste 'path' i code_for_string
@@ -90,6 +90,6 @@ def run(inputFile, outputFile):
 
 
 if __name__ == '__main__':
-    run('hamlet2.txt', 'output.txt') 
+    run('hamlet.txt', 'output.txt')
     
 
