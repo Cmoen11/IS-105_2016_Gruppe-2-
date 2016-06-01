@@ -91,15 +91,17 @@ class Server :
                 # Receive the data in small chunks and retransmit it
                 while True:
                     data = connection.recv(1000)
+                    respons = "False"                           # set the default respons
                     if data :
                         array = data.split()                    # split data..
                         self.client_id = array[0]               # get ID out and store it under client ID
+
+
+                    if len(data) > 1 and state_protocol.state_protocol(self.tape, data, self.current_id):       # if there is any data to look for
                         array.remove(self.client_id)            # remove ID from the data.
+                        whole_Data = data
                         data = " ".join(array)
-
-
-                    if len(data) > 1 and state_protocol.state_protocol(self.tape, data):       # if there is any data to look for
-                        if state_protocol.state_protocol(self.tape, data):
+                        if state_protocol.state_protocol(self.tape, whole_Data, self.current_id):
                             if self.client_data.has_key(data):
                                 self.client_data[data]()
                                 respons = str(int(self.next_id - 1))
