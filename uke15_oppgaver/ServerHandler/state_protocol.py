@@ -18,9 +18,6 @@ def state_protocol(tape, request, id):
     # Check if the user is allowed to do stuff
     elif (str(id) != str(request_fragment[0])):
         print 'not allowed do do this action.'
-        print id
-        print request_fragment[0]
-        exit()
         return False
 
     request_fragment.pop(0)      # remove the ID, because it is not longer relevant.
