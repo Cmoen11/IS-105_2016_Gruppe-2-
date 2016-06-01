@@ -56,12 +56,6 @@ def get_id():
     return s.client(request)
 
 def start() :
-    print '||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
-    print 'Please type "create lobby" in order to create a new lobby,' \
-          '\nor "join lobby" to join a lobby.'
-    print '||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
-    raw_input("please enter your command: ")
-
     id = get_id()
 
     print id
