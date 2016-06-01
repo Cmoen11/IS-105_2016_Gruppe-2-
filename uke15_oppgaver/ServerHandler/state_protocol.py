@@ -1,8 +1,27 @@
 from uke15_oppgaver.core.tape import Database
 
 
-def state_protocol(tape, request):
+def state_protocol(tape, request, id):
     request_fragment = request.split()          # split request to fragments.
+
+    # for requesting ID, no need for checking here -> allowed.
+    if request_fragment[1] == 'ID':
+        return True
+
+    # requesting position, no need for checking here -> allowed.
+    elif request_fragment[1] == 'get':
+        return True
+
+    elif request_fragment[1] == 'is':
+        return True
+
+    # Check if the user is allowed to do stuff
+    elif (str(id) != str(request_fragment[0])):
+        print 'not allowed do do this action.'
+        return False
+
+    request_fragment.pop(0)      # remove the ID, because it is not longer relevant.
+
     # for moving items/ person / boat ...
     if request_fragment[0] == 'move':
 
@@ -47,16 +66,6 @@ def state_protocol(tape, request):
             else:
                 return False
 
-    # for requesting ID, no need for checking here -> allowed.
-    elif request_fragment[0] == 'ID':
-        return True
-
-    # requesting position, no need for checking here -> allowed.
-    elif request_fragment[0] == 'get':
-        return True
-
-    elif request_fragment[0] == 'is':
-        return True
 
     # request not valid.
     else:
@@ -66,5 +75,5 @@ def state_protocol(tape, request):
 
 if __name__ == "__main__":
     print state_protocol(
-        Database(), 'move fox right'
+        Database(), 'XX ID REQUEST', 0
     )
