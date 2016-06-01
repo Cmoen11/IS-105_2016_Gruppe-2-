@@ -7,7 +7,7 @@ utregningen av vinner skjer i calculate winner.<br />
 Testklasser kan du finne i PokerTestC.py<br />
 
 
-Programmet er skrevet 100% av gruppe 2 og vi prøver å holde det på den måten for å lære mest mulig om programmet vårt og lære python mest mulig. 
+Programmet er skrevet av gruppe 2  og er ett originalt prosjekt laget fra bunnen av. Vi ønsker å skrive så mye som mulig selv, for å å lære mest mulig om programmet vårt og lære python mest mulig. 
 
 I dette programmet blir det laget objekter av "player" og "pokercards", men vi har i ettertid funnet ut at funksjoner er mest egnet, fordi å programmere til webapplikasjoner kan være problematisk med objekter. 
 
@@ -23,12 +23,12 @@ CalculateWinner.py
 
 ## En mer detaljert beskrivelse
 
-Før jeg begynner å forklare, er det noen nøkkelvariabler man må bemerke seg. 
+Nøkkelvariabler som er verdt å merke seg: 
 Pokerhånd rangeres ved bruk av en poengskala. Disse poengene er ikke synlige for spillerne, men brukes av systemet til avgjøre hvilken hånd spilleren har og hvilken hånd som er best. Denne blir lagt til spillerobjektet når kortene blir utdelt. 
 
-Det første som skjer er at vi oppretter x antall decks/kortstokker på 52 kort i generateCards, hvert kort blir da et objekt av PokerCard. Hvert kort får 2 ulike variabler som bestemmer hva kortet er. Det ene er "Value", som måles fra 0 - 12, da 0 = 2 i kortsammenhenger (mer om dette kan man se i diagrammet under), den andre er "Symbol" som går fra 0 - 3(også definert under).
+Først opprettes x antall decks/kortstokker på 52 kort i generateCards, hvert kort blir da et objekt av PokerCard. Hvert kort får 2 ulike variabler som bestemmer hva kortet er. Det ene er "Value", som måles fra 0 - 12, da 0 = 2 i kortsammenhenger (mer om dette kan man se i diagrammet under), den andre er "Symbol" som går fra 0 - 3(også definert under).
 
-Når dette er gjort, blir array'en sendt videre til "deal"-metoden, "deal"-metoden har som oppgave å dele ut kort til spillerne. Foreløpig blir spillerne også generert her. Dette vil på ett senere tidspunkt bli implementert i "deal", da spillerobjektene bør defineres tidligere når vi skal koble dette videre mot et virkelig spill senere i prosessen.<br />
+Deretter blir array'en sendt videre til "deal"-metoden, "deal"-metoden har som oppgave å dele ut kort til spillerne. Foreløpig blir spillerne også generert her. Dette vil på ett senere tidspunkt bli implementert i "deal", da spillerobjektene bør defineres tidligere når vi skal koble dette videre mot et virkelig spill senere i prosessen.<br />
 I "deal" får hver spiller tildelt 5 kort hver fra kortstokken som ble generert i "generateCards", og blir dermed lagt inn i spillerobjektet til hver av spillerne. Her vil også "Pointcalc_Poker" tre inn. Denne metoden vil finne ut hvilken poengsum som finnes i hver tildelte hånd. Denne metoden vil kjøres på hver spiller og returnerer en poengsum basert på spillerens tildelte hånd. Denne poengsummen blir ikke synlig for spillerne, det er kun en poengskala som brukes av systemet for å kalkulere hvilken spiller som er vinner. <br />
 Etter dette blir spillerne printet ut med sine kort og en vinner vil bli trukket basert på poengscoren spillerens hånd har fått. Dette gjøres gjøres på den måten at spillerprofilene blir sendt inn i "CalculateWinner.py" i metoden "CalculateWinner" der systemet samler spillerne i en liste og printer ut fra høy til lav poengsum, og returnerer spilleren med høyest score. <br />
 Det er foreløpig ikke lagt opp til at flere spillere kan får samme score. Da den nå vil konkludere med at spilleren som havner på toppen av listen vil vinne. Dette vil bli endret i senere versjoner av spillet.
