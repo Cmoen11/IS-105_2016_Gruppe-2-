@@ -16,11 +16,11 @@ I vår i kode er det vanskelig for nodene å skille tilstanden. Det vil si at n�
 Vi har laget en protokoll(ServerHandler/state_protocol) som sjekker om kommandoene som serveren får, er gyldige. Klienten sender en forespørsel om å endre tilstanden, forespørselen blir kontrollert igjennom en protokoll som sjekker om det er et gyldig "trekk" for brukeren, før den faktisk endrer tilstanden. Om den ønskede tilstanden ikke er korrekt, returnerer serveren en melding til klienten om at forespørselen var ugyldig.
 
 
-###Rundesystem
+#####Rundesystem
 I spillet vil kun en klient ha mulighet til å endre tilstanden om gangen. Når brukeren har endret tilstanden, vil det(om flere klienter) skiftes på hvem som har lov til å endre tilstanden. På denne måten vil de klientene som er i spillet kunne samarbeide om å løse spillet. Det er derimot ikke lagt opp til at man kan opprette flere 'lobbyer'. Man er nå i den lobbyen som spillet har laget fra starten av spillet, der de spillerene som kobler seg på i senere tid, vil bli med i 'spillet'.
 
 
-### Three-way handshake
+#####Three-way handshake
 Three-way handshake er en metode brukt i TCP/IP for å lage en kobling mellom klient og server.
 Det er en tre-stegs prosess hvor en klient sender en datapakke over et IP-nettverk til en server på samme eller et eksternt nettverk. Pdatapakken som sendes har som mål å sjekke om serveren er åpen for nye tilkoblinger.
 Dersom serveren har ledig kapasitet bekrefter den det ved å sende en bekreftelses-pakke tilbake til klienten. Når klienten har mottatt denne bekreftelsen sender den også en bekreftetlsespakke tilbake til serveren som svar.
